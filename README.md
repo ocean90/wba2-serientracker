@@ -21,14 +21,22 @@ Für die Serien sollte die Schnittstelle von dem Service http://trakt.tv/ genutz
 * Ausgabe von auf dem Server gespeicherer Serien
 * Markieren von Serien
   * Gesehen/Nicht gesehen
-  * Bewertung einer Epsisode
+  * Bewertung einer Episode
+      * Kommentar
+      * Bild?
+      * Bewertung in Zahlen
+  * Fehler Meldung
+      * geänderte Sendezeit, fehlerhaftes Datum 
+      
 * SerienListe
-  * Unwatched
+  * Unwatched/Watched
+  
 * Favorisieren
   * Anlegen
   * Löschen
   * Ändern
       * Zeitpunkt der Benachrichtigung
+      
 
 **Asynchron**
 
