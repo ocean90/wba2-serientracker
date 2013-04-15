@@ -25,12 +25,10 @@ Für die Serien sollte die Schnittstelle von dem Service http://trakt.tv/ genutz
       * Kommentar
       * Bild?
       * Bewertung in Zahlen
-  * Fehler Meldung
-      * geänderte Sendezeit, fehlerhaftes Datum 
-      
+  * Fehlermeldung
+      * geänderte Sendezeit, fehlerhaftes Datum   
 * SerienListe
-  * Unwatched/Watched
-  
+  * Unwatched/Watched 
 * Favorisieren
   * Anlegen
   * Löschen
