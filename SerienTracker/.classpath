@@ -7,5 +7,9 @@
 	<classpathentry kind="lib" path="libs/jaxb/jaxb-impl.jar"/>
 	<classpathentry kind="lib" path="libs/jaxb/jaxb-xjc-javadoc.jar"/>
 	<classpathentry kind="lib" path="libs/jaxb/jaxb-xjc.jar"/>
+	<classpathentry kind="lib" path="libs/smack/smack.jar"/>
+	<classpathentry kind="lib" path="libs/smack/smackx-debug.jar"/>
+	<classpathentry kind="lib" path="libs/smack/smackx-jingle.jar"/>
+	<classpathentry kind="lib" path="libs/smack/smackx.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
