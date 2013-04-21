@@ -1,44 +1,56 @@
-Web-basierte Anwendungen 2: Verteilte Systeme
-==================  
-##Phase 2 - Projekt "Serientracker"
+# Web-basierte Anwendungen 2: Verteilte Systeme
+# Sommersemester 2013 - Phase 2
 
-###Projektidee  
-Beliebige Benutzer sollen über ihre zuvor favorisierten Serien benachrichtigt werden, wenn diese im TV ausgestrahlt werden.
+*Dennis Meyer und Dominik Schilling*
 
-Der Benutzer soll über ein GUI eine Auswahlmöglichkeit über die aktuell auf eine entfernten Server gespeicherten Serien bekommen. Die einzelnen Serien kann er dann favorisieren/abonnieren um über die TV-Ausstrahlung informiert zu werden.
-Außerdem soll die Möglichkeit bestehen eine Episode zu bewerten und als gesehen/ungesehen zu markieren. Diese Requests sollen synchron ablaufen.
+# Szenario: Serientracker
 
-Sobald eine Serie im TV ausgestrahlt wird, soll der abonnierte Benutzer mittels „Push Notification“ informiert werden. Die Benachrichtigung soll dabei in einem vom Benutzer definierten Zeitraum vor dem Start ausgeführt werden.
+Die **Idee** ist, dass Serien-Interessierte über ihre zuvor favorisierten Serien benachrichtigt werden, sobald eine Epsiode dieser Serie im TV ausgestrahlt wird.
 
-###Zusatz - Freunde  
-Benutzer sollen sich gegenseitig hinzufügen/abonnieren können um sich gegenseitig zu benachrichtigen, zum Beispiel in Form von “Freund X schaut gerade Y”, “Freund Z hat Serie/Episode mit 8,0 bewertet” oder “Freund Y empfiehlt Dir Serie W”.
+Der **Serien-Interessierte** soll Zugriff auf einen Pool von Serien bekommen, die auf einem Server gespeichert und verwaltet werden.  
+Die einzelnen Serien soll der Nutzer dann favorisieren/abonnieren können um dann über die TV-Ausstrahlung informiert zu werden.
+Außerdem soll die Möglichkeit bestehen eine Episode zu bewerten und als gesehen/ungesehen zu markieren.
+
+Die **Server-Anwendung** soll die Nutzer über die TV-Austrahlung einer Episode einer zuvor favorisierten Serie in einem vom Benutzer definierten Zeitraum informiert werden.
+
+Ein **Content-Admin** soll erweiterte Rechte bekommen, um die Content-Verwaltung zu übernehmen. Die Anwendung soll das Anlegen, Bearbeiten und Löschen von Serien bzw Episoden ermöglichen.
+
+####Zusatz - Freunde:  
+**Serien-Interessierte** sollen sich gegenseitig hinzufügen/abonnieren können um sich gegenseitig zu benachrichtigen, zum Beispiel in Form von „Freund X schaut gerade Y”, „Freund Z hat Serie/Episode mit 8,0 bewertet” oder „Freund Y empfiehlt Dir Serie W”.
 
 ###Umsetzung  
-Für die Serien sollte die Schnittstelle von dem Service http://trakt.tv/ genutzt werden. Diese gibt die Daten im JSON Format aus, welche dann von uns ins XML-Format einmalig transformiert werden.
 
-**Synchron**  
+####Synchrone Datenübertragung
 
-* Ausgabe von auf dem Server gespeicherer Serien
-* Markieren von Serien
-  * Gesehen/Nicht gesehen
-  * Bewertung einer Episode
-      * Kommentar
-      * Bild?
-      * Bewertung in Zahlen
-  * Fehlermeldung
-      * geänderte Sendezeit, fehlerhaftes Datum   
-* SerienListe
-  * Unwatched/Watched 
-* Favorisieren
-  * Anlegen
-  * Löschen
-  * Ändern
-      * Zeitpunkt der Benachrichtigung
-      
+* **Serien-Interessierte**
+   * Markieren von Episoden
+     * Gesehen/Nicht gesehen
+     * Bewertung einer Episode
+         * Kommentar
+         * Bewertung in Zahlen/„Boolean”
+     * Fehlermeldung
+         * geänderte Sendezeit, fehlerhaftes Datum, …   
+   * Listen
+     * Ausgabe (Un)Watched
+     * Ausgabe vorhandene Serien
+     * Ausgabe Follower/Following (?)
+   * Favorisierung
+     * Anlegen
+     * Löschen
+     * Bearbeiten
+         * Zeitpunkt der Benachrichtigung
+* **Content-Admin**
+   * Verwaltung der Episoden
+      * Anlegen
+      * Löschen
+      * Bearbeiten
 
-**Asynchron**
+####Asynchrone Datenübertragung
 
-* Benachrichtung bei Serienstart
-* Freunde mit gleicher Favorisierung bei Serienstart mit Check-in benachrichtigen (?)
-  * “Freund X schaut auch W”
-* Empfehlung einer Serie an Freund(e) schicken
+* **Serien-Interessierte**
+   * Benachrichtung bei TV-Austrahlung
+   * Freunde mit gleicher Favorisierung bei Serienstart mit Check-in benachrichtigen (?)
+        * “Freund X schaut auch W”
+   * Empfehlung einer Serie von Freund(e) anzeigen (?)
+* **Content-Admin**
+   * Benachrichtung bei Fehlermeldung durch User
