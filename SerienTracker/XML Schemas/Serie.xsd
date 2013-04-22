@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+<!-- Dieses Schema definiert den Eintrag einer einzelnen Serien mit den allgemeinen Informationen.
+	http://trakt.tv/api-docs/shows-trending-->
+
+
+<!-- gesamte Serie -->
+<xs:element name="serie">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="title"/>
+      <xs:element ref="year"/>
+      <xs:element ref="url"/>
+      <xs:element ref="first_aired"/>
+      <xs:element ref="country"/>
+      <xs:element ref="overview"/>
+      <xs:element ref="runtime"/>
+      <xs:element ref="network"/>
+      <xs:element ref="airdate"/>
+      <xs:element ref="airtime"/>
+      <xs:element ref="image"/>
+      <xs:element ref="genre" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="serie_id" use="required"/>
+    
+  </xs:complexType>
+  
+</xs:element>
+
+
+
+<!-- Serientitel -->
+<element name="title" type="xs:string"/>
+
+<!-- Serien ID -->
+<xs:attribute name="serie_id" type="xs:id"/>
+
+<!-- Erscheinungsjahr, nach 1900 vor 2015 -->
+<xs:element name="year">
+  <xs:simpleType>
+    <xs:restriction base="xs:positiveInteger">
+    	<xs:minInclusive value="1900"/>
+      	<xs:maxInclusive value="2014"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+<!-- URL? -->
+<xs:attribute name="url" type="xs:anyURI"/>
+
+<!-- Erstaustrahlung -->
+<xs:element name="first_aired" type="xs:date"/>
+
+<!-- Produktionsland -->
+<xs:element name="country">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="simpel"/>
+      <xs:enumeration value="normal"/>
+      <xs:enumeration value="pfiffig"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+<!-- Kurzinformation -->
+<xs:element name="overview" type="xs:string"/>
+
+<!-- Episodenlaufzeit -->
+<xs:element name="runtime">
+  <xs:simpleType>
+    <xs:restriction base="xs:positiveInteger">
+      	<xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+<!-- Sender, Bedingung nur Wahl der Sender für entsprechendes Land -->
+<xs:element name="network">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="country"/>
+      <xs:element ref="network_name"/>   
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<!-- Sendernamen US -->
+<xs:element name="network_name">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ABC"/>
+      <xs:enumeration value="AMC"/>
+      <xs:enumeration value="BBC America"/>
+      <xs:enumeration value="CBC"/>
+      <xs:enumeration value="Comedy Central"/>
+      <xs:enumeration value="The CW"/>
+      <xs:enumeration value="Fox"/>
+      <xs:enumeration value="FX"/>
+      <xs:enumeration value="HBO"/>
+      <xs:enumeration value="History Channel"/>
+      <xs:enumeration value="NBC"/>
+      <xs:enumeration value="PBS"/>
+      <xs:enumeration value="Showtime"/>
+      <xs:enumeration value="Starz"/>
+      <xs:enumeration value="TNT"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+<!-- Austrahlungstag -->
+<xs:element name="airdate">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="monday"/>
+      <xs:enumeration value="tuesday"/>
+      <xs:enumeration value="wednesday"/>
+      <xs:enumeration value="thursday"/>
+      <xs:enumeration value="friday"/>
+      <xs:enumeration value="saturday"/>
+       <xs:enumeration value="sunday"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+
+<!-- Austrahlungszeit -->
+<xs:element name="airtime" type="xs:time"/>
+
+<!-- Seasons, bezug zum XML season schema -->
+
+   
+<!-- Altersfreigabe? -->
+<xs:element name="airtime" type="xs:time"/>
+
+<!-- Bild? -->
+<xs:element name="image">
+  <xs:complexType>
+    <xs:attribute ref="src" use="required"/>
+  </xs:complexType>
+</xs:element>
+
+
+
+<!-- Genres -->
+<xs:element name="genre">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="action"/>
+      <xs:enumeration value="adventure"/>
+      <xs:enumeration value="comedy"/>
+      <xs:enumeration value="crime"/>
+      <xs:enumeration value="drama"/>
+      <xs:enumeration value="fantasy"/>
+      <xs:enumeration value="historical"/>
+      <xs:enumeration value="horror"/>
+      <xs:enumeration value="mystery"/>
+      <xs:enumeration value="romance"/>
+      <xs:enumeration value="sciencefiction"/>
+      <xs:enumeration value="thriller"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+
+
+
+
+</xs:schema>
