@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+<!-- Dieses Schema definiert den die Profildaten eines Users 
+	http://trakt.tv/api-docs/user-profile-->
+
+
+<!-- Privat angelegte Liste eines Users -->
+<xs:element name="list">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="list_name"/>
+      <xs:element ref="list_url"/>
+      <xs:element ref="list_shownumber"/>
+      <xs:element ref="serie" maxOccurs="unbounded"/>
+    </xs:sequence>
+  
+    <xs:attribute ref="owner" use="required"/>
+    <xs:attribute ref="user_id" use="required"/>
+    <xs:attribute ref="list_id" use="required"/>
+    <xs:attribute ref="public" use="required"/>  
+  </xs:complexType>
+  
+</xs:element>
+
+
+<!-- Besitzer? Zwecks Änderungsrechte -->
+<xs:attribute name="owner" type="xs:boolean"/>
+
+
+<!-- globale User_id Zuordnung -->
+<xs:attribute name="user_id" type="xs:ID"/>
+
+<!-- List_id  -->
+<xs:attribute name="list_id" type="xs:ID"/>
+
+<!-- Privacy der Liste  -->
+<xs:attribute name="public" type="xs:boolean"/>
+
+
+
+<!-- Listenname -->
+<xs:element name="list_name" type="xs:string"/>
+
+<!-- URL zur Liste -->
+<xs:element name="list_url" type="xs:anyURI"/>
+
+
+<!-- Anzahl der Shows in der Liste, wird über Anzahl der Einträge automatisch generiert-->
+<xs:element name="list_shownumber" type="xs:integer"/>
+
+<!-- Hier fehlt noch der Bezug zur Serie -->
+
+
+</xs:schema>

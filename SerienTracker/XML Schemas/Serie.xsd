@@ -10,18 +10,19 @@
 <xs:element name="serie">
   <xs:complexType>
     <xs:sequence>
-      <xs:element ref="title"/>
-      <xs:element ref="year"/>
-      <xs:element ref="url"/>
-      <xs:element ref="first_aired"/>
-      <xs:element ref="country"/>
-      <xs:element ref="overview"/>
-      <xs:element ref="runtime"/>
-      <xs:element ref="network"/>
-      <xs:element ref="airdate"/>
-      <xs:element ref="airtime"/>
-      <xs:element ref="image"/>
-      <xs:element ref="genre" maxOccurs="unbounded"/>
+      <xs:element ref="serie_title"/>
+      <xs:element ref="serie_year"/>
+      <xs:element ref="serie_url"/>
+      <xs:element ref="serie_first_aired"/>
+      <xs:element ref="serie_country"/>
+      <xs:element ref="serie_overview"/>
+      <xs:element ref="episode_runtime"/>
+      <xs:element ref="serie_network"/>
+      <xs:element ref="episode_airdate"/>
+      <xs:element ref="episode_airtime"/>
+      <xs:element ref="serie_image"/>
+      <xs:element ref="serie_genre" maxOccurs="unbounded"/>
+      <xs:element ref="seasons"/>
     </xs:sequence>
     <xs:attribute ref="serie_id" use="required"/>
     
@@ -32,13 +33,13 @@
 
 
 <!-- Serientitel -->
-<element name="title" type="xs:string"/>
+<xs:element name="serie_title" type="xs:string"/>
 
 <!-- Serien ID -->
-<xs:attribute name="serie_id" type="xs:id"/>
+<xs:attribute name="serie_id" type="xs:ID"/>
 
 <!-- Erscheinungsjahr, nach 1900 vor 2015 -->
-<xs:element name="year">
+<xs:element name="serie_year">
   <xs:simpleType>
     <xs:restriction base="xs:positiveInteger">
     	<xs:minInclusive value="1900"/>
@@ -48,46 +49,35 @@
 </xs:element>
 
 <!-- URL? -->
-<xs:attribute name="url" type="xs:anyURI"/>
+<xs:element name="serie_url" type="xs:anyURI"/>
 
 <!-- Erstaustrahlung -->
-<xs:element name="first_aired" type="xs:date"/>
+<xs:element name="serie_first_aired" type="xs:date"/>
 
 <!-- Produktionsland -->
-<xs:element name="country">
-  <xs:simpleType>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="simpel"/>
-      <xs:enumeration value="normal"/>
-      <xs:enumeration value="pfiffig"/>
-    </xs:restriction>
-  </xs:simpleType>
-</xs:element>
+<xs:element name="serie_country" type="xs:string"/>
+
 
 <!-- Kurzinformation -->
-<xs:element name="overview" type="xs:string"/>
+<xs:element name="serie_overview" type="xs:string"/>
 
 <!-- Episodenlaufzeit -->
-<xs:element name="runtime">
+<xs:element name="episode_runtime">
   <xs:simpleType>
     <xs:restriction base="xs:positiveInteger">
-      	<xs:maxInclusive value="100"/>
+      <xs:enumeration value="10"/>
+      <xs:enumeration value="20"/>
+      <xs:enumeration value="30"/>
+      <xs:enumeration value="50"/>
+      <xs:enumeration value="60"/>
+      <xs:enumeration value="90"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:element>
 
-<!-- Sender, Bedingung nur Wahl der Sender für entsprechendes Land -->
-<xs:element name="network">
-  <xs:complexType>
-    <xs:sequence>
-      <xs:element ref="country"/>
-      <xs:element ref="network_name"/>   
-    </xs:sequence>
-  </xs:complexType>
-</xs:element>
 
-<!-- Sendernamen US -->
-<xs:element name="network_name">
+<!-- Sendernamen -->
+<xs:element name="serie_network">
   <xs:simpleType>
     <xs:restriction base="xs:string">
       <xs:enumeration value="ABC"/>
@@ -105,12 +95,20 @@
       <xs:enumeration value="Showtime"/>
       <xs:enumeration value="Starz"/>
       <xs:enumeration value="TNT"/>
+      
+      <xs:enumeration value="ARD"/>
+      <xs:enumeration value="ZDF"/>
+      <xs:enumeration value="RTL"/>
+      <xs:enumeration value="Sat1"/>
+      <xs:enumeration value="Prosieben"/>
+      <xs:enumeration value="Kabel1"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:element>
 
+
 <!-- Austrahlungstag -->
-<xs:element name="airdate">
+<xs:element name="episode_airdate">
   <xs:simpleType>
     <xs:restriction base="xs:string">
       <xs:enumeration value="monday"/>
@@ -126,25 +124,31 @@
 
 
 <!-- Austrahlungszeit -->
-<xs:element name="airtime" type="xs:time"/>
+<xs:element name="episode_airtime" type="xs:time"/>
 
 <!-- Seasons, bezug zum XML season schema -->
 
    
 <!-- Altersfreigabe? -->
-<xs:element name="airtime" type="xs:time"/>
+
+
+
 
 <!-- Bild? -->
-<xs:element name="image">
+<xs:element name="serie_image">
   <xs:complexType>
     <xs:attribute ref="src" use="required"/>
   </xs:complexType>
 </xs:element>
 
+<xs:attribute name="src" type="xs:anyURI"/>
+
+
+
 
 
 <!-- Genres -->
-<xs:element name="genre">
+<xs:element name="serie_genre">
   <xs:simpleType>
     <xs:restriction base="xs:string">
       <xs:enumeration value="action"/>
@@ -163,8 +167,6 @@
   </xs:simpleType>
 </xs:element>
 
-
-
-
+<!-- Hier fehlt der der Bezug zum ComplexElement Seasons, dass mehrere seasons erfasst -->
 
 </xs:schema>
