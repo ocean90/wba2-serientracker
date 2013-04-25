@@ -117,6 +117,10 @@ Datensätze zu, die diesem Elementwert unter dieser eindeutigen Zeichenfolge zug
 wie "Krimie" oder "Crime", führen dementsprechend zu Komplikationen, weil sie die Reinheit der Informationssätze beschädigen. 
 
 #### Datentypen
+Zu Beginn des ersten Meilensteins, steht die Analyse der vorhandenen Informationstypen. 
+Bei der Definition eines XML Schemas, sollte neben der enstprechenden Datensatzstruktur und Reihenfolge, 
+auch festgelegt werden, durche welche Datentyp die einzelnen Informationen repräsentiert werden sollen.
+
 ####Entwickelte XML Schemas
 <br>
 ###2. Ressourcen und die Semantik der HTTP-Operationen für das Projekt
