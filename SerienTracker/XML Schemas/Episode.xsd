@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://Serientracker">
 
 <!-- Dieses Schema definiert die Informationen einer Episode und die Zuordnung zur Serie und Staffel
 	http://trakt.tv/api-docs/user-profile-->
@@ -12,20 +12,21 @@
     <xs:sequence>
       <xs:element ref="episode_title"/>
       <xs:element ref="episode_overview"/>
+      <xs:element ref="episode_number"/>
       <xs:element ref="episode_airdate"/>
       <xs:element ref="episode_picture"/>
     </xs:sequence>
   
-    <xs:attribute ref="episode_id" use="required"/>
     <xs:attribute ref="serie_id" use="required"/>
     <xs:attribute ref="season_number" use="required"/>
+    <xs:attribute ref="episode_id" use="required"/>
+
     
   </xs:complexType>
   
 </xs:element>
 
-
-<!-- Besitzer? Zwecks Änderungsrechte -->
+<!-- Referenzierte Attribute -->
 <xs:attribute name="episode_id" type="xs:ID"/>
 <xs:attribute name="season_number" type="xs:ID"/>
 <xs:attribute name="serie_id" type="xs:ID"/>
@@ -40,13 +41,18 @@
 <!-- Privacy der Liste  -->
 <xs:element name="episode_overview" type="xs:string"/>
 
-<!-- airdate  -->
+<!-- Nummer der Episode in Staffel -->
+<xs:element name="episode_number" type="xs:positiveInteger"/>
+
+
+<!-- Austrahlungstag der Episode  -->
 <xs:element name="episode_airdate" type="xs:date"/>
 
-<!-- Privacy der Liste  -->
+<!-- Bild zur Episode  -->
 <xs:element name="episode_picture" type="xs:anyURI"/>
 
 
 <!-- hinzufügen attribute für seen/unseen check, mit verbindung zur List -->
+
 
 </xs:schema>

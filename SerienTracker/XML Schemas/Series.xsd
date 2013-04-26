@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://Serientracker">
+
+<!-- Dieses Schema definiert ein Wurzelelement, dass alle Serien aufnimmt.->
+
+
+<!-- Container der alle Serien beinhaltet -->
+<xs:element name="series">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="serie" maxOccurs="unbpunded"/>
+    </xs:sequence>
+
+  </xs:complexType>
+  
+</xs:element>
+
+
+</xs:schema>

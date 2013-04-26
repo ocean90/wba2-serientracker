@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://Serientracker">
+
+<xs:include schemaLocation="Seasons.xsd"/>
 
 
 <!-- Dieses Schema definiert den Eintrag einer einzelnen Serien mit den allgemeinen Informationen.
 	http://trakt.tv/api-docs/shows-trending-->
-
 
 <!-- gesamte Serie -->
 <xs:element name="serie">
@@ -18,8 +20,8 @@
       <xs:element ref="serie_overview"/>
       <xs:element ref="episode_runtime"/>
       <xs:element ref="serie_network"/>
-      <xs:element ref="episode_airdate"/>
-      <xs:element ref="episode_airtime"/>
+      <xs:element ref="serie_airdate"/>
+      <xs:element ref="serie_airtime"/>
       <xs:element ref="serie_image"/>
       <xs:element ref="serie_genre" maxOccurs="unbounded"/>
       <xs:element ref="seasons"/>
@@ -36,7 +38,7 @@
 <xs:element name="serie_title" type="xs:string"/>
 
 <!-- Serien ID -->
-<xs:attribute name="serie_id" type="xs:ID"/>
+<xs:attribute name="serie_id" type="xs:integer"/>
 
 <!-- Erscheinungsjahr, nach 1900 vor 2015 -->
 <xs:element name="serie_year">
@@ -108,7 +110,7 @@
 
 
 <!-- Austrahlungstag -->
-<xs:element name="episode_airdate">
+<xs:element name="serie_airdate">
   <xs:simpleType>
     <xs:restriction base="xs:string">
       <xs:enumeration value="monday"/>
@@ -124,7 +126,7 @@
 
 
 <!-- Austrahlungszeit -->
-<xs:element name="episode_airtime" type="xs:time"/>
+<xs:element name="serie_airtime" type="xs:time"/>
 
 <!-- Seasons, bezug zum XML season schema -->
 
@@ -137,11 +139,11 @@
 <!-- Bild? -->
 <xs:element name="serie_image">
   <xs:complexType>
-    <xs:attribute ref="src" use="required"/>
+    <xs:element ref="src"/>
   </xs:complexType>
 </xs:element>
 
-<xs:attribute name="src" type="xs:anyURI"/>
+<xs:element name="src" type="xs:anyURI"/>
 
 
 
@@ -168,5 +170,6 @@
 </xs:element>
 
 <!-- Hier fehlt der der Bezug zum ComplexElement Seasons, dass mehrere seasons erfasst -->
+
 
 </xs:schema>

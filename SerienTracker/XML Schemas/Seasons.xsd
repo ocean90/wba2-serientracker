@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://Serientracker">         
+ 
 
 
 <!-- Dieses Schema dient der Zuordnung von Staffeln zu einer bestimmten Serie -->
@@ -22,8 +24,14 @@
       <xs:element ref="episode" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:attribute ref="serie_id" use="required"/>
   
 </xs:element>
 
+<!-- Staffelnummber -->
+<xs:element name="season_number" type="xs:positiveInteger"/>
+<xs:element name="season_episodenumbers" type="xs:positiveInteger"/>
+
+<!-- Bezug zum Serienschema und Episodenschema -->
 
 </xs:schema>
