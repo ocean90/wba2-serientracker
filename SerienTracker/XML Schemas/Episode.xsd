@@ -10,11 +10,11 @@
 <xs:element name="episode">
   <xs:complexType>
     <xs:sequence>
-      <xs:element ref="episode_title"/>
-      <xs:element ref="episode_overview"/>
-      <xs:element ref="episode_number"/>
-      <xs:element ref="episode_airdate"/>
-      <xs:element ref="episode_picture"/>
+      <xs:element ref="title"/>
+      <xs:element ref="overview"/>
+      <xs:element ref="number"/>
+      <xs:element ref="airdate"/>
+      <xs:element ref="picture"/>
     </xs:sequence>
 
     <xs:attribute ref="serie_id" use="required"/>
@@ -36,20 +36,20 @@
 
 
 <!-- Episodenname  -->
-<xs:element name="episode_title" type="xs:string"/>
+<xs:element name="title" type="xs:string"/>
 
 <!-- Privacy der Liste  -->
-<xs:element name="episode_overview" type="xs:string"/>
+<xs:element name="overview" type="xs:string"/>
 
 <!-- Nummer der Episode in Staffel -->
-<xs:element name="episode_number" type="xs:positiveInteger"/>
+<xs:element name="number" type="xs:positiveInteger"/>
 
 
 <!-- Austrahlungstag der Episode  -->
-<xs:element name="episode_airdate" type="xs:date"/>
+<xs:element name="airdate" type="xs:date"/>
 
 <!-- Bild zur Episode  -->
-<xs:element name="episode_picture" type="xs:anyURI"/>
+<xs:element name="picture" type="xs:anyURI"/>
 
 
 <!-- hinzufügen attribute für seen/unseen check, mit verbindung zur List -->

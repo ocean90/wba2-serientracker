@@ -30,7 +30,7 @@
 
 
 <!-- globale User_id Zuordnung -->
-<xs:attribute name="user_id" type="xs:"/>
+<xs:attribute name="user_id" type="xs:positiveInteger"/>
 
 <!-- List_id  -->
 <xs:attribute name="list_id" type="xs:ID"/>
