@@ -20,7 +20,7 @@
   <xs:complexType>
     <xs:sequence>
       <xs:element ref="season_number"/>
-      <xs:element ref="season_episodenumbers"/>
+      <xs:element ref="episodenumbers"/>
       <xs:element ref="episode" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -30,7 +30,7 @@
 
 <!-- Staffelnummber -->
 <xs:element name="season_number" type="xs:positiveInteger"/>
-<xs:element name="season_episodenumbers" type="xs:positiveInteger"/>
+<xs:element name="episodenumbers" type="xs:positiveInteger"/>
 
 <!-- Bezug zum Serienschema und Episodenschema -->
 

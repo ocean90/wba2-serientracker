@@ -10,9 +10,9 @@
 <xs:element name="list">
   <xs:complexType>
     <xs:sequence>
-      <xs:element ref="list_name"/>
-      <xs:element ref="list_url"/>
-      <xs:element ref="list_shownumber"/>
+      <xs:element ref="name"/>
+      <xs:element ref="url"/>
+      <xs:element ref="shownumber"/>
       <xs:element ref="serie" maxOccurs="unbounded"/>
     </xs:sequence>
   
@@ -30,7 +30,7 @@
 
 
 <!-- globale User_id Zuordnung -->
-<xs:attribute name="user_id" type="xs:ID"/>
+<xs:attribute name="user_id" type="xs:"/>
 
 <!-- List_id  -->
 <xs:attribute name="list_id" type="xs:ID"/>
@@ -41,14 +41,14 @@
 
 
 <!-- Listenname -->
-<xs:element name="list_name" type="xs:string"/>
+<xs:element name="name" type="xs:string"/>
 
 <!-- URL zur Liste -->
-<xs:element name="list_url" type="xs:anyURI"/>
+<xs:element name="url" type="xs:anyURI"/>
 
 
 <!-- Anzahl der Shows in der Liste, wird über Anzahl der Einträge automatisch generiert-->
-<xs:element name="list_shownumber" type="xs:integer"/>
+<xs:element name="shownumber" type="xs:integer"/>
 
 <!-- Hier fehlt noch der Bezug zur Serie -->
 

@@ -12,18 +12,18 @@
 <xs:element name="serie">
   <xs:complexType>
     <xs:sequence>
-      <xs:element ref="serie_title"/>
-      <xs:element ref="serie_year"/>
-      <xs:element ref="serie_url"/>
-      <xs:element ref="serie_first_aired"/>
-      <xs:element ref="serie_country"/>
-      <xs:element ref="serie_overview"/>
+      <xs:element ref="title"/>
+      <xs:element ref="year"/>
+      <xs:element ref="url"/>
+      <xs:element ref="firstaired"/>
+      <xs:element ref="country"/>
+      <xs:element ref="overview"/>
       <xs:element ref="episode_runtime"/>
-      <xs:element ref="serie_network"/>
-      <xs:element ref="serie_airdate"/>
-      <xs:element ref="serie_airtime"/>
-      <xs:element ref="serie_image"/>
-      <xs:element ref="serie_genre" maxOccurs="unbounded"/>
+      <xs:element ref="network"/>
+      <xs:element ref="airdate"/>
+      <xs:element ref="airtime"/>
+      <xs:element ref="image"/>
+      <xs:element ref="genre" maxOccurs="unbounded"/>
       <xs:element ref="seasons"/>
     </xs:sequence>
     <xs:attribute ref="serie_id" use="required"/>
@@ -35,13 +35,13 @@
 
 
 <!-- Serientitel -->
-<xs:element name="serie_title" type="xs:string"/>
+<xs:element name="title" type="xs:string"/>
 
 <!-- Serien ID -->
 <xs:attribute name="serie_id" type="xs:integer"/>
 
 <!-- Erscheinungsjahr, nach 1900 vor 2015 -->
-<xs:element name="serie_year">
+<xs:element name="year">
   <xs:simpleType>
     <xs:restriction base="xs:positiveInteger">
     	<xs:minInclusive value="1900"/>
@@ -51,17 +51,17 @@
 </xs:element>
 
 <!-- URL? -->
-<xs:element name="serie_url" type="xs:anyURI"/>
+<xs:element name="url" type="xs:anyURI"/>
 
 <!-- Erstaustrahlung -->
-<xs:element name="serie_first_aired" type="xs:date"/>
+<xs:element name="firstaired" type="xs:date"/>
 
 <!-- Produktionsland -->
-<xs:element name="serie_country" type="xs:string"/>
+<xs:element name="country" type="xs:string"/>
 
 
 <!-- Kurzinformation -->
-<xs:element name="serie_overview" type="xs:string"/>
+<xs:element name="overview" type="xs:string"/>
 
 <!-- Episodenlaufzeit -->
 <xs:element name="episode_runtime">
@@ -79,7 +79,7 @@
 
 
 <!-- Sendernamen -->
-<xs:element name="serie_network">
+<xs:element name="network">
   <xs:simpleType>
     <xs:restriction base="xs:string">
       <xs:enumeration value="ABC"/>
@@ -110,7 +110,7 @@
 
 
 <!-- Austrahlungstag -->
-<xs:element name="serie_airdate">
+<xs:element name="airdate">
   <xs:simpleType>
     <xs:restriction base="xs:string">
       <xs:enumeration value="monday"/>
@@ -126,7 +126,7 @@
 
 
 <!-- Austrahlungszeit -->
-<xs:element name="serie_airtime" type="xs:time"/>
+<xs:element name="airtime" type="xs:time"/>
 
 <!-- Seasons, bezug zum XML season schema -->
 
@@ -137,7 +137,7 @@
 
 
 <!-- Bild? -->
-<xs:element name="serie_image">
+<xs:element name="image">
   <xs:complexType>
     <xs:element ref="src"/>
   </xs:complexType>
@@ -150,7 +150,7 @@
 
 
 <!-- Genres -->
-<xs:element name="serie_genre">
+<xs:element name="genre">
   <xs:simpleType>
     <xs:restriction base="xs:string">
       <xs:enumeration value="action"/>

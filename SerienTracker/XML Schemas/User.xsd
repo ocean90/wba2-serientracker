@@ -11,15 +11,15 @@
   <xs:complexType>
     <xs:sequence>
       <xs:element ref="username"/>
-      <xs:element ref="user_lastname"/>
-      <xs:element ref="user_name"/>
-      <xs:element ref="user_gender"/>
-      <xs:element ref="user_age"/>
-      <xs:element ref="user_location"/>
-      <xs:element ref="user_about"/>
-      <xs:element ref="user_joined"/>
-      <xs:element ref="user_picture"/>
-      <xs:element ref="user_profileurl"/>
+      <xs:element ref="lastname"/>
+      <xs:element ref="name"/>
+      <xs:element ref="gender"/>
+      <xs:element ref="age"/>
+      <xs:element ref="location"/>
+      <xs:element ref="about"/>
+      <xs:element ref="joined"/>
+      <xs:element ref="picture"/>
+      <xs:element ref="profileurl"/>
     </xs:sequence>
     <xs:attribute ref="admin" use="required"/>
     <xs:attribute ref="user_id" use="required"/>
@@ -40,15 +40,15 @@
 <xs:element name="username" type="xs:string"/>
 
 <!-- Nachname -->
-<xs:element name="user_lastname" type="xs:string"/>
+<xs:element name="lastname" type="xs:string"/>
 
 <!-- Vorname-->
-<xs:element name="user_name" type="xs:string"/>
+<xs:element name="name" type="xs:string"/>
 
 
 
 <!-- Geschlecht -->
-<xs:element name="user_gender">
+<xs:element name="gender">
   <xs:simpleType>
     <xs:restriction base="xs:string">
     	<xs:enumeration value="male"/>
@@ -60,7 +60,7 @@
 
 
 <!-- Alter, genaues Geburtsdatum uninteressant, Alter könnte aber theoretisch für "Empfehlungen" dienen -->
-<xs:element name="user_age">
+<xs:element name="age">
   <xs:simpleType>
     <xs:restriction base="xs:positiveInteger">
       <xs:minInclusive value="14"/>
@@ -71,10 +71,10 @@
 
 
 <!-- Aktueller Wohnort -->
-<xs:element name="user_location" type="xs:string"/>
+<xs:element name="location" type="xs:string"/>
 
 <!-- Kurzinformation zur Person -->
-<xs:element name="user_about">
+<xs:element name="about">
   <xs:simpleType>
     <xs:restriction base="xs:string">
       <xs:minLength value="10"/>
@@ -85,13 +85,13 @@
 
 
 <!-- Kurzinformation -->
-<xs:element name="user_joined" type="xs:date"/>
+<xs:element name="joined" type="xs:date"/>
 
 <!-- Profibild -->
-<xs:element name="user_picture" type="xs:anyURI"/>
+<xs:element name="picture" type="xs:anyURI"/>
 
 <!-- Link zum Profil -->
-<xs:element name="user_profileurl" type="xs:anyURI"/>
+<xs:element name="profileurl" type="xs:anyURI"/>
 
 <!-- Hier fehlt noch der Bezug zu Freunden, Privaten Listen und Abonnements -->
 
