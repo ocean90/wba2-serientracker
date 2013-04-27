@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://Serientracker">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
 
 <!-- Dieses Schema definiert die Informationen einer Episode und die Zuordnung zur Serie und Staffel
 	http://trakt.tv/api-docs/user-profile-->
@@ -16,20 +16,20 @@
       <xs:element ref="episode_airdate"/>
       <xs:element ref="episode_picture"/>
     </xs:sequence>
-  
+
     <xs:attribute ref="serie_id" use="required"/>
     <xs:attribute ref="season_number" use="required"/>
     <xs:attribute ref="episode_id" use="required"/>
 
-    
+
   </xs:complexType>
-  
+
 </xs:element>
 
 <!-- Referenzierte Attribute -->
-<xs:attribute name="episode_id" type="xs:ID"/>
-<xs:attribute name="season_number" type="xs:ID"/>
-<xs:attribute name="serie_id" type="xs:ID"/>
+<xs:attribute name="episode_id" type="xs:integer"/>
+<xs:attribute name="season_number" type="xs:integer"/>
+<xs:attribute name="serie_id" type="xs:integer"/>
 
 
 <!-- globale Serie_id Zuordnung -->
