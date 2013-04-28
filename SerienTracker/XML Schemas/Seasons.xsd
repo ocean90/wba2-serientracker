@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://Serientracker">         
- 
+					 targetNamespace="http://Serientracker">
 
 
-<!-- Dieses Schema dient der Zuordnung von Staffeln zu einer bestimmten Serie -->
 
-<!-- Oberklasse für zuordnung der Staffeln zur Serie -->
-<xs:element name="seasons">
-  <xs:complexType>
-    <xs:sequence>
-      <xs:element ref="season" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-</xs:element>
+	<!-- Dieses Schema dient der Zuordnung von Staffeln zu einer bestimmten Serie -->
+
+	<!-- Oberklasse für zuordnung der Staffeln zur Serie -->
+	<xs:element name="seasons">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="season" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 
-<xs:element name="season">
-  <xs:complexType>
-    <xs:sequence>
-      <xs:element ref="season_number"/>
-      <xs:element ref="episodenumbers"/>
-      <xs:element ref="episode" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:attribute ref="serie_id" use="required"/>
-  
-</xs:element>
+	<xs:element name="season">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="season_number"/>
+				<xs:element ref="episodenumbers"/>
+				<xs:element ref="episode" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute ref="serie_id" use="required"/>
+		</xs:complexType>
+	</xs:element>
 
-<!-- Staffelnummber -->
-<xs:element name="season_number" type="xs:positiveInteger"/>
-<xs:element name="episodenumbers" type="xs:positiveInteger"/>
+	<!-- Staffelnummber -->
+	<xs:element name="season_number" type="xs:positiveInteger"/>
+	<xs:element name="episodenumbers" type="xs:positiveInteger"/>
 
-<!-- Bezug zum Serienschema und Episodenschema -->
+	<!-- Bezug zum Serienschema und Episodenschema -->
+	<xs:attribute name="serie_id" type="xs:integer"/>
 
 </xs:schema>

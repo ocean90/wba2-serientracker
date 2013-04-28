@@ -2,57 +2,57 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 
-<!-- Dieses Schema definiert die Informationen einer Episode und die Zuordnung zur Serie und Staffel
-	http://trakt.tv/api-docs/user-profile-->
+	<!-- Dieses Schema definiert die Informationen einer Episode und die Zuordnung zur Serie und Staffel
+		http://trakt.tv/api-docs/user-profile-->
 
 
-<!-- Privat angelegte Liste eines Users -->
-<xs:element name="episode">
-  <xs:complexType>
-    <xs:sequence>
-      <xs:element ref="title"/>
-      <xs:element ref="overview"/>
-      <xs:element ref="number"/>
-      <xs:element ref="airdate"/>
-      <xs:element ref="picture"/>
-    </xs:sequence>
+	<!-- Privat angelegte Liste eines Users -->
+	<xs:element name="episode">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="title"/>
+				<xs:element ref="overview"/>
+				<xs:element ref="number"/>
+				<xs:element ref="airdate"/>
+				<xs:element ref="picture"/>
+			</xs:sequence>
 
-    <xs:attribute ref="serie_id" use="required"/>
-    <xs:attribute ref="season_number" use="required"/>
-    <xs:attribute ref="episode_id" use="required"/>
-
-
-  </xs:complexType>
-
-</xs:element>
-
-<!-- Referenzierte Attribute -->
-<xs:attribute name="episode_id" type="xs:integer"/>
-<xs:attribute name="season_number" type="xs:integer"/>
-<xs:attribute name="serie_id" type="xs:integer"/>
+			<xs:attribute ref="serie_id" use="required"/>
+			<xs:attribute ref="season_number" use="required"/>
+			<xs:attribute ref="episode_id" use="required"/>
 
 
-<!-- globale Serie_id Zuordnung -->
+		</xs:complexType>
+
+	</xs:element>
+
+	<!-- Referenzierte Attribute -->
+	<xs:attribute name="episode_id" type="xs:integer"/>
+	<xs:attribute name="season_number" type="xs:integer"/>
+	<xs:attribute name="serie_id" type="xs:integer"/>
 
 
-<!-- Episodenname  -->
-<xs:element name="title" type="xs:string"/>
-
-<!-- Privacy der Liste  -->
-<xs:element name="overview" type="xs:string"/>
-
-<!-- Nummer der Episode in Staffel -->
-<xs:element name="number" type="xs:positiveInteger"/>
+	<!-- globale Serie_id Zuordnung -->
 
 
-<!-- Austrahlungstag der Episode  -->
-<xs:element name="airdate" type="xs:date"/>
+	<!-- Episodenname  -->
+	<xs:element name="title" type="xs:string"/>
 
-<!-- Bild zur Episode  -->
-<xs:element name="picture" type="xs:anyURI"/>
+	<!-- Privacy der Liste  -->
+	<xs:element name="overview" type="xs:string"/>
+
+	<!-- Nummer der Episode in Staffel -->
+	<xs:element name="number" type="xs:positiveInteger"/>
 
 
-<!-- hinzufügen attribute für seen/unseen check, mit verbindung zur List -->
+	<!-- Austrahlungstag der Episode  -->
+	<xs:element name="airdate" type="xs:date"/>
+
+	<!-- Bild zur Episode  -->
+	<xs:element name="picture" type="xs:anyURI"/>
+
+
+	<!-- hinzufügen attribute für seen/unseen check, mit verbindung zur List -->
 
 
 </xs:schema>
