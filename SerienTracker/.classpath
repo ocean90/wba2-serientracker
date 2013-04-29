@@ -11,5 +11,14 @@
 	<classpathentry kind="lib" path="libs/smack/smackx-debug.jar"/>
 	<classpathentry kind="lib" path="libs/smack/smackx-jingle.jar"/>
 	<classpathentry kind="lib" path="libs/smack/smackx.jar"/>
+	<classpathentry kind="lib" path="libs/grizzly/grizzly-servlet-webserver-1.9.18.jar"/>
+	<classpathentry kind="lib" path="libs/jersey/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="libs/jersey/jackson-core-asl-1.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/jersey/jersey-client-1.1.5.1.jar"/>
+	<classpathentry kind="lib" path="libs/jersey/jersey-core-1.1.5.1.jar"/>
+	<classpathentry kind="lib" path="libs/jersey/jersey-json-1.1.5.1.jar"/>
+	<classpathentry kind="lib" path="libs/jersey/jersey-server-1.1.5.1.jar"/>
+	<classpathentry kind="lib" path="libs/jersey/jettison-1.1.jar"/>
+	<classpathentry kind="lib" path="libs/jersey/jsr311-api-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
