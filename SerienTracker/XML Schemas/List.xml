@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<List	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="List.xsd"
+		userID="12" listID="1" public="true">		
+		
+	<name>Favorites</name>
+    <url>http://serientracker.de/userID=12/listID=1</url>
+    
+    <shows amount="8">
+    	<serieID>21</serieID>
+  		<serieID>22</serieID>
+  		<serieID>23</serieID>
+  		<serieID>24</serieID>
+  		<serieID>25</serieID>
+  		<serieID>26</serieID>
+  		<serieID>27</serieID>
+  		<serieID>28</serieID>
+    </shows>
+  
+</List>

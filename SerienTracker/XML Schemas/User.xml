@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <User	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:noNamespaceSchemaLocation="User.xsd">		
+		xsi:noNamespaceSchemaLocation="User.xsd"
+		userID="12" admin="true">		
 		
 	<username>Ocean90</username>
-	<userID>12</userID>
-	<admin>true</admin>
 	
     <lastname>Schilling</lastname>
     <name>Dominik</name>
@@ -13,7 +13,8 @@
     <age>23</age>
     <location>Gummersbach</location>
     <about>ocean blablabla</about>
-    <joined></joined>
+    <joined>2012-09-12</joined>
     <picture>http://serientracker.de/userID=12/profilepic</picture>
-    <profileurl>http://serientracker.de/userID=1</profileurl>
+    <profileurl>http://serientracker.de/userID=12</profileurl>
+    
 </User>
