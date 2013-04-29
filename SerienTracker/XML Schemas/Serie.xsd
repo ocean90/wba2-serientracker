@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-					 targetNamespace="http://Serientracker">
-
-	<xs:include schemaLocation="Seasons.xsd"/>
-
-
-	<!-- Dieses Schema definiert den Eintrag einer einzelnen Serien mit den allgemeinen Informationen.
-		http://trakt.tv/api-docs/shows-trending-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- gesamte Serie -->
 	<xs:element name="serie">
@@ -14,7 +7,6 @@
 			<xs:sequence>
 				<xs:element ref="title"/>
 				<xs:element ref="year"/>
-				<xs:element ref="url"/>
 				<xs:element ref="firstaired"/>
 				<xs:element ref="country"/>
 				<xs:element ref="overview"/>
@@ -26,19 +18,13 @@
 				<xs:element ref="genre" maxOccurs="unbounded"/>
 				<xs:element ref="seasons"/>
 			</xs:sequence>
-			<xs:attribute ref="serie_id" use="required"/>
 
+			<xs:attribute ref="serieID"/>
 		</xs:complexType>
-
 	</xs:element>
-
-
 
 	<!-- Serientitel -->
 	<xs:element name="title" type="xs:string"/>
-
-	<!-- Serien ID -->
-	<xs:attribute name="serie_id" type="xs:integer"/>
 
 	<!-- Erscheinungsjahr, nach 1900 vor 2015 -->
 	<xs:element name="year">
@@ -50,15 +36,11 @@
 		</xs:simpleType>
 	</xs:element>
 
-	<!-- URL? -->
-	<xs:element name="url" type="xs:anyURI"/>
-
 	<!-- Erstaustrahlung -->
 	<xs:element name="firstaired" type="xs:date"/>
 
 	<!-- Produktionsland -->
 	<xs:element name="country" type="xs:string"/>
-
 
 	<!-- Kurzinformation -->
 	<xs:element name="overview" type="xs:string"/>
@@ -128,12 +110,7 @@
 	<!-- Austrahlungszeit -->
 	<xs:element name="airtime" type="xs:time"/>
 
-	<!-- Seasons, bezug zum XML season schema -->
-
-
 	<!-- Altersfreigabe? -->
-
-
 
 	<!-- Bild? -->
 	<xs:element name="image">
@@ -145,8 +122,6 @@
 	</xs:element>
 
 	<xs:element name="src" type="xs:anyURI"/>
-
-
 
 	<!-- Genres -->
 	<xs:element name="genre">
@@ -168,6 +143,19 @@
 		</xs:simpleType>
 	</xs:element>
 
-	<!-- Hier fehlt der der Bezug zum ComplexElement Seasons, dass mehrere seasons erfasst -->
+	<!-- globale serieID Zuordnung -->
+	<xs:attribute name="serieID" type="xs:positiveInteger"/>
+
+	<!-- Zugehörige Staffeln -->
+	<xs:element name="seasons">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="seasonID" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- globale seasonID Zuordnung -->
+	<xs:element name="seasonID" type="xs:positiveInteger"/>
 
 </xs:schema>

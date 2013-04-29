@@ -5,7 +5,7 @@
 
 
 	<!--Container der alle User beinhaltet-->
-	<xs:element name="Users">
+	<xs:element name="users">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="userID" maxOccurs="unbounded"/>
@@ -13,8 +13,6 @@
 		</xs:complexType>
 	</xs:element>
 
-<xs:element name="userID" type="xs:positiveInteger"/>
-
-
+	<xs:element name="userID" type="xs:positiveInteger"/>
 
 </xs:schema>

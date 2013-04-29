@@ -1,57 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-
-	<!-- Dieses Schema definiert die Informationen einer Episode und die Zuordnung zur Serie und Staffel
-		http://trakt.tv/api-docs/user-profile-->
-
-
 	<!-- Privat angelegte Liste eines Users -->
 	<xs:element name="episode">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="title"/>
-				<xs:element ref="overview"/>
 				<xs:element ref="number"/>
+				<xs:element ref="name"/>
+				<xs:element ref="overview"/>
 				<xs:element ref="airdate"/>
 				<xs:element ref="picture"/>
 			</xs:sequence>
 
-			<xs:attribute ref="serie_id" use="required"/>
-			<xs:attribute ref="season_number" use="required"/>
-			<xs:attribute ref="episode_id" use="required"/>
-
-
+			<xs:attribute ref="serieID" use="required"/>
+			<xs:attribute ref="seasonID" use="required"/>
+			<xs:attribute ref="episodeID" use="required"/>
 		</xs:complexType>
-
 	</xs:element>
 
-	<!-- Referenzierte Attribute -->
-	<xs:attribute name="episode_id" type="xs:integer"/>
-	<xs:attribute name="season_number" type="xs:integer"/>
-	<xs:attribute name="serie_id" type="xs:integer"/>
-
-
-	<!-- globale Serie_id Zuordnung -->
-
-
-	<!-- Episodenname  -->
-	<xs:element name="title" type="xs:string"/>
-
-	<!-- Privacy der Liste  -->
-	<xs:element name="overview" type="xs:string"/>
-
-	<!-- Nummer der Episode in Staffel -->
+	<!-- Episodennummer der laufenden Staffel -->
 	<xs:element name="number" type="xs:positiveInteger"/>
 
+	<!-- Episodenname -->
+	<xs:element name="name" type="xs:string"/>
+
+	<!-- Episodenbeschreibung -->
+	<xs:element name="overview" type="xs:string"/>
 
 	<!-- Austrahlungstag der Episode  -->
-	<xs:element name="airdate" type="xs:date"/>
+	<xs:element name="airdate" type="xs:dateTime"/>
 
 	<!-- Bild zur Episode  -->
 	<xs:element name="picture" type="xs:anyURI"/>
 
+	<!-- globale episodeID Zuordnung -->
+	<xs:attribute name="episodeID" type="xs:positiveInteger"/>
 
+	<!-- globale seasonID Zuordnung -->
+	<xs:attribute name="seasonID" type="xs:positiveInteger"/>
 
-
+	<!-- globale serieID Zuordnung -->
+	<xs:attribute name="serieID" type="xs:positiveInteger"/>
 </xs:schema>

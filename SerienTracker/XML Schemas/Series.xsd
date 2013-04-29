@@ -2,17 +2,16 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 					 targetNamespace="http://Serientracker">
 
-	<!-- Dieses Schema definiert ein Wurzelelement, dass alle Serien aufnimmt.->
 
-
-	<!-- Container der alle Serien beinhaltet -->
 	<xs:element name="series">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="serie" maxOccurs="unbounded"/>
+				<xs:element ref="serieID" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
+	<!-- globale serieID Zuordnung -->
+	<xs:attribute name="serieID" type="xs:positiveInteger"/>
 
 </xs:schema>

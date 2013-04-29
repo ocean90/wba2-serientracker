@@ -1,46 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-<!-- Dieses Schema definiert den die Profildaten eines Users
-	http://trakt.tv/api-docs/user-profile-->
-
-
 	<!-- Privat angelegte Liste eines Users -->
-	<xs:element name="List">
+	<xs:element name="list">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="name"/>
-				<xs:element ref="url"/>
 				<xs:element ref="shows"/>
 			</xs:sequence>
-			
+
 			<xs:attribute ref="userID" use="required"/>
 			<xs:attribute ref="listID" use="required"/>
 			<xs:attribute ref="public" use="required"/>
-			
 		</xs:complexType>
-
 	</xs:element>
-
 
 	<xs:element name="shows">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="serieID" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute ref="amount"/>
 		</xs:complexType>
-
 	</xs:element>
-
-	<xs:attribute name="amount" type="xs:positiveInteger"/>
-
-
-	<!-- globale User_id Zuordnung -->
-	<xs:attribute name="userID" type="xs:positiveInteger"/>
-
-	<!-- List_id  -->
-	<xs:attribute name="listID" type="xs:positiveInteger"/>
 
 	<!-- Privacy der Liste  -->
 	<xs:attribute name="public" type="xs:boolean"/>
@@ -48,12 +29,13 @@
 	<!-- Listenname -->
 	<xs:element name="name" type="xs:string"/>
 
-	<!-- URL zur Liste -->
-	<xs:element name="url" type="xs:anyURI"/>
+	<!-- globale userID Zuordnung -->
+	<xs:attribute name="userID" type="xs:positiveInteger"/>
 
+	<!-- globale listID Zuordnung -->
+	<xs:attribute name="listID" type="xs:positiveInteger"/>
+
+	<!-- globale serieID Zuordnung -->
 	<xs:element name="serieID" type="xs:positiveInteger"/>
-	
-	
-
 
 </xs:schema>

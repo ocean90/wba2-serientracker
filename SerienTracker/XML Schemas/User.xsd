@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Dieses Schema definiert  die Profildaten eines Users
-		http://trakt.tv/api-docs/user-profile-->
-
-	
-
 	<!-- gesamtes Userprofil -->
-	<xs:element name="User">
+	<xs:element name="user">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="username"/>	
+				<xs:element ref="username"/>
 				<xs:element ref="lastname"/>
 				<xs:element ref="name"/>
 				<xs:element ref="gender"/>
@@ -19,22 +14,12 @@
 				<xs:element ref="about"/>
 				<xs:element ref="joined"/>
 				<xs:element ref="picture"/>
-				<xs:element ref="profileurl"/>
 			</xs:sequence>
+
 			<xs:attribute ref="admin" use="required"/>
 			<xs:attribute ref="userID" use="required"/>
-
 		</xs:complexType>
-
 	</xs:element>
-
-
-	<!-- Adminrechte -->
-	<xs:attribute name="admin" type="xs:boolean"/>
-
-
-	<!-- Serientitel -->
-	<xs:attribute name="userID" type="xs:positiveInteger"/>
 
 	<!-- Username -->
 	<xs:element name="username" type="xs:string"/>
@@ -44,8 +29,6 @@
 
 	<!-- Vorname-->
 	<xs:element name="name" type="xs:string"/>
-
-
 
 	<!-- Geschlecht -->
 	<xs:element name="gender">
@@ -57,8 +40,6 @@
 		</xs:simpleType>
 	</xs:element>
 
-
-
 	<!-- Alter, genaues Geburtsdatum uninteressant, Alter könnte aber theoretisch für "Empfehlungen" dienen -->
 	<xs:element name="age">
 		<xs:simpleType>
@@ -68,7 +49,6 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-
 
 	<!-- Aktueller Wohnort -->
 	<xs:element name="location" type="xs:string"/>
@@ -84,16 +64,16 @@
 	</xs:element>
 
 
-	<!-- Kurzinformation -->
+	<!-- Eintrittsdatum -->
 	<xs:element name="joined" type="xs:date"/>
 
 	<!-- Profibild -->
 	<xs:element name="picture" type="xs:anyURI"/>
 
-	<!-- Link zum Profil -->
-	<xs:element name="profileurl" type="xs:anyURI"/>
+	<!-- Adminrechte -->
+	<xs:attribute name="admin" type="xs:boolean" default="false"/>
 
-	<!-- Hier fehlt noch der Bezug zu Freunden, Privaten Listen und Abonnements -->
-
+	<!-- globale userID Zuordnung -->
+	<xs:attribute name="userID" type="xs:positiveInteger"/>
 
 </xs:schema>

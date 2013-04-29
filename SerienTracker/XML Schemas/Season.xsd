@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="season">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="number"/>
+				<xs:element ref="overview"/>
+				<xs:element ref="picture"/>
+				<xs:element ref="episodes"/>
+			</xs:sequence>
+
+			<xs:attribute ref="serieID" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Staffelnummer -->
+	<xs:element name="number" type="xs:positiveInteger"/>
+
+	<!-- Staffelbeschreibung -->
+	<xs:element name="overview" type="xs:string"/>
+
+	<!-- Bild zur Staffel -->
+	<xs:element name="picture" type="xs:anyURI"/>
+
+	<!-- Episoden -->
+	<xs:element name="episodes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="episodeID" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- globale serieID Zuordnung -->
+	<xs:attribute name="serieID" type="xs:positiveInteger"/>
+
+	<!-- globale episodeID Zuordnung -->
+	<xs:element name="episodeID" type="xs:positiveInteger"/>
+
+</xs:schema>
