@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-					 targetNamespace="http://Serientracker">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Dieses Schema definiert ein Wurzelelement, dass alle User aufnimmt.->
+	<!-- Dieses Schema definiert ein Wurzelelement, dass alle User aufnimmt.-->
 
 
-	<!-- Container der alle User beinhaltet -->
-	<xs:element name="users">
+	<!--Container der alle User beinhaltet-->
+	<xs:element name="Users">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="user" maxOccurs="unbounded"/>
+				<xs:element ref="userID" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+
+<xs:element name="userID" type="xs:positiveInteger"/>
+
+
 
 </xs:schema>

@@ -52,7 +52,6 @@
 	<xs:element name="picture" type="xs:anyURI"/>
 
 
-	<!-- hinzufügen attribute für seen/unseen check, mit verbindung zur List -->
 
 
 </xs:schema>

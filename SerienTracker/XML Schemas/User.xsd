@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-					 targetNamespace="http://Serientracker">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- Dieses Schema definiert  die Profildaten eines Users
 		http://trakt.tv/api-docs/user-profile-->
 
-
-	<!-- gesamtes Userprofil -->
-	<xs:element name="user">
+	<!-- Wurzelelement -->
+		<xs:element name="user">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="username"/>
+				<xs:element ref="userID"/>
+				<xs:element ref="admin"/>
+				
 				<xs:element ref="lastname"/>
 				<xs:element ref="name"/>
 				<xs:element ref="gender"/>
@@ -22,7 +23,32 @@
 				<xs:element ref="profileurl"/>
 			</xs:sequence>
 			<xs:attribute ref="admin" use="required"/>
-			<xs:attribute ref="user_id" use="required"/>
+			<xs:attribute ref="userID" use="required"/>
+
+		</xs:complexType>
+
+	</xs:element>
+
+	<!-- gesamtes Userprofil -->
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="username"/>
+				<xs:element ref="userID"/>
+				<xs:element ref="admin"/>
+				
+				<xs:element ref="lastname"/>
+				<xs:element ref="name"/>
+				<xs:element ref="gender"/>
+				<xs:element ref="age"/>
+				<xs:element ref="location"/>
+				<xs:element ref="about"/>
+				<xs:element ref="joined"/>
+				<xs:element ref="picture"/>
+				<xs:element ref="profileurl"/>
+			</xs:sequence>
+			<xs:attribute ref="admin" use="required"/>
+			<xs:attribute ref="userID" use="required"/>
 
 		</xs:complexType>
 
@@ -30,16 +56,16 @@
 
 
 	<!-- Adminrechte -->
-	<xs:attribute name="admin" type="xs:boolean"/>
+	<xs:element name="admin" type="xs:boolean"/>
 
 
 	<!-- Serientitel -->
-	<xs:attribute name="user_id" type="xs:ID"/>
+	<xs:element name="userID" type="xs:positiveInteger"/>
 
 	<!-- Username -->
 	<xs:element name="username" type="xs:string"/>
 
-	<!-- Nachname -->
+	<!-- Nachname ->
 	<xs:element name="lastname" type="xs:string"/>
 
 	<!-- Vorname-->
