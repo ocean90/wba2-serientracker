@@ -7,26 +7,20 @@
 	<xs:element name="seasons">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="season" maxOccurs="unbounded"/>
+				<xs:element ref="seasonID" maxOccurs="unbounded"/>
 			</xs:sequence>
 
 			<xs:attribute ref="serieID" use="required"/>
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Staffeln -->
-	<xs:element name="season">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="seasonID"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
+	
 	<!-- globale seasonID Zuordnung -->
 	<xs:element name="seasonID" type="xs:positiveInteger"/>
 
 	<!-- globale serieID Zuordnung -->
-	<xs:attribute name="serieID" type="xs:positiveInteger"/>
+	<xs:attribute name="serieID" type="xs:positiveInteger"/>	
+	
+	
 
 </xs:schema>
