@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<serie
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/Serie.xsd"
+	serieID="1">
+
+	<title>The Walking Dead</title>
+	<genre>Action</genre>
+
+    <year>2010</year>
+    <firstaired>2010-10-01</firstaired>
+    <country>USA</country>
+    <overview>Copyandpastetexttodo</overview>
+        
+	<episoderuntime>50</episoderuntime>
+	
+    <network>AMC</network>
+	<airdate>Sunday</airdate>
+	<airtime>22:00:00</airtime>
+	
+	<image src="http://serientracker.de/serieID=1/pic.jpg"/>
+	<seasons serieID="1"/>
+</serie>

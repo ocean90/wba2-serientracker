@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<season
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/Season.xsd"
+	serieID="1" seasonID="123">
+
+	<number>1</number>
+	<overview>Season 2 bla bla todo</overview>
+	<picture>http://serientracker.de/pic.jpg</picture>
+	
+	<episodes>
+		<episodeID>1</episodeID>
+		<episodeID>2</episodeID>
+		<episodeID>3</episodeID>
+		
+	</episodes>
+	
+</season>

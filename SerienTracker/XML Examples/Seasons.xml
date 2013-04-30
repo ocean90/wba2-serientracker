@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<seasons	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="../XML Schemas/Seasons.xsd"
+		serieID="1">
+
+	<seasonID>123</seasonID>
+	<seasonID>124</seasonID>
+	<seasonID>125</seasonID>
+	
+
+</seasons>

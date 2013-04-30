@@ -6,20 +6,22 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="title"/>
+				<xs:element ref="genre" maxOccurs="unbounded"/>
+				
 				<xs:element ref="year"/>
 				<xs:element ref="firstaired"/>
 				<xs:element ref="country"/>
 				<xs:element ref="overview"/>
-				<xs:element ref="episode_runtime"/>
+				
+				<xs:element ref="episoderuntime"/>
 				<xs:element ref="network"/>
 				<xs:element ref="airdate"/>
 				<xs:element ref="airtime"/>
 				<xs:element ref="image"/>
-				<xs:element ref="genre" maxOccurs="unbounded"/>
 				<xs:element ref="seasons"/>
 			</xs:sequence>
 
-			<xs:attribute ref="serieID"/>
+			<xs:attribute ref="serieID" use="required"/>
 		</xs:complexType>
 	</xs:element>
 
@@ -36,7 +38,7 @@
 		</xs:simpleType>
 	</xs:element>
 
-	<!-- Erstaustrahlung -->
+	<!-- Erstaustrahlung, interessant für Serien, bei denen der Start in der Zukunft liegt -->
 	<xs:element name="firstaired" type="xs:date"/>
 
 	<!-- Produktionsland -->
@@ -46,7 +48,7 @@
 	<xs:element name="overview" type="xs:string"/>
 
 	<!-- Episodenlaufzeit -->
-	<xs:element name="episode_runtime">
+	<xs:element name="episoderuntime">
 		<xs:simpleType>
 			<xs:restriction base="xs:positiveInteger">
 				<xs:enumeration value="10"/>
@@ -95,13 +97,13 @@
 	<xs:element name="airdate">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
-				<xs:enumeration value="monday"/>
+				<xs:enumeration value="Monday"/>
 				<xs:enumeration value="tuesday"/>
-				<xs:enumeration value="wednesday"/>
-				<xs:enumeration value="thursday"/>
-				<xs:enumeration value="friday"/>
-				<xs:enumeration value="saturday"/>
-				<xs:enumeration value="sunday"/>
+				<xs:enumeration value="Wednesday"/>
+				<xs:enumeration value="Thursday"/>
+				<xs:enumeration value="Friday"/>
+				<xs:enumeration value="Saturday"/>
+				<xs:enumeration value="Sunday"/>
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
@@ -115,30 +117,28 @@
 	<!-- Bild? -->
 	<xs:element name="image">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="src"/>
-			</xs:sequence>
+			<xs:attribute ref="src"/>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="src" type="xs:anyURI"/>
+	<xs:attribute name="src" type="xs:anyURI"/>
 
 	<!-- Genres -->
 	<xs:element name="genre">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
-				<xs:enumeration value="action"/>
-				<xs:enumeration value="adventure"/>
-				<xs:enumeration value="comedy"/>
-				<xs:enumeration value="crime"/>
-				<xs:enumeration value="drama"/>
-				<xs:enumeration value="fantasy"/>
-				<xs:enumeration value="historical"/>
-				<xs:enumeration value="horror"/>
-				<xs:enumeration value="mystery"/>
-				<xs:enumeration value="romance"/>
-				<xs:enumeration value="sciencefiction"/>
-				<xs:enumeration value="thriller"/>
+				<xs:enumeration value="Action"/>
+				<xs:enumeration value="Adventure"/>
+				<xs:enumeration value="Comedy"/>
+				<xs:enumeration value="Crime"/>
+				<xs:enumeration value="Drama"/>
+				<xs:enumeration value="Fantasy"/>
+				<xs:enumeration value="Historical"/>
+				<xs:enumeration value="Horror"/>
+				<xs:enumeration value="Mystery"/>
+				<xs:enumeration value="Romance"/>
+				<xs:enumeration value="Sciencefiction"/>
+				<xs:enumeration value="Thriller"/>
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
@@ -146,16 +146,13 @@
 	<!-- globale serieID Zuordnung -->
 	<xs:attribute name="serieID" type="xs:positiveInteger"/>
 
-	<!-- Zugehörige Staffeln -->
+<!-- Genres -->
 	<xs:element name="seasons">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="seasonID" maxOccurs="unbounded"/>
-			</xs:sequence>
+		
+		 <xs:attribute name="serieID" use="required"/>
 		</xs:complexType>
 	</xs:element>
 
-	<!-- globale seasonID Zuordnung -->
-	<xs:element name="seasonID" type="xs:positiveInteger"/>
 
 </xs:schema>

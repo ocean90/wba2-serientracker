@@ -11,6 +11,7 @@
 			</xs:sequence>
 
 			<xs:attribute ref="serieID" use="required"/>
+			<xs:attribute ref="seasonID" use="required"/>
 		</xs:complexType>
 	</xs:element>
 
@@ -34,6 +35,8 @@
 
 	<!-- globale serieID Zuordnung -->
 	<xs:attribute name="serieID" type="xs:positiveInteger"/>
+	
+	<xs:attribute name="seasonID" type="xs:positiveInteger"/>
 
 	<!-- globale episodeID Zuordnung -->
 	<xs:element name="episodeID" type="xs:positiveInteger"/>
