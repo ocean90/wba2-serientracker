@@ -9,7 +9,7 @@
 	<xs:element name="episodes">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="episodeID" maxOccurs="unbounded"/>
+				<xs:element ref="episodeID" maxOccurs="25"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

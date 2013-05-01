@@ -11,14 +11,14 @@ import javax.xml.bind.Unmarshaller;
 
 import jaxb.series.*;
 
-@Path( "/series/" )
+@Path( "/series/{id}" )
 public class SeriesService {
 
 	private Unmarshaller unMarshaller;
 	private Marshaller marshaller;
 
 	@GET @Produces( "application/xml" )
-	public Series getAll() throws JAXBException {
+	public Series getAll(@PathParam("id") String id) throws JAXBException {
 		ObjectFactory of = new ObjectFactory();
 
 		Series series = of.createSeries();
@@ -27,7 +27,7 @@ public class SeriesService {
 
 		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
 
-		series = (Series) unMarshaller.unmarshal( new File( "XML Examples/Series.xml" ) );
+		series = (Series) unMarshaller.unmarshal( new File( "XML Examples/Serie" + id + ".xml" ) );
 
 		return series;
 	}
