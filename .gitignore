@@ -6,3 +6,5 @@ bin/
 *.fls
 *.fdb_latexmk
 *.aux
+*.toc
+*.lof
