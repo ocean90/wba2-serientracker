@@ -19,7 +19,8 @@ plainpages = false,
 hypertexnames = false,
 citecolor = black] {hyperref}
 
-%\geometry{a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm}
+\usepackage[nottoc]{tocbibind}
+
 \title{Projektdokumenation\\Web-basierte Anwendungen\\Verteilte Systeme}
 \author{Dennis Meyer\\Dominik Schilling}
 \date{\today}
@@ -176,16 +177,16 @@ Content-Admin
 
 
 \begin{table}[H]
-\caption{Ressourcen des Serientrackers}  % title name of the table\\
+\caption{Ressourcen des Serientrackers}
 
-\centering % centering table
-\begin{tabular}{l l l} % creating 10 columns
-\hline\hline % inserting double-line
- \\ [-0.5ex]
- Ressource & URI & Methode
-\\ [1ex]
-\hline % inserts single-line
-% Entering 1st row
+\centering
+\begin{tabular}{l l l}
+\hline\hline
+\\ [-0.5ex]
+Ressource & URI & Methode
+\\ [1.5ex]
+\hline
+\\ [-0.5ex]
 Liste aller Serien & /series/ & GET, PUT \\[1ex]
 Einzelne Serie & /series/\{id\} & GET, POST, DELETE\\[1ex]
 Liste aller Staffeln & /seasons/ & GET, PUT \\[1ex]
@@ -196,10 +197,9 @@ Liste aller User & /users/ & GET, PUT \\[1ex]
 Einzelne User & /users/\{id\} & GET, POST, DELETE\\[1ex]
 Liste aller Listen & /lists/ & GET, PUT\\[1ex]
 Liste eines Users & /lists/\{id\} & GET, POST, DELETE\\[1ex]
-% [1ex] adds vertical space
-\hline % inserts single-line
+\hline
 \end{tabular}
-\label{tab:PPer}
+\label{tab:ressourcendesserientrackers}
 \end{table}
 
 \newpage
@@ -228,10 +228,16 @@ Das Abonnieren von Informationen zu laufenden Serien des Genre Krimi, greift bei
 Datensätze zu, die diesem Elementwert unter dieser eindeutigen Zeichenfolge zugeordnet sind. Formulierungsfehler
 wie Krimie oder Crime, führen dementsprechend zu Komplikationen, weil sie die Reinheit der Informationssätze beschädigen.
 
-Datentypen
+\subsection{Datentypen}
 Zu Beginn des ersten Meilensteins, steht die Analyse der vorhandenen Informationstypen.
 Bei der Definition eines XML Schemas, sollte neben der enstprechenden Datensatzstruktur und Reihenfolge,
 auch festgelegt werden, durche welche Datentyp die einzelnen Informationen repräsentiert werden sollen.
+
+\newpage
+
+\subsection{Ressourcen und die Semantik der HTTP-Operationen}
+
+
 
 \newpage
 
@@ -243,9 +249,6 @@ auch festgelegt werden, durche welche Datentyp die einzelnen Informationen repr�
 
 \newpage
 
-\subsection{Ressourcen und die Semantik der HTTP-Operationen}
-
-\newpage
 
 \subsection{RESTful Webservice}
 
@@ -267,14 +270,11 @@ auch festgelegt werden, durche welche Datentyp die einzelnen Informationen repr�
 
 \newpage
 
-
-
-\section{Anhang}
-
 \listoffigures
 
+\newpage
 
-
+\listoftables
 
 
 \end{document}
