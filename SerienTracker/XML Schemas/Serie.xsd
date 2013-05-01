@@ -122,7 +122,7 @@
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
 				<xs:enumeration value="Monday"/>
-				<xs:enumeration value="tuesday"/>
+				<xs:enumeration value="Tuesday"/>
 				<xs:enumeration value="Wednesday"/>
 				<xs:enumeration value="Thursday"/>
 				<xs:enumeration value="Friday"/>

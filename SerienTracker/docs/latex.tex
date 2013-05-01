@@ -9,13 +9,22 @@
 
 \usepackage{float}
 
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+citecolor = black] {hyperref}
+
 %\geometry{a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm}
-\title{Ein Testdokument}
-\author{Otto Normalverbraucher}
-\date{05. Januar 2004}
+\title{Projektdokumenation\\Web-basierte Anwendungen\\Verteilte Systeme}
+\author{Dennis Meyer\\Dominik Schilling}
+\date{\today}
 
 \begin{document}
-
 
 \maketitle
 
@@ -30,15 +39,21 @@
 
 \section{Konzept}
 
-Die Idee ist, dass Serien-Interessierte über ihre zuvor favorisierten Serien und abonnierten Interessen benachrichtigt werden, sobald eine Episode dieser Serie im TV ausgestrahlt wird.
+Die \textbf{Idee} ist, dass Serien-Interessierte über ihre zuvor favorisierten Serien und abonnierten Interessen benachrichtigt werden, sobald eine Episode dieser Serie im TV ausgestrahlt wird.
 
-Der Serien-Interessierte soll Zugriff auf einen Pool von Serien bekommen, die auf einem Server gespeichert und verwaltet werden.
+\parskip 12pt
+\parindent 0pt
+Der \textbf{Serien-Interessierte} soll Zugriff auf einen Pool von Serien bekommen, die auf einem Server gespeichert und verwaltet werden.
 Die einzelnen Serien soll der Nutzer dann favorisieren/abonnieren können um dann über die TV-Ausstrahlung informiert zu werden.
 Außerdem soll die Möglichkeit bestehen eine Episode zu bewerten und als gesehen/ungesehen zu markieren. Es besteht zudem die Möglichkeiten Serien in Listen einzuordnen und zu verwalten. (definitiv automatische Watchlist/Seenlist)
 
-Die Server-Anwendung soll die Nutzer über die TV-Austrahlung einer Episode einer zuvor favorisierten Serie in einem vom Benutzer definierten Zeitraum informiert werden. Jeder Eintrag einer Serie enthalt zudem Informationen wie Genre, anhand derer Abonnentenl bezüglich eines bestimmten Themas, zusätzliche Benachrichtigungen empfangen.
+\parskip 12pt
+\parindent 0pt
+Die \textbf{Server-Anwendung} soll die Nutzer über die TV-Austrahlung einer Episode einer zuvor favorisierten Serie in einem vom Benutzer definierten Zeitraum informiert werden. Jeder Eintrag einer Serie enthalt zudem Informationen wie Genre, anhand derer Abonnentenl bezüglich eines bestimmten Themas, zusätzliche Benachrichtigungen empfangen.
 
-Ein **Content-Admin** soll erweiterte Rechte bekommen, um die Content-Verwaltung zu übernehmen. Die Anwendung soll das Anlegen, Bearbeiten und Löschen von Serien bzw Episoden ermöglichen. Zudem ist somit das Korrigieren von Fehlern möglich, die von Usern eingeschickt werden.
+\parskip 12pt
+\parindent 0pt
+Ein \textbf{Content-Admin} soll erweiterte Rechte bekommen, um die Content-Verwaltung zu übernehmen. Die Anwendung soll das Anlegen, Bearbeiten und Löschen von Serien bzw Episoden ermöglichen. Zudem ist somit das Korrigieren von Fehlern möglich, die von Usern eingeschickt werden.
 
 \subsection{Zusatz - Freunde}
 Serien-Interessierte sollen sich gegenseitig hinzufügen/abonnieren können um sich gegenseitig zu benachrichtigen, zum Beispiel in Form von Freund X schaut gerade Y, Freund Z hat Serie/Episode mit 8,0 bewertet oder Freund Y empfiehlt Dir Serie W.

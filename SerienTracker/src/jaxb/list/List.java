@@ -2,11 +2,11 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.01 um 01:52:34 PM CEST 
+// Generiert: 2013.05.01 um 02:32:54 PM CEST 
 //
 
 
-package jaxb;
+package jaxb.list;
 
 import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -28,12 +28,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}number"/>
- *         &lt;element ref="{}picture"/>
- *         &lt;element ref="{}episodes"/>
+ *         &lt;element ref="{}name"/>
+ *         &lt;element ref="{}shows"/>
  *       &lt;/sequence>
- *       &lt;attribute ref="{}serieID use="required""/>
- *       &lt;attribute ref="{}seasonID use="required""/>
+ *       &lt;attribute ref="{}userID use="required""/>
+ *       &lt;attribute ref="{}listID use="required""/>
+ *       &lt;attribute ref="{}public use="required""/>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -43,136 +43,135 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "number",
-    "picture",
-    "episodes"
+    "name",
+    "shows"
 })
-@XmlRootElement(name = "season")
-public class Season {
+@XmlRootElement(name = "list")
+public class List {
 
-    protected int number;
     @XmlElement(required = true)
-    @XmlSchemaType(name = "anyURI")
-    protected String picture;
+    protected String name;
     @XmlElement(required = true)
-    protected Episodes episodes;
-    @XmlAttribute(name = "serieID", required = true)
+    protected Shows shows;
+    @XmlAttribute(name = "userID", required = true)
     @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger serieID;
-    @XmlAttribute(name = "seasonID", required = true)
+    protected BigInteger userID;
+    @XmlAttribute(name = "listID", required = true)
     @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger seasonID;
+    protected BigInteger listID;
+    @XmlAttribute(name = "public", required = true)
+    protected boolean _public;
 
     /**
-     * Ruft den Wert der number-Eigenschaft ab.
-     * 
-     */
-    public int getNumber() {
-        return number;
-    }
-
-    /**
-     * Legt den Wert der number-Eigenschaft fest.
-     * 
-     */
-    public void setNumber(int value) {
-        this.number = value;
-    }
-
-    /**
-     * Ruft den Wert der picture-Eigenschaft ab.
+     * Ruft den Wert der name-Eigenschaft ab.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPicture() {
-        return picture;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Legt den Wert der picture-Eigenschaft fest.
+     * Legt den Wert der name-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPicture(String value) {
-        this.picture = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
     /**
-     * Ruft den Wert der episodes-Eigenschaft ab.
+     * Ruft den Wert der shows-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link Episodes }
+     *     {@link Shows }
      *     
      */
-    public Episodes getEpisodes() {
-        return episodes;
+    public Shows getShows() {
+        return shows;
     }
 
     /**
-     * Legt den Wert der episodes-Eigenschaft fest.
+     * Legt den Wert der shows-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link Episodes }
+     *     {@link Shows }
      *     
      */
-    public void setEpisodes(Episodes value) {
-        this.episodes = value;
+    public void setShows(Shows value) {
+        this.shows = value;
     }
 
     /**
-     * Ruft den Wert der serieID-Eigenschaft ab.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getSerieID() {
-        return serieID;
-    }
-
-    /**
-     * Legt den Wert der serieID-Eigenschaft fest.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setSerieID(BigInteger value) {
-        this.serieID = value;
-    }
-
-    /**
-     * Ruft den Wert der seasonID-Eigenschaft ab.
+     * Ruft den Wert der userID-Eigenschaft ab.
      * 
      * @return
      *     possible object is
      *     {@link BigInteger }
      *     
      */
-    public BigInteger getSeasonID() {
-        return seasonID;
+    public BigInteger getUserID() {
+        return userID;
     }
 
     /**
-     * Legt den Wert der seasonID-Eigenschaft fest.
+     * Legt den Wert der userID-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
      *     
      */
-    public void setSeasonID(BigInteger value) {
-        this.seasonID = value;
+    public void setUserID(BigInteger value) {
+        this.userID = value;
+    }
+
+    /**
+     * Ruft den Wert der listID-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getListID() {
+        return listID;
+    }
+
+    /**
+     * Legt den Wert der listID-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setListID(BigInteger value) {
+        this.listID = value;
+    }
+
+    /**
+     * Ruft den Wert der public-Eigenschaft ab.
+     * 
+     */
+    public boolean isPublic() {
+        return _public;
+    }
+
+    /**
+     * Legt den Wert der public-Eigenschaft fest.
+     * 
+     */
+    public void setPublic(boolean value) {
+        this._public = value;
     }
 
 }
