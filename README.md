@@ -6,11 +6,6 @@
 
 # Szenario: Serientracker
 
-##Inhaltsverzeichnis
-
-===
-<br>    
-
 ##Konzept
 ===
 Die **Idee** ist, dass Serien-Interessierte über ihre zuvor favorisierten Serien und abonnierten Interessen benachrichtigt werden, sobald eine Episode dieser Serie im TV ausgestrahlt wird.
@@ -72,15 +67,6 @@ Ein weiterer Aspekt ist das Anfordern von Informationen, wobei die entsprechende
    * Benachrichtung bei Fehlermeldung durch User
    
 <br>    
-## Konzeptioneller Meilenstein -Kommunikationsabläufe und Interaktionen
-===
-Zu Beginn der Entwicklung steht eine Analyse des Kozeptes und die damit verbundene Planung des Projektes.
-
-###Schema
-
-###Rollen und Interaktionen
-
-###Identifizierte URI
 
 ## Meilensteine
 ===
@@ -91,54 +77,6 @@ Die Umsetzung des Projektes erfolgt anhand festgelegter Meilensteine zu festgele
 * 03.06.2013 Meilenstein 4 + 5 (Konzeption asynchrone Kommunikation + XMPP - Client)			
 * 17.06.2013 Meilenstein 6 (Client - Entwicklung)  
 
-<br>
-###1. Projektbezogenes XML Schema / Schemata
----
-Der erste Meilenstein befasst sich mit der Repräsentation von Daten in XML. 
 
-
-Damit bei der Verwendung der XML Dateien bei der späteren Verarbeitung mit JAXB keine Probleme auftreten, 
-ist es notwendig eine Validierung der Dateien durch Definition zugehöriger XML Schemas durchzuführen.   
-Vorteil bei der Verwendung eines Schemas ist, neben der Kontrolle auf Wohlgeformtheit und der Verwendung 
-definierter Datentypen und Strukturen, auch das festlegen von Restriktionen.  
-
-Hinsichtlich des zugrunde liegenden Konzeptes und den benötigten Informationen, gibt es viele Elemente 
-innerhalb der Dateien, die nur mit Strings realisiert werden können. Das Problem bei freier Definition 
-besteht darin, dass die Datensätze sehr fehleranfällig sind, wenn es um die Benutzung durch Menschen geht.  
-Rechtschreibfehler beim Namen des Landes, des Fernsehsenders oder des Genres, würden für den Leser bzw. 
-Interessenten der Anwendung noch kein Problem darstellen, da er vermutlich deuten könnte was gemeint ist.
-Informationstechnisch ist es aber von Vorteil, die Datensätze möglichst konsistent und reichhaltig anzulegen. 
-
-Das System des Serientrackers beruht darauf, die Verwaltung von Serien anhand von Listen und Tags wie 
-"Gesehen", "Ungesehen" zu ermöglichen. Wie bereits in der Besprechung der Umsetzung erwähnt, wird anhand 
-dieser Informationen auch die Asynchrone Datenübertragung realisiert.  
-Das Abonnieren von Informationen zu laufenden Serien des Genre "Krimi", greift bei Benachrichtigung auf 
-Datensätze zu, die diesem Elementwert unter dieser eindeutigen Zeichenfolge zugeordnet sind. Formulierungsfehler 
-wie "Krimie" oder "Crime", führen dementsprechend zu Komplikationen, weil sie die Reinheit der Informationssätze beschädigen. 
-
-#### Datentypen
-Zu Beginn des ersten Meilensteins, steht die Analyse der vorhandenen Informationstypen. 
-Bei der Definition eines XML Schemas, sollte neben der enstprechenden Datensatzstruktur und Reihenfolge, 
-auch festgelegt werden, durche welche Datentyp die einzelnen Informationen repräsentiert werden sollen.
-
-####Entwickelte XML Schemas
-<br>
-###2. Ressourcen und die Semantik der HTTP-Operationen für das Projekt
----
-<br>
-###3. RESTful Webservice
----
-<br>
-###4. Konzeption + XMPP Server einrichten
----
-<br>    
-###5. XMPP - Client
----
-<br>    
-###6. Client - Entwicklung
----
-
-   
-   
    
 
