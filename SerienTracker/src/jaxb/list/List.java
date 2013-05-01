@@ -2,11 +2,11 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.01 um 10:29:41 AM CEST 
+// Generiert: 2013.05.01 um 02:32:54 PM CEST 
 //
 
 
-package jaxb;
+package jaxb.list;
 
 import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;

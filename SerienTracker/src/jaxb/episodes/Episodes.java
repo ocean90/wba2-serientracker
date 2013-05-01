@@ -2,11 +2,11 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.01 um 10:29:41 AM CEST 
+// Generiert: 2013.05.01 um 02:31:17 PM CEST 
 //
 
 
-package jaxb;
+package jaxb.episodes;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}serieID" maxOccurs="unbounded"/>
+ *         &lt;element ref="{}episodeID" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,28 +40,28 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "serieID"
+    "episodeID"
 })
-@XmlRootElement(name = "shows")
-public class Shows {
+@XmlRootElement(name = "episodes")
+public class Episodes {
 
     @XmlElement(required = true)
     @XmlSchemaType(name = "positiveInteger")
-    protected List<BigInteger> serieID;
+    protected List<BigInteger> episodeID;
 
     /**
-     * Gets the value of the serieID property.
+     * Gets the value of the episodeID property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the serieID property.
+     * This is why there is not a <CODE>set</CODE> method for the episodeID property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSerieID().add(newItem);
+     *    getEpisodeID().add(newItem);
      * </pre>
      * 
      * 
@@ -71,11 +71,11 @@ public class Shows {
      * 
      * 
      */
-    public List<BigInteger> getSerieID() {
-        if (serieID == null) {
-            serieID = new ArrayList<BigInteger>();
+    public List<BigInteger> getEpisodeID() {
+        if (episodeID == null) {
+            episodeID = new ArrayList<BigInteger>();
         }
-        return this.serieID;
+        return this.episodeID;
     }
 
 }
