@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema dient als Containerelement aller Episoden einer bestimmten Season-->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+
+	<!-- Sammlung zugehöriger Episoden einer Season -->
 	<xs:element name="episodes">
 		<xs:complexType>
 			<xs:sequence>
@@ -9,7 +14,8 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- globale "episodeID" Zuordnung -->
+
+	<!-- einzelne Episoden, globale "episodeID" Zuordnung -->
 	<xs:element name="episodeID" type="xs:positiveInteger"/>
 
 </xs:schema>

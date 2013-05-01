@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema beinhaltet die Informationen einer bestimmten Staffel, die einer Serie zugeordnet ist. -->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- 3 -->
 	<xs:element name="season">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="number"/>
-				<xs:element ref="overview"/>
 				<xs:element ref="picture"/>
 				<xs:element ref="episodes"/>
 			</xs:sequence>
@@ -17,9 +20,6 @@
 
 	<!-- Staffelnummer -->
 	<xs:element name="number" type="xs:positiveInteger"/>
-
-	<!-- Staffelbeschreibung -->
-	<xs:element name="overview" type="xs:string"/>
 
 	<!-- Bild zur Staffel -->
 	<xs:element name="picture" type="xs:anyURI"/>
@@ -36,6 +36,7 @@
 	<!-- globale serieID Zuordnung -->
 	<xs:attribute name="serieID" type="xs:positiveInteger"/>
 	
+	<!-- globale seasonID Zuordnung -->
 	<xs:attribute name="seasonID" type="xs:positiveInteger"/>
 
 	<!-- globale episodeID Zuordnung -->

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema dient der Erstellung einer Liste, in die der User beliebig viele Serien einordnen kann 
+	 und anhand derer die Abonnements verwaltet werden.  -->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- Privat angelegte Liste eines Users -->
@@ -15,6 +19,7 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- Serienelemente die in der Liste gespeichert werden -->
 	<xs:element name="shows">
 		<xs:complexType>
 			<xs:sequence>

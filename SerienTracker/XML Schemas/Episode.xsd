@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema dient der genaueren Beschreibung einer Episode mit entsprechenden Informationen -->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- Privat angelegte Liste eines Users -->
@@ -33,6 +36,7 @@
 	<!-- Bild zur Episode  -->
 	<xs:element name="picture" type="xs:anyURI"/>
 
+
 	<!-- globale episodeID Zuordnung -->
 	<xs:attribute name="episodeID" type="xs:positiveInteger"/>
 
@@ -41,4 +45,5 @@
 
 	<!-- globale serieID Zuordnung -->
 	<xs:attribute name="serieID" type="xs:positiveInteger"/>
+	
 </xs:schema>
