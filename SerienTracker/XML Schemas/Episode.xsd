@@ -22,13 +22,33 @@
 	</xs:element>
 
 	<!-- Episodennummer der laufenden Staffel -->
-	<xs:element name="number" type="xs:positiveInteger"/>
+	<xs:element name="number">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+					<xs:maxInclusive value="25"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
 
 	<!-- Episodenname -->
-	<xs:element name="name" type="xs:string"/>
-
+	<xs:element name="name">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="3"/>
+				<xs:maxLength value="80"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
 	<!-- Episodenbeschreibung -->
-	<xs:element name="overview" type="xs:string"/>
+	<xs:element name="overview">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="10"/>
+				<xs:maxLength value="500"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
 
 	<!-- Austrahlungstag der Episode  -->
 	<xs:element name="airdate" type="xs:dateTime"/>

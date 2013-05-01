@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.01 um 10:29:47 AM CEST 
+// Generiert: 2013.05.01 um 01:52:34 PM CEST 
 //
 
 
@@ -50,9 +50,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "season")
 public class Season {
 
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger number;
+    protected int number;
     @XmlElement(required = true)
     @XmlSchemaType(name = "anyURI")
     protected String picture;
@@ -68,24 +66,16 @@ public class Season {
     /**
      * Ruft den Wert der number-Eigenschaft ab.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
      */
-    public BigInteger getNumber() {
+    public int getNumber() {
         return number;
     }
 
     /**
      * Legt den Wert der number-Eigenschaft fest.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
      */
-    public void setNumber(BigInteger value) {
+    public void setNumber(int value) {
         this.number = value;
     }
 

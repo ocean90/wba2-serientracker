@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.01 um 10:29:47 AM CEST 
+// Generiert: 2013.05.01 um 01:52:34 PM CEST 
 //
 
 
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}episodeID" maxOccurs="unbounded"/>
+ *         &lt;element ref="{}episodeID" maxOccurs="25"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

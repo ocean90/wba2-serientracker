@@ -32,8 +32,15 @@
 	<xs:attribute name="public" type="xs:boolean"/>
 
 	<!-- Listenname -->
-	<xs:element name="name" type="xs:string"/>
-
+	<xs:element name="name">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="3"/>
+				<xs:maxLength value="80"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
 	<!-- globale userID Zuordnung -->
 	<xs:attribute name="userID" type="xs:positiveInteger"/>
 

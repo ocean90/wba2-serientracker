@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema dient der Zuordnung von Staffeln zu einer bestimmten Serie -->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Dieses Schema dient der Zuordnung von Staffeln zu einer bestimmten Serie -->
 
-	<!-- Oberklasse für Zuordnung der Staffeln zur Serie -->
+	<!-- Sammlung aller Staffeln -->
 	<xs:element name="seasons">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="seasonID" maxOccurs="unbounded"/>
+				<xs:element ref="seasonID" maxOccurs="40"/>
 			</xs:sequence>
 
 			<xs:attribute ref="serieID" use="required"/>

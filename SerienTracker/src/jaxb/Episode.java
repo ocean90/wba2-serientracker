@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.01 um 10:29:19 AM CEST 
+// Generiert: 2013.05.01 um 01:52:13 PM CEST 
 //
 
 
@@ -56,9 +56,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlRootElement(name = "episode")
 public class Episode {
 
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger number;
+    protected int number;
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)
@@ -82,24 +80,16 @@ public class Episode {
     /**
      * Ruft den Wert der number-Eigenschaft ab.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
      */
-    public BigInteger getNumber() {
+    public int getNumber() {
         return number;
     }
 
     /**
      * Legt den Wert der number-Eigenschaft fest.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
      */
-    public void setNumber(BigInteger value) {
+    public void setNumber(int value) {
         this.number = value;
     }
 

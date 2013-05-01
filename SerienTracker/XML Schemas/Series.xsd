@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema dient der Sammlung aller vorhandenen Serien -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-
+	<!-- Element das alle Serien aufnimmt -->
 	<xs:element name="series">
 		<xs:complexType>
 			<xs:sequence>

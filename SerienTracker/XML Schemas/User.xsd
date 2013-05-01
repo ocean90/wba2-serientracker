@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema sammelt dei Informationen eines bestimmten Benutzers -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- gesamtes Userprofil -->
@@ -22,13 +24,34 @@
 	</xs:element>
 
 	<!-- Username -->
-	<xs:element name="username" type="xs:string"/>
-
+	<xs:element name="username">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="3"/>
+				<xs:maxLength value="40"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
 	<!-- Nachname -->
-	<xs:element name="lastname" type="xs:string"/>
+	<xs:element name="lastname">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="2"/>
+				<xs:maxLength value="40"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
 
 	<!-- Vorname-->
-	<xs:element name="name" type="xs:string"/>
+	<xs:element name="name">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="2"/>
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
 
 	<!-- Geschlecht -->
 	<xs:element name="gender">
@@ -51,13 +74,18 @@
 	</xs:element>
 
 	<!-- Aktueller Wohnort -->
-	<xs:element name="location" type="xs:string"/>
+	<xs:element name="location">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="40"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
 
 	<!-- Kurzinformation zur Person -->
 	<xs:element name="about">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
-				<xs:minLength value="10"/>
 				<xs:maxLength value="200"/>
 			</xs:restriction>
 		</xs:simpleType>

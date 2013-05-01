@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema dient zur Darstellung einer gesamten Serien mit zugehörigen Informationen -->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- gesamte Serie -->
@@ -42,7 +45,28 @@
 	<xs:element name="firstaired" type="xs:date"/>
 
 	<!-- Produktionsland -->
-	<xs:element name="country" type="xs:string"/>
+		<!-- Sendernamen -->
+	<xs:element name="country">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="Australia"/>
+				<xs:enumeration value="Austria"/>
+				<xs:enumeration value="Canada"/>
+				<xs:enumeration value="China"/>
+				<xs:enumeration value="Denmark"/>
+				<xs:enumeration value="England"/>
+				<xs:enumeration value="France"/>
+				<xs:enumeration value="Germany"/>
+				<xs:enumeration value="Ireland"/>
+				<xs:enumeration value="Italy"/>
+				<xs:enumeration value="Japan"/>
+				<xs:enumeration value="Netherlands"/>
+				<xs:enumeration value="Norway"/>
+				<xs:enumeration value="Sweden"/>
+				<xs:enumeration value="USA"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
 
 	<!-- Kurzinformation -->
 	<xs:element name="overview" type="xs:string"/>
