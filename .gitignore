@@ -1,1 +1,7 @@
 bin/
+*.pdf
+*.gz
+*.log
+*.fls
+*.fdb_latexmk
+*.aux
