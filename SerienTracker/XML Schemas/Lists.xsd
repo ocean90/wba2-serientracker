@@ -4,21 +4,16 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Schema für einzelne Liste inkludieren -->
+	<xs:include schemaLocation="List.xsd"/>
 
 	<!-- Sammlung aller Listen -->
 	<xs:element name="lists">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="listID" maxOccurs="unbounded"/>
+				<xs:element ref="list" maxOccurs="unbounded"/>
 			</xs:sequence>
-
 		</xs:complexType>
 	</xs:element>
-
-
-	<!-- globale listID Zuordnung -->
-	<xs:element name="listID" type="xs:positiveInteger"/>	
-	
-	
 
 </xs:schema>

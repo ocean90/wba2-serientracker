@@ -15,7 +15,6 @@ import jaxb.series.*;
 public class SeriesService {
 
 	private Unmarshaller unMarshaller;
-	private Marshaller marshaller;
 
 	@GET @Produces( "application/xml" )
 	public Series getAll(@PathParam("id") String id) throws JAXBException {

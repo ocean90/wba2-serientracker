@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Dieses Schema sammelt dei Informationen eines bestimmten Benutzers -->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- gesamtes Userprofil -->
@@ -32,7 +33,7 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-	
+
 	<!-- Nachname -->
 	<xs:element name="lastname">
 		<xs:simpleType>

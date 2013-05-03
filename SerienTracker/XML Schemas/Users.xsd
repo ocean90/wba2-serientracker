@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Dieses Schema definiert ein Wurzelelement, dass alle User aufnimmt.-->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Schema für einzelnen User inkludieren -->
+	<xs:include schemaLocation="User.xsd"/>
 
 	<!--Container der alle User beinhaltet-->
 	<xs:element name="users">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="userID" maxOccurs="unbounded"/>
+				<xs:element ref="user" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
-	<xs:element name="userID" type="xs:positiveInteger"/>
 
 </xs:schema>

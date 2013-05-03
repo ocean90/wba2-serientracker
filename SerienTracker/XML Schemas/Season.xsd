@@ -4,6 +4,9 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Schema für Episoden inkludieren -->
+	<xs:include schemaLocation="Episodes.xsd"/>
+
 	<!-- Gesamtes Element einer Staffel -->
 	<xs:element name="season">
 		<xs:complexType>
@@ -26,26 +29,14 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-	
+
 	<!-- Bild zur Staffel -->
 	<xs:element name="picture" type="xs:anyURI"/>
 
-	<!-- Episoden -->
-	<xs:element name="episodes">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="episodeID" maxOccurs="25"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
 	<!-- globale serieID Zuordnung -->
 	<xs:attribute name="serieID" type="xs:positiveInteger"/>
-	
+
 	<!-- globale seasonID Zuordnung -->
 	<xs:attribute name="seasonID" type="xs:positiveInteger"/>
-
-	<!-- globale episodeID Zuordnung -->
-	<xs:element name="episodeID" type="xs:positiveInteger"/>
 
 </xs:schema>
