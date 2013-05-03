@@ -4,19 +4,19 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Schema für einzelne Serie inkludieren -->
+	<xs:include schemaLocation="Season.xsd"/>
+
 	<!-- Sammlung aller Staffel -->
 	<xs:element name="seasons">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="seasonID" maxOccurs="40"/>
+				<xs:element ref="season" maxOccurs="40"/>
 			</xs:sequence>
 
 			<xs:attribute ref="serieID" use="required"/>
 		</xs:complexType>
 	</xs:element>
-
-	<!-- globale seasonID Zuordnung -->
-	<xs:element name="seasonID" type="xs:positiveInteger"/>
 
 	<!-- globale serieID Zuordnung -->
 	<xs:attribute name="serieID" type="xs:positiveInteger"/>
