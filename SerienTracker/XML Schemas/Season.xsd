@@ -4,17 +4,19 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Schema für Episoden inkludieren -->
-	<xs:include schemaLocation="Episodes.xsd"/>
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
 
 	<!-- Gesamtes Element einer Staffel -->
 	<xs:element name="season">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="number"/>
-				<xs:element ref="picture"/>
-				<xs:element ref="episodes"/>
-			</xs:sequence>
+			<xs:choice minOccurs="0">
+				<xs:sequence>
+					<xs:element ref="seasonNumber"/>
+					<xs:element ref="seasonPicture"/>
+					<xs:element ref="episodes"/>
+				</xs:sequence>
+			</xs:choice>
 
 			<xs:attribute ref="serieID" use="required"/>
 			<xs:attribute ref="seasonID" use="required"/>
@@ -22,7 +24,7 @@
 	</xs:element>
 
 	<!-- Staffelnummer -->
-	<xs:element name="number">
+	<xs:element name="seasonNumber">
 		<xs:simpleType>
 			<xs:restriction base="xs:positiveInteger">
 					<xs:maxInclusive value="40"/>
@@ -31,10 +33,7 @@
 	</xs:element>
 
 	<!-- Bild zur Staffel -->
-	<xs:element name="picture" type="xs:anyURI"/>
-
-	<!-- globale serieID Zuordnung -->
-	<xs:attribute name="serieID" type="xs:positiveInteger"/>
+	<xs:element name="seasonPicture" type="xs:anyURI"/>
 
 	<!-- globale seasonID Zuordnung -->
 	<xs:attribute name="seasonID" type="xs:positiveInteger"/>

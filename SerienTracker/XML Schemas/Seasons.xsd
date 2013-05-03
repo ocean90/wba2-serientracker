@@ -4,8 +4,8 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Schema für einzelne Serie inkludieren -->
-	<xs:include schemaLocation="Season.xsd"/>
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
 
 	<!-- Sammlung aller Staffel -->
 	<xs:element name="seasons">
@@ -17,8 +17,5 @@
 			<xs:attribute ref="serieID" use="required"/>
 		</xs:complexType>
 	</xs:element>
-
-	<!-- globale serieID Zuordnung -->
-	<xs:attribute name="serieID" type="xs:positiveInteger"/>
 
 </xs:schema>

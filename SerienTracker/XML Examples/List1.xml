@@ -9,14 +9,10 @@
 	<name>Favorites</name>
 
 	<shows>
-		<serieID>21</serieID>
-		<serieID>22</serieID>
-		<serieID>23</serieID>
-		<serieID>24</serieID>
-		<serieID>25</serieID>
-		<serieID>26</serieID>
-		<serieID>27</serieID>
-		<serieID>28</serieID>
+		<series>
+			<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
+			<serie serieID="21"></serie>
+		</series>
 	</shows>
 
 </list>

@@ -4,8 +4,8 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Schema für einzelnen User inkludieren -->
-	<xs:include schemaLocation="User.xsd"/>
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
 
 	<!--Container der alle User beinhaltet-->
 	<xs:element name="users">

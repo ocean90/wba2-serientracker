@@ -4,8 +4,8 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Schema für einzelne Liste inkludieren -->
-	<xs:include schemaLocation="List.xsd"/>
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
 
 	<!-- Sammlung aller Listen -->
 	<xs:element name="lists">

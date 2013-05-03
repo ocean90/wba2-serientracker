@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema inkludiert alle zu verwendenen Schemata-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:include schemaLocation="Series.xsd"/>
+	<xs:include schemaLocation="Serie.xsd"/>
+	<xs:include schemaLocation="Seasons.xsd"/>
+	<xs:include schemaLocation="Season.xsd"/>
+	<xs:include schemaLocation="Episodes.xsd"/>
+	<xs:include schemaLocation="Episode.xsd"/>
+
+	<xs:include schemaLocation="Lists.xsd"/>
+	<xs:include schemaLocation="List.xsd"/>
+	<xs:include schemaLocation="Users.xsd"/>
+	<xs:include schemaLocation="User.xsd"/>
+
+	<!-- Globale Typen -->
+
+	<!-- Beschreibung -->
+	<xs:element name="overview">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="10"/>
+				<xs:maxLength value="500"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<!-- Serien&Episoden-Titel -->
+	<xs:element name="title">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="2"/>
+				<xs:maxLength value="80"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+</xs:schema>
+

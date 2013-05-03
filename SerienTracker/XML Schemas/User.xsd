@@ -4,20 +4,25 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
+
 	<!-- gesamtes Userprofil -->
 	<xs:element name="user">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="username"/>
-				<xs:element ref="lastname"/>
-				<xs:element ref="name"/>
-				<xs:element ref="gender"/>
-				<xs:element ref="age"/>
-				<xs:element ref="location"/>
-				<xs:element ref="about"/>
-				<xs:element ref="joined"/>
-				<xs:element ref="picture"/>
-			</xs:sequence>
+			<xs:choice minOccurs="0">
+				<xs:sequence>
+					<xs:element ref="username"/>
+					<xs:element ref="lastname"/>
+					<xs:element ref="firstname"/>
+					<xs:element ref="gender"/>
+					<xs:element ref="age"/>
+					<xs:element ref="location"/>
+					<xs:element ref="about"/>
+					<xs:element ref="joined"/>
+					<xs:element ref="picture"/>
+				</xs:sequence>
+			</xs:choice>
 
 			<xs:attribute ref="admin" use="required"/>
 			<xs:attribute ref="userID" use="required"/>
@@ -45,7 +50,7 @@
 	</xs:element>
 
 	<!-- Vorname-->
-	<xs:element name="name">
+	<xs:element name="firstname">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
 				<xs:minLength value="2"/>
@@ -94,7 +99,7 @@
 
 
 	<!-- Eintrittsdatum -->
-	<xs:element name="joined" type="xs:date"/>
+	<xs:element name="joined" type="xs:dateTime"/>
 
 	<!-- Profibild -->
 	<xs:element name="picture" type="xs:anyURI"/>

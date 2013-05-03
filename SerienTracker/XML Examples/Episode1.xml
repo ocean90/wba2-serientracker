@@ -6,10 +6,10 @@
 	xsi:noNamespaceSchemaLocation="../XML Schemas/episode.xsd"
 	serieID="1" seasonID="1" episodeID="1">
 
-	<number>1</number>
-	<name>Days Gone Bye</name>
+	<episodeNumber>1</episodeNumber>
+	<title>Days Gone Bye</title>
 	<overview>Deputy Sheriff Rick Grimes wakes up in the hospital, after being shot, to find his town overrun by flesh-eating zombies. After making friends with survivor Morgan Jones and his son Duane, Rick sets out to find his wife and son.</overview>
 	<airdate>2010-04-06T16:03:47</airdate>
-	<picture>http://serientracker.de/dummy.png</picture>
+	<episodePicture>http://serientracker.de/dummy.png</episodePicture>
 
 </episode>

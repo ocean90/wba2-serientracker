@@ -5,7 +5,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Series.xsd">
 
-	
+
 	<serie serieID="1">
 
 		<title>The Walking Dead</title>
@@ -14,17 +14,25 @@
     	<year>2010</year>
   	  	<firstaired>2010-10-01</firstaired>
   	  	<country>USA</country>
-    	<overview>The Walking Dead is an American horror television drama series developed by Frank Darabont. It is based on the comic book series of the same name by Robert Kirkman, Tony Moore, and Charlie Adlard. 
-    	The series stars Andrew Lincoln as sheriff's deputy[2] Rick Grimes, who awakens from a coma to find a post-apocalyptic world dominated by flesh-eating "walkers", resembling zombies.</overview>
-        
+    	<overview>The Walking Dead is an American horror television drama series developed by Frank Darabont. It is based on the comic book series of the same name by Robert Kirkman, Tony Moore, and Charlie Adlard.
+    	The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens from a coma to find a post-apocalyptic world dominated by flesh-eating "walkers", resembling zombies.</overview>
+
 		<episoderuntime>50</episoderuntime>
-	
+
     	<network>AMC</network>
-		<airdate>Sunday</airdate>
+		<airday>Sunday</airday>
 		<airtime>22:00:00</airtime>
-	
+
 		<image src="http://serientracker.de/serieID=1/pic.jpg"/>
-		<seasons serieID="1"/>
+
+		<seasons serieID="1">
+			<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
+			<season serieID="1" seasonID="2"></season>
+		</seasons>
+
 	</serie>
+
+	<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
+	<serie serieID="2"></serie>
 
 </series>

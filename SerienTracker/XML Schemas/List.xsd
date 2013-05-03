@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Dieses Schema dient der Erstellung einer Liste, in die der User beliebig viele Serien einordnen kann 
+<!-- Dieses Schema dient der Erstellung einer Liste, in die der User beliebig viele Serien einordnen kann
 	 und anhand derer die Abonnements verwaltet werden.  -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
+
 	<!-- Privat angelegte Liste eines Users -->
 	<xs:element name="list">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="name"/>
-				<xs:element ref="shows"/>
-			</xs:sequence>
+			<xs:choice minOccurs="0">
+				<xs:sequence>
+					<xs:element ref="name"/>
+					<xs:element ref="shows"/>
+				</xs:sequence>
+			</xs:choice>
 
 			<xs:attribute ref="userID" use="required"/>
 			<xs:attribute ref="listID" use="required"/>
@@ -23,7 +28,7 @@
 	<xs:element name="shows">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="serieID" maxOccurs="unbounded"/>
+				<xs:element ref="series" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -40,14 +45,9 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-	
-	<!-- globale userID Zuordnung -->
-	<xs:attribute name="userID" type="xs:positiveInteger"/>
+
 
 	<!-- globale listID Zuordnung -->
 	<xs:attribute name="listID" type="xs:positiveInteger"/>
-
-	<!-- globale serieID Zuordnung -->
-	<xs:element name="serieID" type="xs:positiveInteger"/>
 
 </xs:schema>

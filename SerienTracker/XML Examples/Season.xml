@@ -6,14 +6,12 @@
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Season.xsd"
 	serieID="1" seasonID="123">
 
-	<number>1</number>
-	<picture>http://serientracker.de/pic.jpg</picture>
-	
+	<seasonNumber>1</seasonNumber>
+	<seasonPicture>http://serientracker.de/pic.jpg</seasonPicture>
+
 	<episodes>
-		<episodeID>1</episodeID>
-		<episodeID>2</episodeID>
-		<episodeID>3</episodeID>
-		
+		<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
+		<episode episodeID="1" serieID="2" seasonID="3"></episode>
 	</episodes>
-	
+
 </season>

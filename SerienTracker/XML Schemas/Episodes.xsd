@@ -4,14 +4,14 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Schema für einzelne Episode inkludieren -->
-	<xs:include schemaLocation="Episode.xsd"/>
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
 
 	<!-- Sammlung zugehöriger Episoden einer Season -->
 	<xs:element name="episodes">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="episode" maxOccurs="25"/>
+				<xs:element ref="episode" minOccurs="0" maxOccurs="25"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

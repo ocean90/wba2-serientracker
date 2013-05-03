@@ -4,32 +4,34 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
+
 	<!-- gesamte Serie -->
 	<xs:element name="serie">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="title"/>
-				<xs:element ref="genre" maxOccurs="unbounded"/>
-				
-				<xs:element ref="year"/>
-				<xs:element ref="firstaired"/>
-				<xs:element ref="country"/>
-				<xs:element ref="overview"/>
-				
-				<xs:element ref="episoderuntime"/>
-				<xs:element ref="network"/>
-				<xs:element ref="airdate"/>
-				<xs:element ref="airtime"/>
-				<xs:element ref="image"/>
-				<xs:element ref="seasons"/>
-			</xs:sequence>
+			<xs:choice minOccurs="0">
+				<xs:sequence>
+					<xs:element ref="title"/>
+					<xs:element ref="genre" maxOccurs="unbounded"/>
+
+					<xs:element ref="year"/>
+					<xs:element ref="firstaired"/>
+					<xs:element ref="country"/>
+					<xs:element ref="overview"/>
+
+					<xs:element ref="episoderuntime"/>
+					<xs:element ref="network"/>
+					<xs:element ref="airday"/>
+					<xs:element ref="airtime"/>
+					<xs:element ref="image"/>
+					<xs:element ref="seasons"/>
+				</xs:sequence>
+			</xs:choice>
 
 			<xs:attribute ref="serieID" use="required"/>
 		</xs:complexType>
 	</xs:element>
-
-	<!-- Serientitel -->
-	<xs:element name="title" type="xs:string"/>
 
 	<!-- Erscheinungsjahr, nach 1900 vor 2015 -->
 	<xs:element name="year">
@@ -67,9 +69,6 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-
-	<!-- Kurzinformation -->
-	<xs:element name="overview" type="xs:string"/>
 
 	<!-- Episodenlaufzeit -->
 	<xs:element name="episoderuntime">
@@ -118,7 +117,7 @@
 
 
 	<!-- Austrahlungstag -->
-	<xs:element name="airdate">
+	<xs:element name="airday">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
 				<xs:enumeration value="Monday"/>
@@ -176,13 +175,5 @@
 
 	<!-- globale serieID Zuordnung -->
 	<xs:attribute name="serieID" type="xs:positiveInteger"/>
-
-	<!-- Genres -->
-	<xs:element name="seasons">
-		<xs:complexType>
-			<xs:attribute name="serieID" use="required"/>
-		</xs:complexType>
-	</xs:element>
-
 
 </xs:schema>

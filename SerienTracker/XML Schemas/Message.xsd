@@ -25,11 +25,11 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
-	
+
+
 	<xs:element name="airdate" type="xs:date"/>
 	<xs:element name="information" type="xs:string"/>
-	
+
 	<xs:attribute name="messageID" type="xs:positiveInteger"/>
 	<xs:element name="userID" type="xs:positiveInteger"/>
 

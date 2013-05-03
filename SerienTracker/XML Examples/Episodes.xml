@@ -5,6 +5,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/episodes.xsd">
 
-	<episodeID>1</episodeID>
+	<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
+	<episode episodeID="1" serieID="1" seasonID="1"></episode>
 
 </episodes>

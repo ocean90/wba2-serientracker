@@ -9,12 +9,12 @@
 	<username>Ocean90</username>
 
     <lastname>Schilling</lastname>
-    <name>Dominik</name>
+    <firstname>Dominik</firstname>
     <gender>male</gender>
     <age>23</age>
     <location>Gummersbach</location>
     <about>ocean blablabla</about>
-    <joined>2012-09-12</joined>
+    <joined>2001-10-26T21:32:52+02:00</joined>
     <picture>http://serientracker.de/userID=12/profilepic</picture>
 
 </user>

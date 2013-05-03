@@ -4,14 +4,14 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Schema für einzelne Serie inkludieren -->
-	<xs:include schemaLocation="Serie.xsd"/>
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
 
 	<!-- Element das alle Serien aufnimmt -->
 	<xs:element name="series">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="serie" maxOccurs="unbounded"/>
+				<xs:element ref="serie" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
