@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<message
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/Message.xsd"
+	messageID="1">
+
+	<subscribedUser>
+		<userID>1</userID>
+	</subscribedUser>
+	<airdate>2013-09-12</airdate>
+	<episodeID>1</episodeID>
+	<information>Morgen kommt die neue Folge.</information>
+
+
+</message>

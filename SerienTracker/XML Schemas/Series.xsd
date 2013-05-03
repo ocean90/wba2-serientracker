@@ -7,12 +7,194 @@
 	<xs:element name="series">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="serieID" maxOccurs="unbounded"/>
+				<xs:element ref="serie" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
+	<!-- gesamte Serie -->
+	<xs:element name="serie">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="title"/>
+				<xs:element ref="genre" maxOccurs="unbounded"/>
+				
+				<xs:element ref="year"/>
+				<xs:element ref="firstaired"/>
+				<xs:element ref="country"/>
+				<xs:element ref="overview"/>
+				
+				<xs:element ref="episoderuntime"/>
+				<xs:element ref="network"/>
+				<xs:element ref="airdate"/>
+				<xs:element ref="airtime"/>
+				<xs:element ref="image"/>
+				<xs:element ref="seasons"/>
+			</xs:sequence>
+
+			<xs:attribute ref="serieID" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Serientitel -->
+	<xs:element name="title" type="xs:string"/>
+
+	<!-- Erscheinungsjahr, nach 1900 vor 2015 -->
+	<xs:element name="year">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:minInclusive value="1900"/>
+					<xs:maxInclusive value="2014"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<!-- Erstaustrahlung, interessant für Serien, bei denen der Start in der Zukunft liegt -->
+	<xs:element name="firstaired" type="xs:date"/>
+
+	<!-- Produktionsland -->
+		<!-- Sendernamen -->
+	<xs:element name="country">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="Australia"/>
+				<xs:enumeration value="Austria"/>
+				<xs:enumeration value="Canada"/>
+				<xs:enumeration value="China"/>
+				<xs:enumeration value="Denmark"/>
+				<xs:enumeration value="England"/>
+				<xs:enumeration value="France"/>
+				<xs:enumeration value="Germany"/>
+				<xs:enumeration value="Ireland"/>
+				<xs:enumeration value="Italy"/>
+				<xs:enumeration value="Japan"/>
+				<xs:enumeration value="Netherlands"/>
+				<xs:enumeration value="Norway"/>
+				<xs:enumeration value="Sweden"/>
+				<xs:enumeration value="USA"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<!-- Kurzinformation -->
+	<xs:element name="overview" type="xs:string"/>
+
+	<!-- Episodenlaufzeit -->
+	<xs:element name="episoderuntime">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:enumeration value="10"/>
+				<xs:enumeration value="20"/>
+				<xs:enumeration value="30"/>
+				<xs:enumeration value="50"/>
+				<xs:enumeration value="60"/>
+				<xs:enumeration value="90"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+
+	<!-- Sendernamen -->
+	<xs:element name="network">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="ABC"/>
+				<xs:enumeration value="AMC"/>
+				<xs:enumeration value="BBC America"/>
+				<xs:enumeration value="CBC"/>
+				<xs:enumeration value="Comedy Central"/>
+				<xs:enumeration value="The CW"/>
+				<xs:enumeration value="Fox"/>
+				<xs:enumeration value="FX"/>
+				<xs:enumeration value="HBO"/>
+				<xs:enumeration value="History Channel"/>
+				<xs:enumeration value="NBC"/>
+				<xs:enumeration value="PBS"/>
+				<xs:enumeration value="Showtime"/>
+				<xs:enumeration value="Starz"/>
+				<xs:enumeration value="TNT"/>
+
+				<xs:enumeration value="ARD"/>
+				<xs:enumeration value="ZDF"/>
+				<xs:enumeration value="RTL"/>
+				<xs:enumeration value="Sat1"/>
+				<xs:enumeration value="Prosieben"/>
+				<xs:enumeration value="Kabel1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+
+	<!-- Austrahlungstag -->
+	<xs:element name="airdate">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="Monday"/>
+				<xs:enumeration value="Tuesday"/>
+				<xs:enumeration value="Wednesday"/>
+				<xs:enumeration value="Thursday"/>
+				<xs:enumeration value="Friday"/>
+				<xs:enumeration value="Saturday"/>
+				<xs:enumeration value="Sunday"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+
+	<!-- Austrahlungszeit -->
+	<xs:element name="airtime" type="xs:time"/>
+
+	<!-- Altersfreigabe? -->
+
+	<!-- Bild? -->
+	<xs:element name="image">
+		<xs:complexType>
+			<xs:attribute ref="src"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:attribute name="src" type="xs:anyURI"/>
+
+	<!-- Genres -->
+	<xs:element name="genre">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="Action"/>
+				<xs:enumeration value="Adventure"/>
+				<xs:enumeration value="Animation"/>
+				<xs:enumeration value="Children"/>
+				<xs:enumeration value="Comedy"/>
+				<xs:enumeration value="Crime"/>
+				<xs:enumeration value="Drama"/>
+				<xs:enumeration value="Documentary"/>
+				<xs:enumeration value="Fantasy"/>
+				<xs:enumeration value="Game Show"/>
+				<xs:enumeration value="Historical"/>
+				<xs:enumeration value="Horror"/>
+				<xs:enumeration value="Mystery"/>
+				<xs:enumeration value="News"/>
+				<xs:enumeration value="Romance"/>
+				<xs:enumeration value="Science Fiction"/>
+				<xs:enumeration value="Sport"/>
+				<xs:enumeration value="Thriller"/>
+				<xs:enumeration value="Western"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
 	<!-- globale serieID Zuordnung -->
-	<xs:element name="serieID" type="xs:positiveInteger"/>
+	<xs:attribute name="serieID" type="xs:positiveInteger"/>
+
+	<!-- Genres -->
+	<xs:element name="seasons">
+		<xs:complexType>
+			<xs:attribute name="serieID" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+
+
+
+
 
 </xs:schema>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema beinhaltet die eine Nachricht, die beim Abonnement an Benutzer verschickt wird. -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Gesamtes Element einer Staffel -->
+	<xs:element name="message">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="subscribedUser"/>
+				<xs:element ref="airdate"/>
+				<xs:element ref="episodeID"/>
+				<xs:element ref="information"/>
+			</xs:sequence>
+
+			<xs:attribute ref="messageID" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="subscribedUser">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="userID" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="airdate" type="xs:date"/>
+	<xs:element name="information" type="xs:string"/>
+	
+	<xs:attribute name="messageID" type="xs:positiveInteger"/>
+	<xs:element name="userID" type="xs:positiveInteger"/>
+
+
+	<!-- globale episodeID Zuordnung -->
+	<xs:element name="episodeID" type="xs:positiveInteger"/>
+
+</xs:schema>
