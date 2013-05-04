@@ -5,7 +5,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Lists.xsd">
 
-	<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
-	<list listID="1" userID="2" public="true"></list>
+	<list listID="1" userID="2" public="true"/>
 
 </lists>

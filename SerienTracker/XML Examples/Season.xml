@@ -10,8 +10,7 @@
 	<seasonPicture>http://serientracker.de/pic.jpg</seasonPicture>
 
 	<episodes>
-		<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
-		<episode episodeID="1" serieID="2" seasonID="3"></episode>
+		<episode episodeID="1" serieID="2" seasonID="3"/>
 	</episodes>
 
 </season>

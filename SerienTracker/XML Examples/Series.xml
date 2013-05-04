@@ -26,8 +26,7 @@
 		<image src="http://serientracker.de/serieID=1/pic.jpg"/>
 
 		<seasons serieID="1">
-			<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
-			<season serieID="1" seasonID="2"></season>
+			<season serieID="1" seasonID="2"/>
 		</seasons>
 
 	</serie>

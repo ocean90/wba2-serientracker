@@ -10,8 +10,7 @@
 
 	<shows>
 		<series>
-			<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
-			<serie serieID="21"></serie>
+			<serie serieID="21"/>
 		</series>
 	</shows>
 

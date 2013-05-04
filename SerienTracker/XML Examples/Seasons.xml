@@ -4,7 +4,6 @@
 		xsi:noNamespaceSchemaLocation="../XML Schemas/Seasons.xsd"
 		serieID="1">
 
-	<!-- TODO: Ohne Inhalt oder komplette Sequenz -->
-	<season serieID="1" seasonID="2"></season>
+	<season serieID="1" seasonID="2"/>
 
 </seasons>
