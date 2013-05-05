@@ -20,7 +20,7 @@
 					<xs:element ref="location"/>
 					<xs:element ref="about"/>
 					<xs:element ref="joined"/>
-					<xs:element ref="picture"/>
+					<xs:element ref="avatar"/>
 				</xs:sequence>
 			</xs:choice>
 
@@ -102,7 +102,7 @@
 	<xs:element name="joined" type="xs:dateTime"/>
 
 	<!-- Profibild -->
-	<xs:element name="picture" type="xs:anyURI"/>
+	<xs:element name="avatar" type="xs:anyURI"/>
 
 	<!-- Adminrechte -->
 	<xs:attribute name="admin" type="xs:boolean" default="false"/>

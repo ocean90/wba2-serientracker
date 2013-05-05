@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.04 um 12:31:03 AM CEST 
+// Generiert: 2013.05.05 um 07:01:51 PM CEST 
 //
 
 
@@ -33,7 +33,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;element ref="{}title"/>
  *           &lt;element ref="{}overview"/>
  *           &lt;element ref="{}airdate"/>
- *           &lt;element ref="{}episodePicture"/>
+ *           &lt;element ref="{}images"/>
  *         &lt;/sequence>
  *       &lt;/choice>
  *       &lt;attribute ref="{}serieID use="required""/>
@@ -52,7 +52,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "title",
     "overview",
     "airdate",
-    "episodePicture"
+    "images"
 })
 @XmlRootElement(name = "episode")
 public class Episode {
@@ -62,8 +62,7 @@ public class Episode {
     protected String overview;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar airdate;
-    @XmlSchemaType(name = "anyURI")
-    protected String episodePicture;
+    protected Images images;
     @XmlAttribute(name = "serieID", required = true)
     @XmlSchemaType(name = "positiveInteger")
     protected BigInteger serieID;
@@ -171,27 +170,27 @@ public class Episode {
     }
 
     /**
-     * Ruft den Wert der episodePicture-Eigenschaft ab.
+     * Ruft den Wert der images-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Images }
      *     
      */
-    public String getEpisodePicture() {
-        return episodePicture;
+    public Images getImages() {
+        return images;
     }
 
     /**
-     * Legt den Wert der episodePicture-Eigenschaft fest.
+     * Legt den Wert der images-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Images }
      *     
      */
-    public void setEpisodePicture(String value) {
-        this.episodePicture = value;
+    public void setImages(Images value) {
+        this.images = value;
     }
 
     /**

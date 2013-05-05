@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.04 um 12:31:03 AM CEST 
+// Generiert: 2013.05.05 um 07:01:51 PM CEST 
 //
 
 
@@ -41,7 +41,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;element ref="{}network"/>
  *           &lt;element ref="{}airday"/>
  *           &lt;element ref="{}airtime"/>
- *           &lt;element ref="{}image"/>
+ *           &lt;element ref="{}images"/>
  *           &lt;element ref="{}seasons"/>
  *         &lt;/sequence>
  *       &lt;/choice>
@@ -65,7 +65,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "network",
     "airday",
     "airtime",
-    "image",
+    "images",
     "seasons"
 })
 @XmlRootElement(name = "serie")
@@ -83,7 +83,7 @@ public class Serie {
     protected String airday;
     @XmlSchemaType(name = "time")
     protected XMLGregorianCalendar airtime;
-    protected Image image;
+    protected Images images;
     protected Seasons seasons;
     @XmlAttribute(name = "serieID", required = true)
     @XmlSchemaType(name = "positiveInteger")
@@ -335,27 +335,27 @@ public class Serie {
     }
 
     /**
-     * Ruft den Wert der image-Eigenschaft ab.
+     * Ruft den Wert der images-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link Image }
+     *     {@link Images }
      *     
      */
-    public Image getImage() {
-        return image;
+    public Images getImages() {
+        return images;
     }
 
     /**
-     * Legt den Wert der image-Eigenschaft fest.
+     * Legt den Wert der images-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link Image }
+     *     {@link Images }
      *     
      */
-    public void setImage(Image value) {
-        this.image = value;
+    public void setImages(Images value) {
+        this.images = value;
     }
 
     /**

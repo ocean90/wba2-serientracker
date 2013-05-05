@@ -13,8 +13,8 @@
 			<xs:choice minOccurs="0">
 				<xs:sequence>
 					<xs:element ref="seasonNumber"/>
-					<xs:element ref="seasonPicture"/>
 					<xs:element ref="episodes"/>
+					<xs:element ref="images"/>
 				</xs:sequence>
 			</xs:choice>
 
@@ -31,9 +31,6 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-
-	<!-- Bild zur Staffel -->
-	<xs:element name="seasonPicture" type="xs:anyURI"/>
 
 	<!-- globale seasonID Zuordnung -->
 	<xs:attribute name="seasonID" type="xs:positiveInteger"/>

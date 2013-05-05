@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.04 um 12:31:03 AM CEST 
+// Generiert: 2013.05.05 um 07:01:51 PM CEST 
 //
 
 
@@ -50,12 +50,12 @@ public class ObjectFactory {
     private final static QName _Airdate_QNAME = new QName("", "airdate");
     private final static QName _Episoderuntime_QNAME = new QName("", "episoderuntime");
     private final static QName _SeasonNumber_QNAME = new QName("", "seasonNumber");
+    private final static QName _EpisodeID_QNAME = new QName("", "episodeID");
     private final static QName _Airday_QNAME = new QName("", "airday");
-    private final static QName _EpisodePicture_QNAME = new QName("", "episodePicture");
     private final static QName _Firstname_QNAME = new QName("", "firstname");
+    private final static QName _Avatar_QNAME = new QName("", "avatar");
     private final static QName _Country_QNAME = new QName("", "country");
-    private final static QName _Picture_QNAME = new QName("", "picture");
-    private final static QName _SeasonPicture_QNAME = new QName("", "seasonPicture");
+    private final static QName _Content_QNAME = new QName("", "content");
     private final static QName _Overview_QNAME = new QName("", "overview");
     private final static QName _Firstaired_QNAME = new QName("", "firstaired");
 
@@ -80,6 +80,14 @@ public class ObjectFactory {
      */
     public Serie createSerie() {
         return new Serie();
+    }
+
+    /**
+     * Create an instance of {@link Images }
+     * 
+     */
+    public Images createImages() {
+        return new Images();
     }
 
     /**
@@ -139,6 +147,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SubscribedUser }
+     * 
+     */
+    public SubscribedUser createSubscribedUser() {
+        return new SubscribedUser();
+    }
+
+    /**
      * Create an instance of {@link Lists }
      * 
      */
@@ -160,6 +176,14 @@ public class ObjectFactory {
      */
     public Shows createShows() {
         return new Shows();
+    }
+
+    /**
+     * Create an instance of {@link Message }
+     * 
+     */
+    public Message createMessage() {
+        return new Message();
     }
 
     /**
@@ -316,21 +340,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "airday")
-    public JAXBElement<String> createAirday(String value) {
-        return new JAXBElement<String>(_Airday_QNAME, String.class, null, value);
+    @XmlElementDecl(namespace = "", name = "episodeID")
+    public JAXBElement<BigInteger> createEpisodeID(BigInteger value) {
+        return new JAXBElement<BigInteger>(_EpisodeID_QNAME, BigInteger.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "episodePicture")
-    public JAXBElement<String> createEpisodePicture(String value) {
-        return new JAXBElement<String>(_EpisodePicture_QNAME, String.class, null, value);
+    @XmlElementDecl(namespace = "", name = "airday")
+    public JAXBElement<String> createAirday(String value) {
+        return new JAXBElement<String>(_Airday_QNAME, String.class, null, value);
     }
 
     /**
@@ -346,6 +370,15 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
+    @XmlElementDecl(namespace = "", name = "avatar")
+    public JAXBElement<String> createAvatar(String value) {
+        return new JAXBElement<String>(_Avatar_QNAME, String.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
     @XmlElementDecl(namespace = "", name = "country")
     public JAXBElement<String> createCountry(String value) {
         return new JAXBElement<String>(_Country_QNAME, String.class, null, value);
@@ -355,18 +388,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "picture")
-    public JAXBElement<String> createPicture(String value) {
-        return new JAXBElement<String>(_Picture_QNAME, String.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "", name = "seasonPicture")
-    public JAXBElement<String> createSeasonPicture(String value) {
-        return new JAXBElement<String>(_SeasonPicture_QNAME, String.class, null, value);
+    @XmlElementDecl(namespace = "", name = "content")
+    public JAXBElement<String> createContent(String value) {
+        return new JAXBElement<String>(_Content_QNAME, String.class, null, value);
     }
 
     /**

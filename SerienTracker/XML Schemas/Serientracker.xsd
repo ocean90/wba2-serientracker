@@ -16,9 +16,9 @@
 	<xs:include schemaLocation="Users.xsd"/>
 	<xs:include schemaLocation="User.xsd"/>
 	<xs:include schemaLocation="Message.xsd"/>
-	
 
-	<!-- Globale Typen -->
+
+	<!-- Globale Elemente -->
 
 	<!-- Beschreibung -->
 	<xs:element name="overview">
@@ -38,6 +38,21 @@
 				<xs:maxLength value="80"/>
 			</xs:restriction>
 		</xs:simpleType>
+	</xs:element>
+
+	<!-- Bilder -->
+	<xs:element name="images">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="image" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="image">
+		<xs:complexType>
+			<xs:attribute name="ref" type="xs:anyURI"/>
+		</xs:complexType>
 	</xs:element>
 
 </xs:schema>

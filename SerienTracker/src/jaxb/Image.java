@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.04 um 12:31:03 AM CEST 
+// Generiert: 2013.05.05 um 07:01:51 PM CEST 
 //
 
 
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute ref="{}src"/>
+ *       &lt;attribute name="ref" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -38,32 +38,32 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "image")
 public class Image {
 
-    @XmlAttribute(name = "src")
+    @XmlAttribute(name = "ref")
     @XmlSchemaType(name = "anyURI")
-    protected String src;
+    protected String ref;
 
     /**
-     * Ruft den Wert der src-Eigenschaft ab.
+     * Ruft den Wert der ref-Eigenschaft ab.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getSrc() {
-        return src;
+    public String getRef() {
+        return ref;
     }
 
     /**
-     * Legt den Wert der src-Eigenschaft fest.
+     * Legt den Wert der ref-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setSrc(String value) {
-        this.src = value;
+    public void setRef(String value) {
+        this.ref = value;
     }
 
 }

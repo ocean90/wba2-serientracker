@@ -14,7 +14,7 @@
 				<xs:element ref="subscribedUser"/>
 				<xs:element ref="airdate"/>
 				<xs:element ref="episodeID"/>
-				<xs:element ref="information"/>
+				<xs:element ref="content"/>
 			</xs:sequence>
 
 			<xs:attribute ref="messageID" use="required"/>
@@ -25,25 +25,18 @@
 	<xs:element name="subscribedUser">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="userID" maxOccurs="unbounded"/>
+				<xs:element ref="users"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	
-	<!-- globale userID Zuordnung -->
-	<xs:element name="userID" type="xs:positiveInteger"/>
-
 	<!-- globale episodeID Zuordnung -->
 	<xs:element name="episodeID" type="xs:positiveInteger"/>
-	
-	
+
 	<!-- Nachricht, die der Abonnement erhält -->
-	<xs:element name="information" type="xs:string"/>
-	
+	<xs:element name="content" type="xs:string"/>
+
 	<!-- ID für wiederkehrende Meldungen -->
 	<xs:attribute name="messageID" type="xs:positiveInteger"/>
-	
-	
 
 </xs:schema>

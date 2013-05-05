@@ -16,7 +16,7 @@
 					<xs:element ref="title"/>
 					<xs:element ref="overview"/>
 					<xs:element ref="airdate"/>
-					<xs:element ref="episodePicture"/>
+					<xs:element ref="images"/>
 				</xs:sequence>
 			</xs:choice>
 
@@ -37,10 +37,6 @@
 
 	<!-- Austrahlungstag der Episode  -->
 	<xs:element name="airdate" type="xs:dateTime"/>
-
-	<!-- Bild zur Episode  -->
-	<xs:element name="episodePicture" type="xs:anyURI"/>
-
 
 	<!-- globale episodeID Zuordnung -->
 	<xs:attribute name="episodeID" type="xs:positiveInteger"/>

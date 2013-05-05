@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.04 um 12:31:03 AM CEST 
+// Generiert: 2013.05.05 um 07:01:51 PM CEST 
 //
 
 
@@ -37,7 +37,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;element ref="{}location"/>
  *           &lt;element ref="{}about"/>
  *           &lt;element ref="{}joined"/>
- *           &lt;element ref="{}picture"/>
+ *           &lt;element ref="{}avatar"/>
  *         &lt;/sequence>
  *       &lt;/choice>
  *       &lt;attribute ref="{}admin use="required""/>
@@ -59,7 +59,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "location",
     "about",
     "joined",
-    "picture"
+    "avatar"
 })
 @XmlRootElement(name = "user")
 public class User {
@@ -74,7 +74,7 @@ public class User {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar joined;
     @XmlSchemaType(name = "anyURI")
-    protected String picture;
+    protected String avatar;
     @XmlAttribute(name = "admin", required = true)
     protected boolean admin;
     @XmlAttribute(name = "userID", required = true)
@@ -274,27 +274,27 @@ public class User {
     }
 
     /**
-     * Ruft den Wert der picture-Eigenschaft ab.
+     * Ruft den Wert der avatar-Eigenschaft ab.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPicture() {
-        return picture;
+    public String getAvatar() {
+        return avatar;
     }
 
     /**
-     * Legt den Wert der picture-Eigenschaft fest.
+     * Legt den Wert der avatar-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPicture(String value) {
-        this.picture = value;
+    public void setAvatar(String value) {
+        this.avatar = value;
     }
 
     /**

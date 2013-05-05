@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.04 um 12:31:03 AM CEST 
+// Generiert: 2013.05.05 um 07:01:51 PM CEST 
 //
 
 
@@ -29,8 +29,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;choice minOccurs="0">
  *         &lt;sequence>
  *           &lt;element ref="{}seasonNumber"/>
- *           &lt;element ref="{}seasonPicture"/>
  *           &lt;element ref="{}episodes"/>
+ *           &lt;element ref="{}images"/>
  *         &lt;/sequence>
  *       &lt;/choice>
  *       &lt;attribute ref="{}serieID use="required""/>
@@ -45,16 +45,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "seasonNumber",
-    "seasonPicture",
-    "episodes"
+    "episodes",
+    "images"
 })
 @XmlRootElement(name = "season")
 public class Season {
 
     protected Integer seasonNumber;
-    @XmlSchemaType(name = "anyURI")
-    protected String seasonPicture;
     protected Episodes episodes;
+    protected Images images;
     @XmlAttribute(name = "serieID", required = true)
     @XmlSchemaType(name = "positiveInteger")
     protected BigInteger serieID;
@@ -87,30 +86,6 @@ public class Season {
     }
 
     /**
-     * Ruft den Wert der seasonPicture-Eigenschaft ab.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSeasonPicture() {
-        return seasonPicture;
-    }
-
-    /**
-     * Legt den Wert der seasonPicture-Eigenschaft fest.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSeasonPicture(String value) {
-        this.seasonPicture = value;
-    }
-
-    /**
      * Ruft den Wert der episodes-Eigenschaft ab.
      * 
      * @return
@@ -132,6 +107,30 @@ public class Season {
      */
     public void setEpisodes(Episodes value) {
         this.episodes = value;
+    }
+
+    /**
+     * Ruft den Wert der images-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Images }
+     *     
+     */
+    public Images getImages() {
+        return images;
+    }
+
+    /**
+     * Legt den Wert der images-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Images }
+     *     
+     */
+    public void setImages(Images value) {
+        this.images = value;
     }
 
     /**

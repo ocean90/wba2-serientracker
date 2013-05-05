@@ -24,7 +24,7 @@
 					<xs:element ref="network"/>
 					<xs:element ref="airday"/>
 					<xs:element ref="airtime"/>
-					<xs:element ref="image"/>
+					<xs:element ref="images"/>
 					<xs:element ref="seasons"/>
 				</xs:sequence>
 			</xs:choice>
@@ -47,7 +47,6 @@
 	<xs:element name="firstaired" type="xs:date"/>
 
 	<!-- Produktionsland -->
-		<!-- Sendernamen -->
 	<xs:element name="country">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
@@ -84,7 +83,6 @@
 		</xs:simpleType>
 	</xs:element>
 
-
 	<!-- Sendernamen -->
 	<xs:element name="network">
 		<xs:simpleType>
@@ -115,7 +113,6 @@
 		</xs:simpleType>
 	</xs:element>
 
-
 	<!-- Austrahlungstag -->
 	<xs:element name="airday">
 		<xs:simpleType>
@@ -131,20 +128,8 @@
 		</xs:simpleType>
 	</xs:element>
 
-
 	<!-- Austrahlungszeit -->
 	<xs:element name="airtime" type="xs:time"/>
-
-	<!-- Altersfreigabe? -->
-
-	<!-- Bild? -->
-	<xs:element name="image">
-		<xs:complexType>
-			<xs:attribute ref="src"/>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:attribute name="src" type="xs:anyURI"/>
 
 	<!-- Genres -->
 	<xs:element name="genre">
