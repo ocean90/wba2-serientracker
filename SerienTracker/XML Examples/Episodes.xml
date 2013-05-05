@@ -3,8 +3,8 @@
 <episodes
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="../XML Schemas/episodes.xsd">
+	xsi:noNamespaceSchemaLocation="../XML Schemas/Episodes.xsd">
 
-	<episode episodeID="1" serieID="1" seasonID="1"/>
+	<episode serieID="1" seasonID="1" episodeID="1"/>
 
 </episodes>

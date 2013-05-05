@@ -4,6 +4,9 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
+
 	<!-- Gesamtes Element einer Staffel -->
 	<xs:element name="message">
 		<xs:complexType>
@@ -18,6 +21,7 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- Liste der User, die durch ihr Abonnement die Nachricht erhalten sollen. -->
 	<xs:element name="subscribedUser">
 		<xs:complexType>
 			<xs:sequence>
@@ -26,15 +30,20 @@
 		</xs:complexType>
 	</xs:element>
 
-
-	<xs:element name="airdate" type="xs:date"/>
-	<xs:element name="information" type="xs:string"/>
-
-	<xs:attribute name="messageID" type="xs:positiveInteger"/>
+	
+	<!-- globale userID Zuordnung -->
 	<xs:element name="userID" type="xs:positiveInteger"/>
-
 
 	<!-- globale episodeID Zuordnung -->
 	<xs:element name="episodeID" type="xs:positiveInteger"/>
+	
+	
+	<!-- Nachricht, die der Abonnement erhält -->
+	<xs:element name="information" type="xs:string"/>
+	
+	<!-- ID für wiederkehrende Meldungen -->
+	<xs:attribute name="messageID" type="xs:positiveInteger"/>
+	
+	
 
 </xs:schema>
