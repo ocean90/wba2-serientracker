@@ -175,33 +175,6 @@ Content-Admin
 \end{figure}
 
 
-
-\begin{table}[H]
-\caption{Ressourcen des Serientrackers}
-
-\centering
-\begin{tabular}{l l l}
-\hline\hline
-\\ [-0.5ex]
-Ressource & URI & Methode
-\\ [1.5ex]
-\hline
-\\ [-0.5ex]
-Liste aller Serien & /series/ & GET, PUT \\[1ex]
-Einzelne Serie & /series/\{id\} & GET, POST, DELETE\\[1ex]
-Liste aller Staffeln & /seasons/ & GET, PUT \\[1ex]
-Einzelne Staffel & /seasons/\{id\} & GET, POST, DELETE\\[1ex]
-Liste aller Episoden & /episodes/ & GET, PUT \\[1ex]
-Einzelne Episode & /episodes/\{id\} & GET, POST, DELETE\\[1ex]
-Liste aller User & /users/ & GET, PUT \\[1ex]
-Einzelne User & /users/\{id\} & GET, POST, DELETE\\[1ex]
-Liste aller Listen & /lists/ & GET, PUT\\[1ex]
-Liste eines Users & /lists/\{id\} & GET, POST, DELETE\\[1ex]
-\hline
-\end{tabular}
-\label{tab:ressourcendesserientrackers}
-\end{table}
-
 \newpage
 
 \section{Entwicklung des Projektes}
@@ -236,10 +209,63 @@ auch festgelegt werden, durche welche Datentyp die einzelnen Informationen repr�
 \newpage
 
 \subsection{Ressourcen und die Semantik der HTTP-Operationen}
+\subsubsection{Ressourcen}
 
+Als Vorbereitung für die Umsetzung der synchronen Kommunikationsvorgänge, steht die theoretische Auseinandersetzung mit REST im Mittelpunkt.
+Der erste Schwerpunkt dabei ist die Identifizierung vorhanderer Ressourcen des Serientrackers. Bereits beim Konzipieren der XML Schemas mit beispielhaften XML Datensätzen, musste überlegt werden, für welche Elemente es möglich ist Enitäten der realen Welt zu ermitteln. 
 
+Bei einer Ressource, geht es ähnlich wie bei XML Dateien nicht darum, wie die darin enthalten Informationen im letztendlichen Kontext repräsentiert werden, sondern welche Informationen diese enthalten. Entsprechende Objekte der Außenwelt werden beschrieben und wie die Wurzelelemente bei XML, stellen sie einen bestimmten Objekttyp dar.Eine identifizierte Ressource, ist eine Schnittstelle zur Außenwelt dar und sollte daher dem Kontext entsprechend gut durchdacht werden.
+Die Auseinandersetzung im Rahmen mit den XML Schemas, lieferte dabei einen Überblick über vorhandene Primärressourcen. Dabei handelt es sich um die Oberklassen der vorhandenen Objekttypen Serie und User.
+
+Desweiteren ist es möglich vorhandene Subressourcen zu identifizieren, die sich dadurch auszeichnen, dass sie selbst Bestandteil einer Ressource sind.
+Aufgrund der komplexen Struktur einer Serie, die neben den allgemeinen Informationen noch die Informationen zu mehreren Staffeln und entsprechenden Episoden enthalten, wurde früh die systematische Aufteilung festgelegt.
+Da es auch innerhalb der Anwendung von Interesse sein kann, eine einfache Repräsentation der Staffelübersicht oder der Episodenübericht einer Staffel zu ermöglichen, bietet es sich gerade bei diesen Typen an, diese Objekte als eigene Ressource zu designen. Dazu kommt, dass eine Episode zum Beispiel im Kontext einer Serie am meisten Sinn macht, durchaus aber auch für sich existieren kann.
+
+Zur Ordnung der einzelnen Elemente, gibt es entsprechende Listenressourcen wie Series, Seasons, Users und Episodes, welche alle Elemente des zugehörigen Typs aufnehmen und sammeln. 
+
+Ein Kernelement der Anwendung, wird das Benachrichtigen der Benutzer über bestimmte Eregnisse sein, die sich durch Abonnements in Form von Listen verwalten lassen. Gerade bei einer möglichen Kategorisierung wie Serie nach dem Genre Drama, wäre es durchaus interessant gewesen Listenressourcen mit entsprechenden Filtern zu definieren. Aufgrund der Vielzahl von Kategorisierungsmöglichkeit, wird dieser Schritt aber nicht über einzelne Ressourcen stattfinden, sondern über die Anwendung mit Verweisen innherhalb der Listen geregelt.
 
 \newpage
+
+Die Auseinandersetzung führte zu folgenden Ressourcen, wobei die angegeben URI nur den charakteristischen Abschnitt wiederspiegelt.
+Da für die Umsetzung an sich, die URI eher als eine ID in Form von Zeichen steht und für die letzendliche Auswertung nicht unbedingt notwendig ist, wird auf eine Darstellung in Form mit Schema und Pfadangabe in der Übersicht verzichtet.
+
+
+\begin{table}[H]
+\caption{Ressourcen des Serientrackers} 
+
+\centering
+\begin{tabular}{l l l}
+\\ [-0.5ex]
+
+\hline\hline
+\\ [-0.5ex]
+Ressource & URI & Methode
+\\ [1.5ex]
+\hline
+\\ [-0.5ex]
+Liste aller Serien & /series/ & GET, PUT \\[1ex]
+Einzelne Serie & /series/\{id\} & GET, POST, DELETE\\[1ex]
+Liste aller Staffeln & /seasons/ & GET, PUT \\[1ex]
+Einzelne Staffel & /seasons/\{id\} & GET, POST, DELETE\\[1ex]
+Liste aller Episoden & /episodes/ & GET, PUT \\[1ex]
+Einzelne Episode & /episodes/\{id\} & GET, POST, DELETE\\[1ex]
+Liste aller User & /users/ & GET, PUT \\[1ex]
+Einzelne User & /users/\{id\} & GET, POST, DELETE\\[1ex]
+Liste aller Listen & /lists/ & GET, PUT\\[1ex]
+Liste eines Users & /lists/\{id\} & GET, POST, DELETE\\[1ex]
+\hline
+\end{tabular}
+\label{tab:ressourcendesserientrackers}
+\end{table}
+
+Jedes Element, dass für die synchrone Kommunikation von Interesse ist, besitzt eine Ressource auf ein einzelnes Element und die Gesamtheit einer Liste. Bei den URI wird der Zugriff über entsprechende ID's auf die Liste deutlich und es zeigt sich eine Folge der einfachen Ressourcen. Durch die Konzipierung der Untertypen Staffel und Episode als einzelne Ressource, wird eine komplexe Hierachie verhindert, die in Form von /series/\{id\}/seasons/\{id\}/episodes/\{id\} dennoch realisierbar gewesen wäre.
+
+
+
+TODO Query-Parameter?
+\subsubsection{Semantik der HTTP-Operationen}
+
 
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{images/bedeutunghttpmethoden.png}
