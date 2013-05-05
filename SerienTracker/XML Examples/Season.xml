@@ -7,10 +7,12 @@
 	serieID="1" seasonID="123">
 
 	<seasonNumber>1</seasonNumber>
-	<seasonPicture>http://serientracker.de/pic.jpg</seasonPicture>
-
 	<episodes>
 		<episode episodeID="1" serieID="2" seasonID="3"/>
 	</episodes>
+	<images>
+		<image src="http://serientracker.de/dummy.png/"/>
+		<image src="http://serientracker.de/dummy.png/"/>
+	</images>
 
 </season>

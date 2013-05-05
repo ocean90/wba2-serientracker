@@ -10,6 +10,8 @@
 	<title>Days Gone Bye</title>
 	<overview>Deputy Sheriff Rick Grimes wakes up in the hospital, after being shot, to find his town overrun by flesh-eating zombies. After making friends with survivor Morgan Jones and his son Duane, Rick sets out to find his wife and son.</overview>
 	<airdate>2010-04-06T16:03:47</airdate>
-	<episodePicture>http://serientracker.de/dummy.png</episodePicture>
+	<images>
+		<image src="http://serientracker.de/dummy.png"/>
+	</images>
 
 </episode>

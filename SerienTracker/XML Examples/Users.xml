@@ -12,7 +12,7 @@
 		<location>Deutschland</location>
 		<about>Foo</about>
 		<joined>2001-10-26T21:32:52+02:00</joined>
-		<picture>http://g.de/</picture>
+		<avatar>http://g.de/</avatar>
 	</user>
 
 	<user admin="false" userID="2"/>

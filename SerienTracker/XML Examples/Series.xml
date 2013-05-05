@@ -23,7 +23,10 @@
 		<airday>Sunday</airday>
 		<airtime>22:00:00</airtime>
 
-		<image src="http://serientracker.de/serieID=1/pic.jpg"/>
+		<images>
+			<image src="http://serientracker.de/serieID=1/pic.jpg"/>
+			<image src="http://serientracker.de/serieID=1/pic.jpg"/>
+		</images>
 
 		<seasons serieID="1">
 			<season serieID="1" seasonID="2"/>

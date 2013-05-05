@@ -51,7 +51,7 @@
 
 	<xs:element name="image">
 		<xs:complexType>
-			<xs:attribute name="ref" type="xs:anyURI"/>
+			<xs:attribute name="src" type="xs:anyURI"/>
 		</xs:complexType>
 	</xs:element>
 
