@@ -37,6 +37,8 @@ citecolor = black] {hyperref}
 
 
 \section{Einleitung}
+Im Rahmen der Projektphase des Moduls Webbasierte Anwendungen 2: Verteilte Systeme, geht es um die Entwicklung einer Applikation, die sich mit dem Datenaustausch in verteilten System beschäftigt. Innerhalb dieses Systems wird zum einen eine synchrone Kommunikation zwischen Instanzen mit Hilfe des REST Konzeptes realisiiert und zum andern ein asynchroner Datenaustausch auf Grundlage von XMPP.
+
 
 \section{Konzept}
 
@@ -180,6 +182,7 @@ Content-Admin
 \section{Entwicklung des Projektes}
 
 \subsection{Projektbezogenes XML Schema / Schemata}
+\subsubsection{Vorüberlegungen}
 Der erste Meilenstein befasst sich mit der Repräsentation von Daten in XML.
 
 Damit bei der Verwendung der XML Dateien bei der späteren Verarbeitung mit JAXB keine Probleme auftreten,
@@ -199,12 +202,54 @@ Gesehen, Ungesehen zu ermöglichen. Wie bereits in der Besprechung der Umsetzung
 dieser Informationen auch die Asynchrone Datenübertragung realisiert.
 Das Abonnieren von Informationen zu laufenden Serien des Genre Krimi, greift bei Benachrichtigung auf
 Datensätze zu, die diesem Elementwert unter dieser eindeutigen Zeichenfolge zugeordnet sind. Formulierungsfehler
-wie Krimie oder Crime, führen dementsprechend zu Komplikationen, weil sie die Reinheit der Informationssätze beschädigen.
+wie Krimie oder Crime, führen dementsprechend zu Komplikationen, weil sie die Konsistent der Informationssätze beschädigen.
 
-\subsection{Datentypen}
-Zu Beginn des ersten Meilensteins, steht die Analyse der vorhandenen Informationstypen.
+Die Auseinandersetzung führte zu dem Ergebnis, dass folgende Objekttypen innerhalb des Serientrackers von interesse sind und wiederkehrende Elemente darstellen:
+
+Serie \\
+Eines der wichtigsten Elemente, dass alle Informationen beinhaltet, die für den Benutzer von bedeutung sind, ist die Serie, 
+Eine Serie besitzt allgemeine Informationen wie Name, eine Beschreibung, der Sender indem sie ausgestrahlt wird oder das Produktionsland.
+Im realen Kontext wird eine Serie zudem in Staffeln ausgestrahlt, die jeweils eine bestimmte Anzahl von Episoden enthalten.
+
+Staffel \\
+Bestandteil einer Serie, von der es im Laufe der Jahre immer neue Objekte gibt und die nach einer gewissen Anzahl an Episoden als abgeschlossen gelten.
+
+Episode \\
+Ein Kernelement des Systems, dass ein wichtigen Typ für die asynchrone Kommunikation darstellt. Durch das Abonnieren von Genres oder Serien, wird die Benachrichtigung in Bezug auf eine einzelne Episode ausgelöst, die sich durch ihr jeweiliges Austrahlungsdatum und -zeitpunkt kennzeichnet. 
+Zudem kann der Inhalt der Episode von Interesse sein.
+
+User \\
+Neben den Serieninformation, gibt es die Anwender des Serientrackers, die sich anmelden und durch Listen die Dienste des Serientrackers abonnieren.
+Allgemein werden hierbei personenbezogene Daten wie Username und echter Name erwartet, so wie Zusatzinformationen, die für andere Benutzer von Interesse sein könnten und die Person hinter dem Profil genauer beschreiben. Beispiele wären das Alter, ein Profilbild, Wohnort oder eine kurze Beschreibung.
+
+Liste \\
+
+
+Für diese Obertypen gilt es ein valides XML Schema zu definieren, wobei während der Entwicklung verschiedene Aspekte betrachtet werden müssen.  
+
+
+\subsubsection{Datentypen}
 Bei der Definition eines XML Schemas, sollte neben der enstprechenden Datensatzstruktur und Reihenfolge,
-auch festgelegt werden, durche welche Datentyp die einzelnen Informationen repräsentiert werden sollen.
+auch festgelegt werden, durch welche Datentyp die einzelnen Informationen repräsentiert werden sollen.
+
+
+\subsubsection{Restriktionen}
+
+\newpage
+\subsubsection{Umsetzung}
+
+Nach der theoretischen Planung findet die Realisierung der XML Schemas statt.
+Dabei wurde für jeden der zuvor identifizierten Obertypen ein eigenes Schema definiert. Die Aufteilung der einzelnen Typen auf ein seperates Schema, fand mit den Gedanken statt, die Struktur der Daten möglichst einfach und lesbar zu halten. Eine Serie die mehrere Staffeln enthält, die wiederrum jeweils eine Menge von Episoden auffassen, würde ein sehr komplexes Elemente definieren, dass bei der späteren Verarbeitung zu Komplikationen führen kann.
+
+Da die Daten einer Episode, inhaltlich jedoch weiterhin davon abhängen, von welcher Serie diese ist und in welcher Staffel sie vorkam, wird eine Referenzierung mit Hilfe von global eindeutigen IDs eingeführt. Jede Serie, User, Staffel, Episode und Liste wird mit einer einzigartigen Folge von Zeichen beschrieben, über diese es möglich ist auf gewünschte Informationen zuzugreifen und entsprechende Elemente auszulesen.
+
+Eine Episode bekommt damit eine eindeutige episodenID zugeordnet, erhält zudem aber die Referenz der serienID und seasonID als Attribute, um Verweise und Zuordnungen zu realisieren. Da sich jedes Objekt demnach durch eine Kennung repräsentiert, reicht bei anlegen von Listen und Containern ein einfacher Verweis auf entsprechendes Element, wodurch Datenredundanz bei Schemen verhindert wird, die inhaltlich voneinander abhängen.
+
+Um die Struktur des gesamten Serien Elements zu ermöglichen und vorhandene IDs global nutzen zu können, wird jedes Schema über eine Masterdatei in die einzelnen XML Schemas inkludiert, um bereits definierte Elemente und Attribute wiederverwendbar zu machen und die Datenmenge zu reduzieren.
+
+
+Ein weiterer Gruppe von Elementen, die bei der Entwicklung eine wichtige Rollen spielen sind die Containerelemente. Da jede Entität eines Typs angelegt werden muss, wurde für jeden verwendeten Typ User, Serie, Season, Episode, List, eine eigene Liste angelegt, die jedes Elemente ihres speziellen Typen aufnehmen und als Containerklasse dienen.
+
 
 \newpage
 
