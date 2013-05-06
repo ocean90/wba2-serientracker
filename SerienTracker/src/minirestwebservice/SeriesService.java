@@ -7,6 +7,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.commons.jxpath.JXPathContext;
+
 import jaxb.ObjectFactory;
 import jaxb.Serie;
 import jaxb.Series;
@@ -43,7 +45,13 @@ public class SeriesService {
 		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
 		series = (Series) unMarshaller.unmarshal( new File( "XML Examples/Series.xml" ) );
 
-		return series.getSerie().get(id);
+		JXPathContext context = JXPathContext.newContext(series);
+		
+		Serie serie = (Serie) context.getValue( "serie/[1]");
+		return serie;
+		//Serie serie = jaxbContext.newContext() //.getValueByXPath(series, "@id", null, Serie.class);
+		
+		//return series.getSerie().get(id);
 	}
 
 }

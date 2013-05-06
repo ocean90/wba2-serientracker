@@ -8,10 +8,10 @@ public class TestClient {
 		String url = "http://localhost:4434/series/";
 		System.out.println( "URL: " + url );
 
-		WebResource wrs = Client.create().resource( url );
+		/*WebResource wrs = Client.create().resource( url );
 
 		System.out.println( wrs.accept( "application/xml" ).get( String.class ) );
-
+		*/
 		String url2 = "http://localhost:4434/series/1";
 		System.out.println( "URL: " + url2 );
 
