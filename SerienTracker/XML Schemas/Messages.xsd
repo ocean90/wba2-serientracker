@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Dieses Schema dient dem Sammlen von mehreren Messages -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Master inkludieren -->
+	<xs:include schemaLocation="Serientracker.xsd"/>
+
+	<!--Container der alle Messages beinhaltet-->
+	<xs:element name="messages">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="message" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
