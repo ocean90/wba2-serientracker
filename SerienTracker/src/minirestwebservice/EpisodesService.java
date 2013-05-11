@@ -45,4 +45,19 @@ public class EpisodesService {
 		return episodes.getEpisode().get(id);
 	}
 
+	  // Episode nach ID ändern:
+//	   @POST @Path("/{id}")
+//	   public Episode updateEpisodeById(
+//	         @PathParam("episodeID")    String episodeID,
+//	         @FormParam("episodeNumber")  Integer episodeNumber,
+//	         @FormParam("title") String title,
+//	         @FormParam("overview") String overview,
+//	   		 @FormParam("dateTime") String airdate ,
+//	   		 @FormParam("images")  images,
+//	   		 @FormParam("serieID") String serieID,
+//	   		 @FormParam("seasonID") String seasonID )
+//	   {}
+//	   http://www.torsten-horn.de/techdocs/jee-rest.htm#JaxRsHelloWorld-Grizzly
+
+
 }

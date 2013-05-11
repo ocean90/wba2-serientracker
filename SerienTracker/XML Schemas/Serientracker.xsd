@@ -16,7 +16,6 @@
 	<xs:include schemaLocation="Users.xsd"/>
 	<xs:include schemaLocation="User.xsd"/>
 	<xs:include schemaLocation="Message.xsd"/>
-	<xs:include schemaLocation="Messages.xsd"/>
 
 
 	<!-- Globale Elemente -->

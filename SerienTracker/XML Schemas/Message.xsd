@@ -11,7 +11,7 @@
 	<xs:element name="message">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="subscribedUser" minOccurs="0"/>
+				<xs:element ref="subscribedUser"/>
 				<xs:element ref="airdate"/>
 				<xs:element ref="episodeID"/>
 				<xs:element ref="content"/>

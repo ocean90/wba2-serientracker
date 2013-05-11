@@ -30,6 +30,21 @@ public class ListsService {
 		return lists;
 	}
 
+//	@Path( "/{id}" )
+//	@GET @Produces( "application/xml" )
+//	public List getSingle(@PathParam("id") int id) throws JAXBException {
+//		ObjectFactory of = new ObjectFactory();
+//
+//		Lists lists = of.createLists();
+//
+//		JAXBContext jaxbContext = JAXBContext.newInstance( Lists.class );
+//
+//		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
+//		lists = (Lists) unMarshaller.unmarshal( new File( "XML Examples/Lists.xml" ) );
+//
+//		return lists.getList().get(id);
+//	}
+	
 	@Path( "/{id}" )
 	@GET @Produces( "application/xml" )
 	public List getSingle(@PathParam("id") int id) throws JAXBException {
