@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.05 um 07:38:48 PM CEST 
+// Generiert: 2013.05.12 um 03:25:22 PM CEST 
 //
 
 
@@ -31,10 +31,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element ref="{}subscribedUser"/>
  *         &lt;element ref="{}airdate"/>
- *         &lt;element ref="{}episodeID"/>
  *         &lt;element ref="{}content"/>
  *       &lt;/sequence>
  *       &lt;attribute ref="{}messageID use="required""/>
+ *       &lt;attribute ref="{}episodeID"/>
+ *       &lt;attribute ref="{}seasonID"/>
+ *       &lt;attribute ref="{}serieID"/>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -46,7 +48,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "", propOrder = {
     "subscribedUser",
     "airdate",
-    "episodeID",
     "content"
 })
 @XmlRootElement(name = "message")
@@ -58,13 +59,19 @@ public class Message {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar airdate;
     @XmlElement(required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger episodeID;
-    @XmlElement(required = true)
     protected String content;
     @XmlAttribute(name = "messageID", required = true)
     @XmlSchemaType(name = "positiveInteger")
     protected BigInteger messageID;
+    @XmlAttribute(name = "episodeID")
+    @XmlSchemaType(name = "positiveInteger")
+    protected BigInteger episodeID;
+    @XmlAttribute(name = "seasonID")
+    @XmlSchemaType(name = "positiveInteger")
+    protected BigInteger seasonID;
+    @XmlAttribute(name = "serieID")
+    @XmlSchemaType(name = "positiveInteger")
+    protected BigInteger serieID;
 
     /**
      * Ruft den Wert der subscribedUser-Eigenschaft ab.
@@ -115,30 +122,6 @@ public class Message {
     }
 
     /**
-     * Ruft den Wert der episodeID-Eigenschaft ab.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getEpisodeID() {
-        return episodeID;
-    }
-
-    /**
-     * Legt den Wert der episodeID-Eigenschaft fest.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setEpisodeID(BigInteger value) {
-        this.episodeID = value;
-    }
-
-    /**
      * Ruft den Wert der content-Eigenschaft ab.
      * 
      * @return
@@ -184,6 +167,78 @@ public class Message {
      */
     public void setMessageID(BigInteger value) {
         this.messageID = value;
+    }
+
+    /**
+     * Ruft den Wert der episodeID-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getEpisodeID() {
+        return episodeID;
+    }
+
+    /**
+     * Legt den Wert der episodeID-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setEpisodeID(BigInteger value) {
+        this.episodeID = value;
+    }
+
+    /**
+     * Ruft den Wert der seasonID-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getSeasonID() {
+        return seasonID;
+    }
+
+    /**
+     * Legt den Wert der seasonID-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setSeasonID(BigInteger value) {
+        this.seasonID = value;
+    }
+
+    /**
+     * Ruft den Wert der serieID-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getSerieID() {
+        return serieID;
+    }
+
+    /**
+     * Legt den Wert der serieID-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setSerieID(BigInteger value) {
+        this.serieID = value;
     }
 
 }
