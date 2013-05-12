@@ -289,16 +289,16 @@ Ressource & URI & Methode
 \\ [1.5ex]
 \hline
 \\ [-0.5ex]
-Liste aller Serien & /series/ & GET, PUT \\[1ex]
-Einzelne Serie & /series/\{id\} & GET, POST, DELETE\\[1ex]
-Liste aller Staffeln & /seasons/ & GET, PUT \\[1ex]
-Einzelne Staffel & /seasons/\{id\} & GET, POST, DELETE\\[1ex]
-Liste aller Episoden & /episodes/ & GET, PUT \\[1ex]
-Einzelne Episode & /episodes/\{id\} & GET, POST, DELETE\\[1ex]
-Liste aller User & /users/ & GET, PUT \\[1ex]
-Einzelne User & /users/\{id\} & GET, POST, DELETE\\[1ex]
-Liste aller Listen & /lists/ & GET, PUT\\[1ex]
-Liste eines Users & /lists/\{id\} & GET, POST, DELETE\\[1ex]
+Liste aller Serien & /series/ & GET, POST \\[1ex]
+Einzelne Serie & /series/\{id\} & GET, PUT, DELETE\\[1ex]
+Liste aller Staffeln & /seasons/ & GET, POST \\[1ex]
+Einzelne Staffel & /seasons/\{id\} & GET, PUT, DELETE\\[1ex]
+Liste aller Episoden & /episodes/ & GET, POST \\[1ex]
+Einzelne Episode & /episodes/\{id\} & GET, PUT, DELETE\\[1ex]
+Liste aller User & /users/ & GET, POST \\[1ex]
+Einzelne User & /users/\{id\} & GET, PUT, DELETE\\[1ex]
+Liste aller Listen & /lists/ & GET, POST\\[1ex]
+Liste eines Users & /lists/\{id\} & GET, PUT, DELETE\\[1ex]
 \hline
 \end{tabular}
 \label{tab:ressourcendesserientrackers}
@@ -319,7 +319,7 @@ Als Alternative zu den beiden Varianten bietet sich noch der \textbf{HTTP-Header
 \subsubsection{Semantik der HTTP-Operationen}
 
 Nachdem die Ressourcen identifiziert sind, muss nun bestimmt werden, welche Operationen (HTTP-Methoden) unterstützt werden und welche Semantik sich dahinter verbirgt.\\
-Dafür stehen die vier Methoden GET (Informationen auslesen), PUT (Informationen anlegen), POST (Informationen ändern) und DELETE (Informationen löschen) zur Verfügung. Nicht jede Ressource muss alle Methoden bereitstellen. Für das Projekt wurden die Ressourcen erneut betrachtet und die benötigten Methoden samt Semantik herausgearbeitet.
+Dafür stehen die vier Methoden GET (Informationen auslesen), POST (Informationen anlegen), PUT (Informationen ändern) und DELETE (Informationen löschen) zur Verfügung. Nicht jede Ressource muss alle Methoden bereitstellen. Für das Projekt wurden die Ressourcen erneut betrachtet und die benötigten Methoden samt Semantik herausgearbeitet.
 
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{images/bedeutunghttpmethoden.png}
