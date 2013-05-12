@@ -1,63 +1,107 @@
 package minirestwebservice;
 
 import java.io.File;
+import java.util.List;
 
 import javax.ws.rs.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import jaxb.Episode;
 import jaxb.Episodes;
 import jaxb.ObjectFactory;
+import jaxb.Serie;
+import jaxb.Series;
+
 
 @Path( "/episodes" )
 public class EpisodesService {
 
 	private Unmarshaller unMarshaller;
+	private Marshaller marshaller;
+	private final File file = new File( "XML Examples/Episodes.xml" );
 
 	@GET @Produces( "application/xml" )
-	public Episodes getAll() throws JAXBException {
-		ObjectFactory of = new ObjectFactory();
-
-		Episodes episodes = of.createEpisodes();
-
+	public Episodes getAllEpisodes() throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance( Episodes.class );
 
 		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
-		episodes = (Episodes) unMarshaller.unmarshal( new File( "XML Examples/Episodes.xml" ) );
+		Episodes episodes = (Episodes) unMarshaller.unmarshal( this.file );
 
 		return episodes;
 	}
 
 	@Path( "/{id}" )
 	@GET @Produces( "application/xml" )
-	public Episode getSingle(@PathParam("id") int id) throws JAXBException {
-		ObjectFactory of = new ObjectFactory();
-
-		Episodes episodes = of.createEpisodes();
+	public Episode getSingleEpisode(@PathParam("id") int id) throws JAXBException {
 
 		JAXBContext jaxbContext = JAXBContext.newInstance( Episodes.class );
 
 		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
-		episodes = (Episodes) unMarshaller.unmarshal( new File( "XML Examples/Episodes.xml" ) );
+		Episodes rawEpisodes = (Episodes) unMarshaller.unmarshal( this.file );
 
-		return episodes.getEpisode().get(id);
+		List<Episode> episodes = rawEpisodes.getEpisode();
+
+		for ( Episode episode : episodes ) {
+			if ( episode.getEpisodeID().intValue() == id ) {
+				return episode;
+			}
+		}
+
+		return null;
 	}
 
-	  // Episode nach ID ändern:
-//	   @POST @Path("/{id}")
-//	   public Episode updateEpisodeById(
-//	         @PathParam("episodeID")    String episodeID,
-//	         @FormParam("episodeNumber")  Integer episodeNumber,
-//	         @FormParam("title") String title,
-//	         @FormParam("overview") String overview,
-//	   		 @FormParam("dateTime") String airdate ,
-//	   		 @FormParam("images")  images,
-//	   		 @FormParam("serieID") String serieID,
-//	   		 @FormParam("seasonID") String seasonID )
-//	   {}
-//	   http://www.torsten-horn.de/techdocs/jee-rest.htm#JaxRsHelloWorld-Grizzly
+	
+	
 
+//	@Path( "/{id}" )
+//	@POST @Produces( "application/xml" )
+//	public String createSingleEpisode(@PathParam("id") int id) throws JAXBException {
+//		
+//		Episode newEpisode = new Episode();
+//				
+//		JAXBContext jaxbContext = JAXBContext.newInstance( Series.class );
+//
+//		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
+//		this.marshaller   = jaxbContext.createMarshaller(); // Writing
+//		this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+//		Episodes rawEpisodes = (Episodes) unMarshaller.unmarshal( this.file );
+//		
+//		newEpisode.setTitle(value);
+//		newEpisode.setSerieID(value);
+//		newEpisode.setSeasonID(value);
+//		newEpisode.setOverview(value);
+//		newEpisode.setImages(value);
+//		newEpisode.setEpisodeNumber(value);
+//		newEpisode.setEpisodeID(value);
+//		newEpisode.setAirdate(value);
+//		
+//	}
 
+	@Path( "/{id}" )
+	@DELETE @Produces( "application/xml" )
+	public String deleteSingleEpisode(@PathParam("id") int id) throws JAXBException {
+
+		JAXBContext jaxbContext = JAXBContext.newInstance( Episodes.class );
+
+		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
+		this.marshaller   = jaxbContext.createMarshaller(); // Writing
+		this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+		Episodes rawEpisodes = (Episodes) unMarshaller.unmarshal( this.file );
+
+		List<Episode> episodes = rawEpisodes.getEpisode();
+
+		for ( Episode episode : episodes ) {
+			if ( episode.getEpisodeID().intValue() == id ) {
+				episodes.remove( episode );
+				this.marshaller.marshal( rawEpisodes, this.file );
+				return "<success>1</success";
+			}
+
+		}
+
+		return "<success>0</success";
+	}
 }

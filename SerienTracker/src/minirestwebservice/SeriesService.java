@@ -70,25 +70,18 @@ public class SeriesService {
 //		
 //
 //		
-//		newSerie.setTitle(String value);
-//		newSerie.setGenres(Genres value);
+//		newSerie.setTitle(new Title());
+//		newSerie.setGenres(createGenres());
 //		newSerie.setYear(Integer value) ;
 //		newSerie.setFirstaired(XMLGregorianCalendar value) ;
-//
 //		newSerie.setCountry(String value) ;
-//		newSerie.setOverview(String value);
-//
+//		newSerie.setOverview(new Overview());
 //		newSerie.setEpisoderuntime(BigInteger value) ;
-//
-//		newSerie.setNetwork(String value) ;
-// 
-//		newSerie.setAirday(String value);
-//
+//		newSerie.setNetwork(new Network) ;
+//		newSerie.setAirday(new Airday());
 //		newSerie.setAirtime(XMLGregorianCalendar value) ;
-//
 //		newSerie.setImages(Images value);
 //		newSerie.setSeasons(Seasons value) ;
-//
 //		newSerie.setSerieID(BigInteger value);
 	
 	
