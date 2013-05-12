@@ -38,7 +38,6 @@
 	<!-- Austrahlungstag der Episode  -->
 	<xs:element name="airdate" type="xs:dateTime"/>
 
-	<!-- globale episodeID Zuordnung -->
-	<xs:attribute name="episodeID" type="xs:positiveInteger"/>
+	
 
 </xs:schema>

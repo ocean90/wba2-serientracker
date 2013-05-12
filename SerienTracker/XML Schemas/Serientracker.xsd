@@ -54,6 +54,25 @@
 			<xs:attribute name="src" type="xs:anyURI"/>
 		</xs:complexType>
 	</xs:element>
+	
+	<!-- serieID -->
+	<xs:attribute name="serieID" type="xs:positiveInteger"/>
+	
+	<!-- seasonID -->
+	<xs:attribute name="seasonID" type="xs:positiveInteger"/>
+	
+	<!-- episodeID -->
+	<xs:attribute name="episodeID" type="xs:positiveInteger"/>
+	
+	<!-- userID -->
+	<xs:attribute name="userID" type="xs:positiveInteger"/>
+	
+	<!-- messageID -->
+	<xs:attribute name="messageID" type="xs:positiveInteger"/>
+	
+	<!-- listID -->
+	<xs:attribute name="listID" type="xs:positiveInteger"/>
+	
 
 </xs:schema>
 

@@ -8,16 +8,22 @@
 	<xs:include schemaLocation="Serientracker.xsd"/>
 
 	<!-- Gesamtes Element einer Staffel -->
+	<!-- IDs von Elementen werden nicht vorrausgesetzt, sondern dienen möglichen Einsatzfällen.
+		 episodeID bezieht sich auf Datum einer bestimmten Episode von abonnierten Serien, seasonID zur Benachrichtung beim start neuer Staffeln 
+		 und serieID beim abonnieren eines bestimmten Genres, zu dem bei laufender Serie eine Nachricht rausgeshcickt wird.-->
 	<xs:element name="message">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="subscribedUser"/>
 				<xs:element ref="airdate"/>
-				<xs:element ref="episodeID"/>
 				<xs:element ref="content"/>
 			</xs:sequence>
 
 			<xs:attribute ref="messageID" use="required"/>
+			<xs:attribute ref="episodeID" />
+			<xs:attribute ref="seasonID" />
+			<xs:attribute ref="serieID" />
+			
 		</xs:complexType>
 	</xs:element>
 
@@ -30,13 +36,10 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- globale episodeID Zuordnung -->
-	<xs:element name="episodeID" type="xs:positiveInteger"/>
 
 	<!-- Nachricht, die der Abonnement erhält -->
 	<xs:element name="content" type="xs:string"/>
 
-	<!-- ID für wiederkehrende Meldungen -->
-	<xs:attribute name="messageID" type="xs:positiveInteger"/>
+
 
 </xs:schema>

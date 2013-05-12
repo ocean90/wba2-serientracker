@@ -157,8 +157,4 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-
-	<!-- globale serieID Zuordnung -->
-	<xs:attribute name="serieID" type="xs:positiveInteger"/>
-
 </xs:schema>

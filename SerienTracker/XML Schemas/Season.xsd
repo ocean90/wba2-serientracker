@@ -32,7 +32,5 @@
 		</xs:simpleType>
 	</xs:element>
 
-	<!-- globale seasonID Zuordnung -->
-	<xs:attribute name="seasonID" type="xs:positiveInteger"/>
 
 </xs:schema>

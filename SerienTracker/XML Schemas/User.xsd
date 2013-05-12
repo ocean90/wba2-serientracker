@@ -107,7 +107,5 @@
 	<!-- Adminrechte -->
 	<xs:attribute name="admin" type="xs:boolean" default="false"/>
 
-	<!-- globale userID Zuordnung -->
-	<xs:attribute name="userID" type="xs:positiveInteger"/>
 
 </xs:schema>

@@ -47,7 +47,5 @@
 	</xs:element>
 
 
-	<!-- globale listID Zuordnung -->
-	<xs:attribute name="listID" type="xs:positiveInteger"/>
 
 </xs:schema>
