@@ -13,7 +13,7 @@
 			<xs:choice minOccurs="0">
 				<xs:sequence>
 					<xs:element ref="title"/>
-					<xs:element ref="genre" maxOccurs="unbounded"/>
+					<xs:element ref="genres"/>
 
 					<xs:element ref="year"/>
 					<xs:element ref="firstaired"/>
@@ -130,6 +130,16 @@
 
 	<!-- Austrahlungszeit -->
 	<xs:element name="airtime" type="xs:time"/>
+
+
+	<!-- Container der Genres -->
+	<xs:element name="genres">
+		<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="genre" maxOccurs="unbounded"/>
+				</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 	<!-- Genres -->
 	<xs:element name="genre">

@@ -8,6 +8,8 @@
 
 package jaxb;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}users"/>
+ *         &lt;element ref="{}genre" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "users"
+    "genre"
 })
-@XmlRootElement(name = "subscribedUser")
-public class SubscribedUser {
+@XmlRootElement(name = "genres")
+public class Genres {
 
     @XmlElement(required = true)
-    protected Users users;
+    protected List<String> genre;
 
     /**
-     * Ruft den Wert der users-Eigenschaft ab.
+     * Gets the value of the genre property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Users }
-     *     
-     */
-    public Users getUsers() {
-        return users;
-    }
-
-    /**
-     * Legt den Wert der users-Eigenschaft fest.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the genre property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Users }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getGenre().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
      */
-    public void setUsers(Users value) {
-        this.users = value;
+    public List<String> getGenre() {
+        if (genre == null) {
+            genre = new ArrayList<String>();
+        }
+        return this.genre;
     }
 
 }

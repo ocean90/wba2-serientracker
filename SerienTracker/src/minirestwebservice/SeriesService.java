@@ -1,6 +1,8 @@
 package minirestwebservice;
 
 import java.io.File;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.*;
@@ -8,7 +10,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.datatype.XMLGregorianCalendar;
 
+import jaxb.Images;
+import jaxb.Seasons;
 import jaxb.Serie;
 import jaxb.Series;
 
@@ -21,7 +26,7 @@ public class SeriesService {
 	private final File file = new File( "XML Examples/Series.xml" );
 
 	@GET @Produces( "application/xml" )
-	public Series getAll() throws JAXBException {
+	public Series getAllSeries() throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance( Series.class );
 
 		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
@@ -32,7 +37,7 @@ public class SeriesService {
 
 	@Path( "/{id}" )
 	@GET @Produces( "application/xml" )
-	public Serie getSingle(@PathParam("id") int id) throws JAXBException {
+	public Serie getSingleSerie(@PathParam("id") int id) throws JAXBException {
 
 		JAXBContext jaxbContext = JAXBContext.newInstance( Series.class );
 
@@ -50,9 +55,46 @@ public class SeriesService {
 		return null;
 	}
 
+//	@Path( "/{id}" )
+//	@POST @Produces( "application/xml" )
+//	public String createSingleSerie(@PathParam("id") int id) throws JAXBException {
+//		
+//		Serie newSerie = new Serie();
+//				
+//		JAXBContext jaxbContext = JAXBContext.newInstance( Series.class );
+//
+//		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
+//		this.marshaller   = jaxbContext.createMarshaller(); // Writing
+//		this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+//		Series rawSeries = (Series) unMarshaller.unmarshal( this.file );
+//		
+//
+//		
+//		newSerie.setTitle(String value);
+//		newSerie.setGenres(Genres value);
+//		newSerie.setYear(Integer value) ;
+//		newSerie.setFirstaired(XMLGregorianCalendar value) ;
+//
+//		newSerie.setCountry(String value) ;
+//		newSerie.setOverview(String value);
+//
+//		newSerie.setEpisoderuntime(BigInteger value) ;
+//
+//		newSerie.setNetwork(String value) ;
+// 
+//		newSerie.setAirday(String value);
+//
+//		newSerie.setAirtime(XMLGregorianCalendar value) ;
+//
+//		newSerie.setImages(Images value);
+//		newSerie.setSeasons(Seasons value) ;
+//
+//		newSerie.setSerieID(BigInteger value);
+	
+	
 	@Path( "/{id}" )
 	@DELETE @Produces( "application/xml" )
-	public String deleteSingle(@PathParam("id") int id) throws JAXBException {
+	public String deleteSingleSerie(@PathParam("id") int id) throws JAXBException {
 
 		JAXBContext jaxbContext = JAXBContext.newInstance( Series.class );
 
