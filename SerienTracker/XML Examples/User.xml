@@ -17,13 +17,8 @@
     <joined>2001-10-26T21:32:52+02:00</joined>
     <avatar>http://serientracker.de/userID=12/profilepic</avatar>
     <subscriptions>
-    	<genres> 
-    		<genre>Action</genre>
-    		<genre>Comedy</genre>
-    	</genres>
-    	<series>
-    		<serie serieID="ss_0001wade"/>
-    	</series>
+    	<list listID="ls_00000001" userID="us_00000001" public="true"/>
+    	<serie serieID="ss_00dkfw00"/>
     </subscriptions>
 
 

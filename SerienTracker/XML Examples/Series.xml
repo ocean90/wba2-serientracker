@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<series xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="../XML Schemas/Series.xsd">
+<series>
     <serie serieID="ss_0001wade">
         <title>The Walking Dead</title>
         <genres>
@@ -27,8 +25,9 @@
     <serie serieID="ss_0002cali"/>
     <serie serieID="ss_0001alco">
         <title>Alarm fur Cobra 11</title>
-        <genres> <genre>Action</genre> </genres>
-        
+        <genres>
+            <genre>Action</genre>
+        </genres>
         <year>2012</year>
         <firstaired>2013-05-12+02:00</firstaired>
         <country>Germany</country>
@@ -40,8 +39,9 @@
     </serie>
     <serie serieID="ss_0004hero">
         <title>Heroes</title>
-        <genres> <genre>Action</genre> </genres>
-        
+        <genres>
+            <genre>Action</genre>
+        </genres>
         <year>2012</year>
         <firstaired>2013-05-12+02:00</firstaired>
         <country>Germany</country>
@@ -50,5 +50,16 @@
         <network>ABC</network>
         <airday>Monday</airday>
         <airtime>21:21:13.342+02:00</airtime>
+    </serie>
+    <serie serieID="ss_c07ffa57">
+        <title>Martins Welt</title>
+        <year>2013</year>
+        <firstaired>2013-05-13+02:00</firstaired>
+        <country>Germany</country>
+        <overview>Martin erlebt sch�ne Geschichten</overview>
+        <episoderuntime>20</episoderuntime>
+        <network>ZDF</network>
+        <airday>Sunday</airday>
+        <airtime>11:20:48.610+02:00</airtime>
     </serie>
 </series>

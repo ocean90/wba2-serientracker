@@ -56,6 +56,7 @@ public class SeriesService {
 //		
 //		return (Series) genreSeriesList;
 //	}
+	// consumes
 
 	@POST @Produces( "application/xml" )
 	public String createSingleSerie(
