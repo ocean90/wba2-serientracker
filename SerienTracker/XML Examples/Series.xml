@@ -1,39 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<series
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="../XML Schemas/Series.xsd">
-
-
-	<serie serieID="1">
-
-		<title>The Walking Dead</title>
-		<genre>Action</genre>
-
-    	<year>2010</year>
-  	  	<firstaired>2010-10-01</firstaired>
-  	  	<country>USA</country>
-    	<overview>The Walking Dead is an American horror television drama series developed by Frank Darabont. It is based on the comic book series of the same name by Robert Kirkman, Tony Moore, and Charlie Adlard.
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<series>
+    <serie serieID="ss_ahu198j4">
+        <title>The Walking Dead</title>
+        <genres>
+            <genre>Action</genre>
+        </genres>
+        <year>2010</year>
+        <firstaired>2010-10-01</firstaired>
+        <country>USA</country>
+        <overview>The Walking Dead is an American horror television drama series developed by Frank Darabont. It is based on the comic book series of the same name by Robert Kirkman, Tony Moore, and Charlie Adlard.
     	The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens from a coma to find a post-apocalyptic world dominated by flesh-eating "walkers", resembling zombies.</overview>
-
-		<episoderuntime>50</episoderuntime>
-
-    	<network>AMC</network>
-		<airday>Sunday</airday>
-		<airtime>22:00:00</airtime>
-
-		<images>
-			<image src="http://serientracker.de/serieID=1/pic.jpg"/>
-			<image src="http://serientracker.de/serieID=1/pic.jpg"/>
-		</images>
-
-		<seasons serieID="1">
-			<season serieID="1" seasonID="2"/>
-		</seasons>
-
-	</serie>
-
-	<serie serieID="2"></serie>
-
+        <episoderuntime>50</episoderuntime>
+        <network>AMC</network>
+        <airday>Sunday</airday>
+        <airtime>22:00:00</airtime>
+        <images>
+            <image src="http://serientracker.de/serieID=1/pic.jpg"/>
+            <image src="http://serientracker.de/serieID=1/pic.jpg"/>
+        </images>
+        <seasons serieID="ss_ahu198j4">
+            <season serieID="ss_ahu198j4" seasonID="sn_auv409nt"/>
+        </seasons>
+    </serie>
+    <serie serieID="ss_a90fw3je"/>
+    <serie serieID="ss_4cdb1302">
+        <title>Alarm fur Cobra 11</title>
+        <year>2012</year>
+        <firstaired>2013-05-12+02:00</firstaired>
+        <country>Germany</country>
+        <overview>testtesttest</overview>
+        <episoderuntime>10</episoderuntime>
+        <network>ABC</network>
+        <airday>Monday</airday>
+        <airtime>21:20:22.045+02:00</airtime>
+    </serie>
+    <serie serieID="ss_4cdb1302">
+        <title>Alarm fur Cobra 11</title>
+        <year>2012</year>
+        <firstaired>2013-05-12+02:00</firstaired>
+        <country>Germany</country>
+        <overview>testtesttest</overview>
+        <episoderuntime>10</episoderuntime>
+        <network>ABC</network>
+        <airday>Monday</airday>
+        <airtime>21:21:13.342+02:00</airtime>
+    </serie>
 </series>

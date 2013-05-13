@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.12 um 04:04:23 PM CEST 
+// Generiert: 2013.05.12 um 08:12:10 PM CEST 
 //
 
 
@@ -64,14 +64,11 @@ public class Message {
     @XmlSchemaType(name = "positiveInteger")
     protected BigInteger messageID;
     @XmlAttribute(name = "episodeID")
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger episodeID;
+    protected String episodeID;
     @XmlAttribute(name = "seasonID")
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger seasonID;
+    protected String seasonID;
     @XmlAttribute(name = "serieID")
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger serieID;
+    protected String serieID;
 
     /**
      * Ruft den Wert der subscribedUser-Eigenschaft ab.
@@ -174,10 +171,10 @@ public class Message {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getEpisodeID() {
+    public String getEpisodeID() {
         return episodeID;
     }
 
@@ -186,10 +183,10 @@ public class Message {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setEpisodeID(BigInteger value) {
+    public void setEpisodeID(String value) {
         this.episodeID = value;
     }
 
@@ -198,10 +195,10 @@ public class Message {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getSeasonID() {
+    public String getSeasonID() {
         return seasonID;
     }
 
@@ -210,10 +207,10 @@ public class Message {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setSeasonID(BigInteger value) {
+    public void setSeasonID(String value) {
         this.seasonID = value;
     }
 
@@ -222,10 +219,10 @@ public class Message {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getSerieID() {
+    public String getSerieID() {
         return serieID;
     }
 
@@ -234,10 +231,10 @@ public class Message {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setSerieID(BigInteger value) {
+    public void setSerieID(String value) {
         this.serieID = value;
     }
 

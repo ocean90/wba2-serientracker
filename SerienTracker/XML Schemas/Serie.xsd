@@ -24,8 +24,8 @@
 					<xs:element ref="network"/>
 					<xs:element ref="airday"/>
 					<xs:element ref="airtime"/>
-					<xs:element ref="images"/>
-					<xs:element ref="seasons"/>
+					<xs:element ref="images" minOccurs="0"/>
+					<xs:element ref="seasons" minOccurs="0"/>
 				</xs:sequence>
 			</xs:choice>
 

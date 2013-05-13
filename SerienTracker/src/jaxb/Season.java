@@ -2,18 +2,16 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.12 um 04:04:23 PM CEST 
+// Generiert: 2013.05.12 um 08:12:10 PM CEST 
 //
 
 
 package jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -55,11 +53,9 @@ public class Season {
     protected Episodes episodes;
     protected Images images;
     @XmlAttribute(name = "serieID", required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger serieID;
+    protected String serieID;
     @XmlAttribute(name = "seasonID", required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger seasonID;
+    protected String seasonID;
 
     /**
      * Ruft den Wert der seasonNumber-Eigenschaft ab.
@@ -138,10 +134,10 @@ public class Season {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getSerieID() {
+    public String getSerieID() {
         return serieID;
     }
 
@@ -150,10 +146,10 @@ public class Season {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setSerieID(BigInteger value) {
+    public void setSerieID(String value) {
         this.serieID = value;
     }
 
@@ -162,10 +158,10 @@ public class Season {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getSeasonID() {
+    public String getSeasonID() {
         return seasonID;
     }
 
@@ -174,10 +170,10 @@ public class Season {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setSeasonID(BigInteger value) {
+    public void setSeasonID(String value) {
         this.seasonID = value;
     }
 

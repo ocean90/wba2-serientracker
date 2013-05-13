@@ -11,9 +11,6 @@ import javax.xml.bind.Unmarshaller;
 
 import jaxb.Season;
 import jaxb.Seasons;
-import jaxb.ObjectFactory;
-import jaxb.Serie;
-import jaxb.Series;
 
 @Path( "/seasons" )
 public class SeasonsService {
@@ -44,36 +41,36 @@ public class SeasonsService {
 		List<Season> seasons = rawSeasons.getSeason();
 
 		for ( Season season : seasons ) {
-			if ( season.getSeasonID().intValue() == id ) {
+			if ( season.getSeasonID().equals( id ) ) {
 				return season;
 			}
 		}
 
 		return null;
 	}
-	
+
 //	@Path( "/{id}" )
 //	@POST @Produces( "application/xml" )
 //	public String createSingleSeason(@PathParam("id") int id) throws JAXBException {
-//		
+//
 //		Season newSeason = new Season();
-//				
+//
 //		JAXBContext jaxbContext = JAXBContext.newInstance( Seasons.class );
 //
 //		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
 //		this.marshaller   = jaxbContext.createMarshaller(); // Writing
 //		this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
 //		Series rawSeries = (Series) unMarshaller.unmarshal( this.file );
-//		
 //
-//		
+//
+//
 //		newSeason.setSerieID(value);
 //		newSeason.setSeasonNumber(value);
 //		newSeason.setSeasonID(value);
 //		newSeason.setImages(value);
 //		newSeason.setEpisodes(value);
 //	}
-//	
+//
 	@Path( "/{id}" )
 	@DELETE @Produces( "application/xml" )
 	public String deleteSingleSeason(@PathParam("id") int id) throws JAXBException {
@@ -88,15 +85,15 @@ public class SeasonsService {
 		List<Season> seasons = rawSeasons.getSeason();
 
 		for ( Season season : seasons ) {
-			if ( season.getSeasonID().intValue() == id ) {
+			if ( season.getSeasonID().equals( id ) ) {
 				seasons.remove( season );
 				this.marshaller.marshal( rawSeasons, this.file );
-				return "<success>1</success";
+				return "<success>1</success>";
 			}
 
 		}
 
-		return "<success>0</success";
+		return "<success>0</success>";
 	}
 
 

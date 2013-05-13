@@ -2,13 +2,12 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.12 um 04:04:23 PM CEST 
+// Generiert: 2013.05.12 um 08:12:10 PM CEST 
 //
 
 
 package jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -64,14 +63,11 @@ public class Episode {
     protected XMLGregorianCalendar airdate;
     protected Images images;
     @XmlAttribute(name = "serieID", required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger serieID;
+    protected String serieID;
     @XmlAttribute(name = "seasonID", required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger seasonID;
+    protected String seasonID;
     @XmlAttribute(name = "episodeID", required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger episodeID;
+    protected String episodeID;
 
     /**
      * Ruft den Wert der episodeNumber-Eigenschaft ab.
@@ -198,10 +194,10 @@ public class Episode {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getSerieID() {
+    public String getSerieID() {
         return serieID;
     }
 
@@ -210,10 +206,10 @@ public class Episode {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setSerieID(BigInteger value) {
+    public void setSerieID(String value) {
         this.serieID = value;
     }
 
@@ -222,10 +218,10 @@ public class Episode {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getSeasonID() {
+    public String getSeasonID() {
         return seasonID;
     }
 
@@ -234,10 +230,10 @@ public class Episode {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setSeasonID(BigInteger value) {
+    public void setSeasonID(String value) {
         this.seasonID = value;
     }
 
@@ -246,10 +242,10 @@ public class Episode {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getEpisodeID() {
+    public String getEpisodeID() {
         return episodeID;
     }
 
@@ -258,10 +254,10 @@ public class Episode {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setEpisodeID(BigInteger value) {
+    public void setEpisodeID(String value) {
         this.episodeID = value;
     }
 

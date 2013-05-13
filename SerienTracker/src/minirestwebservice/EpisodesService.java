@@ -11,9 +11,6 @@ import javax.xml.bind.Unmarshaller;
 
 import jaxb.Episode;
 import jaxb.Episodes;
-import jaxb.ObjectFactory;
-import jaxb.Serie;
-import jaxb.Series;
 
 
 @Path( "/episodes" )
@@ -45,7 +42,7 @@ public class EpisodesService {
 		List<Episode> episodes = rawEpisodes.getEpisode();
 
 		for ( Episode episode : episodes ) {
-			if ( episode.getEpisodeID().intValue() == id ) {
+			if ( episode.getEpisodeID().equals( id ) ) {
 				return episode;
 			}
 		}
@@ -53,22 +50,22 @@ public class EpisodesService {
 		return null;
 	}
 
-	
-	
+
+
 
 //	@Path( "/{id}" )
 //	@POST @Produces( "application/xml" )
 //	public String createSingleEpisode(@PathParam("id") int id) throws JAXBException {
-//		
+//
 //		Episode newEpisode = new Episode();
-//				
+//
 //		JAXBContext jaxbContext = JAXBContext.newInstance( Series.class );
 //
 //		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
 //		this.marshaller   = jaxbContext.createMarshaller(); // Writing
 //		this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
 //		Episodes rawEpisodes = (Episodes) unMarshaller.unmarshal( this.file );
-//		
+//
 //		newEpisode.setTitle(value);
 //		newEpisode.setSerieID(value);
 //		newEpisode.setSeasonID(value);
@@ -77,7 +74,7 @@ public class EpisodesService {
 //		newEpisode.setEpisodeNumber(value);
 //		newEpisode.setEpisodeID(value);
 //		newEpisode.setAirdate(value);
-//		
+//
 //	}
 
 	@Path( "/{id}" )
@@ -94,14 +91,13 @@ public class EpisodesService {
 		List<Episode> episodes = rawEpisodes.getEpisode();
 
 		for ( Episode episode : episodes ) {
-			if ( episode.getEpisodeID().intValue() == id ) {
+			if ( episode.getEpisodeID().equals( id ) ) {
 				episodes.remove( episode );
 				this.marshaller.marshal( rawEpisodes, this.file );
-				return "<success>1</success";
+				return "<success>1</success>";
 			}
-
 		}
 
-		return "<success>0</success";
+		return "<success>0</success>";
 	}
 }
