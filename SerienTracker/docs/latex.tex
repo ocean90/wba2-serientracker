@@ -37,7 +37,7 @@ citecolor = black] {hyperref}
 
 
 \section{Einleitung}
-Im Rahmen der Projektphase des Moduls Webbasierte Anwendungen 2: Verteilte Systeme, geht es um die Entwicklung einer Applikation, die sich mit dem Datenaustausch in verteilten System beschäftigt. Innerhalb dieses Systems wird zum einen eine synchrone Kommunikation zwischen Instanzen mit Hilfe des REST Konzeptes realisiiert und zum andern ein asynchroner Datenaustausch auf Grundlage von XMPP.
+Im Rahmen der Projektphase des Moduls Webbasierte Anwendungen 2: Verteilte Systeme, geht es um die Entwicklung einer Applikation, die sich mit dem Datenaustausch in verteilten System beschäftigt. Innerhalb dieses Systems wird zum einen eine synchrone Kommunikation zwischen Instanzen mit Hilfe des REST Konzeptes realisiiert und zum andern ein asynchroner Datenaustausch auf Grundlage von XMPP. TODO
 
 
 \section{Konzept}
@@ -207,7 +207,7 @@ wie Krimie oder Crime, führen dementsprechend zu Komplikationen, weil sie die K
 Die Auseinandersetzung führte zu dem Ergebnis, dass folgende Objekttypen innerhalb des Serientrackers von interesse sind und wiederkehrende Elemente darstellen:
 
 Serie \\
-Eines der wichtigsten Elemente, dass alle Informationen beinhaltet, die für den Benutzer von bedeutung sind, ist die Serie, 
+Eines der wichtigsten Elemente, dass alle Informationen beinhaltet, die für den Benutzer von bedeutung sind, ist die Serie. 
 Eine Serie besitzt allgemeine Informationen wie Name, eine Beschreibung, der Sender indem sie ausgestrahlt wird oder das Produktionsland.
 Im realen Kontext wird eine Serie zudem in Staffeln ausgestrahlt, die jeweils eine bestimmte Anzahl von Episoden enthalten.
 
@@ -225,15 +225,111 @@ Allgemein werden hierbei personenbezogene Daten wie Username und echter Name erw
 Liste \\
 
 
+Als zusätzlicher Typ, der jedoch erst in der asynchronen Kommunikation verwendung finden wird, wurde die Message, also eine bestimmte Art von Nachricht identifiziert.
+
 Für diese Obertypen gilt es ein valides XML Schema zu definieren, wobei während der Entwicklung verschiedene Aspekte betrachtet werden müssen.  
 
+\newpage
 
 \subsubsection{Datentypen}
-Bei der Definition eines XML Schemas, sollte neben der enstprechenden Datensatzstruktur und Reihenfolge,
-auch festgelegt werden, durch welche Datentyp die einzelnen Informationen repräsentiert werden sollen.
+Bei der Definition eines XML Schemas, sollte neben der enstprechenden Datensatzstruktur auch festgelegt werden, durch welche Datentyp die einzelnen Informationen repräsentiert werden sollen.
 
+\newpage
 
 \subsubsection{Restriktionen}
+Um die eingegeben Daten semantisch sinnvoll zu halten, wurde für einige Elemente und Attribute Bedindungen hinzugefügt, die im jeweiligen Zusammenhang sinnvoll erscheinen. 
+
+\begin{table}[H]
+\caption{Restriktionen des User Schemas}
+
+
+\begin{tabular}{l l l}
+\\ [-0.5ex]
+
+\hline\hline
+\\ [-0.5ex]
+Element/Attirbute & Restriktion & Begründung
+\\ [1.5ex]
+\hline
+\\ [-0.5ex]
+Username & Stringlänge 2 < und < 30 & sinnvolle Namenlänge, verhindert Text \\[1ex]
+Lastname & Stringlänge 1 < und < 40 & gängige Nachnamenlänge, eventuell Doppelnamen,\\[1ex]
+&&verhindert Text \\[1ex]
+Firstname & Stringlänge 1 < und < 50 & gängige Vornamenlänge, Mehrfachnahmen \\[1ex]
+Gender & Auswahl zwischen Male und Female & logische Auswahl, Vorgabe verhindert \\[1ex]
+&&Schreibfehler durch User\\[1ex]
+Age & älter als 13 und jünger als 121 & Mindestalter zur rechtlichen Nutzung, \\[1ex]
+&&Alter nach oben sinnvoll begrenzt \\[1ex]
+Location & Stringlänge < 40 & Stadtname, Land etc. Eingabe ist keine Adresse\\[1ex]
+&&und lässt sich in Kürze ausdrücken\\[1ex]
+About & Stringlänge < 200 & optionale Kurzbeschreibung, nach oben begrenzt, \\[1ex]
+&&zu viele Informationen nicht unbedingt von Interesse  \\[1ex]
+Admin & Boolean ob True or False & Rechtevergabe nach Status,\\[1ex] 
+&&Auswahl nur in 2 Zuständen möglich\\[1ex]
+
+\hline
+\end{tabular}
+\label{tab:restriktionenderxsd}
+\end{table}
+
+
+\begin{table}[H]
+\caption{Restriktionen des Serie Schemas}
+
+
+\begin{tabular}{l l l}
+\\ [-0.5ex]
+
+\hline\hline
+\\ [-0.5ex]
+Element/Attirbute & Restriktion & Begründung
+\\ [1.5ex]
+\hline
+\\ [-0.5ex]
+Year & Jahreszahl 1900 < und < 2015 & Jahreszeiten außerhalb unrelevant \\[1ex]
+Country & Auswahlmöglichkeit Ländern, die Serien produzieren & verhindern von Eingabefehler der User\\[1ex]
+Episoderuntime & Auswahl zwischen gängigen Episodenlängen& Serie hat feste Episodenlänge, bekannte Längen \\[1ex]
+Network & Auswahl bekannter Sender & unrelevante Sender entfallen, Eingabefehler verhindern \\[1ex]
+Airday & Auswahl des Tagnamen & Eingabefehler verhindern \\[1ex]
+Genre & Auswahl definierter Genres & einheitliche Schreibweise, Eingabefehler verhindern, sinnvolle Genre\\[1ex]
+
+\hline
+\end{tabular}
+\label{tab:restriktionenderxsd}
+\end{table}
+
+
+
+
+\begin{table}[H]
+\caption{Weitere Restriktionen}
+
+
+\begin{tabular}{l l l}
+\\ [-0.5ex]
+
+\hline\hline
+\\ [-0.5ex]
+Element/Attirbute & Restriktion & Begründung
+\\ [1.5ex]
+\hline
+\\ [-0.5ex]
+Overview (global) & Stringlänge 10 < und < 500 & Vermittlung von allgemeinen Informationen,\\[1ex]
+ &&kurze Inhaltsangabe \\[1ex]
+Title (global) & Stringlänge 1 < und < 80 & gängige Titellänge \\[1ex]
+Name (list) & Stringlänge 2 < und < 80 & treffende Bezeichnung, Name keine Beschreibung \\[1ex] 
+Public (list) & Boolean True und False & feste Zustände \\[1ex] 
+Episodenumber (episode) & Anzahl < 26 & maximale Episodenanzahl pro Season gängiger Serien \\[1ex] 
+Seasonnumber (seasons) & Anzahl < 41 & sinnvolle Begrenzung, Freiraum für Langzeitserien \\[1ex] 
+
+\hline
+\end{tabular}
+\label{tab:restriktionenderxsd}
+\end{table}
+
+Neben diesen Restriktionen einzelner Elemente bezogen auf ihre Werte, bestehen auch Genehmigungen bei Containerelementen, hinsichtlich der Häufigkeit für vorkommende Elemente. TODO
+
+Weiterer Aspekt der Definition der Attribute war das festlegen des Benutzungstyp. Da wir Elemente wie Episode haben, die als eigener Typ definiert werden können, aber in einem bestimmten Kontext stehen, werden hierbei Attribute verwendet um die genaue zuordnung zu gewährleisten. Für diese charakterisiernden Attribute, die für spätere Abfragen notwendig, wurde dieses Attribute mit dem Usecase required versehen. Eine Episode erfordert demnach eine genaue serieID, seasonID und episodeID, da sie genannten Nutzen aufweisen. Weiterhin lässt sich einer List eine jeweilige globale listID, eine userID des Verwalters und die Rechtevergabe public zuordnen, da auch diese Informationen als notwendig angesehen werden und im späteren Kontext im Zusammenhang des Serientrackers von Bedeutung sein können. 
 
 \newpage
 \subsubsection{Umsetzung}

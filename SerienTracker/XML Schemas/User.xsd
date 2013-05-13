@@ -119,22 +119,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Abonnierte Tage -->
-	<xs:element name="airdays">
-		<xs:complexType>
-				<xs:sequence>
-					<xs:element ref="airday" minOccurs="1" maxOccurs="7"/>
-				</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<!-- Abonnierte Zeiten -->
-	<xs:element name="airtimes">
-		<xs:complexType>
-				<xs:sequence>
-					<xs:element ref="airtime" minOccurs="1" maxOccurs="7"/>
-				</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+	
+	
 
 </xs:schema>
