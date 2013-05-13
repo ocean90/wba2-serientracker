@@ -38,6 +38,24 @@ public class SeriesService {
 
 		return series;
 	}
+	
+//	@GET @Produces( "application/xml" )
+//	public Series getAllSeries(@QueryParam("genre") String genre) throws JAXBException {
+//		JAXBContext jaxbContext = JAXBContext.newInstance( Series.class );
+//		
+//		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
+//		Series genreSeries = (Series) unMarshaller.unmarshal( this.file );
+//
+//		
+//		List<Serie> genreSeriesList = genreSeries.getSerie();
+//		for ( Serie genreSerie : genreSerieList ) {
+//			if ( genreSerie.getGenres.equals( genre ) ) {
+//				return genreSerie;
+//			} 
+//
+//		
+//		return (Series) genreSeriesList;
+//	}
 
 	@POST @Produces( "application/xml" )
 	public String createSingleSerie(

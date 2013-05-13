@@ -2,8 +2,8 @@
 <seasons	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:noNamespaceSchemaLocation="../XML Schemas/Seasons.xsd"
-		serieID="1">
+		serieID="ss_0001wade">
 
-	<season serieID="1" seasonID="2"/>
+	<season serieID="ss_0001wade" seasonID="sn_0002wade"/>
 
 </seasons>

@@ -5,6 +5,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Lists.xsd">
 
-	<list listID="1" userID="2" public="true"/>
+	<list listID="ls_00000001" userID="us_00000002" public="true"/>
 
 </lists>

@@ -65,18 +65,18 @@
 	<xs:attribute name="episodeID" type="idType"/>
 
 	<!-- userID -->
-	<xs:attribute name="userID" type="xs:positiveInteger"/>
+	<xs:attribute name="userID" type="idType"/>
 
 	<!-- messageID -->
-	<xs:attribute name="messageID" type="xs:positiveInteger"/>
+	<xs:attribute name="messageID" type="idType"/>
 
 	<!-- listID -->
-	<xs:attribute name="listID" type="xs:positiveInteger"/>
+	<xs:attribute name="listID" type="idType"/>
 
 
 	<xs:simpleType name="idType">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="(ss|sn|ep)_[0-9a-z]{8}"/>
+			<xs:pattern value="(ss|sn|ep|us|ls|me)_[0-9a-z]{8}"/>
 		</xs:restriction>
 	</xs:simpleType>
 

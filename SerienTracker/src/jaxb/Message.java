@@ -2,13 +2,12 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.12 um 08:12:10 PM CEST 
+// Generiert: 2013.05.13 um 10:30:59 AM CEST 
 //
 
 
 package jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -61,8 +60,7 @@ public class Message {
     @XmlElement(required = true)
     protected String content;
     @XmlAttribute(name = "messageID", required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger messageID;
+    protected String messageID;
     @XmlAttribute(name = "episodeID")
     protected String episodeID;
     @XmlAttribute(name = "seasonID")
@@ -147,10 +145,10 @@ public class Message {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getMessageID() {
+    public String getMessageID() {
         return messageID;
     }
 
@@ -159,10 +157,10 @@ public class Message {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setMessageID(BigInteger value) {
+    public void setMessageID(String value) {
         this.messageID = value;
     }
 

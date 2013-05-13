@@ -4,7 +4,7 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/User.xsd"
-	userID="12" admin="true">
+	userID="us_00000012" admin="true">
 
 	<username>Ocean90</username>
 
@@ -16,5 +16,15 @@
     <about>ocean blablabla</about>
     <joined>2001-10-26T21:32:52+02:00</joined>
     <avatar>http://serientracker.de/userID=12/profilepic</avatar>
+    <subscriptions>
+    	<genres> 
+    		<genre>Action</genre>
+    		<genre>Comedy</genre>
+    	</genres>
+    	<series>
+    		<serie serieID="ss_0001wade"/>
+    	</series>
+    </subscriptions>
+
 
 </user>

@@ -2,13 +2,12 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.12 um 08:12:10 PM CEST 
+// Generiert: 2013.05.13 um 10:30:59 AM CEST 
 //
 
 
 package jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -38,6 +37,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;element ref="{}about"/>
  *           &lt;element ref="{}joined"/>
  *           &lt;element ref="{}avatar"/>
+ *           &lt;element ref="{}subscriptions" minOccurs="0"/>
+ *           &lt;element ref="{}lists" minOccurs="0"/>
  *         &lt;/sequence>
  *       &lt;/choice>
  *       &lt;attribute ref="{}admin use="required""/>
@@ -59,7 +60,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "location",
     "about",
     "joined",
-    "avatar"
+    "avatar",
+    "subscriptions",
+    "lists"
 })
 @XmlRootElement(name = "user")
 public class User {
@@ -75,11 +78,12 @@ public class User {
     protected XMLGregorianCalendar joined;
     @XmlSchemaType(name = "anyURI")
     protected String avatar;
+    protected Subscriptions subscriptions;
+    protected Lists lists;
     @XmlAttribute(name = "admin", required = true)
     protected boolean admin;
     @XmlAttribute(name = "userID", required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger userID;
+    protected String userID;
 
     /**
      * Ruft den Wert der username-Eigenschaft ab.
@@ -298,6 +302,54 @@ public class User {
     }
 
     /**
+     * Ruft den Wert der subscriptions-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Subscriptions }
+     *     
+     */
+    public Subscriptions getSubscriptions() {
+        return subscriptions;
+    }
+
+    /**
+     * Legt den Wert der subscriptions-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Subscriptions }
+     *     
+     */
+    public void setSubscriptions(Subscriptions value) {
+        this.subscriptions = value;
+    }
+
+    /**
+     * Ruft den Wert der lists-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Lists }
+     *     
+     */
+    public Lists getLists() {
+        return lists;
+    }
+
+    /**
+     * Legt den Wert der lists-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Lists }
+     *     
+     */
+    public void setLists(Lists value) {
+        this.lists = value;
+    }
+
+    /**
      * Ruft den Wert der admin-Eigenschaft ab.
      * 
      */
@@ -318,10 +370,10 @@ public class User {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getUserID() {
+    public String getUserID() {
         return userID;
     }
 
@@ -330,10 +382,10 @@ public class User {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setUserID(BigInteger value) {
+    public void setUserID(String value) {
         this.userID = value;
     }
 

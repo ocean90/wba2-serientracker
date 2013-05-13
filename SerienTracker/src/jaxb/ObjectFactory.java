@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.12 um 08:12:10 PM CEST 
+// Generiert: 2013.05.13 um 10:30:59 AM CEST 
 //
 
 
@@ -154,11 +154,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SubscribedUser }
+     * Create an instance of {@link Subscriptions }
      * 
      */
-    public SubscribedUser createSubscribedUser() {
-        return new SubscribedUser();
+    public Subscriptions createSubscriptions() {
+        return new Subscriptions();
+    }
+
+    /**
+     * Create an instance of {@link Airdays }
+     * 
+     */
+    public Airdays createAirdays() {
+        return new Airdays();
+    }
+
+    /**
+     * Create an instance of {@link Airtimes }
+     * 
+     */
+    public Airtimes createAirtimes() {
+        return new Airtimes();
     }
 
     /**
@@ -178,11 +194,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Shows }
+     * Create an instance of {@link SubscribedUser }
      * 
      */
-    public Shows createShows() {
-        return new Shows();
+    public SubscribedUser createSubscribedUser() {
+        return new SubscribedUser();
     }
 
     /**

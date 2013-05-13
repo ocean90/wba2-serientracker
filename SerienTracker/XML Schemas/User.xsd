@@ -21,6 +21,8 @@
 					<xs:element ref="about"/>
 					<xs:element ref="joined"/>
 					<xs:element ref="avatar"/>
+					<xs:element ref="subscriptions" minOccurs="0"/>
+					<xs:element ref="lists" minOccurs="0"/>
 				</xs:sequence>
 			</xs:choice>
 
@@ -106,6 +108,35 @@
 
 	<!-- Adminrechte -->
 	<xs:attribute name="admin" type="xs:boolean" default="false"/>
+	
+	<!-- Abonnierte Typen -->
+	<xs:element name="subscriptions" >
+		<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="genres" minOccurs="0"/>
+					<xs:element ref="series" minOccurs="0"/>
+					<xs:element ref="airdays" minOccurs="0"/>
+					<xs:element ref="airtimes" minOccurs="0"/>
+				</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
+	<!-- Abonnierte Tage -->
+	<xs:element name="airdays">
+		<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="airday" minOccurs="1" maxOccurs="7"/>
+				</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Abonnierte Zeiten -->
+	<xs:element name="airtimes">
+		<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="airtime" minOccurs="1" maxOccurs="7"/>
+				</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 </xs:schema>

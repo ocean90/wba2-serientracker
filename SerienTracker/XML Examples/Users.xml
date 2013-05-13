@@ -3,7 +3,7 @@
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:noNamespaceSchemaLocation="../XML Schemas/Users.xsd">
 
-	<user admin="false" userID="2">
+	<user admin="false" userID="us_00000002">
 		<username>shufro</username>
 		<lastname>Meyer</lastname>
 		<firstname>Dennis</firstname>
@@ -15,6 +15,6 @@
 		<avatar>http://g.de/</avatar>
 	</user>
 
-	<user admin="false" userID="2"/>
+	<user admin="false" userID="us_00000002"/>
 
 </users>

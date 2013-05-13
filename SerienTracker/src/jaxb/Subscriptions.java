@@ -10,7 +10,6 @@ package jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,15 +23,12 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;choice minOccurs="0">
- *         &lt;sequence>
- *           &lt;element ref="{}name"/>
- *           &lt;element ref="{}series"/>
- *         &lt;/sequence>
- *       &lt;/choice>
- *       &lt;attribute ref="{}userID use="required""/>
- *       &lt;attribute ref="{}listID use="required""/>
- *       &lt;attribute ref="{}public use="required""/>
+ *       &lt;sequence>
+ *         &lt;element ref="{}genres" minOccurs="0"/>
+ *         &lt;element ref="{}series" minOccurs="0"/>
+ *         &lt;element ref="{}airdays" minOccurs="0"/>
+ *         &lt;element ref="{}airtimes" minOccurs="0"/>
+ *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -42,43 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name",
-    "series"
+    "genres",
+    "series",
+    "airdays",
+    "airtimes"
 })
-@XmlRootElement(name = "list")
-public class List {
+@XmlRootElement(name = "subscriptions")
+public class Subscriptions {
 
-    protected String name;
+    protected Genres genres;
     protected Series series;
-    @XmlAttribute(name = "userID", required = true)
-    protected String userID;
-    @XmlAttribute(name = "listID", required = true)
-    protected String listID;
-    @XmlAttribute(name = "public", required = true)
-    protected boolean _public;
+    protected Airdays airdays;
+    protected Airtimes airtimes;
 
     /**
-     * Ruft den Wert der name-Eigenschaft ab.
+     * Ruft den Wert der genres-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Genres }
      *     
      */
-    public String getName() {
-        return name;
+    public Genres getGenres() {
+        return genres;
     }
 
     /**
-     * Legt den Wert der name-Eigenschaft fest.
+     * Legt den Wert der genres-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Genres }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setGenres(Genres value) {
+        this.genres = value;
     }
 
     /**
@@ -106,67 +100,51 @@ public class List {
     }
 
     /**
-     * Ruft den Wert der userID-Eigenschaft ab.
+     * Ruft den Wert der airdays-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Airdays }
      *     
      */
-    public String getUserID() {
-        return userID;
+    public Airdays getAirdays() {
+        return airdays;
     }
 
     /**
-     * Legt den Wert der userID-Eigenschaft fest.
+     * Legt den Wert der airdays-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Airdays }
      *     
      */
-    public void setUserID(String value) {
-        this.userID = value;
+    public void setAirdays(Airdays value) {
+        this.airdays = value;
     }
 
     /**
-     * Ruft den Wert der listID-Eigenschaft ab.
+     * Ruft den Wert der airtimes-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Airtimes }
      *     
      */
-    public String getListID() {
-        return listID;
+    public Airtimes getAirtimes() {
+        return airtimes;
     }
 
     /**
-     * Legt den Wert der listID-Eigenschaft fest.
+     * Legt den Wert der airtimes-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Airtimes }
      *     
      */
-    public void setListID(String value) {
-        this.listID = value;
-    }
-
-    /**
-     * Ruft den Wert der public-Eigenschaft ab.
-     * 
-     */
-    public boolean isPublic() {
-        return _public;
-    }
-
-    /**
-     * Legt den Wert der public-Eigenschaft fest.
-     * 
-     */
-    public void setPublic(boolean value) {
-        this._public = value;
+    public void setAirtimes(Airtimes value) {
+        this.airtimes = value;
     }
 
 }

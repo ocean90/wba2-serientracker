@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<series>
-    <serie serieID="ss_ahu198j4">
+<series xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/Series.xsd">
+    <serie serieID="ss_0001wade">
         <title>The Walking Dead</title>
         <genres>
             <genre>Action</genre>
@@ -18,13 +20,15 @@
             <image src="http://serientracker.de/serieID=1/pic.jpg"/>
             <image src="http://serientracker.de/serieID=1/pic.jpg"/>
         </images>
-        <seasons serieID="ss_ahu198j4">
-            <season serieID="ss_ahu198j4" seasonID="sn_auv409nt"/>
+        <seasons serieID="ss_0001wade">
+            <season serieID="ss_0001wade" seasonID="sn_auv409nt"/>
         </seasons>
     </serie>
-    <serie serieID="ss_a90fw3je"/>
-    <serie serieID="ss_4cdb1302">
+    <serie serieID="ss_0002cali"/>
+    <serie serieID="ss_0001alco">
         <title>Alarm fur Cobra 11</title>
+        <genres> <genre>Action</genre> </genres>
+        
         <year>2012</year>
         <firstaired>2013-05-12+02:00</firstaired>
         <country>Germany</country>
@@ -34,8 +38,10 @@
         <airday>Monday</airday>
         <airtime>21:20:22.045+02:00</airtime>
     </serie>
-    <serie serieID="ss_4cdb1302">
-        <title>Alarm fur Cobra 11</title>
+    <serie serieID="ss_0004hero">
+        <title>Heroes</title>
+        <genres> <genre>Action</genre> </genres>
+        
         <year>2012</year>
         <firstaired>2013-05-12+02:00</firstaired>
         <country>Germany</country>

@@ -12,8 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -26,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}serie" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}airtime" maxOccurs="7"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,40 +40,42 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "serie"
+    "airtime"
 })
-@XmlRootElement(name = "series")
-public class Series {
+@XmlRootElement(name = "airtimes")
+public class Airtimes {
 
-    protected List<Serie> serie;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "time")
+    protected List<XMLGregorianCalendar> airtime;
 
     /**
-     * Gets the value of the serie property.
+     * Gets the value of the airtime property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the serie property.
+     * This is why there is not a <CODE>set</CODE> method for the airtime property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSerie().add(newItem);
+     *    getAirtime().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Serie }
+     * {@link XMLGregorianCalendar }
      * 
      * 
      */
-    public List<Serie> getSerie() {
-        if (serie == null) {
-            serie = new ArrayList<Serie>();
+    public List<XMLGregorianCalendar> getAirtime() {
+        if (airtime == null) {
+            airtime = new ArrayList<XMLGregorianCalendar>();
         }
-        return this.serie;
+        return this.airtime;
     }
 
 }

@@ -5,6 +5,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Episodes.xsd">
 
-	<episode serieID="1" seasonID="1" episodeID="1"/>
+	<episode serieID="ss_0001wade" seasonID="sn_0001wade" episodeID="ep_0001wade"/>
 
 </episodes>

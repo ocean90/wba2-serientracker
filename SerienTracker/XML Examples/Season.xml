@@ -4,11 +4,11 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Season.xsd"
-	serieID="1" seasonID="123">
+	serieID="ss_0001wade" seasonID="sn_0003wade">
 
 	<seasonNumber>1</seasonNumber>
 	<episodes>
-		<episode episodeID="1" serieID="2" seasonID="3"/>
+		<episode episodeID="ep_0001wade" serieID="ss_0001wade" seasonID="sn_0003wade"/>
 	</episodes>
 	<images>
 		<image src="http://serientracker.de/dummy.png/"/>

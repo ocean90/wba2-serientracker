@@ -14,7 +14,7 @@
 			<xs:choice minOccurs="0">
 				<xs:sequence>
 					<xs:element ref="name"/>
-					<xs:element ref="shows"/>
+					<xs:element ref="series"/>
 				</xs:sequence>
 			</xs:choice>
 
@@ -24,14 +24,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Serienelemente die in der Liste gespeichert werden -->
-	<xs:element name="shows">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="series" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+
 
 	<!-- Privacy der Liste  -->
 	<xs:attribute name="public" type="xs:boolean"/>

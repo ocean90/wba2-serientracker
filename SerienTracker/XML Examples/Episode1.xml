@@ -4,7 +4,7 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Episode.xsd"
-	serieID="1" seasonID="1" episodeID="1">
+	serieID="ss_0001wade" seasonID="sn_0001wade" episodeID="ep_0001wade">
 
 	<episodeNumber>1</episodeNumber>
 	<title>Days Gone Bye</title>

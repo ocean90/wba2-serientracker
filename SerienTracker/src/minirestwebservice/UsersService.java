@@ -29,25 +29,25 @@ public class UsersService {
 		return users;
 	}
 
-	@Path( "/{id}" )
-	@GET @Produces( "application/xml" )
-	public User getSingle(@PathParam("id") int id) throws JAXBException {
-
-		JAXBContext jaxbContext = JAXBContext.newInstance( Users.class );
-
-		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
-		Users rawUsers = (Users) unMarshaller.unmarshal( this.file );
-
-		List<User> users = rawUsers.getUser();
-
-		for ( User user : users ) {
-			if ( user.getUserID().intValue() == id ) {
-				return user;
-			}
-		}
-
-		return null;
-	}
+//	@Path( "/{id}" )
+//	@GET @Produces( "application/xml" )
+//	public User getSingle(@PathParam("id") int id) throws JAXBException {
+//
+//		JAXBContext jaxbContext = JAXBContext.newInstance( Users.class );
+//
+//		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
+//		Users rawUsers = (Users) unMarshaller.unmarshal( this.file );
+//
+//		List<User> users = rawUsers.getUser();
+//
+//		for ( User user : users ) {
+//			if ( user.getUserID().intValue() == id ) {
+//				return user;
+//			}
+//		}
+//
+//		return null;
+//	}
 
 
 //	@Path( "/{id}" )
@@ -79,29 +79,29 @@ public class UsersService {
 //	}
 
 
-	@Path( "/{id}" )
-	@DELETE @Produces( "application/xml" )
-	public String deleteSingleUser(@PathParam("id") int id) throws JAXBException {
-
-		JAXBContext jaxbContext = JAXBContext.newInstance( Users.class );
-
-		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
-		this.marshaller   = jaxbContext.createMarshaller(); // Writing
-		this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
-		Users rawUsers = (Users) unMarshaller.unmarshal( this.file );
-
-		List<User> users = rawUsers.getUser();
-
-		for ( User user : users ) {
-			if ( user.getUserID().intValue() == id ) {
-				users.remove( user );
-				this.marshaller.marshal( rawUsers, this.file );
-				return "<success>1</success";
-			}
-
-		}
-
-		return "<success>0</success";
-	}
+//	@Path( "/{id}" )
+//	@DELETE @Produces( "application/xml" )
+//	public String deleteSingleUser(@PathParam("id") int id) throws JAXBException {
+//
+//		JAXBContext jaxbContext = JAXBContext.newInstance( Users.class );
+//
+//		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
+//		this.marshaller   = jaxbContext.createMarshaller(); // Writing
+//		this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+//		Users rawUsers = (Users) unMarshaller.unmarshal( this.file );
+//
+//		List<User> users = rawUsers.getUser();
+//
+//		for ( User user : users ) {
+//			if ( user.getUserID().intValue() == id ) {
+//				users.remove( user );
+//				this.marshaller.marshal( rawUsers, this.file );
+//				return "<success>1</success";
+//			}
+//
+//		}
+//
+//		return "<success>0</success";
+//	}
 
 }

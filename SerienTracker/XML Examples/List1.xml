@@ -4,14 +4,13 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/List.xsd"
-	userID="12" listID="1" public="true">
+	userID="us_00000012" listID="ls_00000001" public="true">
 
 	<name>Favorites</name>
 
-	<shows>
-		<series>
-			<serie serieID="21"/>
-		</series>
-	</shows>
+	<series>
+		<serie serieID="ss_0001wade"/>
+	</series>
+
 
 </list>

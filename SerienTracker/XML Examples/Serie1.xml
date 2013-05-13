@@ -4,7 +4,7 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Serie.xsd"
-	serieID="1">
+	serieID="ss_0001wade">
 
 	<title>The Walking Dead</title>
 	<genres>
@@ -27,7 +27,7 @@
 		<image src="http://serientracker.de/serieID=1/pic.jpg"/>
 	</images>
 
-	<seasons serieID="1">
-		<season serieID="1" seasonID="2"/>
+	<seasons serieID="ss_0001wade">
+		<season serieID="ss_0001wade" seasonID="sn_0001wade"/>
 	</seasons>
 </serie>

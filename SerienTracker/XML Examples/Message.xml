@@ -4,11 +4,11 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Message.xsd"
-	messageID="1" episodeID="1">
+	messageID="me_0001wade" episodeID="ep_0001wade">
 
 	<subscribedUser>
 		<users>
-			<user admin="true" userID="1"></user>
+			<user admin="true" userID="us_00000001"></user>
 		</users>
 	</subscribedUser>
 	<airdate>2010-04-06T16:03:47</airdate>
