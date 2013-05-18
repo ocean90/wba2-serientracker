@@ -1,6 +1,10 @@
 package minirestwebservice;
 
 import java.io.File;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import java.util.List;
 
 import javax.ws.rs.*;
@@ -9,8 +13,11 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+
+import jaxb.ObjectFactory;
 import jaxb.Season;
 import jaxb.Seasons;
+
 
 @Path( "/seasons" )
 public class SeasonsService {
@@ -49,6 +56,51 @@ public class SeasonsService {
 		return null;
 	}
 
+	
+	@POST @Produces( "application/xml" )
+	public String createSingleSeason(
+			@FormParam( "seasonNumber" ) Integer seasonNumber,
+			@FormParam( "serieID" ) String serieID
+			) throws JAXBException {
+
+		Season season = new ObjectFactory().createSeason();
+
+		String hash = "";
+		try {
+			MessageDigest md = MessageDigest.getInstance( "MD5" );
+			md.update( serieID.getBytes() );
+			byte[] digest = md.digest();
+			BigInteger bigInt = new BigInteger( 1, digest );
+			hash = bigInt.toString( 16 );
+			while ( hash.length() < 32 ) {
+				hash = "0" + hash;
+			}
+			hash = hash.substring(0, 8);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+
+		String id = "se_" + hash;
+		season.setSeasonID( id );
+		
+		season.setSeasonNumber( seasonNumber );
+
+		JAXBContext jaxbContext = JAXBContext.newInstance( Seasons.class );
+		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
+		Seasons rawSeasons = (Seasons) unMarshaller.unmarshal( this.file );
+		List<Season> seasons = rawSeasons.getSeason();
+
+		seasons.add( season );
+
+		this.marshaller   = jaxbContext.createMarshaller(); // Writing
+		this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+		this.marshaller.marshal( rawSeasons, this.file );
+		return "<id>" + id + "</id>";
+		
+		//todo images und episodes
+	}
+	
+	
 //	@Path( "/{id}" )
 //	@POST @Produces( "application/xml" )
 //	public String createSingleSeason(@PathParam("id") int id) throws JAXBException {
@@ -71,6 +123,8 @@ public class SeasonsService {
 //		newSeason.setEpisodes(value);
 //	}
 //
+	
+	
 	@Path( "/{id}" )
 	@DELETE @Produces( "application/xml" )
 	public String deleteSingleSeason(@PathParam("id") int id) throws JAXBException {

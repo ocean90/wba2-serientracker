@@ -16,7 +16,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import jaxb.Genres;
+
 import jaxb.ObjectFactory;
 import jaxb.Serie;
 import jaxb.Series;
@@ -39,24 +39,6 @@ public class SeriesService {
 		return series;
 	}
 	
-//	@GET @Produces( "application/xml" )
-//	public Series getAllSeries(@QueryParam("genre") String genre) throws JAXBException {
-//		JAXBContext jaxbContext = JAXBContext.newInstance( Series.class );
-//		
-//		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
-//		Series genreSeries = (Series) unMarshaller.unmarshal( this.file );
-//
-//		
-//		List<Serie> genreSeriesList = genreSeries.getSerie();
-//		for ( Serie genreSerie : genreSerieList ) {
-//			if ( genreSerie.getGenres.equals( genre ) ) {
-//				return genreSerie;
-//			} 
-//
-//		
-//		return (Series) genreSeriesList;
-//	}
-	// consumes
 
 	@POST @Produces( "application/xml" )
 	public String createSingleSerie(
@@ -144,19 +126,20 @@ public class SeriesService {
 	}
 
 //	@Path( "/{id}" )
-//	@POST @Produces( "application/xml" )
-//	public String createSingleSerie(@PathParam("id") int id) throws JAXBException {
+//	@PUT @Produces( "application/xml" )
+//	public String updateSingleSerie(@PathParam("id") int id,
+//									@FormParam( "title" ) String title,
+//									@FormParam( "genres" ) String genres,
+//									@FormParam( "year" ) String year,
+//									@FormParam( "firstaired" ) String firstaired,
+//									@FormParam( "country" ) String country,
+//									@FormParam( "overview" ) String overview,
+//									@FormParam( "episoderuntime" ) String episoderuntime,
+//									@FormParam( "network" ) String network,
+//									@FormParam( "airday" ) String airday,
+//									@FormParam( "airtime" ) String airtime) throws JAXBException {
 //
-//		Serie newSerie = new Serie();
-//
-//		JAXBContext jaxbContext = JAXBContext.newInstance( Series.class );
-//
-//		this.unMarshaller = jaxbContext.createUnmarshaller(); // Reading
-//		this.marshaller   = jaxbContext.createMarshaller(); // Writing
-//		this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
-//		Series rawSeries = (Series) unMarshaller.unmarshal( this.file );
-//
-//
+//	
 //
 //		newSerie.setTitle(new Title());
 //		newSerie.setGenres(createGenres());
@@ -171,7 +154,7 @@ public class SeriesService {
 //		newSerie.setImages(Images value);
 //		newSerie.setSeasons(Seasons value) ;
 //		newSerie.setSerieID(BigInteger value);
-
+//	}
 
 	@Path( "/{id}" )
 	@DELETE @Produces( "application/xml" )
