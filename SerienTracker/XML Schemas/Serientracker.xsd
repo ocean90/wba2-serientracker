@@ -76,7 +76,7 @@
 
 	<xs:simpleType name="idType">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="(ss|sn|ep|us|ls|me)_[0-9a-z]{8}"/>
+			<xs:pattern value="|(ss|sn|ep|us|ls|me)_[0-9a-z]{8}"/> <!-- Allow also empty IDs, means they MUST be set later! -->
 		</xs:restriction>
 	</xs:simpleType>
 

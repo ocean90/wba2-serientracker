@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<serie
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/Serie.xsd"
+	serieID="">
+
+	<title>Fringe</title>
+	<genres>
+		<genre>Drama</genre>
+		<genre>Mystery</genre>
+		<genre>Science Fiction</genre>
+	</genres>
+
+    <year>2008</year>
+    <firstaired>2008-09-09</firstaired>
+    <country>USA</country>
+    <overview>Fringe is an American science fiction television series created by J. J. Abrams, Alex Kurtzman, and Roberto Orci. It premiered on the Fox Broadcasting network on September 9, 2008, and concluded on January 18, 2013, after five seasons and 100 episodes. </overview>
+
+	<episoderuntime>50</episoderuntime>
+
+    <network>Prosieben</network>
+	<airday>Monday</airday>
+	<airtime>22:00:00</airtime>
+
+	<images>
+		<image src="http://ia.media-imdb.com/images/M/MV5BMTc5NDk1NzU0MF5BMl5BanBnXkFtZTcwMDQ1ODA1OA@@._V1_SX214_.jpg"/>
+	</images>
+
+</serie>

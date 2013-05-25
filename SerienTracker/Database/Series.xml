@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<series xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="../XML Schemas/Series.xsd">
+<series>
     <serie serieID="ss_0001wade">
         <title>The Walking Dead</title>
         <genres>
@@ -27,8 +25,9 @@
     <serie serieID="ss_0002cali"/>
     <serie serieID="ss_0001alco">
         <title>Alarm fur Cobra 11</title>
-        <genres> <genre>Action</genre> </genres>
-
+        <genres>
+            <genre>Action</genre>
+        </genres>
         <year>2012</year>
         <firstaired>2013-05-12+02:00</firstaired>
         <country>Germany</country>
@@ -40,8 +39,9 @@
     </serie>
     <serie serieID="ss_0004hero">
         <title>Heroes</title>
-        <genres> <genre>Action</genre> </genres>
-
+        <genres>
+            <genre>Action</genre>
+        </genres>
         <year>2012</year>
         <firstaired>2013-05-12+02:00</firstaired>
         <country>Germany</country>
@@ -50,5 +50,35 @@
         <network>ABC</network>
         <airday>Monday</airday>
         <airtime>21:21:13.342+02:00</airtime>
+    </serie>
+    <serie serieID="ss_c07ffa57">
+        <title>Martins Welt</title>
+        <year>2013</year>
+        <firstaired>2013-05-13+02:00</firstaired>
+        <country>Germany</country>
+        <overview>Martin erlebt schöne Geschichten</overview>
+        <episoderuntime>20</episoderuntime>
+        <network>ZDF</network>
+        <airday>Sunday</airday>
+        <airtime>11:20:48.610+02:00</airtime>
+    </serie>
+    <serie serieID="ss_1d9139d0">
+        <title>Fringe</title>
+        <genres>
+            <genre>Drama</genre>
+            <genre>Mystery</genre>
+            <genre>Science Fiction</genre>
+        </genres>
+        <year>2008</year>
+        <firstaired>2008-09-09</firstaired>
+        <country>USA</country>
+        <overview>Fringe is an American science fiction television series created by J. J. Abrams, Alex Kurtzman, and Roberto Orci. It premiered on the Fox Broadcasting network on September 9, 2008, and concluded on January 18, 2013, after five seasons and 100 episodes. </overview>
+        <episoderuntime>50</episoderuntime>
+        <network>Prosieben</network>
+        <airday>Monday</airday>
+        <airtime>22:00:00</airtime>
+        <images>
+            <image src="http://ia.media-imdb.com/images/M/MV5BMTc5NDk1NzU0MF5BMl5BanBnXkFtZTcwMDQ1ODA1OA@@._V1_SX214_.jpg"/>
+        </images>
     </serie>
 </series>
