@@ -41,14 +41,14 @@ public class SeriesService {
 
 	@GET
 	@Produces( MediaType.APPLICATION_XML )
-	public Series getSeries() {
+	public Response getSeries() {
 		Logger.log( "GET series called." );
 
 		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
 
 		Series series = (Series) filehandler.readXML( "Database/Series.xml" );
 
-		return series;
+		return Response.ok().entity( series ).build();
 	}
 
 	@POST

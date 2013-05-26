@@ -13,6 +13,11 @@ public class Logger {
 			System.out.printf( "%s: " + message + "\n", getDateTime() );
 	}
 
+	public static void err( String message ) {
+		if ( enabled )
+			System.err.printf( "%s: " + message + "\n", getDateTime() );
+	}
+
 	public static String getDateTime() {
 		return new SimpleDateFormat( "yyyy.MM.dd HH:mm:ss.SSS").format( Calendar.getInstance().getTime() );
 	}
