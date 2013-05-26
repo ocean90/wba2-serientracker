@@ -38,6 +38,7 @@ import de.fhkoeln.gm.serientracker.webservice.utils.FileHandler;
 
 @Path( "/series" )
 public class SeriesService {
+	private static final String XMLFILE = "Database/series.xml";
 
 	@GET
 	@Produces( MediaType.APPLICATION_XML )
@@ -46,7 +47,7 @@ public class SeriesService {
 
 		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
 
-		Series series = (Series) filehandler.readXML( "Database/Series.xml" );
+		Series series = (Series) filehandler.readXML( XMLFILE );
 
 		return Response.ok().entity( series ).build();
 	}
@@ -58,7 +59,7 @@ public class SeriesService {
 
 		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
 
-		Series series = (Series) filehandler.readXML( "Database/Series.xml" );
+		Series series = (Series) filehandler.readXML( XMLFILE );
 
 		String id = "ss_" + Hasher.createHash( newSerie.getTitle() );
 
@@ -73,7 +74,7 @@ public class SeriesService {
 
 		seriesList.add( newSerie );
 
-		filehandler.writeXML( series, "Database/Series.xml" );
+		filehandler.writeXML( series, XMLFILE );
 
 		URI location = null;
 		try {
@@ -93,7 +94,7 @@ public class SeriesService {
 
 		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
 
-		Series series = (Series) filehandler.readXML( "Database/Series.xml" );
+		Series series = (Series) filehandler.readXML( XMLFILE );
 
 		List<Serie> seriesList = series.getSerie();
 
@@ -113,7 +114,7 @@ public class SeriesService {
 
 		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
 
-		Series series = (Series) filehandler.readXML( "Database/Series.xml" );
+		Series series = (Series) filehandler.readXML( XMLFILE );
 
 		List<Serie> seriesList = series.getSerie();
 
@@ -121,7 +122,7 @@ public class SeriesService {
 			if ( serie.getSerieID().equals( id ) ) {
 				seriesList.remove( serie );
 				seriesList.add( newSerie );
-				filehandler.writeXML( series, "Database/Series.xml" );
+				filehandler.writeXML( series, XMLFILE );
 
 				return Response.ok().entity( newSerie ).build();
 			}
@@ -137,7 +138,7 @@ public class SeriesService {
 
 		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
 
-		Series series = (Series) filehandler.readXML( "Database/Series.xml" );
+		Series series = (Series) filehandler.readXML( XMLFILE );
 
 		List<Serie> seriesList = series.getSerie();
 
@@ -145,7 +146,7 @@ public class SeriesService {
 			if ( serie.getSerieID().equals( id ) ) {
 				seriesList.remove( serie );
 
-				filehandler.writeXML( series, "Database/Series.xml" );
+				filehandler.writeXML( series, XMLFILE );
 
 				return Response.noContent().build();
 			}
