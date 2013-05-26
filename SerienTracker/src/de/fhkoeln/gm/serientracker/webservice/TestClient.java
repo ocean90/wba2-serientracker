@@ -105,14 +105,14 @@ public class TestClient {
 				.entity( new File( "XML Examples/Serie2b.xml" ) )
 				.put( ClientResponse.class );
 
-		if ( response.getStatus() != 200 ) {
+		if ( response.getStatus() != 204 ) {
 			System.err.println( "Failed: HTTP error code: " + response.getStatus() );
 			return;
 		}
 
-		Serie output = response.getEntity( Serie.class );
+		String output = "Empty";//response.getEntity( String.class );
 		System.out.println( "Output from Server..." );
-		System.out.println( output.getTitle() );
+		System.out.println( output );
 	}
 
 	public static void testDeleteSerie() {

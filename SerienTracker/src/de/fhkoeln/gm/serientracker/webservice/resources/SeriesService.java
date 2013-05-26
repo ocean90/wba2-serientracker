@@ -2,7 +2,6 @@ package de.fhkoeln.gm.serientracker.webservice.resources;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -20,7 +19,7 @@ import de.fhkoeln.gm.serientracker.jaxb.Series;
 import de.fhkoeln.gm.serientracker.utils.Hasher;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.webservice.Config;
-import de.fhkoeln.gm.serientracker.webservice.utils.FileHandler;
+import de.fhkoeln.gm.serientracker.webservice.data.SeriesDataHandler;
 
 
 /**
@@ -38,16 +37,18 @@ import de.fhkoeln.gm.serientracker.webservice.utils.FileHandler;
 
 @Path( "/series" )
 public class SeriesService {
-	private static final String XMLFILE = "Database/series.xml";
+
+	private SeriesDataHandler dh = new SeriesDataHandler();
 
 	@GET
 	@Produces( MediaType.APPLICATION_XML )
 	public Response getSeries() {
-		Logger.log( "GET series called." );
+		Logger.log( "GET series called" );
 
-		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
+		Series series = dh.getSeries();
 
-		Series series = (Series) filehandler.readXML( XMLFILE );
+		if ( series == null )
+			return Response.status( 404 ).build();
 
 		return Response.ok().entity( series ).build();
 	}
@@ -55,26 +56,17 @@ public class SeriesService {
 	@POST
 	@Consumes( MediaType.APPLICATION_XML )
 	public Response addSerie( Serie newSerie ) {
-		Logger.log( "POST serie called." );
-
-		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
-
-		Series series = (Series) filehandler.readXML( XMLFILE );
+		Logger.log( newSerie.getTitle() );
 
 		String id = "ss_" + Hasher.createHash( newSerie.getTitle() );
 
-		List<Serie> seriesList = series.getSerie();
-
-		for ( Serie serie : seriesList ) {
-			if ( serie.getSerieID().equals( id ) )
-				return Response.status( 409 ).build();
-		}
+		if ( dh.SerieExistsByID( id ) )
+			return Response.status( 409 ).build();
 
 		newSerie.setSerieID( id );
 
-		seriesList.add( newSerie );
-
-		filehandler.writeXML( series, XMLFILE );
+		if ( ! dh.addSerie( newSerie ) )
+			return Response.status( 500 ).build();
 
 		URI location = null;
 		try {
@@ -90,69 +82,46 @@ public class SeriesService {
 	@GET
 	@Produces( MediaType.APPLICATION_XML )
 	public Response getSerie( @PathParam( "serieID" ) String id) {
-		Logger.log( "GET serie called." );
+		Logger.log( id );
 
-		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
+		Serie serie = dh.geSerieByID( id );
 
-		Series series = (Series) filehandler.readXML( XMLFILE );
-
-		List<Serie> seriesList = series.getSerie();
-
-		for ( Serie serie : seriesList ) {
-			if ( serie.getSerieID().equals( id ) )
-				return Response.ok().entity( serie ).build();
-		}
-
-		return Response.status( 404 ).build();
+		if ( serie == null )
+			return Response.status( 404 ).build();
+		else
+			return Response.ok().entity( serie ).build();
 	}
 
 	@Path( "{serieID}" )
 	@PUT
 	@Consumes( MediaType.APPLICATION_XML )
 	public Response updateSerie( @PathParam( "serieID" ) String id, Serie newSerie ) {
-		Logger.log( "PUT serie called." );
+		Logger.log( id );
 
-		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
+		if ( ! dh.SerieExistsByID( id ) )
+			return Response.status( 404 ).build();
 
-		Series series = (Series) filehandler.readXML( XMLFILE );
+		if ( ! id.equals( newSerie.getSerieID() ) )
+			return Response.status( 400 ).build();
 
-		List<Serie> seriesList = series.getSerie();
+		if ( ! dh.updateSerie( newSerie ) )
+			return Response.status( 500 ).build();
 
-		for ( Serie serie : seriesList ) {
-			if ( serie.getSerieID().equals( id ) ) {
-				seriesList.remove( serie );
-				seriesList.add( newSerie );
-				filehandler.writeXML( series, XMLFILE );
-
-				return Response.ok().entity( newSerie ).build();
-			}
-		}
-
-		return Response.status( 404 ).build();
+		return Response.noContent().build();
 	}
 
 	@Path( "{serieID}" )
 	@DELETE
 	public Response deleteSerie( @PathParam( "serieID" ) String id ) {
-		Logger.log( "DELETE serie called." );
+		Logger.log( id );
 
-		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
+		if ( ! dh.SerieExistsByID( id ) )
+			return Response.status( 404 ).build();
 
-		Series series = (Series) filehandler.readXML( XMLFILE );
+		if ( ! dh.removeSerie( id ) )
+			return Response.status( 500 ).build();
 
-		List<Serie> seriesList = series.getSerie();
-
-		for ( Serie serie : seriesList ) {
-			if ( serie.getSerieID().equals( id ) ) {
-				seriesList.remove( serie );
-
-				filehandler.writeXML( series, XMLFILE );
-
-				return Response.noContent().build();
-			}
-		}
-
-		return Response.status( 404 ).build();
+		return Response.noContent().build();
 	}
 
 	@Path ( "{serieID}/seaons")
