@@ -25,6 +25,9 @@ public class TestClient {
 		testPostSerie();
 		Thread.sleep(500);
 		System.out.println( "===================" );
+		testPutSerie();
+		Thread.sleep(500);
+		System.out.println( "===================" );
 		testDeleteSerie();
 		Thread.sleep(500);
 		System.out.println( "===================" );
@@ -90,22 +93,44 @@ public class TestClient {
 		System.out.println( output.toString() );
 	}
 
+	public static void testPutSerie() {
+		String url = host + "/series/ss_1d9139d0";
+		System.out.println( "PUT: " + url );
+
+		WebResource wrs = Client.create().resource( url );
+
+		ClientResponse response = wrs
+				.accept( MediaType.APPLICATION_XML )
+				.type( MediaType.APPLICATION_XML )
+				.entity( new File( "XML Examples/Serie2b.xml" ) )
+				.put( ClientResponse.class );
+
+		if ( response.getStatus() != 200 ) {
+			System.err.println( "Failed: HTTP error code: " + response.getStatus() );
+			return;
+		}
+
+		Serie output = response.getEntity( Serie.class );
+		System.out.println( "Output from Server..." );
+		System.out.println( output.getTitle() );
+	}
+
 	public static void testDeleteSerie() {
-		String url = host + "/series/ss_0004her2";
+		String url = host + "/series/ss_1d9139d0";
 		System.out.println( "DELETE: " + url );
 
 		WebResource wrs = Client.create().resource( url );
 
 		ClientResponse response = wrs
 				.accept( MediaType.APPLICATION_XML )
-				.get( ClientResponse.class );
+				.delete( ClientResponse.class );
 
 		if ( response.getStatus() != 204 ) {
 			System.err.println( "Failed: HTTP error code: " + response.getStatus() );
 			return;
 		}
 
-		String output = response.getEntity( String.class );
+		String output = "Empty";//response.getEntity( String.class );
 		System.out.println( "Output from Server..." );
 		System.out.println( output );
 	}

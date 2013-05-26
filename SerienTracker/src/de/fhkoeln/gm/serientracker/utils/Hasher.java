@@ -1,4 +1,4 @@
-package de.fhkoeln.gm.serientracker.webservice.utils;
+package de.fhkoeln.gm.serientracker.utils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
