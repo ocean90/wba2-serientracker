@@ -40,11 +40,8 @@ public class SeasonsService {
 	public Response getSeasons() {
 		Logger.log( "GET seasons called." );
 
-		FileHandler<Seasons> filehandler = new FileHandler<Seasons>( Seasons.class );
-
-		Seasons seasons = (Seasons) filehandler.readXML( "Database/Seasons.xml" );
-
-		return Response.ok().entity( seasons ).build();
+		// series/{serieID}/seasons
+		return Response.status( 409 ).build();
 	}
 
 	@POST
@@ -104,7 +101,7 @@ public class SeasonsService {
 	@Path( "{seasonID}" )
 	@PUT
 	@Consumes( MediaType.APPLICATION_XML )
-	public Response updateSerie( @PathParam( "seasonID" ) String id, Season newSeason ) {
+	public Response updateSeason( @PathParam( "seasonID" ) String id, Season newSeason ) {
 		Logger.log( "PUT season called." );
 
 		FileHandler<Seasons> filehandler = new FileHandler<Seasons>( Seasons.class );
@@ -128,7 +125,7 @@ public class SeasonsService {
 
 	@Path( "{seasonID}" )
 	@DELETE
-	public Response deleteSerie( @PathParam( "seasonID" ) String id ) {
+	public Response deleteSeason( @PathParam( "seasonID" ) String id ) {
 		Logger.log( "DELETE season called." );
 
 		FileHandler<Seasons> filehandler = new FileHandler<Seasons>( Seasons.class );
