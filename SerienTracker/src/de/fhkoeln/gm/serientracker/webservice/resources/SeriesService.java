@@ -84,7 +84,7 @@ public class SeriesService {
 	public Response getSerie( @PathParam( "serieID" ) String id) {
 		Logger.log( id );
 
-		Serie serie = dh.geSerieByID( id );
+		Serie serie = dh.getSerieByID( id );
 
 		if ( serie == null )
 			return Response.status( 404 ).build();
