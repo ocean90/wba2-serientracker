@@ -5,7 +5,7 @@
     <serie serieID="ss_0001wade">
         <title>The Walking Dead</title>
         <genres>
-            <genre>Action</genre>
+            <genrename>Action</genrename>
         </genres>
         <year>2010</year>
         <firstaired>2010-10-01</firstaired>
@@ -27,7 +27,7 @@
     <serie serieID="ss_0002cali"/>
     <serie serieID="ss_0001alco">
         <title>Alarm fur Cobra 11</title>
-        <genres> <genre>Action</genre> </genres>
+        <genres> <genrename>Action</genrename> </genres>
 
         <year>2012</year>
         <firstaired>2013-05-12+02:00</firstaired>
@@ -40,7 +40,7 @@
     </serie>
     <serie serieID="ss_0004hero">
         <title>Heroes</title>
-        <genres> <genre>Action</genre> </genres>
+        <genres> <genrename>Action</genrename> </genres>
 
         <year>2012</year>
         <firstaired>2013-05-12+02:00</firstaired>

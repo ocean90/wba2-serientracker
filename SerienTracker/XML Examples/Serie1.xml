@@ -8,7 +8,7 @@
 
 	<title>The Walking Dead</title>
 	<genres>
-		<genre>Action</genre>
+		<genrename>Action</genrename>
 	</genres>
 
     <year>2010</year>

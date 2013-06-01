@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -28,6 +29,7 @@ import de.fhkoeln.gm.serientracker.webservice.data.ListsDataHandler;
  * GET     /lists
  * POST    /lists
  * GET     /lists/{listID}
+ * GET     /lists/{query}
  * DELETE  /lists/{listID}
  * PUT     /lists/{listID}
  */
@@ -75,6 +77,8 @@ public class ListsService {
 		return Response.created( location ).build();
 	}
 
+	
+	
 	@Path( "{listID}" )
 	@GET
 	@Produces( MediaType.APPLICATION_XML )
@@ -88,6 +92,28 @@ public class ListsService {
 		else
 			return Response.ok().entity( list ).build();
 	}
+	
+	@Path( "{query}" )
+	@GET
+	@Produces( MediaType.APPLICATION_XML )
+	public Response getGenreList( 
+								@QueryParam( "type" ) String type,
+								@QueryParam( "name" ) String name) {
+		Logger.log( type );
+		Logger.log( name );
+		
+		List list = dh.getListByType( type );
+		
+		if (type == "genre"){	
+			list = dh.getListBySpecificGenre( name );
+		}
+		
+		if ( list == null )
+			return Response.status( 404 ).build();
+		else
+			return Response.ok().entity( list ).build();
+	}
+	
 
 	@Path( "{listID}" )
 	@PUT
