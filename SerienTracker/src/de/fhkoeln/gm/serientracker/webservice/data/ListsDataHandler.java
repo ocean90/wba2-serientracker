@@ -105,7 +105,7 @@ public class ListsDataHandler {
 	
 	
 	/**
-	 * Checks if a list of a type exists.
+	 * Checks if a list with the name of a genre.
 	 *
 	 * @param String id
 	 * @return boolean
@@ -119,7 +119,7 @@ public class ListsDataHandler {
 	}
 
 	/**
-	 * Returns a list by genre.
+	 * Returns a list by genre depending on the name.
 	 *
 	 * @param String genre
 	 * @return List

@@ -29,7 +29,7 @@ import de.fhkoeln.gm.serientracker.webservice.data.ListsDataHandler;
  * GET     /lists
  * POST    /lists
  * GET     /lists/{listID}
- * GET     /lists/{query}
+ * GET     /lists/query
  * DELETE  /lists/{listID}
  * PUT     /lists/{listID}
  */
@@ -93,7 +93,7 @@ public class ListsService {
 			return Response.ok().entity( list ).build();
 	}
 	
-	@Path( "{query}" )
+	@Path( "/query" )
 	@GET
 	@Produces( MediaType.APPLICATION_XML )
 	public Response getGenreList( 

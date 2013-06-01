@@ -8,9 +8,9 @@
 
 	<title>Fringe</title>
 	<genres>
-		<genrename>Drama</genrename>
-		<genrename>Mystery</genrename>
-		<genrename>Science Fiction</genrename>
+		<genre>Drama</genre>
+		<genre>Mystery</genre>
+		<genre>Science Fiction</genre>
 	</genres>
 
     <year>2008</year>

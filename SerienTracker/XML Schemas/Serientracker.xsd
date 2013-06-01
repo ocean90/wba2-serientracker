@@ -81,32 +81,5 @@
 	</xs:simpleType>
 
 
-	<!-- Genres -->
-	<xs:element name="genrename">
-		<xs:simpleType>
-			<xs:restriction base="xs:string">
-				<xs:enumeration value="Action"/>
-				<xs:enumeration value="Adventure"/>
-				<xs:enumeration value="Animation"/>
-				<xs:enumeration value="Children"/>
-				<xs:enumeration value="Comedy"/>
-				<xs:enumeration value="Crime"/>
-				<xs:enumeration value="Drama"/>
-				<xs:enumeration value="Documentary"/>
-				<xs:enumeration value="Fantasy"/>
-				<xs:enumeration value="Game Show"/>
-				<xs:enumeration value="Historical"/>
-				<xs:enumeration value="Horror"/>
-				<xs:enumeration value="Mystery"/>
-				<xs:enumeration value="News"/>
-				<xs:enumeration value="Romance"/>
-				<xs:enumeration value="Science Fiction"/>
-				<xs:enumeration value="Sport"/>
-				<xs:enumeration value="Thriller"/>
-				<xs:enumeration value="Western"/>
-			</xs:restriction>
-		</xs:simpleType>
-	</xs:element>
-
 </xs:schema>
 

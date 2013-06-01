@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.06.01 um 03:45:43 PM CEST 
+// Generiert: 2013.06.01 um 04:31:48 PM CEST 
 //
 
 
@@ -33,6 +33,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Genre_QNAME = new QName("", "genre");
     private final static QName _Airtime_QNAME = new QName("", "airtime");
     private final static QName _Location_QNAME = new QName("", "location");
     private final static QName _About_QNAME = new QName("", "about");
@@ -55,7 +56,6 @@ public class ObjectFactory {
     private final static QName _Avatar_QNAME = new QName("", "avatar");
     private final static QName _Country_QNAME = new QName("", "country");
     private final static QName _Content_QNAME = new QName("", "content");
-    private final static QName _Genrename_QNAME = new QName("", "genrename");
     private final static QName _Overview_QNAME = new QName("", "overview");
     private final static QName _Firstaired_QNAME = new QName("", "firstaired");
 
@@ -192,6 +192,15 @@ public class ObjectFactory {
      */
     public Message createMessage() {
         return new Message();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "genre")
+    public JAXBElement<String> createGenre(String value) {
+        return new JAXBElement<String>(_Genre_QNAME, String.class, null, value);
     }
 
     /**
@@ -390,15 +399,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "content")
     public JAXBElement<String> createContent(String value) {
         return new JAXBElement<String>(_Content_QNAME, String.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "", name = "genrename")
-    public JAXBElement<String> createGenrename(String value) {
-        return new JAXBElement<String>(_Genrename_QNAME, String.class, null, value);
     }
 
     /**
