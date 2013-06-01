@@ -29,7 +29,6 @@ import de.fhkoeln.gm.serientracker.webservice.data.ListsDataHandler;
  * GET     /lists
  * POST    /lists
  * GET     /lists/{listID}
- * GET     /lists/query
  * DELETE  /lists/{listID}
  * PUT     /lists/{listID}
  */
@@ -52,6 +51,27 @@ public class ListsService {
 		return Response.ok().entity( lists ).build();
 	}
 
+	@GET
+	@Produces( MediaType.APPLICATION_XML )
+	public Response getGenreList( 
+								@QueryParam( "type" ) String type,
+								@QueryParam( "name" ) String name) {
+		Logger.log( type );
+		Logger.log( name );
+		
+		List list = dh.getListByType( type );
+		
+		if (type == "genre"){	
+			list = dh.getListBySpecificGenre( name );
+		}
+		
+		if ( list == null )
+			return Response.status( 404 ).build();
+		else
+			return Response.ok().entity( list ).build();
+	}
+	
+	
 	@POST
 	@Consumes( MediaType.APPLICATION_XML )
 	public Response addList( List newList ) {
@@ -93,26 +113,6 @@ public class ListsService {
 			return Response.ok().entity( list ).build();
 	}
 	
-	@Path( "/query" )
-	@GET
-	@Produces( MediaType.APPLICATION_XML )
-	public Response getGenreList( 
-								@QueryParam( "type" ) String type,
-								@QueryParam( "name" ) String name) {
-		Logger.log( type );
-		Logger.log( name );
-		
-		List list = dh.getListByType( type );
-		
-		if (type == "genre"){	
-			list = dh.getListBySpecificGenre( name );
-		}
-		
-		if ( list == null )
-			return Response.status( 404 ).build();
-		else
-			return Response.ok().entity( list ).build();
-	}
 	
 
 	@Path( "{listID}" )
