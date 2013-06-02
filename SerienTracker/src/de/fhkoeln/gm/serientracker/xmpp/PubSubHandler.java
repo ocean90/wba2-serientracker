@@ -32,8 +32,7 @@ public class PubSubHandler {
 
 		this.psm = new PubSubManager( this.cnh.getConnection() );
 
-		this.deleteAllNodes();
-
+		//this.deleteAllNodes(); // TODO
 	}
 
 	public LeafNode getNode( String name ) {
@@ -41,10 +40,10 @@ public class PubSubHandler {
 	}
 
 	private void deleteAllNodes() {
-		for ( String _node : this.getAllNodes() ) {
+		for ( String node : this.getAllNodes() ) {
 			try {
-				this.psm.deleteNode( _node );
-			} catch (XMPPException e) {
+				this.psm.deleteNode( node );
+			} catch ( XMPPException e ) {
 				e.printStackTrace();
 			}
 		}
@@ -85,17 +84,17 @@ public class PubSubHandler {
 
 		try {
 			ConfigureForm form = new ConfigureForm( FormType.submit );
-			// TODO: Was ist was?
+			// Access
 			form.setAccessModel( AccessModel.open );
-			//
+			// With payload
 			form.setDeliverPayloads( true );
-			//
+			// Delete message
 			form.setNotifyRetract( true );
-			//
-			form.setPersistentItems( true );
-			//
+			// Persistent data
+			form.setPersistentItems( false );
+			// Publish
 			form.setPublishModel( PublishModel.open );
-			//
+			// Create node with configuration
 			node = (LeafNode) this.psm.createNode( name, form );
 
 
@@ -142,13 +141,11 @@ public class PubSubHandler {
 		List<String> users = new ArrayList<String>();
 
 		try {
-			for (Subscription subscriber : node.getSubscriptions() ) {
+			for (Subscription subscriber : node.getSubscriptions() )
 				users.add( subscriber.getJid() );
-			}
 		} catch (XMPPException e) {
 			e.printStackTrace();
 		}
-
 
 		return users;
 	}
@@ -160,11 +157,10 @@ public class PubSubHandler {
 			return false;
 
 		try {
-			node.addItemEventListener(new ItemEventCoordinator());
+			node.addItemEventListener( new ItemEventCoordinator() );
 			node.subscribe( this.cnh.getJID() );
 		} catch ( XMPPException e ) {
 			Logger.err( "Subscription failed" );
-			e.printStackTrace();
 
 			return false;
 		}
@@ -185,7 +181,6 @@ public class PubSubHandler {
 			node.unsubscribe( this.cnh.getJID() );
 		} catch ( XMPPException e ) {
 			Logger.err( "Unsubscription failed" );
-			e.printStackTrace();
 
 			return false;
 		}

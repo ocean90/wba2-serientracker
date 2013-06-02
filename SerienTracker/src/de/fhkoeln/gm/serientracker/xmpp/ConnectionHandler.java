@@ -6,7 +6,6 @@ import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.SASLAuthentication;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smackx.pubsub.Item;
 import org.jivesoftware.smackx.pubsub.LeafNode;
 import org.jivesoftware.smackx.pubsub.PayloadItem;
 import org.jivesoftware.smackx.pubsub.SimplePayload;
@@ -42,12 +41,21 @@ public class ConnectionHandler {
 	}
 
 	/**
-	 * Returns the connection
+	 * Returns the connection instance.
 	 *
 	 * @return Connection
 	 */
 	public Connection getConnection() {
 		return this.cn;
+	}
+
+	/**
+	 * Returns the PubSubHandler instance.
+	 *
+	 * @return PubSubHandler
+	 */
+	public PubSubHandler getPubSubHandler() {
+		return this.psh;
 	}
 
 	/**
@@ -107,29 +115,23 @@ public class ConnectionHandler {
 		// Init the Pub Sub Manager
 		this.psh = new PubSubHandler();
 
-		// TODO: Angang PubSub Test
-		String t = "testNode5";
-		LeafNode node = this.psh.getNode( t );
+		String t = "testNode";
 
-		this.psh.unsubscribeFromNode( t );
+		this.psh.unsubscribeFromNode( t ); // TODO
 		this.psh.subscribeToNode( t );
 
-		for ( String _node : this.psh.getAllNodes() ) {
-			Logger.log( "Node: " + _node );
-
-			for ( String _user : this.psh.getSubscribers( _node ) )
-				Logger.log( "\t\tUser: " + _user );
-		}
-
-		Logger.log( "Trying to send..." );
-		// SimplePayload( elementName, namespace, xmlPayload )
-		//node.send( new PayloadItem<SimplePayload>( null, new SimplePayload( "test", "", "test"  ) ) );
-		node.publish( new Item( "test" ) ); // TODO Publish nutzen
-		Logger.log( "Sent..." );
-
-		// Ende PubSub Test
-
 		return true;
+	}
+
+	// TODO
+	public void testPubSub() {
+		String t = "testNode";
+		LeafNode node = this.psh.getNode( t );
+
+		Logger.log( "Sending message..." );
+		SimplePayload payload = new SimplePayload( "message", "",  "<message>test</message>");
+		PayloadItem<SimplePayload> item = new PayloadItem<SimplePayload>( "message:" + System.currentTimeMillis(), payload );
+		node.publish( item );
 	}
 
 	/**

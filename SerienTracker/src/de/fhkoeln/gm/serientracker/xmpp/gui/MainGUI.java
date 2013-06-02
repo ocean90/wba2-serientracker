@@ -1,5 +1,10 @@
 package de.fhkoeln.gm.serientracker.xmpp.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,6 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 
 import de.fhkoeln.gm.serientracker.xmpp.ConnectionHandler;
+import de.fhkoeln.gm.serientracker.xmpp.PubSubHandler;
 
 public class MainGUI extends JFrame {
 
@@ -17,6 +23,8 @@ public class MainGUI extends JFrame {
 	private ConnectionHandler ch;
 
 	private JLabel labelUsername;
+
+	private JComboBox existingNodes;
 
 	public MainGUI() {
 		this.ch = ConnectionHandler.getInstance();
@@ -58,14 +66,52 @@ public class MainGUI extends JFrame {
 		labelUsername.setHorizontalAlignment( SwingConstants.RIGHT );
 		labelUsername.setBounds( 0, 0, 600, 20 );
 		labelUsername.setBorder( new EmptyBorder( 10, 0, 0, 10 ) );
+
+		// Label for existing nodes
+		JLabel labelExistingNodes = new JLabel();
+		labelExistingNodes.setText( "Existing Nodes:" );
+		labelExistingNodes.setBounds( 30, 30, 120, 30 );
+
+		// Existing nodes
+		existingNodes = new JComboBox();
+		existingNodes.setBounds( 130, 30, 200, 30 );
+
+		// Send a test message
+		JButton buttonTest = new JButton( "Send test message" );
+		buttonTest.setBounds( 330, 30, 200, 30 );
+		buttonTest.addActionListener( new ActionListener() {
+			public void actionPerformed( ActionEvent e ) {
+				ConnectionHandler.getInstance().testPubSub();
+			}
+		});
+
 		panel.add( labelUsername );
+		panel.add( labelExistingNodes );
+		panel.add( existingNodes );
+		panel.add( buttonTest );
 	}
 
 	/**
 	 * Update GUI components
 	 */
 	public void update() {
+		this.updateUserInfo();
+		this.updateNodes();
+	}
+
+	private void updateUserInfo() {
 		labelUsername.setText( "Hello "+ this.ch.getAccountAttribute( "username" ) );
+	}
+
+	private void updateNodes() {
+		PubSubHandler psh = ConnectionHandler.getInstance().getPubSubHandler();
+		for ( String node : psh.getAllNodes() )
+			existingNodes.addItem( node );
+
+	}
+
+	public void pubsubtest() {
+
 	}
 
 }
