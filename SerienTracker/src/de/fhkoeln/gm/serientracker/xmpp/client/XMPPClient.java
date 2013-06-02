@@ -28,6 +28,7 @@ public class XMPPClient {
 	 */
 	public static void closeLogin() {
 		loginGUI.setVisible( false );
+		loginGUI.dispose();
 		MainGUI.update();
 		MainGUI.setVisible( true );
 	}

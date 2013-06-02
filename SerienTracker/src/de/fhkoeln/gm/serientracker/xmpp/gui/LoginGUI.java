@@ -84,10 +84,12 @@ public class LoginGUI extends JFrame {
 
 		// Input field for username
 		inputUsername = new JTextField();
+		inputUsername.setText( "test" ); // TODO
 		inputUsername.setBounds( 100, 15, 180, 25 );
 
 		// Input field for password
 		inputPassword = new JPasswordField();
+		inputPassword.setText( "test" ); // TODO
 		inputPassword.setBounds( 100, 45, 180, 25 );
 
 		// Input field for hostname
