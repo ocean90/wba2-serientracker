@@ -7,10 +7,10 @@
 	<!-- Master inkludieren -->
 	<xs:include schemaLocation="Serientracker.xsd"/>
 
-	<!-- Gesamtes Element einer Staffel -->
+	<!-- Gesamtes Element einer Nachricht -->
 	<!-- IDs von Elementen werden nicht vorrausgesetzt, sondern dienen möglichen Einsatzfällen.
-		 episodeID bezieht sich auf Datum einer bestimmten Episode von abonnierten Serien, seasonID zur Benachrichtung beim start neuer Staffeln 
-		 und serieID beim abonnieren eines bestimmten Genres, zu dem bei laufender Serie eine Nachricht rausgeshcickt wird.-->
+		 episodeID bezieht sich auf Datum einer bestimmten Episode von abonnierten Serien, seasonID zur Benachrichtung beim Start neuer Staffeln 
+		 und serieID beim abonnieren eines bestimmten Genres, zu dem bei laufender Serie eine Nachricht rausgeschickt wird.-->
 	<xs:element name="message">
 		<xs:complexType>
 			<xs:sequence>
