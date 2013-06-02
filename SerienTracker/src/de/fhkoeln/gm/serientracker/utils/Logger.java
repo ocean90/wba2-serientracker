@@ -11,8 +11,9 @@ public class Logger {
 	public static void log( String message ) {
 		if ( enabled )
 			System.out.printf(
-					"%s: %s - %s\n",
+					"%s: %s::%s() - %s\n",
 					getDateTime(),
+					getClassName(),
 					getMethodName(),
 					message
 			);
@@ -21,8 +22,9 @@ public class Logger {
 	public static void err( String message ) {
 		if ( enabled )
 			System.err.printf(
-					"%s: %s - %s\n",
+					"%s: %s::%s() - %s\n",
 					getDateTime(),
+					getClassName(),
 					getMethodName(),
 					message
 			);
@@ -35,5 +37,10 @@ public class Logger {
 	private static String getMethodName() {
 		// getMethodName - log - X
 		return Thread.currentThread().getStackTrace()[ 3 ].getMethodName();
+	}
+
+	private static String getClassName() {
+		// getMethodName - log - X
+		return Thread.currentThread().getStackTrace()[ 3 ].getClassName();
 	}
 }
