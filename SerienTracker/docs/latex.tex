@@ -366,6 +366,38 @@ Am Anfang der Zeichenketten steht ein Kürzel, dass den jeweiligen Typ angibt. S
 
 
 \subsubsection{Restriktionen}
+Damit die Informationen innerhalb der XML Datein inhaltlich sinnvoll sind und während der Verarbeitung keine weiteren Probleme entstehen (zum Beispiel durch unterschiedliche Schreibweisen), wurden für einige Elemente Restriktionen definiert.
+Dabei ist das Ziel, die Fehleranfälligkeit zu reduzieren und im Kontext logische Informationen zu gewährleisten. Vorhandene Restriktionen, also Einschränkungen/Bedingungen, die für einzelne Elemente getroffen wurden sind im folgenden mit einer kurzen Begründung aufgeführt. Häufig treten diese in Form von Längenbegrenzungen bei Texten auf oder als Grenzbereichen bei Zahlen auf.\\
+Weitere Elemente kennzeichnen sich entsprechend dadurch, dass der Inhalt auf eine bestimmte Auswahl an Möglichkeiten eingeschränkt wurde. Beim Konzipieren dieser Grenzen und Auswahlmöglichkeiten, ist es nicht möglich die perfekte Variante zu erzielen, sondern eine Auswahl von Optionen zu treffen, die im Kontext als zuverlässig und praktikabel erscheinen. Manche Begrenzugnen wie Anzahl an Episoden einer Staffel oder Episodenlaufzeit, wurden in Bezug auf die Realität getroffen und angelehnt an gängige Formen. Prinzipiell wären hierbei  alternative Auswahlmöglichkeiten und Varianten denkbar, wie beispielsweise die freie Definition des Genres oder des TV Senders als einfacher String. Hierbei hat der verwaltende Admin dann die Option den Inhalt frei zu bestimmen. Letztendlich wurde jedoch der eigentliche Nutzen abgewägt, sodass für den Serientracker folgende Restriktionen definiert wurden:
+
+\begin{table}[H]
+\caption{Allgemeine Restriktionen}
+
+
+\begin{tabular}{l l l}
+\\ [-0.5ex]
+
+\hline\hline
+\\ [-0.5ex]
+Element/Attirbut & Restriktion & Begründung
+\\ [1.5ex]
+\hline
+\\ [-0.5ex]
+Overview (global) & Stringlänge 10 < und < 500 & allgemeinen Informationen,\\[1ex]
+&&kurze Inhaltsangabe\\[3ex]
+Title (global) & Stringlänge 1 < und < 80 & gängige Titellänge\\[3ex]
+Name (list) & Stringlänge 2 < und < 80 & treffende Bezeichnung,\\[1ex] 
+&&Name keine Beschreibung \\[3ex] 
+Public (list) & Boolean True und False & feste Zustände \\[3ex] 
+Episodenumber (episode) & Anzahl < 26 & sinnvolle maximale Episodenanzahl\\[3ex] 
+Seasonnumber (seasons) & Anzahl < 41 & sinnvolle Begrenzung, \\[1ex]
+&&Freiraum für Langzeitserien \\[2ex] 
+
+\hline
+\end{tabular}
+\label{tab:restriktionenderxsd}
+\end{table}
+
 
 \begin{table}[H]
 \caption{Restriktionen des User Schemas}
@@ -376,7 +408,7 @@ Am Anfang der Zeichenketten steht ein Kürzel, dass den jeweiligen Typ angibt. S
 
 \hline\hline
 \\ [-0.5ex]
-Element/Attirbute & Restriktion & Begründung
+Element & Restriktion & Begründung
 \\ [1.5ex]
 \hline
 \\ [-0.5ex]
@@ -424,7 +456,7 @@ Admin & Boolean ob True or False & Rechtevergabe nach Status,\\[1ex]
 
 \hline\hline
 \\ [-0.5ex]
-Element/Attirbute & Restriktion & Begründung
+Element & Restriktion & Begründung
 \\ [1.5ex]
 \hline
 \\ [-0.5ex]
@@ -447,35 +479,6 @@ Genre & Auswahl definierter Genres & einheitliche Schreibweise,\\[1ex]
 \end{table}
 
 
-
-
-\begin{table}[H]
-\caption{Weitere Restriktionen}
-
-
-\begin{tabular}{l l l}
-\\ [-0.5ex]
-
-\hline\hline
-\\ [-0.5ex]
-Element/Attirbute & Restriktion & Begründung
-\\ [1.5ex]
-\hline
-\\ [-0.5ex]
-Overview (global) & Stringlänge 10 < und < 500 & allgemeinen Informationen,\\[1ex]
-&&kurze Inhaltsangabe\\[3ex]
-Title (global) & Stringlänge 1 < und < 80 & gängige Titellänge\\[3ex]
-Name (list) & Stringlänge 2 < und < 80 & treffende Bezeichnung,\\[1ex] 
-&&Name keine Beschreibung \\[3ex] 
-Public (list) & Boolean True und False & feste Zustände \\[3ex] 
-Episodenumber (episode) & Anzahl < 26 & sinnvolle maximale Episodenanzahl\\[3ex] 
-Seasonnumber (seasons) & Anzahl < 41 & sinnvolle Begrenzung, \\[1ex]
-&&Freiraum für Langzeitserien \\[2ex] 
-
-\hline
-\end{tabular}
-\label{tab:restriktionenderxsd}
-\end{table}
 
 \subsubsection{Benutungstypen}
 
