@@ -19,6 +19,17 @@ plainpages = false,
 hypertexnames = false,
 citecolor = black] {hyperref}
 
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+
+
 \usepackage[nottoc]{tocbibind}
 
 \title{Projektdokumenation\\Web-basierte Anwendungen\\Verteilte Systeme}
@@ -200,51 +211,161 @@ definierter Datentypen und Strukturen, auch das festlegen von Restriktionen.
 Hinsichtlich des zugrunde liegenden Konzeptes und den benötigten Informationen, gibt es viele Elemente
 innerhalb der Dateien, die nur mit Strings realisiert werden können. Das Problem bei freier Definition
 besteht darin, dass die Datensätze sehr fehleranfällig sind, wenn es um die Benutzung durch Menschen geht.
-Rechtschreibfehler beim Namen des Landes, des Fernsehsenders oder des Genres, würden für den Leser bzw.
-Interessenten der Anwendung noch kein Problem darstellen, da er vermutlich deuten könnte was gemeint ist.
-Informationstechnisch ist es aber von Vorteil, die Datensätze möglichst konsistent und reichhaltig anzulegen.
+Rechtschreibfehler beim Namen des Landes, des Fernsehsenders oder des Genres, würden für den Benutzer der 
+Anwendung noch kein Problem darstellen, da er vermutlich deuten könnte was gemeint ist.
+Für die Umsetzung ist es aber von Vorteil, die Datensätze möglichst konsistent zu halten.
 
-Das System des Serientrackers beruht darauf, die Verwaltung von Serien anhand von Listen und Tags wie
-Gesehen, Ungesehen zu ermöglichen. Wie bereits in der Besprechung der Umsetzung erwähnt, wird anhand
-dieser Informationen auch die Asynchrone Datenübertragung realisiert.
-Das Abonnieren von Informationen zu laufenden Serien des Genre Krimi, greift bei Benachrichtigung auf
+Das System des Serientrackers beruht darauf, die Verwaltung von Serien anhand von Listen zu ermöglichen. Wie bereits in der Besprechung der Umsetzung erwähnt, wird anhand dieser Informationen auch die asynchrone Datenübertragung realisiert. 
+Das Abonnieren von Informationen zu laufenden Serien des Genre Action, greift bei Benachrichtigung auf
 Datensätze zu, die diesem Elementwert unter dieser eindeutigen Zeichenfolge zugeordnet sind. Formulierungsfehler
-wie Krimie oder Crime, führen dementsprechend zu Komplikationen, weil sie die Konsistent der Informationssätze beschädigen.
+wie Aktion, die von einer einheitlichen Schreibweise abweichen, führen dementsprechend zu Komplikationen, weil sie die Konsistenz der Informationssätze beschädigen. \\\\
 
-Die Auseinandersetzung führte zu dem Ergebnis, dass folgende Objekttypen innerhalb des Serientrackers von interesse sind und wiederkehrende Elemente darstellen:
+Hinsichtlich des Themas Serien, führten die Vorüberlegungen zu dem Entschluss, dass folgende Objekttypen innerhalb des Serientrackers von interesse sind und wiederkehrende Elemente darstellen:
 
-Serie \\
+\textbf{Serie} \\
 Eines der wichtigsten Elemente, dass alle Informationen beinhaltet, die für den Benutzer von bedeutung sind, ist die Serie. 
 Eine Serie besitzt allgemeine Informationen wie Name, eine Beschreibung, der Sender indem sie ausgestrahlt wird oder das Produktionsland.
-Im realen Kontext wird eine Serie zudem in Staffeln ausgestrahlt, die jeweils eine bestimmte Anzahl von Episoden enthalten.
+Im realen Kontext wird eine Serie zudem in Seasons (Staffeln) ausgestrahlt, die jeweils eine bestimmte Anzahl von Episoden enthalten.
 
-Staffel \\
+\textbf{Season} \\
 Bestandteil einer Serie, von der es im Laufe der Jahre immer neue Objekte gibt und die nach einer gewissen Anzahl an Episoden als abgeschlossen gelten.
 
-Episode \\
+\textbf{Episode} \\
 Ein Kernelement des Systems, dass ein wichtigen Typ für die asynchrone Kommunikation darstellt. Durch das Abonnieren von Genres oder Serien, wird die Benachrichtigung in Bezug auf eine einzelne Episode ausgelöst, die sich durch ihr jeweiliges Austrahlungsdatum und -zeitpunkt kennzeichnet. 
 Zudem kann der Inhalt der Episode von Interesse sein.
 
-User \\
-Neben den Serieninformation, gibt es die Anwender des Serientrackers, die sich anmelden und durch Listen die Dienste des Serientrackers abonnieren.
+\textbf{User} \\
+Neben den Serieninformation, gibt es die Benutzer des Serientrackers, die sich anmelden und durch Listen die Dienste des Serientrackers abonnieren.
 Allgemein werden hierbei personenbezogene Daten wie Username und echter Name erwartet, so wie Zusatzinformationen, die für andere Benutzer von Interesse sein könnten und die Person hinter dem Profil genauer beschreiben. Beispiele wären das Alter, ein Profilbild, Wohnort oder eine kurze Beschreibung.
 
-Liste \\
+\textbf{Liste} \\
+Die Liste kann als Sammlung mehrerer Serien zu einem bestimmten Thema aufgefasst werden. Hierbei gibt zum einen Listentypen die definitiv vorhanden sein müssen, wie beispielsweise Genrelisten oder die Favoritenliste eines Benutzers. Diese erfasst die Serien, zu denen der Eigentümer Benachrichtigungen erhalten will. Zum anderen besteht aber auch die Möglichkeit, dass der Benutzer sich Listen anlegt, die seinen individuellen Wünschen entsprechen.
+
+\textbf{Message} \\
+Als zusätzlicher Typ, der jedoch erst in der asynchronen Kommunikation verwendung finden wird, wurde die Message identifiziert. Hierbei handelt es sich um eine bestimmte Nachricht, die den entsprechenden Usern bei eintreten eines Eventes zugeschickt wird und ein eintretendes Ereignis meldet.
 
 
-Als zusätzlicher Typ, der jedoch erst in der asynchronen Kommunikation verwendung finden wird, wurde die Message, also eine bestimmte Art von Nachricht identifiziert.
 
-Für diese Obertypen gilt es ein valides XML Schema zu definieren, wobei während der Entwicklung verschiedene Aspekte betrachtet werden müssen.  
+\newpage
+
+\subsubsection{Umsetzung}
+
+Nach der theoretischen Planung fand die Realisierung der XML Schematas statt.
+Dabei wurde für jeden der zuvor identifizierten Obertypen ein eigenes Schema definiert und die einzelnen Elemente/Attribute mit Datentypen und Restriktionen belegt. Die Aufteilung der einzelnen Typen auf ein seperates Schema, fand mit den Gedanken statt, die Struktur der Daten möglichst einfach und lesbar zu halten. Eine Serie die mehrere Staffeln enthält, die wiederrum jeweils eine Menge von Episoden auffassen, würde ein sehr komplexes Element definieren, dass während der Entwicklung schnell zu unübersichtlich werden kann.
+
+Da die Daten einer Episode, inhaltlich jedoch weiterhin davon abhängen, von welcher Serie diese ist und in welcher Staffel sie vorkam, wird eine Referenzierung mit Hilfe von global eindeutigen IDs eingeführt. Jede Serie, User, Season, Episode, Message und Liste wird mit einer einzigartigen Folge von Zeichen beschrieben, über diese es möglich ist auf gewünschte Informationen zuzugreifen und entsprechende Elemente auszulesen.
+
+Dieses Prinzip lässt sich am Beispiel des XML Schemas einer Episode veranschaulichen. Hierbei handelt es sich um einen Codeauszug, der die gesamte Struktur einer Episode vorgibt:
+\begin{lstlisting}[label=xsd-definition,caption= Definition des complexElement Episode mit Elementen und Attributen]
+  <xs:element name="episode">
+    <xs:complexType>
+      <xs:choice minOccurs="0">
+        <xs:sequence>
+          <xs:element ref="episodeNumber"/>
+          <xs:element ref="title"/>
+          <xs:element ref="overview"/>
+          <xs:element ref="airdate"/>
+          <xs:element ref="images"/>
+        </xs:sequence>
+      </xs:choice>
+
+      <xs:attribute ref="serieID" use="required"/>
+      <xs:attribute ref="seasonID" use="required"/>
+      <xs:attribute ref="episodeID" use="required"/>
+    </xs:complexType>
+  </xs:element>
+\end{lstlisting}
+
+Eine Episode bekommt damit eine eindeutige \textbf{episodeID} zugeordnet und ist damit gesehen unter allen Episoden eindeutig identifiziert. Zudem erhält jede Episode auch die Referenz der serienID und seasonID als Attribute, um Verweise und Zuordnungen zu realisieren. Da sich jedes Objekt demnach durch eine Kennung repräsentiert, reicht bei anlegen von Listen und Containern ein einfacher Verweis auf entsprechendes Element, wodurch Datenredundanz bei mehreren Schematas verhindert wird, die inhaltlich voneinander abhängen. Innerhalb der XML Datei einer Serie, reicht somit der Verweis auf die einzelnen Seasons über ihre ID, ohne dass deren Inhalte mehrfach abgespeichert werden müssen. 
+Dieser Redudanzverlust wäre auch realisierbar gewesen, wäre eine Season und Episode direkt innerhalb des Serieschemas gespeichert worden. Damit hätte eine Referenz auf die Serie genügt und auf eine Episode könnte mit einer Abfrage der Seasonnummer und Episodennummer getätigt werden. Der Entschluss zur Aufteilung der Schematas führte jedoch zwangsläufig zu dieser Entscheidung, wobei die Folge daraus auch komfortable Vorzüge in der Flexibilität der einzelnen Elemente mit sich bringt.
+
+
+\parskip 12pt
+\parindent 0pt
+Um die Struktur des gesamten Serien Elements zu ermöglichen und vorhandene IDs global nutzen zu können, wird jedes Schema über eine Masterdatei in die einzelnen XML Schemas inkludiert, um bereits definierte Elemente und Attribute wiederverwendbar zu machen und die Datenmenge zu reduzieren.
+
+\begin{lstlisting}[label=xsd-definition,caption= Auszug aus der Masterinklude Serientracker.xsd]
+<!-- Dieses Schema inkludiert alle zu verwendenen Schemata-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:include schemaLocation="Series.xsd"/>
+  <xs:include schemaLocation="Serie.xsd"/>
+  <xs:include schemaLocation="Seasons.xsd"/>
+  <xs:include schemaLocation="Season.xsd"/>
+  <xs:include schemaLocation="Episodes.xsd"/>
+  <xs:include schemaLocation="Episode.xsd"/>
+
+  <xs:include schemaLocation="Lists.xsd"/>
+  <xs:include schemaLocation="List.xsd"/>
+  <xs:include schemaLocation="Users.xsd"/>
+  <xs:include schemaLocation="User.xsd"/>
+  <xs:include schemaLocation="Message.xsd"/>
+
+
+  <!-- Globale Elemente -->
+\end{lstlisting}
+
+Neben dem Include der eunzelnen Schematas, werden auch vereinzelte Elemente darin definiert, die innerhalb der einzelnen Schematas wiederholt Verwendung finden. Hierbei vor allem die einzelnen ID Attribute. \\
+
+Während der Entwicklung dieser Variante, gab es anfängliche Schwierigkeiten innerhalb der Umsetzung. Der Verweis innerhalb eines XML Schemas auf ein Anderes und die entsprechende Verwendung der Elemente und Attribute, führte zu Komplikationen innerhalb der Deklarationen. Auch eine Definition eines einheitlichen Namespaces führte zu keiner Lösung. Im zweiten Ansatz folgte dann die direkte Auseinandersetzung zwischen den Optionen Include und Import, wobei die letztendliche Wahl auf die Inkludierung fiel. Ein Import erlaubt den Verweis auf unterschiedliche Namespaces, wobei ein Include auf einen einheitlichen Namespace verweist und bei nichtbestehen, den des Oberschemas übernimmt.
+Da Namespaces in der Regel dazu dienen, Elementen und Attributen einen gewissen Namensraum zu gewährleisten, der bei gängigen Bezeichnungen wie \textit{Name} zu Konflikten führen kann, ist die Definition bei größeren Projekten durchaus zu empfehlen. Ob dabei ein Einzelner oder Mehrere angelegt werden sollten, ist eventuell auch abhängig von der gesamten Struktur des Schemas. Da im Rahmen dieses Projektes jedoch mit relativ geringem Datenumfang gearbeitet wird und mit keiner Komplikation der Bezeichnungen zu rechnen ist, wurde auf eine genaue targetNamespace Definition verzichtet. Auch wenn bestimmte Elementbezeichnungen innerhalb eines \textit{http://Serientracker.de} Namensraum denkbar gewesen wäre. Letztendlich spielt dieser Aspekt für die Umsetzung innerhalb des Projektes jedoch keine tragenden Rolle. Daher wurde auf die Definition verzichtet und die entsprechende Include Variante verwendet. 
+
+
+Ein weiterer Punkt der in der Entwicklungsphase von Bedeutung war, war die Frage danach, wie die Daten innerhalb des lokalen Speichers abgelegt werden.
+Durch die Definition einzelner Schematas erhält jedes Objekt dieses Typs auch eine eigene XML Datei. Im späteren Verlauf könnten sich daraus aber Probleme beim gezielten Zugriff entwicklen, denen frühzeitig Abhilfe geschaffen werden sollte.
+Aus diesem Grund wurde eine weitere Gruppe von Elementen innerhalb XML angelegt, die Containerklassen. 
+Für jeden Elementtyp, der als eigene Entität angelegt wird, wurde eine Containerklasse definiert, innerhalb derer beliebig viele Objekte eines bestimmten Typs aufgenommen werden können. Dieses Objekt dient in der letztendlichen Verwaltung als Sammlung aller Elemente.
+
+Folgendes Beispiel veranschaulicht den Ansatz und wurde in dieser Form für jeden Elementtyp angelegt:
+
+
+\begin{lstlisting}[label=xsd-definition,caption= Auszug aus der Series.xsd Definition]
+<!-- Element das alle Serien aufnimmt -->
+  <xs:element name="series">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="serie" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+\end{lstlisting}
+
+
+Um die vorhandenen Daten semantisch sinnvoll und reichhaltig anzulegen, wurde bei der Entwicklung der XML Schematas darauf geachtet, diesen Anspruch 
+durch die verschiedenen Datentypen, Restriktionen und Benutzungstypen zu gewährleisten. 
 
 \newpage
 
 \subsubsection{Datentypen}
-Bei der Definition eines XML Schemas, sollte neben der enstprechenden Datensatzstruktur auch festgelegt werden, durch welche Datentyp die einzelnen Informationen repräsentiert werden sollen.
+Grundsätzlich werden innerhalb des Serientrackers Daten unterschiedlichen Typs benutzt, die entsprechend des realen Kontextes am sinnvollsten erscheinen.
+Aufgrund der Komplexität, soll hierbei nicht auf jedes einzelne Element eingegangen werden, sondern nur ein Überblick darüber vermittelt werden, mit welchen Grundideen vorgegangen wurde.
 
-\newpage
+Neben den einfachen Standartdatentypen wie String, Boolean, Integer, Time (...), bietet XML die Möglichkeit weitere spezifische Typen wie anyURI oder ID zu definieren.\\ 
+Da innerhalb des Serientrackers viele Information lediglich in Textform sinnvoll sind, wurde für diese der Typ \textbf{String} verwendet. Beispielhaft seien hier die Titel und Beschreibungen, sowie Benutzernamen und Länder erwähnt.\\ 
+Jahreszahlen, Episodenlänge und Season- und Episodennummern werden mit Zahlen als \textbf{Integer} ausgedrückt. Bestimmte Zeitangaben wie Ausstrahlungszeit, bei denen es nur um den Zeitpunkt geht, in der einfach Form \textbf{Time} und genauere Angaben, wie bei Ausstrahlungstag in Hinsicht auf die Benachrichtigung, über den \textbf{dateTime} Typ. 
+Linkverweise auf Bildquellen wie bei Avatar erhielten den Typ \textbf{anyURI}.\\
+
+Einzelne Elemente wie User und List, weisen hierbei noch eine Besonderheit auf. Wie bereits bei den Kommunikationsabläufen innerhalb des Konzepes eangesprochen, wird die Anwendung von Benutzern verwendet, die verschiedenen Rechtetypen angehören. Aus diesem Grund wird jeder User mit dem Attribute Admin gekennzeichnet, der innerhalb einer einfachen \textbf{Boolvariablen} die entsprechenden Rechte festgelegt. Ähnliches Prinzip wird bei den Listen verwenden zur Unterscheidung, ob die Sichtbarkeit für jeden Benutzer gestattet ist oder nur für den Besitzer der Liste.
+
+\parskip 12pt
+\parindent 0pt
+Zur angesprochenen Referenzierung und Identifizierung einzelner Entitäten, zeichnen sie sich durch eine eindeutige ID als Attribut aus. Generell wurden die Informationen wie ID oder Rechte, die ein Objekt nicht inhaltlich sondern eher aus verwaltender Sicht genauer beschreiben, als Attribute definiert. Inhaltliche Informationen die Bestandeteil des Objektes sind, werden hingegen als Elemente angelegt.
+
+Für den Datentyp einer solchen ID, wurde ein eigenes Element folgendermaßen definiert:
+\begin{lstlisting}[label=xsd-definition,caption= Definition der globalen ID's]
+  <xs:simpleType name="idType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="|(ss|sn|ep|us|ls|me)_[0-9a-z]{8}"/> 
+    </xs:restriction>
+  </xs:simpleType>
+\end{lstlisting}
+
+Am Anfang der Zeichenketten steht ein Kürzel, dass den jeweiligen Typ angibt. SN steht dabei für Season, EP für Episode und ähnliches. Danach folgt ein optisches Trennzeichen, gefolgt von einer beliebigen Characterfolge aus 8 gemischten Zeichen mit Zahlen und Buchstaben. Eine Serie erhält damit eine Zuordnung der Form \textit{ss\_0a1b2c3d}.
+
+
 
 \subsubsection{Restriktionen}
-Um die eingegeben Daten semantisch sinnvoll zu halten, wurde für einige Elemente und Attribute Bedindungen hinzugefügt, die im jeweiligen Zusammenhang sinnvoll erscheinen. 
 
 \begin{table}[H]
 \caption{Restriktionen des User Schemas}
@@ -356,25 +477,11 @@ Seasonnumber (seasons) & Anzahl < 41 & sinnvolle Begrenzung, \\[1ex]
 \label{tab:restriktionenderxsd}
 \end{table}
 
+\subsubsection{Benutungstypen}
+
 Neben diesen Restriktionen einzelner Elemente bezogen auf ihre Werte, bestehen auch Genehmigungen bei Containerelementen, hinsichtlich der Häufigkeit für vorkommende Elemente. TODO
 
 Weiterer Aspekt der Definition der Attribute war das festlegen des Benutzungstyp. Da wir Elemente wie Episode haben, die als eigener Typ definiert werden können, aber in einem bestimmten Kontext stehen, werden hierbei Attribute verwendet um die genaue zuordnung zu gewährleisten. Für diese charakterisiernden Attribute, die für spätere Abfragen notwendig, wurde dieses Attribute mit dem Usecase required versehen. Eine Episode erfordert demnach eine genaue serieID, seasonID und episodeID, da sie genannten Nutzen aufweisen. Weiterhin lässt sich einer List eine jeweilige globale listID, eine userID des Verwalters und die Rechtevergabe public zuordnen, da auch diese Informationen als notwendig angesehen werden und im späteren Kontext im Zusammenhang des Serientrackers von Bedeutung sein können. 
-
-\newpage
-\subsubsection{Umsetzung}
-
-Nach der theoretischen Planung findet die Realisierung der XML Schemas statt.
-Dabei wurde für jeden der zuvor identifizierten Obertypen ein eigenes Schema definiert. Die Aufteilung der einzelnen Typen auf ein seperates Schema, fand mit den Gedanken statt, die Struktur der Daten möglichst einfach und lesbar zu halten. Eine Serie die mehrere Staffeln enthält, die wiederrum jeweils eine Menge von Episoden auffassen, würde ein sehr komplexes Elemente definieren, dass bei der späteren Verarbeitung zu Komplikationen führen kann.
-
-Da die Daten einer Episode, inhaltlich jedoch weiterhin davon abhängen, von welcher Serie diese ist und in welcher Staffel sie vorkam, wird eine Referenzierung mit Hilfe von global eindeutigen IDs eingeführt. Jede Serie, User, Staffel, Episode und Liste wird mit einer einzigartigen Folge von Zeichen beschrieben, über diese es möglich ist auf gewünschte Informationen zuzugreifen und entsprechende Elemente auszulesen.
-
-Eine Episode bekommt damit eine eindeutige episodenID zugeordnet, erhält zudem aber die Referenz der serienID und seasonID als Attribute, um Verweise und Zuordnungen zu realisieren. Da sich jedes Objekt demnach durch eine Kennung repräsentiert, reicht bei anlegen von Listen und Containern ein einfacher Verweis auf entsprechendes Element, wodurch Datenredundanz bei Schemen verhindert wird, die inhaltlich voneinander abhängen.
-
-Um die Struktur des gesamten Serien Elements zu ermöglichen und vorhandene IDs global nutzen zu können, wird jedes Schema über eine Masterdatei in die einzelnen XML Schemas inkludiert, um bereits definierte Elemente und Attribute wiederverwendbar zu machen und die Datenmenge zu reduzieren.
-
-
-Ein weiterer Gruppe von Elementen, die bei der Entwicklung eine wichtige Rollen spielen sind die Containerelemente. Da jede Entität eines Typs angelegt werden muss, wurde für jeden verwendeten Typ User, Serie, Season, Episode, List, eine eigene Liste angelegt, die jedes Elemente ihres speziellen Typen aufnehmen und als Containerklasse dienen.
-
 
 \newpage
 
