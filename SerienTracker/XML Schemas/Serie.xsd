@@ -141,7 +141,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Genres -->
+<!-- Genres -->
 	<xs:element name="genre">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
@@ -167,4 +167,6 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
+
+	
 </xs:schema>

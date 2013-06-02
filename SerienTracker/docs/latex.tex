@@ -37,33 +37,36 @@ citecolor = black] {hyperref}
 
 
 \section{Einleitung}
-Im Rahmen der Projektphase des Moduls Webbasierte Anwendungen 2: Verteilte Systeme, geht es um die Entwicklung einer Applikation, die sich mit dem Datenaustausch in verteilten System beschäftigt. Innerhalb dieses Systems wird zum einen eine synchrone Kommunikation zwischen Instanzen mit Hilfe des REST Konzeptes realisiiert und zum andern ein asynchroner Datenaustausch auf Grundlage von XMPP. TODO
+Im Rahmen der zweiten Projektphase des Moduls Webbasierte Anwendungen 2: Verteilte Systeme, geht es um die Entwicklung einer Applikation, die sich mit dem Datenaustausch in verteilten Systemen beschäftigt. Innerhalb dieses Systems wird zum einen eine synchrone Kommunikation zwischen Instanzen mit Hilfe des REST Konzeptes realisiert und zum andern ein asynchroner Datenaustausch auf Grundlage von XMPP implementiert. Zur Repräsentation der Funktionalität dient ein selbst entwickelter Client. 
+
+\parskip 12pt
+\parindent 0pt
+Folgendes Dokument erfasst die einzelnen Entwicklungsschritte. Von der anfänglichen Konzeptidee inklusive Konzeption der benötigten XML Schematas, über die Implementierung des RESTful Webservices und XMPP Client, bis hin zur Umsetzung des grafischen User Interfaces. Dabei werden, neben den finalen Ergebnissen, auch getroffene Abwägungen, Entwicklungen und Entscheidung hinsichtlich der Umsetzung dargestellt und erläutert. 
+Zuletzt folgt eine Projektreflektion, anhand derer Erfahrungen für weitere Projekte mitgenommen werden sollen.
 
 
 \section{Konzept}
-
-Die \textbf{Idee} ist, dass Serien-Interessierte über ihre zuvor favorisierten Serien und abonnierten Interessen benachrichtigt werden, sobald eine Episode dieser Serie im TV ausgestrahlt wird.
-
-\parskip 12pt
-\parindent 0pt
-Der \textbf{Serien-Interessierte} soll Zugriff auf einen Pool von Serien bekommen, die auf einem Server gespeichert und verwaltet werden.
-Die einzelnen Serien soll der Nutzer dann favorisieren/abonnieren können um dann über die TV-Ausstrahlung informiert zu werden.
-Außerdem soll die Möglichkeit bestehen eine Episode zu bewerten und als gesehen/ungesehen zu markieren. Es besteht zudem die Möglichkeiten Serien in Listen einzuordnen und zu verwalten. (definitiv automatische Watchlist/Seenlist)
+Zu Beginn des Projektes ging es um das Finden eines geeigneten Anwendungsfall aus der Realität. Für diesen sollte das geforderte System, eine sinnvolle Ergänzung für mögliche Anwender darstellen.
+Zum einen muss die Möglichkeit bestehen, Informationen direkt auszutauschen und zum anderen sollte eine Art Benachrichtigungssystem existieren, bei denen die Interessenten nur beim Eintreten bestimmter Ereignisse informiert werden müssen.
+Nach Überlegung fiel dabei die Wahl auf das Thema Film und Fernsehen und wurde im Spezielleren auf Serien eingegrenzt. Sinnvoll erscheint eine Umsetzung dieses Thema aufgrund der regelmäßigen Ausstrahlung von Folgen einer bestimmten Serie.
+Während man für einen Film lediglich einmal die Ausstrahlungszeit in Erfahrung bringen muss, würde sich dieser Schritt bei Serieninteressierten Woche für Woche wiederholen. Dazu kommen kurzfristige Änderung im Fernsehkalender, die im unpassenden Fall dazu führen, dass eventuell Folgen verpasst werden. Schaut jemand nicht nur eine Serie, sondern hat eine Art festen Wochenplan, so kann hierbei auch der Überblick darüber verloren gehen, welche Folge man eigentlich zuletzt gesehen hat oder wie die Serie hieß, die einem neuliche empfohlen wurde. 
 
 \parskip 12pt
 \parindent 0pt
-Die \textbf{Server-Anwendung} soll die Nutzer über die TV-Austrahlung einer Episode einer zuvor favorisierten Serie in einem vom Benutzer definierten Zeitraum informiert werden. Jeder Eintrag einer Serie enthalt zudem Informationen wie Genre, anhand derer Abonnentenl bezüglich eines bestimmten Themas, zusätzliche Benachrichtigungen empfangen.
+Mit dieser grundlegenden Überlegung ging es an das Konzipieren des Funktionsumfangs der Applikation unter dem Projekttitel \textbf{Serientracker}.
+Die Idee ist, dass Serieninteressierte\footnote[1]{Innerhalb des Kontext wird für den Benutzertyp des Anwenders/Nutzers auch diese Bezeichnung verwendet werden, da diese Personengruppe in ihrer Funktion die Benutzer des Systems darstellen werden.} die Möglichkeit besitzen bestimmte Serien zu favorisieren und Meldungen zu gewissen Themen abonnieren können. Er soll Zugriff auf einen Pool von Serien bekommen, die auf einem Server gespeichert und verwaltet werden. Der Benutzer erhält dann zu seinen Lieblingsserien Benachrichtigungen, sobald eine Episode dieser Serie im TV ausgestrahlt wird. Wenn vorher noch das Genre Comedy abonniert wurde, so erhält er zudem noch eine Benachrichtigung, welche Serien dieses Typs aktuell so laufen.
+Außerdem soll die Möglichkeit bestehen eine Episode zu bewerten und als gesehen/ungesehen zu markieren. Diese Verwaltung findet innherhalb von privat angelegten Listen statt, die neben der klassischen Seen/Unseen Form auch als Watchlist oder ähnliches definiert werden kann.
+
+\newpage
+Die \textbf{Server-Anwendung} soll die Nutzer über die TV-Austrahlung einer Episode zu einem Zeitraum informieren, die sich der Benutzer selbst definiert hat. Er kann demnach entscheiden, ob ihm eine Benachrichtigung für die ganze Woche genügt, ob er jeden Morgen über den aktuellen Tag informiert werden möchte oder eine Meldung 5 Minuten vor Sendestart ausreicht, da er planmäßig zu Hause sein wird.
 
 \parskip 12pt
 \parindent 0pt
-Ein \textbf{Content-Admin} soll erweiterte Rechte bekommen, um die Content-Verwaltung zu übernehmen. Die Anwendung soll das Anlegen, Bearbeiten und Löschen von Serien bzw Episoden ermöglichen. Zudem ist somit das Korrigieren von Fehlern möglich, die von Usern eingeschickt werden.
+Ein \textbf{Content-Admin} soll erweiterte Rechte bekommen, um die Content-Verwaltung zu übernehmen. Die Anwendung soll das Anlegen, Bearbeiten und Löschen von Serien bzw Episoden ermöglichen. Zudem ist somit das Korrigieren von Fehlern möglich, die von Usern eingeschickt werden oder die aufgrund von Planänderungen anfallen.
 
-\subsection{Zusatz - Freunde}
-Serien-Interessierte sollen sich gegenseitig hinzufügen/abonnieren können um sich gegenseitig zu benachrichtigen, zum Beispiel in Form von Freund X schaut gerade Y, Freund Z hat Serie/Episode mit 8,0 bewertet oder Freund Y empfiehlt Dir Serie W.
-
-
+Als möglicher Zusatz ist eine Einbindung von Freunden geplant. Nutzer sollen sich gegenseitig hinzufügen/abonnieren können um sich gegenseitig zu benachrichtigen. Zum Beispiel in Form von \textit{Freund X schaut gerade Y}, \textit{Freund Z hat Serie/Episode mit 8,0 bewertet} oder \textit{Freund Y empfiehlt dir Serie W}. Ob dieser Ansatz innerhalb des Projektes realisiert wird, hängt vom vorranschreiten der Umsetzung  und der damit einhergehenden Abwägung für das eigentlich Ziel des Projektes ab.
 \subsection{Umsetzung}
-Die Anwendung ermöglicht den Austausch von Informationen zwischen Server und Anwender entsprechend den jeweiligen Funktionen.
+Zuvor genannte Funktionen würden, für einen Informationsaustausch zwischen Server und Anwendung, hinsichtlich folgender Einstufung der Datenübertragung umgesetzt werden.
 
 \subsubsection{Synchrone Datenübertragung}
 
@@ -161,7 +164,10 @@ Content-Admin
     \end{itemize}
 \end{itemize}
 
-
+\subsubsection{Kommunikationsabläufe}
+Im Rahmen des Konzeptes wurden zwischen dem Server und dem User (hier repräsentativ für die Anforderung seitens der Anwendung) folgende Kommunikationsabläufe identifiziert.
+Die synchronen Interaktionen werden vom User iniziiert und greifen auf die beim Server abgelegten Datensätze zu. Dabei hat jeder User die Möglichkeit eine einfache Anzeige der Daten anzufordern oder eine Serie den Favoriten hinzuzufügen. User mit erweiterten Adminrechten wird hierbei auch die Manipulation der Daten gewährleistet, um eine Verwaltung zu ermöglichen. Die entsprechende Repräsentation der Information wird vom Server wieder an den User zurück gegeben. 
+Diese Ansätze werden über einen RESTful Webservice umgesetzt und mit entsprechenden GET, POST, PUT und DELETE Methoden realisiert.\footnote[2]{Dazu mehr in...}
 
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{images/kommunikationsablaeufe.png}
@@ -169,6 +175,7 @@ Content-Admin
 \label{kommunikationsablaeufe}
 \end{figure}
 
+Die Asynchronen Kommunikationsabläufe liefern Informationen bei bestimmten Events vom Server an die entsprechenden User als Empfänger. Dieser Ansatz wird mit Hilfe von XMPP realisiert werden und ist im Kapitel X.X genauer dargelegt. 
 
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{images/kommunikationsablaeufeAsynchron.png}
@@ -241,7 +248,7 @@ Um die eingegeben Daten semantisch sinnvoll zu halten, wurde für einige Element
 
 \begin{table}[H]
 \caption{Restriktionen des User Schemas}
-
+\centering
 
 \begin{tabular}{l l l}
 \\ [-0.5ex]
@@ -252,20 +259,34 @@ Element/Attirbute & Restriktion & Begründung
 \\ [1.5ex]
 \hline
 \\ [-0.5ex]
-Username & Stringlänge 2 < und < 30 & sinnvolle Namenlänge, verhindert Text \\[1ex]
-Lastname & Stringlänge 1 < und < 40 & gängige Nachnamenlänge, eventuell Doppelnamen,\\[1ex]
-&&verhindert Text \\[1ex]
-Firstname & Stringlänge 1 < und < 50 & gängige Vornamenlänge, Mehrfachnahmen \\[1ex]
-Gender & Auswahl zwischen Male und Female & logische Auswahl, Vorgabe verhindert \\[1ex]
-&&Schreibfehler durch User\\[1ex]
-Age & älter als 13 und jünger als 121 & Mindestalter zur rechtlichen Nutzung, \\[1ex]
-&&Alter nach oben sinnvoll begrenzt \\[1ex]
-Location & Stringlänge < 40 & Stadtname, Land etc. Eingabe ist keine Adresse\\[1ex]
-&&und lässt sich in Kürze ausdrücken\\[1ex]
-About & Stringlänge < 200 & optionale Kurzbeschreibung, nach oben begrenzt, \\[1ex]
-&&zu viele Informationen nicht unbedingt von Interesse  \\[1ex]
+Username & Stringlänge 2 < und < 30 & sinnvolle Namenlänge,\\[1ex]
+&& verhindert Text \\[3ex]
+
+Lastname & Stringlänge 1 < und < 40 & gängige Nachnamenlänge, \\[1ex]
+&&eventuell Doppelnamen,\\[1ex]
+&&verhindert Text \\[3ex]
+
+Firstname & Stringlänge 1 < und < 50 & gängige Vornamenlänge, \\[1ex]
+&&Mehrfachnahmen \\[3ex]
+
+Gender & Auswahl zwischen Male und Female & logische Auswahl, \\[1ex]
+&&Vorgabe verhindert Schreibfehler\\[3ex]
+
+
+Age & älter als 13 und jünger als 121 & Mindestalter zur Nutzung, \\[1ex]
+&&logische Obergrenze \\[3ex]
+
+Location & Stringlänge < 40 & Stadtname, Land etc. \\[1ex]
+&&Eingabe ist keine Adresse\\[1ex]
+&&und lässt sich in Kürze ausdrücken\\[3ex]
+
+About & Stringlänge < 200 & optionale Kurzbeschreibung,\\[1ex]
+&&nach oben begrenzt, \\[1ex]
+&&zu viele Informationen nicht \\[1ex]
+&&unbedingt von Interesse  \\[3ex]
+
 Admin & Boolean ob True or False & Rechtevergabe nach Status,\\[1ex] 
-&&Auswahl nur in 2 Zuständen möglich\\[1ex]
+&&Auswahl nur in 2 Zuständen möglich\\[2ex]
 
 \hline
 \end{tabular}
@@ -286,12 +307,18 @@ Element/Attirbute & Restriktion & Begründung
 \\ [1.5ex]
 \hline
 \\ [-0.5ex]
-Year & Jahreszahl 1900 < und < 2015 & Jahreszeiten außerhalb unrelevant \\[1ex]
-Country & Auswahlmöglichkeit Ländern, die Serien produzieren & verhindern von Eingabefehler der User\\[1ex]
-Episoderuntime & Auswahl zwischen gängigen Episodenlängen& Serie hat feste Episodenlänge, bekannte Längen \\[1ex]
-Network & Auswahl bekannter Sender & unrelevante Sender entfallen, Eingabefehler verhindern \\[1ex]
-Airday & Auswahl des Tagnamen & Eingabefehler verhindern \\[1ex]
-Genre & Auswahl definierter Genres & einheitliche Schreibweise, Eingabefehler verhindern, sinnvolle Genre\\[1ex]
+Year & Jahreszahl 1900 < und < 2015 & Jahreszeiten außerhalb\\[1ex]
+&&unrelevant \\[3ex]
+
+Country & Auswahlmöglichkeit Ländern & Eingabefehler verhindern\\[3ex]
+Episoderuntime & Auswahl zwischen gängigen Episodenlängen& Serie hat feste Episodenlänge\\[3ex]
+Network & Auswahl bekannter Sender & unrelevante Sender entfallen,\\[3ex]
+&&Eingabefehler verhindern\\[3ex]
+
+Airday & Auswahl des Tagnamen & Eingabefehler verhindern\\[3ex]
+Genre & Auswahl definierter Genres & einheitliche Schreibweise,\\[1ex]
+&&Eingabefehler verhindern,\\[1ex]
+&& sinnvolle Genre\\[2ex]
 
 \hline
 \end{tabular}
@@ -314,13 +341,15 @@ Element/Attirbute & Restriktion & Begründung
 \\ [1.5ex]
 \hline
 \\ [-0.5ex]
-Overview (global) & Stringlänge 10 < und < 500 & Vermittlung von allgemeinen Informationen,\\[1ex]
- &&kurze Inhaltsangabe \\[1ex]
-Title (global) & Stringlänge 1 < und < 80 & gängige Titellänge \\[1ex]
-Name (list) & Stringlänge 2 < und < 80 & treffende Bezeichnung, Name keine Beschreibung \\[1ex] 
-Public (list) & Boolean True und False & feste Zustände \\[1ex] 
-Episodenumber (episode) & Anzahl < 26 & maximale Episodenanzahl pro Season gängiger Serien \\[1ex] 
-Seasonnumber (seasons) & Anzahl < 41 & sinnvolle Begrenzung, Freiraum für Langzeitserien \\[1ex] 
+Overview (global) & Stringlänge 10 < und < 500 & allgemeinen Informationen,\\[1ex]
+&&kurze Inhaltsangabe\\[3ex]
+Title (global) & Stringlänge 1 < und < 80 & gängige Titellänge\\[3ex]
+Name (list) & Stringlänge 2 < und < 80 & treffende Bezeichnung,\\[1ex] 
+&&Name keine Beschreibung \\[3ex] 
+Public (list) & Boolean True und False & feste Zustände \\[3ex] 
+Episodenumber (episode) & Anzahl < 26 & sinnvolle maximale Episodenanzahl\\[3ex] 
+Seasonnumber (seasons) & Anzahl < 41 & sinnvolle Begrenzung, \\[1ex]
+&&Freiraum für Langzeitserien \\[2ex] 
 
 \hline
 \end{tabular}

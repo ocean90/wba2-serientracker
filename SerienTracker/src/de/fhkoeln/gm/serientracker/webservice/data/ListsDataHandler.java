@@ -73,6 +73,66 @@ public class ListsDataHandler {
 
 		return null;
 	}
+	
+	
+	/**
+	 * Checks if a list of a type exists.
+	 *
+	 * @param String id
+	 * @return boolean
+	 */
+	public boolean ListExistsByType( String type ) {
+		for ( de.fhkoeln.gm.serientracker.jaxb.List list : this.lists )
+			if ( list.getType().equals( type ) )
+				return true;
+
+		return false;
+	}
+
+	/**
+	 * Returns a list by type.
+	 *
+	 * @param String genre
+	 * @return List
+	 */
+	public de.fhkoeln.gm.serientracker.jaxb.List getListByType( String type ) {
+		for ( de.fhkoeln.gm.serientracker.jaxb.List list : this.lists )
+			if ( list.getType().equals( type ) )
+				return list;
+
+		return null;
+	}
+	
+	
+	/**
+	 * Checks if a list with the name of a genre.
+	 *
+	 * @param String id
+	 * @return boolean
+	 */
+	public boolean ListExistsBySpecificGenre( String name) {
+		for ( de.fhkoeln.gm.serientracker.jaxb.List list : this.lists )
+			if ( list.getName().equals(name) )
+				return true;
+
+		return false;
+	}
+
+	/**
+	 * Returns a list by genre depending on the name.
+	 *
+	 * @param String genre
+	 * @return List
+	 */
+	public de.fhkoeln.gm.serientracker.jaxb.List getListBySpecificGenre( String name ) {
+		for ( de.fhkoeln.gm.serientracker.jaxb.List list : this.lists )
+			if ( list.getName().equals( name ) )
+				return list;
+
+		return null;
+	}
+	
+	
 
 	/**
 	 * Adds a new list.

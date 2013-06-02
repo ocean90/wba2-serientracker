@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.25 um 01:59:13 PM CEST 
+// Generiert: 2013.06.01 um 04:31:48 PM CEST 
 //
 
 
@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;choice minOccurs="0">
  *         &lt;sequence>
  *           &lt;element ref="{}name"/>
+ *           &lt;element ref="{}type"/>
  *           &lt;element ref="{}series"/>
  *         &lt;/sequence>
  *       &lt;/choice>
@@ -43,12 +44,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "name",
+    "type",
     "series"
 })
 @XmlRootElement(name = "list")
 public class List {
 
     protected String name;
+    protected String type;
     protected Series series;
     @XmlAttribute(name = "userID", required = true)
     protected String userID;
@@ -79,6 +82,30 @@ public class List {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Ruft den Wert der type-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Legt den Wert der type-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setType(String value) {
+        this.type = value;
     }
 
     /**
