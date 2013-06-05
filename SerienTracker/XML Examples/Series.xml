@@ -2,28 +2,736 @@
 <series xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../XML Schemas/Series.xsd">
+   
+   
+   <!-- Beispieldatensätze -->
     <serie serieID="ss_0001wade">
         <title>The Walking Dead</title>
         <genres>
             <genre>Action</genre>
+            <genre>Drama</genre>
+            <genre>Horror</genre>
         </genres>
         <year>2010</year>
         <firstaired>2010-10-01</firstaired>
         <country>USA</country>
         <overview>The Walking Dead is an American horror television drama series developed by Frank Darabont. It is based on the comic book series of the same name by Robert Kirkman, Tony Moore, and Charlie Adlard.
     	The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens from a coma to find a post-apocalyptic world dominated by flesh-eating "walkers", resembling zombies.</overview>
+       
         <episoderuntime>50</episoderuntime>
         <network>AMC</network>
         <airday>Sunday</airday>
         <airtime>22:00:00</airtime>
         <images>
             <image src="http://serientracker.de/serieID=1/pic.jpg"/>
-            <image src="http://serientracker.de/serieID=1/pic.jpg"/>
+            <image src="http://serientracker.de/serieID=1/pic2.jpg"/>
         </images>
+        
         <seasons serieID="ss_0001wade">
-            <season serieID="ss_0001wade" seasonID="sn_auv409nt"/>
+            
+            <season serieID="ss_0001wade" seasonID="sn_0001wade">
+            	<seasonNumber>1</seasonNumber>   
+        	
+            	<episodes>
+            		<episode episodeID="ep_0001wade" serieID="ss_0001wade" seasonID="sn_0001wade">
+            			<episodeNumber>1</episodeNumber>
+						<title>Days Gone Bye</title>
+						<overview>Deputy Sheriff Rick Grimes wakes up in the hospital, after being shot, to find his town overrun by flesh-eating zombies. After making friends with survivor Morgan Jones and his son Duane, Rick sets out to find his wife and son.</overview>
+						<airdate>2010-11-01T22:00:00</airdate>
+						<images>
+							<image src="http://serientracker.de/dummy1.png"/>
+						</images>
+					</episode>		
+					
+            		<episode episodeID="ep_0002wade" serieID="ss_0001wade" seasonID="sn_0001wade">
+            			<episodeNumber>2</episodeNumber>
+            			<title>Guts</title>
+            			<overview>Rick unknowingly causes a group of survivors to be trapped by walkers. The group dynamic devolves from accusations to violence, as Rick must confront an enemy far more dangerous than the undead.</overview>
+            			<airdate>2010-11-08T23:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy2.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0003wade" serieID="ss_0001wade" seasonID="sn_0001wade">
+            			<episodeNumber>3</episodeNumber>
+            			<title>Tell It to the Frogs</title>
+            			<overview>After returning to the camp with the department store survivors and an emotional reunion with his wife and son, Rick decides to go against Shane's advice and go back to Atlanta for Merle Dixon and his dropped bag of guns accompanied by Merle's younger brother, Darryl Dixon, as well as Glenn and T-Dog.</overview>
+            			<airdate>2010-11-15T23:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy6.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0004wade" serieID="ss_0001wade" seasonID="sn_0001wade">
+            			<episodeNumber>4</episodeNumber>
+            			<title>Vatos</title>
+            			<overview>While still in search of Merle, the group tries to retrieve the bag of guns but are attacked by several living men who are also after the weapons. The group manages to grab the injured attacker; however, several of the attackers escape and take Glenn hostage. Back at camp a large group of walkers venture up the hill and take the survivors by surprise.</overview>
+            			<airdate>2010-11-22T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy3.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0005wade" serieID="ss_0001wade" seasonID="sn_0001wade">
+            			<episodeNumber>5</episodeNumber>
+            			<title>Wildfire</title>
+            			<overview>Rick leads the group to the CDC after the attack on the camp. Jim must make a terrible life and death decision.</overview>
+            			<airdate>2010-11-29T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy4.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0006wade" serieID="ss_0001wade" seasonID="sn_0001wade">
+            			<episodeNumber>6</episodeNumber>
+            			<title>TS-19</title>
+            			<overview>Rick and the group are allowed into the CDC by a strange doctor, but all is not what it seems in their newfound haven.</overview>
+            			<airdate>2010-12-06T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	</episodes>
+            	
+            	<images>
+            		<image src="http://serientracker.de/dummy1.png"/>
+            	</images>    
+            </season>
+   
+            <season serieID="ss_0001wade" seasonID="sn_0002wade">
+            	<seasonNumber>1</seasonNumber>   
+        	
+            	<episodes>
+            		<episode episodeID="ep_0007wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>1</episodeNumber>
+						<title>What Lies Ahead</title>
+						<overview>Rick and the group leave Atlanta and encounter a threat on the highway the likes of which they've never seen. Elsewhere, the group search for a missing person.</overview>
+						<airdate>2011-10-12T22:00:00</airdate>
+						<images>
+							<image src="http://serientracker.de/dummy1.png"/>
+						</images>
+					</episode>		
+					
+            		<episode episodeID="ep_0008wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>2</episodeNumber>
+            			<title>Bloodletting</title>
+            			<overview>Rick discovers a possible safe haven. Shane must go on a dangerous mission to get needed medical supplies.</overview>
+            			<airdate>2011-10-24T22:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy2.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0009wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>3</episodeNumber>
+            			<title>Save the Last One</title>
+            			<overview>The group desperately awaits Shane's return. Shane finds himself trapped in a school, surrounded by the undead. Daryl and Andrea search for someone in the woods.</overview>
+            			<airdate>2011-10-31T21:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy6.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0010wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>4</episodeNumber>
+            			<title>Cherokee Rose</title>
+            			<overview>Shane makes a deadly sacrifice which leads to unusual behavior and self-distancing. The rest of the group tries to hang on somewhere between living to die and dying to live.</overview>
+            			<airdate>2011-11-07T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy3.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0011wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>5</episodeNumber>
+            			<title>Chupacabra</title>
+            			<overview>Concerned for their safety, the group makes a plan – one that Hershel disagrees with adamantly. He makes it clear the group is fine to stay for now, but not indefinitely.</overview>
+            			<airdate>2011-11-14T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy4.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0012wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>6</episodeNumber>
+            			<title>Secrets</title>
+            			<overview>Secrets are told and secrets are revealed. Hershel refuses to acknowledge the world’s new reality. Andrea comes out of her shell. Everyone is becoming more and more aware that “everything is food for something.”.</overview>
+            			<airdate>2011-11-21T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	
+            	
+            		<episode episodeID="ep_0013wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>7</episodeNumber>
+            			<title>Pretty Much Dead Already</title>
+            			<overview>Hershel sets a deadline. All secrets are out in the open. Glenn stands up for himself and Shane takes charge.</overview>
+            			<airdate>2011-11-28T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	
+            		<episode episodeID="ep_0014wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>8</episodeNumber>
+            			<title>Nebraska</title>
+            			<overview>Rick and the others try to restore order in the aftermath of a terrible discovery. Hershel takes up an old habit and disappears, Rick and Glenn must follow him into town.</overview>
+            			<airdate>2012-02-13T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0015wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>9</episodeNumber>
+            			<title>Triggerfinger</title>
+            			<overview>Rick, Hershel and Glen are trapped and fight to survive; Shane finds Lori in danger.</overview>
+            			<airdate>2012-02-20T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0016wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>10</episodeNumber>
+            			<title>18 Miles Out</title>
+            			<overview>Rick and Shane are in conflict over the fate of an outsider; Andrea helps Hershel's daughter face a crucial decision.</overview>
+            			<airdate>2012-02-27T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0017wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>11</episodeNumber>
+            			<title>Judge, Jury, Executioner</title>
+            			<overview>Rick sides with Shane causing Dale to worry that the group is losing its humanity; Carl's actions have unintended consequences.</overview>
+            			<airdate>2012-03-05T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+           	
+            		<episode episodeID="ep_0018wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>12</episodeNumber>
+            			<title>Better Angels</title>
+            			<overview>Someone dangerous may be loose near the farm; Rick, Shane, Daryl and Glenn keep the group safe.</overview>
+            			<airdate>2012-03-12T21:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0019wade" serieID="ss_0001wade" seasonID="sn_0002wade">
+            			<episodeNumber>13</episodeNumber>
+            			<title>Besides the Dying Fire</title>
+            			<overview>Rick and Carl find the farm in jeopardy; the group is split up in the chaos; Rick's leadership is questioned.</overview>
+            			<airdate>2012-03-19T21:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	</episodes>
+            	
+            	<images>
+            		<image src="http://serientracker.de/dummy1.png"/>
+            	</images>    
+            </season>
+            
+            <season serieID="ss_0001wade" seasonID="sn_0003wade">
+            	<seasonNumber>1</seasonNumber>   
+        	
+            	<episodes>
+            		<episode episodeID="ep_0020wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>1</episodeNumber>
+						<title>Seed</title>
+						<overview>As the world grows more dangerous and Lori's pregnancy advances, Rick locates a potentially safe haven.</overview>
+						<airdate>2012-10-15T22:00:00</airdate>
+						<images>
+							<image src="http://serientracker.de/dummy1.png"/>
+						</images>
+					</episode>		
+					
+            		<episode episodeID="ep_0021wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>2</episodeNumber>
+            			<title>Sick</title>
+            			<overview>A life hangs in the balance; the group deals with a threat to their new surroundings.</overview>
+            			<airdate>2012-10-22T22:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy2.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0022wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>3</episodeNumber>
+            			<title>Walk With Me</title>
+            			<overview>After witnessing an accident, Andrea and Michonne are introduced to a new community of survivors. As conflicts arise with their new acquaintances, a decision must be made.</overview>
+            			<airdate>2012-10-29T21:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy6.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0023wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>4</episodeNumber>
+            			<title>Killer Within</title>
+            			<overview>The group is severed, placing lives in jeopardy. Merle has a request for the Governor. Meanwhile the prison doesn't seem to be a place as secure as they thought.</overview>
+            			<airdate>2012-11-05T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy3.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0024wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>5</episodeNumber>
+            			<title>Say the World</title>
+            			<overview>Rick struggles after another loss. Michonne is suspicious of the Governor.</overview>
+            			<airdate>2012-11-12T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy4.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0025wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>6</episodeNumber>
+            			<title>Hounded</title>
+            			<overview>Michonne makes a decision about Woodbury; Glenn and Maggie go on a run; Rick struggles.</overview>
+            			<airdate>2012-11-19T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	
+            		<episode episodeID="ep_0026wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>7</episodeNumber>
+            			<title>When the Dead Come Knocking</title>
+            			<overview>The Governor presses for information. A new guest arrives at the prison, forcing Rick's hand.</overview>
+            			<airdate>2012-11-27T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	
+            		<episode episodeID="ep_0027wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>8</episodeNumber>
+            			<title>Made to Suffer</title>
+            			<overview>Andrea steps up when the people of Woodbury are thrown into uncharted territory. A new threat arises at the prison.</overview>
+            			<airdate>2012-12-03T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0028wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>9</episodeNumber>
+            			<title>The Suicide King</title>
+            			<overview>After the invasion of Woodbury by Rick’s group, Daryl and Merle are captured by The Governor. Rick decides the fate of Tyreese’s group.</overview>
+            			<airdate>2013-02-11T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0029wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>10</episodeNumber>
+            			<title>Home</title>
+            			<overview>As the group debates their next course of action, Rick wanders after a lost friend. After helping another group of survivors flee a group of walkers, Daryl and Merle begin to have second thoughts about leaving the prison. The Governor cedes leadership of Woodbury to Andrea and makes plans to punish those responsible for the chaos.</overview>
+            			<airdate>2013-02-18T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0030wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>11</episodeNumber>
+            			<title>I Ain't a Judas</title>
+            			<overview>Rick and the group are forced to make a decision now that their safety is no longer guaranteed. Andrea feels uncomfortable now that Woodbury has become a police state.</overview>
+            			<airdate>2013-02-25T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+           	
+            		<episode episodeID="ep_0031wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>12</episodeNumber>
+            			<title>Clear</title>
+            			<overview>Since they are outgunned against the Governor's forces, Rick undertakes a mission to get more weapons.</overview>
+            			<airdate>2013-03-04T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0032wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>13</episodeNumber>
+            			<title>Arrow on the Doorpost</title>
+            			<overview>Rick and the Governor contemplate a peace treaty.</overview>
+            			<airdate>2013-03-11T21:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0033wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>14</episodeNumber>
+            			<title>Prey</title>
+            			<overview>The Governor chases a fleeing dissenter; while the Governor is gone, a traitor tries to sabotage his plans.</overview>
+            			<airdate>2013-03-18T21:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0034wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>15</episodeNumber>
+            			<title>The Sorrowful Life</title>
+            			<overview>Rick and the group are faced with a serious problem. If they want a truce with the Governor, they will have to make a huge sacrifice.</overview>
+            			<airdate>2013-03-25T21:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0035wade" serieID="ss_0001wade" seasonID="sn_0003wade">
+            			<episodeNumber>16</episodeNumber>
+            			<title>Welcome to the Tombs</title>
+            			<overview>Rick and the others consider the defense of the prison as the Governor's impending attack looms.</overview>
+            			<airdate>2013-04-01T22:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            	</episodes>
+            	
+            	<images>
+            		<image src="http://serientracker.de/dummy1.png"/>
+            	</images>    
+            </season>
+            
         </seasons>
     </serie>
+
+	<serie serieID="ss_0002home">
+        <title>Homeland</title>
+        <genres>
+            <genre>Drama</genre>
+            <genre>Crime</genre>
+            <genre>Thriller</genre>
+        </genres>
+        <year>2011</year>
+        <firstaired>2011-10-02</firstaired>
+        <country>USA</country>
+        <overview>Carrie Mathison, a CIA operations officer, is on probation after carrying out an unauthorized operation in Iraq. As a result, she has been reassigned to the Counter terrorism center. Whilst in Iraq, she was warned that an American prisoner had been turned by Al-Qaeda. When Nicholas Brody, a U.S. Marine Sergeant, is rescued after being held hostage since 2003, she suspects that he is the turned American prisoner.</overview>
+        <episoderuntime>50</episoderuntime>
+        <network>Showtime</network>
+        <airday>Sunday</airday>
+        <airtime>22:00:00</airtime>
+        <images>
+            <image src="http://serientracker.de/serieID=1/pic.jpg"/>
+            <image src="http://serientracker.de/serieID=1/pic2.jpg"/>
+        </images>
+        
+        <seasons serieID="ss_0002home">
+            
+            <season serieID="ss_0002home" seasonID="sn_0001home">
+            	<seasonNumber>1</seasonNumber>   
+        	
+            	<episodes>
+            		<episode episodeID="ep_0001home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>1</episodeNumber>
+						<title>Pilot</title>
+						<overview>After missing and presumed dead for eight years, Marine Sergeant Nicholas Brody is rescued in Iraq, and returns home to his family. But CIA agent Carrie Mathison suspects he might have been turned by his terrorist captors, and believes he could be part of a plan to attack America.</overview>
+						<airdate>2011-10-03T22:00:00</airdate>
+						<images>
+							<image src="http://serientracker.de/dummy1.png"/>
+						</images>
+					</episode>		
+					
+            		<episode episodeID="ep_0002home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>2</episodeNumber>
+            			<title>Grace</title>
+            			<overview>Carrie continues to surveil Brody but is unable to follow his actions into his garage which is a blind spot, where Brody begins to perform an Islamic prayer. Meanwhile, Carrie receives visual confirmation from an undercover agent that shows Al-Qaeda member Abu Nazir on video meeting with the Royal Prince of the Kingdom of Saudi Arabia.</overview>
+            			<airdate>2011-10-10T22:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy2.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0003home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>3</episodeNumber>
+            			<title>Clean Skin</title>
+            			<overview>Brody prepares to enter the spotlight; Carrie closes in on an al-Qaeda plot.</overview>
+            			<airdate>2011-10-17T22:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy6.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0004home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>4</episodeNumber>
+            			<title>Semper I</title>
+            			<overview>The political powers that be make big plans for national hero Brody, but his increasingly erratic behavior threatens his media darling status; Carrie grows desperate for evidence linking Brody with Abu Nazir, as Saul directs her to focus on Nazir's money trail.</overview>
+            			<airdate>2011-10-24T22:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy3.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0005home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>5</episodeNumber>
+            			<title>Blind Spot</title>
+            			<overview>Brody confronts the lone survivor among the insurgents that held him, leading Carrie to believe she may be proved right about Brody once and for all - but Brody's reunion with his captor surprises everyone; the agency is hot on the trail of the lovers who bought a house near the airport with funds from a stolen necklace.</overview>
+            			<airdate>2011-10-31T21:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy4.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0006home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>6</episodeNumber>
+            			<title>The Good Soldier</title>
+            			<overview>Reeling after losing key players in Nazir's plot against America, the CIA orders polygraphs on everyone who came in contact with them, including Brody, which Carrie sees as an opportunity to finally learn the truth.</overview>
+            			<airdate>2011-11-07T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+             
+   		         	<episode episodeID="ep_0007home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>7</episodeNumber>
+						<title>The Weekend</title>
+						<overview>The relationship between Carrie and Brody becomes more complicated when they head into the countryside for the weekend, while Mike and Jessica face the fallout of the truth about their relationship, and Saul catches Aileen on the run to Mexico.</overview>
+						<airdate>2011-11-14T23:00:00</airdate>
+						<images>
+							<image src="http://serientracker.de/dummy1.png"/>
+						</images>
+					</episode>		
+					
+            		<episode episodeID="ep_0008home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>8</episodeNumber>
+            			<title>Achilles Heel</title>
+            			<overview>As Carrie and Saul reel from the news that Walker is alive, the intelligence community clashes on the best way to capture him; Brody learns a shocking truth about his captivity.</overview>
+            			<airdate>2011-11-21T23:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy2.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0009home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>9</episodeNumber>
+            			<title>Crossfire</title>
+            			<overview>After his attempt to sever ties with Abu Nazir, Brody finds himself reliving his captivity and recommits to his mission; Carrie finds herself in the middle of a public relations nightmare on the heels of the mosque shooting.</overview>
+            			<airdate>2011-11-28T21:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy6.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0010home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>10</episodeNumber>
+            			<title>Representative Brody</title>
+            			<overview>Carrie and Saul identify Walker's contact in Washington but their target has diplomatic immunity; Brody is approached to run for a disgraced congressman's seat in the House of Representatives.</overview>
+            			<airdate>2011-12-05T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy3.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0011home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>11</episodeNumber>
+            			<title>The Vest</title>
+            			<overview>In the wake of the explosion, Saul finds Carrie hospitalized and manic, but realizes her chaotic theories have merit; before his congressional campaign begins, Brody takes his family on a weekend trip to Gettysburg, where he retrieves an important item.</overview>
+            			<airdate>2011-12-12T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy4.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0012home" serieID="ss_0002home" seasonID="sn_0001home">
+            			<episodeNumber>12</episodeNumber>
+            			<title>Marine One</title>
+            			<overview>While Carrie is near catatonic and confined to bed, Saul investigates the unsettling implications of her timeline; Walker secures a perch for his mission; Brody makes his final preparations for the Vice President's policy summit at the State Department.</overview>
+            			<airdate>2011-12-19T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	
+            	</episodes>
+            	<images>
+            		<image src="http://serientracker.de/dummy1.png"/>
+            	</images>    
+            </season>
+            
+            <season serieID="ss_0002home" seasonID="sn_0002home">
+            	<seasonNumber>2</seasonNumber>   
+        	
+            	<episodes>	
+            		<episode episodeID="ep_0013home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>1</episodeNumber>
+            			<title>Pretty Much Dead Already</title>
+            			<overview>Hershel sets a deadline. All secrets are out in the open. Glenn stands up for himself and Shane takes charge.</overview>
+            			<airdate>2011-11-28T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	
+            		<episode episodeID="ep_0014home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>2</episodeNumber>
+            			<title>Nebraska</title>
+            			<overview>Rick and the others try to restore order in the aftermath of a terrible discovery. Hershel takes up an old habit and disappears, Rick and Glenn must follow him into town.</overview>
+            			<airdate>2012-02-13T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0015home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>3</episodeNumber>
+            			<title>Triggerfinger</title>
+            			<overview>Rick, Hershel and Glen are trapped and fight to survive; Shane finds Lori in danger.</overview>
+            			<airdate>2012-02-20T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0016home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>4</episodeNumber>
+            			<title>18 Miles Out</title>
+            			<overview>Rick and Shane are in conflict over the fate of an outsider; Andrea helps Hershel's daughter face a crucial decision.</overview>
+            			<airdate>2012-02-27T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0017home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>5</episodeNumber>
+            			<title>Judge, Jury, Executioner</title>
+            			<overview>Rick sides with Shane causing Dale to worry that the group is losing its humanity; Carl's actions have unintended consequences.</overview>
+            			<airdate>2012-03-05T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+           	
+            		<episode episodeID="ep_0018home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>6</episodeNumber>
+            			<title>Better Angels</title>
+            			<overview>Someone dangerous may be loose near the farm; Rick, Shane, Daryl and Glenn keep the group safe.</overview>
+            			<airdate>2012-03-12T21:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0019home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>7</episodeNumber>
+            			<title>Besides the Dying Fire</title>
+            			<overview>Rick and Carl find the farm in jeopardy; the group is split up in the chaos; Rick's leadership is questioned.</overview>
+            			<airdate>2012-03-19T21:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            
+            		<episode episodeID="ep_0020home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>8</episodeNumber>
+						<title>Seed</title>
+						<overview>As the world grows more dangerous and Lori's pregnancy advances, Rick locates a potentially safe haven.</overview>
+						<airdate>2012-10-15T22:00:00</airdate>
+						<images>
+							<image src="http://serientracker.de/dummy1.png"/>
+						</images>
+					</episode>		
+					
+            		<episode episodeID="ep_0021home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>9</episodeNumber>
+            			<title>Sick</title>
+            			<overview>A life hangs in the balance; the group deals with a threat to their new surroundings.</overview>
+            			<airdate>2012-10-22T22:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy2.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0022home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>10</episodeNumber>
+            			<title>Walk With Me</title>
+            			<overview>After witnessing an accident, Andrea and Michonne are introduced to a new community of survivors. As conflicts arise with their new acquaintances, a decision must be made.</overview>
+            			<airdate>2012-10-29T21:00:00</airdate>
+            			<images>
+            				<image src="http://serientracker.de/dummy6.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0023home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>11</episodeNumber>
+            			<title>Killer Within</title>
+            			<overview>The group is severed, placing lives in jeopardy. Merle has a request for the Governor. Meanwhile the prison doesn't seem to be a place as secure as they thought.</overview>
+            			<airdate>2012-11-05T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy3.png"/>
+            			</images>
+            		</episode>
+            		
+            		<episode episodeID="ep_0024home" serieID="ss_0002home" seasonID="sn_0002home">
+            			<episodeNumber>12</episodeNumber>
+            			<title>Say the World</title>
+            			<overview>Rick struggles after another loss. Michonne is suspicious of the Governor.</overview>
+            			<airdate>2012-11-12T23:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy4.png"/>
+            			</images>
+            		</episode>
+            	</episodes>
+            	
+           		<images>
+           			<image src="http://serientracker.de/dummy1.png"/>
+           		</images>    
+            </season>
+            
+            <season serieID="ss_0002home" seasonID="sn_0003home">
+            	<seasonNumber>3</seasonNumber>   
+        	
+            	<episodes>			
+            		<episode episodeID="ep_0025home" serieID="ss_0002home" seasonID="sn_0003home">
+            			<episodeNumber>1</episodeNumber>
+            			<title>Tin Man is Down</title>
+            			<overview>No Information</overview>
+            			<airdate>2013-09-30T22:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	
+            		<episode episodeID="ep_0026home" serieID="ss_0002home" seasonID="sn_0003home">
+            			<episodeNumber>2</episodeNumber>
+            			<title>Tower of David</title>
+            			<overview>No Information</overview>
+            			<airdate>2013-10-07T22:00:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+            		</episode>
+            	
+            	</episodes>
+            	
+            	<images>
+            		<image src="http://serientracker.de/dummy1.png"/>
+            	</images>    
+            </season>
+            
+        </seasons>
+    </serie>
+
+
+    <!-- Testdaten -->
     <serie serieID="ss_0002cali"/>
     <serie serieID="ss_0001alco">
         <title>Alarm fur Cobra 11</title>
@@ -51,4 +759,5 @@
         <airday>Monday</airday>
         <airtime>21:21:13.342+02:00</airtime>
     </serie>
+    
 </series>
