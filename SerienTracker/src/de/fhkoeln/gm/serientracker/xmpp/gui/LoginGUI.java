@@ -15,7 +15,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import de.fhkoeln.gm.serientracker.xmpp.Config;
 import de.fhkoeln.gm.serientracker.xmpp.ConnectionHandler;
-import de.fhkoeln.gm.serientracker.xmpp.client.XMPPClient;
+import de.fhkoeln.gm.serientracker.xmpp.clients.UserClient;
 
 public class LoginGUI extends JFrame {
 
@@ -175,7 +175,7 @@ public class LoginGUI extends JFrame {
 		if ( this.ch.connect( hostname, port ) ) {
 			// Try to login
 			if ( this.ch.login( username, password ) ) {
-				XMPPClient.closeLogin();
+				UserClient.closeLogin();
 			} else {
 				errorDialog( "Login failed." );
 				return;

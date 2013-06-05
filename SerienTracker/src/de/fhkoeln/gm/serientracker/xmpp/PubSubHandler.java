@@ -17,36 +17,38 @@ import org.jivesoftware.smackx.pubsub.Subscription;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
 public class PubSubHandler {
-	private PubSubManager psm;
 
 	// Save the connection
 	private ConnectionHandler cnh;
 
+	// Save the Pub Sub mananger
+	private PubSubManager psm;
+
 	/**
 	 * Constructor.
 	 * Creates PubSubManager instance.
+	 *
 	 * @param Connection cn
 	 */
 	public PubSubHandler() {
+		// Get the connection instance
 		this.cnh = ConnectionHandler.getInstance();
 
+		// Init a new Pub Sub manager
 		this.psm = new PubSubManager( this.cnh.getConnection() );
 
-		//this.deleteAllNodes(); // TODO
+		this.deleteAllNodes(); // TODO: Entfernen, nur für Testzwecke
 	}
 
+	/**
+	 * Returns a node by name. Calls createNode() if node doesn't
+	 * exists.
+	 *
+	 * @param String name
+	 * @return LeafNode
+	 */
 	public LeafNode getNode( String name ) {
 		return getNode( name, true );
-	}
-
-	private void deleteAllNodes() {
-		for ( String node : this.getAllNodes() ) {
-			try {
-				this.psm.deleteNode( node );
-			} catch ( XMPPException e ) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	/**
@@ -66,6 +68,7 @@ public class PubSubHandler {
 		} catch ( XMPPException e ) {
 			Logger.err( "Node doesn't exists" );
 
+			// Node doesn't exists and force is true, create a new node
 			if ( force )
 				node = this.createNode( name );
 		}
@@ -83,20 +86,20 @@ public class PubSubHandler {
 		LeafNode node = null;
 
 		try {
+			// Node configuration
 			ConfigureForm form = new ConfigureForm( FormType.submit );
 			// Access
 			form.setAccessModel( AccessModel.open );
+			// Publish
+			form.setPublishModel( PublishModel.open );
 			// With payload
 			form.setDeliverPayloads( true );
 			// Delete message
 			form.setNotifyRetract( true );
 			// Persistent data
 			form.setPersistentItems( false );
-			// Publish
-			form.setPublishModel( PublishModel.open );
-			// Create node with configuration
+			// Create new node with configuration
 			node = (LeafNode) this.psm.createNode( name, form );
-
 
 			Logger.log( "Node created: " + node.getId() );
 		} catch ( XMPPException e ) {
@@ -109,9 +112,23 @@ public class PubSubHandler {
 		return node;
 	}
 
+	/**
+	 * Deletes all nodes.
+	 *
+	 */
+	private void deleteAllNodes() {
+		for ( String node : this.getAllNodes() ) {
+			try {
+				this.psm.deleteNode( node );
+			} catch ( XMPPException e ) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 
 	/**
-	 * Get all nodes known to the xmpp server
+	 * Get all nodes known to the XMPP server.
 	 *
 	 * @return List
 	 */
@@ -134,6 +151,7 @@ public class PubSubHandler {
 		return nodes;
 	}
 
+
 	// TODO: Gibt was anderes als eigentlich gedacht...
 	public List<String> getSubscribers( String name ) {
 		LeafNode node = this.getNode( name );
@@ -150,6 +168,12 @@ public class PubSubHandler {
 		return users;
 	}
 
+	/**
+	 * Subscribes the current user to a node.
+	 *
+	 * @param String name
+	 * @return Boolean
+	 */
 	public boolean subscribeToNode( String name ) {
 		LeafNode node = this.getNode( name, false );
 
@@ -157,35 +181,44 @@ public class PubSubHandler {
 			return false;
 
 		try {
+			// Add the event listener
 			node.addItemEventListener( new ItemEventCoordinator() );
-			node.subscribe( this.cnh.getJID() );
+
+			// Subscribe the user
+			node.subscribe( this.cnh.getJID( false ) );
+
+			Logger.log( this.cnh.getJID( false ) + " subscriped to " + name );
 		} catch ( XMPPException e ) {
 			Logger.err( "Subscription failed" );
 
 			return false;
 		}
 
-		Logger.log( this.cnh.getJID() + " subscriped to " + name );
-
 		return true;
 	}
 
+	/**
+	 * Unsubscribes the current user from a node.
+	 *
+	 * @param String name
+	 * @return Boolean
+	 */
 	public boolean unsubscribeFromNode( String name ) {
-
 		LeafNode node = this.getNode( name, false );
 
 		if ( node == null )
 			return false;
 
 		try {
-			node.unsubscribe( this.cnh.getJID() );
+			// Unsubscribe the user
+			node.unsubscribe( this.cnh.getJID( false ) );
+
+			Logger.log( this.cnh.getJID( false ) + " unsubscriped from " + name );
 		} catch ( XMPPException e ) {
 			Logger.err( "Unsubscription failed" );
 
 			return false;
 		}
-
-		Logger.log( this.cnh.getJID() + " unsubscriped from " + name );
 
 		return true;
 	}

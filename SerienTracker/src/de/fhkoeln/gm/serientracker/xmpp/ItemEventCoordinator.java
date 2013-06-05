@@ -15,7 +15,6 @@ public class ItemEventCoordinator implements ItemEventListener<Item> {
 		Logger.log( "Items received: " + items.getItems().size() );
 
 		for ( Item item : items.getItems() ) {
-			//Logger.log(item.toXML());
 			@SuppressWarnings("unchecked")
 			PayloadItem<SimplePayload> data = ( PayloadItem<SimplePayload> ) item;
 			Logger.log( "Payload: " + data.toXML() );

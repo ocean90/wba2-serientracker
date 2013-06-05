@@ -79,9 +79,11 @@ public class MainGUI extends JFrame {
 		// Send a test message
 		JButton buttonTest = new JButton( "Send test message" );
 		buttonTest.setBounds( 330, 30, 200, 30 );
+		final MainGUI self = this;
 		buttonTest.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent e ) {
 				ConnectionHandler.getInstance().testPubSub();
+				self.updateNodes();
 			}
 		});
 

@@ -71,6 +71,7 @@ public class ConnectionHandler {
 			return true;
 
 		try {
+			//Connection.DEBUG_ENABLED = true;
 			ConnectionConfiguration config = new ConnectionConfiguration( hostname, port );
 			cn = new XMPPConnection( config );
 			cn.connect();
@@ -106,7 +107,7 @@ public class ConnectionHandler {
 	public boolean login( String username, String password ) {
 		try {
 			SASLAuthentication.supportSASLMechanism( "PLAIN", 0 );
-			this.cn.login( username, password );
+			this.cn.login( username, password, "app" ); // TODO: Resource
 			Logger.log( "Login successful" );
 		} catch ( XMPPException e ) {
 			return false;
@@ -115,21 +116,20 @@ public class ConnectionHandler {
 		// Init the Pub Sub Manager
 		this.psh = new PubSubHandler();
 
-		String t = "testNode";
-
-		this.psh.unsubscribeFromNode( t ); // TODO
-		this.psh.subscribeToNode( t );
-
 		return true;
 	}
 
 	// TODO
 	public void testPubSub() {
-		String t = "testNode";
+		String t = "Science Fiction";
+
 		LeafNode node = this.psh.getNode( t );
 
+		this.psh.unsubscribeFromNode( t ); // TODO
+		this.psh.subscribeToNode( t );
+
 		Logger.log( "Sending message..." );
-		SimplePayload payload = new SimplePayload( "message", "",  "<message>test</message>");
+		SimplePayload payload = new SimplePayload( "message", "",  "<message>" + System.currentTimeMillis() + "</message>");
 		PayloadItem<SimplePayload> item = new PayloadItem<SimplePayload>( "message:" + System.currentTimeMillis(), payload );
 		node.publish( item );
 	}
@@ -137,13 +137,22 @@ public class ConnectionHandler {
 	/**
 	 * Returns the current logged in user.
 	 *
+	 * @param
 	 * @return String
 	 */
-	public String getJID() {
+	public String getJID( Boolean withResource ) {
 		if ( cn == null )
 			return null;
 
-		return cn.getUser();
+		if ( withResource == null || withResource ) {
+			// Return user with resource name
+			return cn.getUser();
+		} else {
+			// Return user without resource name
+			String[] user = cn.getUser().split( "/" );
+
+			return user[0];
+		}
 	}
 
 	/**
