@@ -882,5 +882,142 @@
             </season>
        </seasons>
     </serie>
+    
+    
+	<serie serieID="ss_0004sher">
+        <title>Sherlock</title>
+        <genres>
+            <genre>Action</genre>
+            <genre>Crime</genre>
+            <genre>Adventure</genre>
+            <genre>Drama</genre>
+        </genres>
+        <year>2010</year>
+        <firstaired>2010-07-25</firstaired>
+        <country>England</country>
+        <overview>In this modernized version of the Conan Doyle characters, using his detective plots, Sherlock Holmes lives in early 21st century London and acts more cocky towards Scotland Yard's detective inspector Lestrade because he's actually less confident. Doctor Watson is now a fairly young veteran of the Afghan war, less adoring and more active.</overview>
+        <episoderuntime>90</episoderuntime>
+        <network>BBC One</network>
+        <airday>Sunday</airday>
+        <airtime>21:30:00</airtime>
+        <images>
+            <image src="http://serientracker.de/serieID=1/pic.jpg"/>
+            <image src="http://serientracker.de/serieID=1/pic2.jpg"/>
+        </images>
+        
+        <seasons serieID="ss_0004sher">
+            
+            <season serieID="ss_0004sher" seasonID="sn_0001sher">
+            	<seasonNumber>1</seasonNumber>   
+				<episodes>
+					<episode episodeID="ep_0001sher" serieID="ss_0004sher" seasonID="sn_0001sher">
+						<episodeNumber>1</episodeNumber>
+            			<title>A study in pink</title>
+            			<overview>A war hero, invalided home from Afghanistan, meets a strange but charismatic genius who is looking for a flatmate; it is London, 2010, and Dr Watson and Sherlock Holmes are meeting for the first time. A string of impossible suicides has Scotland Yard baffled - and only one man can help.</overview>
+            			<airdate>2010-07-25T21:30:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+					</episode>
+					<episode episodeID="ep_0002sher" serieID="ss_0004sher" seasonID="sn_0001sher">
+						<episodeNumber>2</episodeNumber>
+            			<title>The Blind Baker</title>
+            			<overview>A mysterious cipher is being scrawled on the walls around London. The first person to see the cipher is dead within hours of reading it. Sherlock plunges into a world of codes and symbols, consulting with London's best graffiti artists. He soon learns that the city is in the grip a gang of international smugglers, a secret society called the Black Lotus.</overview>
+            			<airdate>2010-08-01T21:30:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+					</episode>
+					<episode episodeID="ep_0003sher" serieID="ss_0004sher" seasonID="sn_0001sher">
+						<episodeNumber>3</episodeNumber>
+            			<title>The Great Game</title>
+            			<overview>A strange clue in an empty room, a blood-soaked car, a priceless Old Master, a deranged bomber. With the clock ticking, the curtain rises on a battle of wits between Sherlock, John and the shadowy stranger who seems to know all the answers...</overview>
+            			<airdate>2010-08-08T21:30:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+					</episode>
+				</episodes>
+            	
+           		<images>
+           			<image src="http://serientracker.de/dummy1.png"/>
+           		</images>    
+            </season>
+            <season serieID="ss_0004sher" seasonID="sn_0002sher">
+            	<seasonNumber>1</seasonNumber>   
+				<episodes>
+					<episode episodeID="ep_0004sher" serieID="ss_0004sher" seasonID="sn_0002sher">
+						<episodeNumber>1</episodeNumber>
+            			<title>A scandal in Belgrevia</title>
+            			<overview>Compromising photographs and a case of blackmail threaten the very heart of the British establishment, but for Sherlock and John the game is on in more ways than one as they find themselves battling international terrorism, rogue CIA agents, and a secret conspiracy involving the British government.</overview>
+            			<airdate>2012-01-01T21:30:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+					</episode>
+					<episode episodeID="ep_0005sher" serieID="ss_0004sher" seasonID="sn_0002sher">
+						<episodeNumber>2</episodeNumber>
+            			<title>The Hounds of Baskerville</title>
+            			<overview>Something terrible has happened to Henry Knight; Sherlock and John investigate the truth about the monstrous creature which apparently killed their client's father. </overview>
+            			<airdate>2012-01-08T21:30:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+					</episode>
+					<episode episodeID="ep_0006sher" serieID="ss_0004sher" seasonID="sn_0002sher">
+						<episodeNumber>3</episodeNumber>
+            			<title>The Reichenbach Fall</title>
+            			<overview>James Moriarty possesses the greatest criminal mind that the world has ever seen. Sherlock and John knew he wouldn't stay hidden for long, but even they never guessed the sheer scale and audacity of the crime that would propel Moriarty back into the headlines.</overview>
+            			<airdate>2012-01-15T21:30:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+					</episode>
+				</episodes>
+            	
+           		<images>
+           			<image src="http://serientracker.de/dummy1.png"/>
+           		</images>    
+            </season>
+            
+           <season serieID="ss_0004sher" seasonID="sn_0003sher">
+            	<seasonNumber>1</seasonNumber>   
+				<episodes>
+					<episode episodeID="ep_0007sher" serieID="ss_0004sher" seasonID="sn_0003sher">
+						<episodeNumber>1</episodeNumber>
+            			<title>The Empty Hearse</title>
+            			<overview>No Information</overview>
+            			<airdate>2014-01-01T21:30:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+					</episode>
+					<episode episodeID="ep_0008sher" serieID="ss_0004sher" seasonID="sn_0003sher">
+						<episodeNumber>2</episodeNumber>
+            			<title>The Sign of Three</title>
+            			<overview>Nof Information</overview>
+            			<airdate>2014-01-01T21:30:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+					</episode>
+					<episode episodeID="ep_0009sher" serieID="ss_0004sher" seasonID="sn_0003sher">
+						<episodeNumber>3</episodeNumber>
+            			<title>TBA</title>
+            			<overview>No Information.</overview>
+            			<airdate>2014-01-01T21:30:00</airdate>
+            			<images>
+							<image src="http://serientracker.de/dummy5.png"/>
+            			</images>
+					</episode>
+				</episodes>
+            	
+           		<images>
+           			<image src="http://serientracker.de/dummy1.png"/>
+           		</images>    
+            </season>
+            
+       </seasons>
+    </serie>
 
 </series>
