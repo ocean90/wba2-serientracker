@@ -1,11 +1,11 @@
-package de.fhkoeln.gm.serientracker.xmpp.clients;
+package de.fhkoeln.gm.serientracker.bot;
 
 import java.io.IOException;
 import java.util.Timer;
 
 import de.fhkoeln.gm.serientracker.utils.Logger;
-import de.fhkoeln.gm.serientracker.xmpp.Config;
-import de.fhkoeln.gm.serientracker.xmpp.ConnectionHandler;
+import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
+import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
 public class BotClient {
 
@@ -44,7 +44,8 @@ public class BotClient {
 		}
 
 		// Set up the timer for notications
-		this.initTimer();
+		//this.initTimer();
+		//this.initShedulder();
 
 		// Set process to idle mode
 		this.idle();
@@ -57,7 +58,7 @@ public class BotClient {
 	 */
 	private boolean login() {
 		// Try to connect to the server
-		if ( this.ch.connect( Config.hostname , Config.port ) ) {
+		if ( this.ch.connect( XMPPConfig.hostname , XMPPConfig.port ) ) {
 			// Try to login
 			if ( this.ch.login( BOT_LOGIN, BOT_PW ) ) {
 				return true;
@@ -92,9 +93,9 @@ public class BotClient {
 	/**
 	 * Inits the timer for the notifciations.
 	 */
-	private void initTimer() {
+	/*private void initTimer() {
 	    this.timer = new Timer();
-	    this.timer.schedule( new NotifcationTask(), 1000, 2000 ); // Delay = 1s, Period = 2s
-	}
+	    this.timer.schedule( new NotifcationJob(), 1000, 2000 ); // Delay = 1s, Period = 2s
+	}*/
 
 }
