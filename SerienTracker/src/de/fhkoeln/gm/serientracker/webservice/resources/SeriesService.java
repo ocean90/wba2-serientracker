@@ -18,7 +18,7 @@ import de.fhkoeln.gm.serientracker.jaxb.Serie;
 import de.fhkoeln.gm.serientracker.jaxb.Series;
 import de.fhkoeln.gm.serientracker.utils.Hasher;
 import de.fhkoeln.gm.serientracker.utils.Logger;
-import de.fhkoeln.gm.serientracker.webservice.Config;
+import de.fhkoeln.gm.serientracker.webservice.RESTServerConfig;
 import de.fhkoeln.gm.serientracker.webservice.data.SeriesDataHandler;
 
 
@@ -70,7 +70,7 @@ public class SeriesService {
 
 		URI location = null;
 		try {
-			location = new URI( Config.getServerURL() + "/series/" + id );
+			location = new URI( RESTServerConfig.getServerURL() + "/series/" + id );
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}

@@ -1,10 +1,10 @@
 package de.fhkoeln.gm.serientracker.xmpp;
 
-public class Config {
+public class XMPPConfig {
 	public static String hostname = "localhost";
 	public static int port = 5222;
 
-	private Config() {}
+	private XMPPConfig() {}
 
 	public static String getServerURL() {
 		return hostname + ":" + port;

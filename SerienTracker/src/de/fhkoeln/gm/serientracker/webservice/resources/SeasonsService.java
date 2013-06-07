@@ -19,7 +19,7 @@ import de.fhkoeln.gm.serientracker.jaxb.Season;
 import de.fhkoeln.gm.serientracker.jaxb.Seasons;
 import de.fhkoeln.gm.serientracker.utils.Hasher;
 import de.fhkoeln.gm.serientracker.utils.Logger;
-import de.fhkoeln.gm.serientracker.webservice.Config;
+import de.fhkoeln.gm.serientracker.webservice.RESTServerConfig;
 import de.fhkoeln.gm.serientracker.webservice.utils.FileHandler;
 
 
@@ -70,7 +70,7 @@ public class SeasonsService {
 
 		URI location = null;
 		try {
-			location = new URI( Config.getServerURL() + "/seasons/" + id );
+			location = new URI( RESTServerConfig.getServerURL() + "/seasons/" + id );
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}

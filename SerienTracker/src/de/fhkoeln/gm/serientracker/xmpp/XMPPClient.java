@@ -1,10 +1,10 @@
-package de.fhkoeln.gm.serientracker.xmpp.clients;
+package de.fhkoeln.gm.serientracker.xmpp;
 
 import de.fhkoeln.gm.serientracker.xmpp.gui.LoginGUI;
 import de.fhkoeln.gm.serientracker.xmpp.gui.MainGUI;
 
 
-public class UserClient {
+public class XMPPClient {
 
 	static LoginGUI loginGUI = new LoginGUI();
 	static MainGUI MainGUI = new MainGUI();

@@ -1,4 +1,4 @@
-package de.fhkoeln.gm.serientracker.xmpp;
+package de.fhkoeln.gm.serientracker.xmpp.utils;
 
 import org.jivesoftware.smack.AccountManager;
 import org.jivesoftware.smack.Connection;

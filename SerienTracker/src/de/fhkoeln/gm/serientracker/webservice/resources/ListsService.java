@@ -20,7 +20,7 @@ import de.fhkoeln.gm.serientracker.jaxb.List;
 import de.fhkoeln.gm.serientracker.jaxb.Lists;
 import de.fhkoeln.gm.serientracker.utils.Hasher;
 import de.fhkoeln.gm.serientracker.utils.Logger;
-import de.fhkoeln.gm.serientracker.webservice.Config;
+import de.fhkoeln.gm.serientracker.webservice.RESTServerConfig;
 import de.fhkoeln.gm.serientracker.webservice.data.ListsDataHandler;
 
 
@@ -89,7 +89,7 @@ public class ListsService {
 
 		URI location = null;
 		try {
-			location = new URI( Config.getServerURL() + "/lists/" + id );
+			location = new URI( RESTServerConfig.getServerURL() + "/lists/" + id );
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}

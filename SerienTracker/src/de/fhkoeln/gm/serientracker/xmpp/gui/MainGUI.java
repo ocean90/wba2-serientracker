@@ -13,8 +13,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 
-import de.fhkoeln.gm.serientracker.xmpp.ConnectionHandler;
-import de.fhkoeln.gm.serientracker.xmpp.PubSubHandler;
+import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
+import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
 public class MainGUI extends JFrame {
 

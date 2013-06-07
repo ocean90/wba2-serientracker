@@ -1,4 +1,4 @@
-package de.fhkoeln.gm.serientracker.xmpp;
+package de.fhkoeln.gm.serientracker.xmpp.utils;
 
 import java.util.ArrayList;
 import java.util.Iterator;

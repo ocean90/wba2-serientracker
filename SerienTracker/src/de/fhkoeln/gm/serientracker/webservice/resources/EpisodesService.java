@@ -19,7 +19,7 @@ import de.fhkoeln.gm.serientracker.jaxb.Episode;
 import de.fhkoeln.gm.serientracker.jaxb.Episodes;
 import de.fhkoeln.gm.serientracker.utils.Hasher;
 import de.fhkoeln.gm.serientracker.utils.Logger;
-import de.fhkoeln.gm.serientracker.webservice.Config;
+import de.fhkoeln.gm.serientracker.webservice.RESTServerConfig;
 import de.fhkoeln.gm.serientracker.webservice.utils.FileHandler;
 
 
@@ -70,7 +70,7 @@ public class EpisodesService {
 
 		URI location = null;
 		try {
-			location = new URI( Config.getServerURL() + "/episodes/" + id );
+			location = new URI( RESTServerConfig.getServerURL() + "/episodes/" + id );
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}

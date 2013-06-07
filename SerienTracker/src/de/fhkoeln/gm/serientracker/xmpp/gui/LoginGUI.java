@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import de.fhkoeln.gm.serientracker.xmpp.Config;
-import de.fhkoeln.gm.serientracker.xmpp.ConnectionHandler;
-import de.fhkoeln.gm.serientracker.xmpp.clients.UserClient;
+import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
+import de.fhkoeln.gm.serientracker.xmpp.XMPPClient;
+import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
 public class LoginGUI extends JFrame {
 
@@ -94,12 +94,12 @@ public class LoginGUI extends JFrame {
 
 		// Input field for hostname
 		inputHostname = new JTextField();
-		inputHostname.setText( Config.hostname );
+		inputHostname.setText( XMPPConfig.hostname );
 		inputHostname.setBounds( 100, 90, 180, 25 );
 
 		// Input field for port
 		inputPort = new JTextField();
-		inputPort.setText( String.valueOf( Config.port ) );
+		inputPort.setText( String.valueOf( XMPPConfig.port ) );
 		inputPort.setBounds( 100, 120, 180, 25 );
 
 		// Login button
@@ -175,7 +175,7 @@ public class LoginGUI extends JFrame {
 		if ( this.ch.connect( hostname, port ) ) {
 			// Try to login
 			if ( this.ch.login( username, password ) ) {
-				UserClient.closeLogin();
+				XMPPClient.closeLogin();
 			} else {
 				errorDialog( "Login failed." );
 				return;

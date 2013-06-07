@@ -8,8 +8,8 @@ public class RESTServer {
 		SelectorThread server = null;
 
 		try {
-			server = GrizzlyServerFactory.create( Config.getServerURL() );
-			System.out.println( "Service available at " + Config.getServerURL() );
+			server = GrizzlyServerFactory.create( RESTServerConfig.getServerURL() );
+			System.out.println( "Service available at " + RESTServerConfig.getServerURL() );
 			System.out.println( "Press any key to stop the service" );
 			System.in.read();
 		} finally {
