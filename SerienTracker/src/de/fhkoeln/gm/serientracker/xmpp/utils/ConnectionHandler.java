@@ -86,15 +86,15 @@ public class ConnectionHandler {
 	}
 
 	/**
-	 * Login.
+	 * Returns connection status.
 	 *
-	 * @param String username
-	 * @param char[] password
 	 * @return boolean
 	 */
-	public boolean login( String username, char[] password ) {
-		String _password = new String( password ); // Convert char array to string
-		return this.login( username, _password );
+	public boolean isConnected() {
+		if ( cn != null )
+			return this.cn.isConnected();
+
+		return false;
 	}
 
 	/**
@@ -102,12 +102,26 @@ public class ConnectionHandler {
 	 *
 	 * @param String username
 	 * @param char[] password
+	 * @param String resource
 	 * @return boolean
 	 */
-	public boolean login( String username, String password ) {
+	public boolean login( String username, char[] password, String resource ) {
+		String _password = new String( password ); // Convert char array to string
+		return this.login( username, _password, resource );
+	}
+
+	/**
+	 * Login.
+	 *
+	 * @param String username
+	 * @param String password
+	 * @param String resource
+	 * @return boolean
+	 */
+	public boolean login( String username, String password, String resource ) {
 		try {
 			SASLAuthentication.supportSASLMechanism( "PLAIN", 0 );
-			this.cn.login( username, password, "app" ); // TODO: Resource
+			this.cn.login( username, password, resource );
 			Logger.log( "Login successful" );
 		} catch ( XMPPException e ) {
 			return false;

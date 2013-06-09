@@ -1,8 +1,16 @@
 package de.fhkoeln.gm.serientracker.bot;
 
-import java.io.IOException;
-import java.util.Timer;
+import static org.quartz.CronScheduleBuilder.cronSchedule;
+import static org.quartz.JobBuilder.newJob;
+import static org.quartz.TriggerBuilder.newTrigger;
 
+import java.io.IOException;
+
+import org.quartz.JobDetail;
+import org.quartz.Trigger;
+
+import de.fhkoeln.gm.serientracker.bot.jobs.ProfilerJob;
+import de.fhkoeln.gm.serientracker.bot.utils.BotScheduler;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
@@ -18,8 +26,8 @@ public class BotClient {
 	// Save the connection
 	private ConnectionHandler ch;
 
-	// Save the timer
-	private Timer timer;
+	// Save the scheduler
+	private BotScheduler scheduler;
 
 	/**
 	 * Starts the bot.
@@ -43,9 +51,8 @@ public class BotClient {
 			return;
 		}
 
-		// Set up the timer for notications
-		//this.initTimer();
-		//this.initShedulder();
+		// Set up the scheduler
+		this.initShedulder();
 
 		// Set process to idle mode
 		this.idle();
@@ -60,7 +67,7 @@ public class BotClient {
 		// Try to connect to the server
 		if ( this.ch.connect( XMPPConfig.hostname , XMPPConfig.port ) ) {
 			// Try to login
-			if ( this.ch.login( BOT_LOGIN, BOT_PW ) ) {
+			if ( this.ch.login( BOT_LOGIN, BOT_PW, "botclient" ) ) {
 				return true;
 			} else {
 				Logger.err( "Login failed" );
@@ -85,17 +92,31 @@ public class BotClient {
 		} catch ( IOException e ) {
 		} finally {
 			// Stop the notification timer
-			this.timer.cancel();
+			this.scheduler.stop();
 			Logger.log( "Bot killed" );
 		}
 	}
 
-	/**
-	 * Inits the timer for the notifciations.
-	 */
-	/*private void initTimer() {
-	    this.timer = new Timer();
-	    this.timer.schedule( new NotifcationJob(), 1000, 2000 ); // Delay = 1s, Period = 2s
-	}*/
+	private void initShedulder() {
+		this.scheduler = new BotScheduler();
+		this.scheduler.start();
+
+		/*
+		 *  Register a profiler job which runs every minute.
+		 *  Can be used to clean up things, check files , ect.
+		 */
+		JobDetail job = newJob(ProfilerJob.class)
+				.withIdentity( "bot:profiler", "bot:intern" )
+				.build();
+
+		Trigger trigger = newTrigger()
+				.withIdentity( "bot:profiler:trigger", "bot:intern" )
+				//.withSchedule( cronSchedule( "0 0/1 * * * ?" ) ) // Every Minute
+				.withSchedule( cronSchedule( "0/10 * * * * ?" ) ) // Every 10 second
+				.build();
+
+		this.scheduler.addJob( job, trigger );
+
+	}
 
 }

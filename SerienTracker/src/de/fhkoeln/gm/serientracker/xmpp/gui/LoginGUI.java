@@ -174,7 +174,7 @@ public class LoginGUI extends JFrame {
 		// Try to connect to the server
 		if ( this.ch.connect( hostname, port ) ) {
 			// Try to login
-			if ( this.ch.login( username, password ) ) {
+			if ( this.ch.login( username, password, "xmppclient" ) ) {
 				XMPPClient.closeLogin();
 			} else {
 				errorDialog( "Login failed." );
