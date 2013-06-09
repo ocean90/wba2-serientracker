@@ -9,6 +9,7 @@ import java.io.IOException;
 import org.quartz.JobDetail;
 import org.quartz.Trigger;
 
+import de.fhkoeln.gm.serientracker.bot.jobs.NotifcationJob;
 import de.fhkoeln.gm.serientracker.bot.jobs.ProfilerJob;
 import de.fhkoeln.gm.serientracker.bot.utils.BotScheduler;
 import de.fhkoeln.gm.serientracker.utils.Logger;
@@ -102,20 +103,35 @@ public class BotClient {
 		this.scheduler.start();
 
 		/*
-		 *  Register a profiler job which runs every minute.
-		 *  Can be used to clean up things, check files , ect.
+		 * Register a profiler job which runs every minute.
+		 * Can be used to clean up things, check files , etc.
 		 */
-		JobDetail job = newJob(ProfilerJob.class)
+		JobDetail profilerJob = newJob( ProfilerJob.class)
 				.withIdentity( "bot:profiler", "bot:intern" )
 				.build();
 
-		Trigger trigger = newTrigger()
+		Trigger profilerTrigger = newTrigger()
 				.withIdentity( "bot:profiler:trigger", "bot:intern" )
-				//.withSchedule( cronSchedule( "0 0/1 * * * ?" ) ) // Every Minute
-				.withSchedule( cronSchedule( "0/10 * * * * ?" ) ) // Every 10 second
+				.withSchedule( cronSchedule( "0/10 * * * * ?" ) ) // Every 10 seconds
 				.build();
 
-		this.scheduler.addJob( job, trigger );
+		this.scheduler.addJob( profilerJob, profilerTrigger );
+
+
+		/*
+		 * Register the notifier job.
+		 */
+		JobDetail notfierJob = newJob( NotifcationJob.class)
+				.withIdentity( "bot:notifier", "bot:notification:series" )
+				.build();
+
+		Trigger notifierTrigger = newTrigger()
+				.withIdentity( "bot:notifier:trigger", "bot:notification:series" )
+				//.withSchedule( cronSchedule( "0 0/1 * * * ?" ) ) // Every Minute
+				.withSchedule( cronSchedule( "0/15 * * * * ?" ) ) // Every 15 seconds
+				.build();
+
+		this.scheduler.addJob( notfierJob, notifierTrigger );
 
 	}
 

@@ -142,10 +142,10 @@ public class ConnectionHandler {
 		this.psh.unsubscribeFromNode( t ); // TODO
 		this.psh.subscribeToNode( t );
 
-		Logger.log( "Sending message..." );
+		/*Logger.log( "Sending message..." );
 		SimplePayload payload = new SimplePayload( "message", "",  "<message>" + System.currentTimeMillis() + "</message>");
 		PayloadItem<SimplePayload> item = new PayloadItem<SimplePayload>( "message:" + System.currentTimeMillis(), payload );
-		node.publish( item );
+		node.publish( item );*/
 	}
 
 	/**

@@ -6,10 +6,8 @@ import org.quartz.JobExecutionException;
 
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
-import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
 public class ProfilerJob implements Job {
-	private PubSubHandler psh;
 
     public void execute( JobExecutionContext context ) throws JobExecutionException {
     	Logger.log( "Profiler Job" );
@@ -20,11 +18,6 @@ public class ProfilerJob implements Job {
     		Logger.err( "Connection not established!" );
     		return;
     	}
-
-    	this.psh = ch.getPubSubHandler();
-
-		for ( String node : this.psh.getAllNodes() )
-			Logger.log(  String.format( "Node: %s", node ) );
 
     }
 
