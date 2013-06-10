@@ -9,8 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
-
+import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
 
 
@@ -28,24 +27,23 @@ public class StartGUI extends JFrame {
 	 */
 	public void initComponents() {
 		// Close when exit
-		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 		// Set frame title
-		setTitle( "Serientracker" );
+		this.setTitle( "Serientracker" );
 
-		setBounds( 0, 0, 600, 600 );
-
+		// Set frame size
+		this.setBounds( 0, 0, 600, 600 );
 
 		// Center frame on screen
-		setLocationRelativeTo( null );
+		this.setLocationRelativeTo( null );
 
 		// Disable resizing
-		setResizable( false );
+		this.setResizable( false );
 
 		// Content Panel
-		JPanel panel = new JPanel();
-		setContentPane( panel );
-		panel.setLayout( null ); // Parent size
+		JPanel panel = new JPanel( new MigLayout() );
+		this.setContentPane( panel );
 
 		// Label for welcome
 		JLabel labelWelcome = new JLabel( "Willkommen!" );
@@ -76,13 +74,15 @@ public class StartGUI extends JFrame {
 		});
 
 		// Add items to panel
-		panel.add( labelWelcome );
-		panel.add( labelText );
+		panel.setLayout( new MigLayout() );
+		panel.add( labelWelcome, "wrap" );
+		panel.add( labelText, "wrap" );
 		panel.add( buttonLogin );
 		panel.add( buttonRegister );
+
 	}
 
-	
+
 	/**
 	 * Check user input and try to connect/login to the XMPP server.
 	 *
@@ -91,7 +91,7 @@ public class StartGUI extends JFrame {
 	public void gotoLogin( ActionEvent e ) {
 		TrackerClient.closeStartandGotoLogin();
 	}
-	
+
 	public void gotoRegister( ActionEvent e ) {
 		TrackerClient.closeStartandGotoRegister();
 	}
