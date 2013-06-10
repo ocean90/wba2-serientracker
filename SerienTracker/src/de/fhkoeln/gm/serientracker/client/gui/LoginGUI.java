@@ -13,8 +13,10 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import net.miginfocom.swing.MigLayout;
+
+import de.fhkoeln.gm.serientracker.client.TrackerClient;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
-import de.fhkoeln.gm.serientracker.xmpp.XMPPClient;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 public class LoginGUI extends JFrame {
 
@@ -61,50 +63,38 @@ public class LoginGUI extends JFrame {
 		setResizable( false );
 
 		// Content Panel
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(new MigLayout());
 		setContentPane( panel );
-		panel.setLayout( null ); // Parent size
 
 		// Label for username
 		JLabel labelUsername = new JLabel( "Username:" );
-		labelUsername.setBounds( 20, 20, 90, 16 );
 
 		// Label for password
 		JLabel labelPassword = new JLabel( "Password:" );
-		labelPassword.setBounds( 20, 50, 90, 16 );
 
 		// Label for hostname
 		JLabel lableHostname = new JLabel( "Hostname:" );
-		lableHostname.setBounds( 20, 95, 90, 16 );
 
 		// Label for port
 		JLabel labelPort = new JLabel( "Port:" );
-		labelPort.setBounds( 20, 122, 90, 16);
 		
 
 		// Input field for username
-		inputUsername = new JTextField();
-		inputUsername.setText( "test" ); // TODO
-		inputUsername.setBounds( 100, 15, 180, 25 );
+		inputUsername = new JTextField(20);
 
 		// Input field for password
-		inputPassword = new JPasswordField();
-		inputPassword.setText( "test" ); // TODO
-		inputPassword.setBounds( 100, 45, 180, 25 );
+		inputPassword = new JPasswordField(20);
 
 		// Input field for hostname
-		inputHostname = new JTextField();
+		inputHostname = new JTextField(20);
 		inputHostname.setText( XMPPConfig.hostname );
-		inputHostname.setBounds( 100, 90, 180, 25 );
 
 		// Input field for port
 		inputPort = new JTextField();
 		inputPort.setText( String.valueOf( XMPPConfig.port ) );
-		inputPort.setBounds( 100, 120, 180, 25 );
 
 		// Login button
 		JButton buttonNext = new JButton( "Weiter" );
-		buttonNext.setBounds( 183, 180, 100, 25 );
 		buttonNext.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent e ) {
 				loginActionPerformed( e );
@@ -113,15 +103,17 @@ public class LoginGUI extends JFrame {
 
 		
 
-		// Add items to panel
+		panel.setLayout( new MigLayout() );
 		panel.add( labelUsername );
+		panel.add( inputUsername, "wrap" );
 		panel.add( labelPassword );
-		panel.add( lableHostname );
-		panel.add( labelPort );
-		panel.add( inputUsername );
-		panel.add( inputPassword );
-		panel.add( inputHostname );
-		panel.add( inputPort );
+		panel.add( inputPassword, "wrap" );
+//		panel.add( lableHostname );
+//		panel.add( inputHostname, "wrap" );
+		
+//		ßpanel.add( labelPort);
+//		panel.add( inputPort, "wrap" );
+		
 		panel.add( buttonNext );
 	}
 
@@ -168,10 +160,10 @@ public class LoginGUI extends JFrame {
 		}
 
 		// Try to connect to the server
-		if ( this.ch.connect( hostname, port ) ) {
+		if ( this.ch.connect( XMPPConfig.hostname, XMPPConfig.port  ) ) {
 			// Try to login
 			if ( this.ch.login( username, password, "xmppclient" ) ) {
-				XMPPClient.closeLogin();
+				TrackerClient.closeLoginAndGotoHome();
 			} else {
 				errorDialog( "Login failed." );
 				return;

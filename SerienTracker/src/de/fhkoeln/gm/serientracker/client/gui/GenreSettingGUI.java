@@ -1,33 +1,41 @@
 package de.fhkoeln.gm.serientracker.client.gui;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import net.miginfocom.swing.MigLayout;
 
-
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
-import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
+import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
-public class RegisterGUI2 extends JFrame implements ActionListener{
+public class GenreSettingGUI extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
+
 	private ConnectionHandler ch;
 
-	
-	public RegisterGUI2() {
+	private JLabel labelUsername;
+	private JLabel labelText;
+	private JLabel labelText2;
+
+
+	private JComboBox existingNodes;
+
+	public GenreSettingGUI() {
 		this.ch = ConnectionHandler.getInstance();
 
 		try {
@@ -41,15 +49,12 @@ public class RegisterGUI2 extends JFrame implements ActionListener{
 		initComponents();
 	}
 
-	/**
-	 * Set up the GUI components.
-	 */
 	public void initComponents() {
 		// Close when exit
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 		// Set frame title
-		setTitle( "Register" );
+		setTitle( "SERIENTRACKER" );
 
 		// Set minimum frame size (x, y, width, height)
 		setBounds( 0, 0, 600, 600 );
@@ -58,38 +63,89 @@ public class RegisterGUI2 extends JFrame implements ActionListener{
 		setLocationRelativeTo( null );
 
 		// Disable resizing
-		setResizable( false );
+		setResizable( true );
 
+		JMenuBar menubar = new JMenuBar();
+	    setJMenuBar(menubar);
+
+	    JToolBar toolbar = new JToolBar();
+	    JToolBar toolbar2 = new JToolBar();
+	    
+	    JButton homeButton = new JButton("Home");
+	    homeButton.addActionListener( new ActionListener() {
+		public void actionPerformed( ActionEvent e ) {
+					gotoHome( e );
+			}
+		});
+	    
+	    JButton settingButton = new JButton("Setting");
+//	    settingButton.addActionListener(new ActionListener() {
+//	           public void actionPerformed(ActionEvent e) {
+//	       			TrackerClient.closeHomeAndGotoSetting();
+//	           }
+//	           
+//	    });
+	    
+	    JButton exitButton = new JButton("Logout");
+	    exitButton.addActionListener(new ActionListener() {
+	           public void actionPerformed(ActionEvent event) {
+	               System.exit(0);}
+	           
+	    });
+	    
+	    
+	    toolbar.add(homeButton);
+	    toolbar.add(settingButton);
+	    toolbar.add(exitButton);
+	    
+	    
+	    JButton profileButton = new JButton("Profile");
+	    profileButton.addActionListener( new ActionListener() {
+		public void actionPerformed( ActionEvent e ) {
+					gotoProfile( e );
+			}
+		});
+	    
+	    JButton genreButton = new JButton("Genres");
+//	 	genreButton.addActionListener( new ActionListener() {
+//	 	public void actionPerformed( ActionEvent e ) {
+//	 			gotoGenre( e );
+//	 		}
+//	 	});
+	 	
+	    
+	 	JButton messageButton = new JButton("Message");
+		messageButton.addActionListener( new ActionListener() {
+		public void actionPerformed( ActionEvent e ) {
+		 		gotoMessage( e );
+		 	}
+		 });
+	 	    
+	    
+	    toolbar2.add(profileButton);
+	    toolbar2.add(genreButton);
+	    toolbar2.add(messageButton);
+	   
+	   
+		
 		// Content Panel
 		JPanel panel = new JPanel(new MigLayout());
 		setContentPane( panel );
 
-		// Label for text
-		JLabel labelUser = new JLabel( "Hallo _username von davor_ " );
+		// Label for username
+		labelUsername = new JLabel("Hello "+ this.ch.getAccountAttribute( "username" ));
+		labelUsername.setHorizontalAlignment( SwingConstants.LEFT );
 		
-		JLabel labelText = new JLabel( "Der Serientracker benachrichtigt dich über neue Ereignisse zu deinen favorisierten Serien. " +
-				"Zudem hast du die Möglichkeit Informationen zu Serien eines bestimmten Genres zu erhalten. " );
-
-		// Label for genre
-		JLabel labelGenre = new JLabel( "Zu welchen Genres möchtest du Informationen erhalten? " );
-	
+		labelText = new JLabel("Sie haben die Möglichkeit Benachrichtigung zu Serien bestimmter Genres zu erhalten. ");
+		labelText2 = new JLabel("An welchen Genres sind sie interessiert?");
 		
-
-		// Next button
-		JButton buttonNext = new JButton( "Weiter" );
-		buttonNext.addActionListener( new ActionListener() {
-			public void actionPerformed( ActionEvent e ) {
-				gotoHome( e );
-			}
-		});
-
-
-		// Add items to panel
 		panel.setLayout( new MigLayout() );
-
-		panel.add( labelUser,"wrap" );
-		panel.add( labelText,"wrap" );
-
+		panel.add( labelUsername, "wrap" ); 
+		panel.add(toolbar, "wrap");
+		panel.add(toolbar2, "wrap");
+		panel.add(labelText, "wrap");
+		panel.add(labelText2, "wrap");
+		
 		JCheckBox action = new JCheckBox("Action", false);
 	    action.setFocusable(false);
 	    action.addActionListener(this);
@@ -170,7 +226,8 @@ public class RegisterGUI2 extends JFrame implements ActionListener{
 	    western.setFocusable(false);
 	    western.addActionListener(this);
 	    
-		panel.add( action, "split4"  );
+	    
+		panel.add( action,"split4"  );
 		panel.add( adventure );
 		panel.add( animation);
 		panel.add( children, "wrap");
@@ -192,20 +249,53 @@ public class RegisterGUI2 extends JFrame implements ActionListener{
 		panel.add( western, "wrap");
 
 		
-
-		panel.add( buttonNext );
+		// Next button
+		JButton saveButton = new JButton( "Save" );
+//		buttonNext.addActionListener( new ActionListener() {
+//			public void actionPerformed( ActionEvent e ) {
+//				gotoRegister2( e );
+//				}
+//		});
+		
+		panel.add( saveButton, "split 2" );
+		
+		
 	}
 
 	/**
-	 * Check user input and try to connect/login to the XMPP server.
-	 *
-	 * @param ActionEvent e
+	 * Update GUI components
 	 */
+	public void update() {
+		this.updateUserInfo();
+		this.updateNodes();
+	}
+
+	private void updateUserInfo() {
+		labelUsername.setText( "Hello "+ this.ch.getAccountAttribute( "username" ) );
+	}
+
+	private void updateNodes() {
+		PubSubHandler psh = ConnectionHandler.getInstance().getPubSubHandler();
+		for ( String node : psh.getAllNodes() )
+			existingNodes.addItem( node );
+
+	}
+
+	public void pubsubtest() {
+
+	}
+	
 	public void gotoHome( ActionEvent e ) {	
-		TrackerClient.closeRegisterAndGotoHome();
+		TrackerClient.closeGSAndGotoHome();
+	}
+	
+	public void gotoProfile( ActionEvent e ) {	
+		TrackerClient.closeGSAndGotoProfileSetting();
+	}
 
-
-	};
+	public void gotoMessage( ActionEvent e ) {	
+		TrackerClient.closeGSAndGotoMessageSetting();
+	}
 	
 	 public void actionPerformed(ActionEvent e) {
 
@@ -213,6 +303,5 @@ public class RegisterGUI2 extends JFrame implements ActionListener{
 	        boolean state = source.isSelected();     
 
 	    }
-
-
+	
 }

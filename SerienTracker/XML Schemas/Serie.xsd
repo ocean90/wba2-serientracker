@@ -164,6 +164,7 @@
 				<xs:enumeration value="Romance"/>
 				<xs:enumeration value="Science Fiction"/>
 				<xs:enumeration value="Sport"/>
+				<xs:enumeration value="Suspence"/>
 				<xs:enumeration value="Thriller"/>
 				<xs:enumeration value="Western"/>
 			</xs:restriction>

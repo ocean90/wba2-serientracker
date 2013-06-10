@@ -47,17 +47,14 @@ public class StartGUI extends JFrame {
 
 		// Label for welcome
 		JLabel labelWelcome = new JLabel( "Willkommen!" );
-		labelWelcome.setBounds( 20, 20, 90, 16 );
 
 
 		// Label for text
 		JLabel labelText = new JLabel( "Was möchten sie machen?" );
-		labelText.setBounds( 20, 40, 200, 16 );
 
 
 		// Login button
 		JButton buttonLogin = new JButton( "Anmelden" );
-		buttonLogin.setBounds( 20, 60, 90, 16 );
 		buttonLogin.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent e ) {
 				gotoLogin( e );
@@ -66,7 +63,6 @@ public class StartGUI extends JFrame {
 
 		// Register button
 		JButton buttonRegister = new JButton( "Registrieren" );
-		buttonRegister.setBounds( 150, 60, 90, 16 );
 		buttonRegister.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent e ) {
 				gotoRegister( e );
@@ -89,11 +85,11 @@ public class StartGUI extends JFrame {
 	 * @param ActionEvent e
 	 */
 	public void gotoLogin( ActionEvent e ) {
-		TrackerClient.closeStartandGotoLogin();
+		TrackerClient.closeStartAndGotoLogin();
 	}
 
 	public void gotoRegister( ActionEvent e ) {
-		TrackerClient.closeStartandGotoRegister();
+		TrackerClient.closeStartAndGotoRegister();
 	}
 
 

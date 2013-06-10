@@ -1,5 +1,6 @@
 package de.fhkoeln.gm.serientracker.client.gui;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,16 +8,22 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 
+import net.miginfocom.swing.MigLayout;
+
+import de.fhkoeln.gm.serientracker.client.TrackerClient;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
-public class MainGUI extends JFrame {
+public class HomeGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +33,7 @@ public class MainGUI extends JFrame {
 
 	private JComboBox existingNodes;
 
-	public MainGUI() {
+	public HomeGUI() {
 		this.ch = ConnectionHandler.getInstance();
 
 		try {
@@ -56,41 +63,52 @@ public class MainGUI extends JFrame {
 		// Disable resizing
 		setResizable( true );
 
+		JMenuBar menubar = new JMenuBar();
+	    setJMenuBar(menubar);
+
+	    JToolBar toolbar = new JToolBar();
+
+	    JButton homeButton = new JButton("Home");
+//	    homeButton.addActionListener( new ActionListener() {
+//		public void actionPerformed( ActionEvent e ) {
+//			gotoHome( e );
+//			}
+//		});
+	    
+	    JButton settingButton = new JButton("Setting");
+	    settingButton.addActionListener(new ActionListener() {
+	           public void actionPerformed(ActionEvent e) {
+	       			TrackerClient.closeHomeAndGotoProfileSetting();
+	           }
+	           
+	    });
+	    
+	    JButton exitButton = new JButton("Logout");
+	    exitButton.addActionListener(new ActionListener() {
+	           public void actionPerformed(ActionEvent event) {
+	               System.exit(0);}
+	           
+	    });
+	    
+	    toolbar.add(homeButton);
+	    toolbar.add(settingButton);
+	    toolbar.add(exitButton);
+	   
+	   
+		
 		// Content Panel
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(new MigLayout());
 		setContentPane( panel );
-		panel.setLayout( null ); // Parent size
 
 		// Label for username
 		labelUsername = new JLabel();
-		labelUsername.setHorizontalAlignment( SwingConstants.RIGHT );
-		labelUsername.setBounds( 0, 0, 600, 20 );
-		labelUsername.setBorder( new EmptyBorder( 10, 0, 0, 10 ) );
+		labelUsername.setHorizontalAlignment( SwingConstants.LEFT );
 
-		// Label for existing nodes
-		JLabel labelExistingNodes = new JLabel();
-		labelExistingNodes.setText( "Existing Nodes:" );
-		labelExistingNodes.setBounds( 30, 30, 120, 30 );
-
-		// Existing nodes
-		existingNodes = new JComboBox();
-		existingNodes.setBounds( 130, 30, 200, 30 );
-
-		// Send a test message
-		JButton buttonTest = new JButton( "Send test message" );
-		buttonTest.setBounds( 330, 30, 200, 30 );
-		final MainGUI self = this;
-		buttonTest.addActionListener( new ActionListener() {
-			public void actionPerformed( ActionEvent e ) {
-				ConnectionHandler.getInstance().testPubSub();
-				self.updateNodes();
-			}
-		});
-
-		panel.add( labelUsername );
-		panel.add( labelExistingNodes );
-		panel.add( existingNodes );
-		panel.add( buttonTest );
+		panel.setLayout( new MigLayout() );
+		panel.add( labelUsername); 
+		panel.add(toolbar,  "wrap");
+		
+		
 	}
 
 	/**
@@ -115,5 +133,6 @@ public class MainGUI extends JFrame {
 	public void pubsubtest() {
 
 	}
+	
 
 }
