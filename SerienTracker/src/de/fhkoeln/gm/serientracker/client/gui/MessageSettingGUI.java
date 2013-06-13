@@ -5,11 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -21,13 +23,15 @@ import de.fhkoeln.gm.serientracker.client.TrackerClient;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
-public class MessageSettingGUI extends JFrame {
+public class MessageSettingGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
 	private ConnectionHandler ch;
 
 	private JLabel labelUsername;
+	private JTextField inputTime;
+
 
 	private JComboBox existingNodes;
 
@@ -136,6 +140,49 @@ public class MessageSettingGUI extends JFrame {
 		panel.add(toolbar, "wrap");
 		panel.add(toolbar2, "wrap");
 		
+		
+		JLabel labelText = new JLabel( "Wie wollen sie benachrichtigungen erhalten?" );
+		
+		JLabel labelTime = new JLabel( "Feste Uhrzeit:" );
+		inputTime = new JTextField(20);
+		JCheckBox time = new JCheckBox("", false);
+		time.setFocusable(false);
+		time.addActionListener(this);
+		
+		JLabel labelMinute = new JLabel( "Minuten vor Episodenstart:" );
+		JLabel labelChoice2 = new JLabel( "Hier kommt Auswahlfeld" );
+		JCheckBox minute = new JCheckBox("", false);
+		minute.setFocusable(false);
+		minute.addActionListener(this);
+
+		JLabel labelDay = new JLabel( "Tag?" );
+		JLabel labelchoice = new JLabel( "Hier kommt Auswahlfeld" );
+
+		
+		panel.add(labelText, "wrap");
+		panel.add(labelTime);
+		panel.add(time, "split3");
+		panel.add(inputTime, "wrap");
+		panel.add(labelMinute);
+		panel.add(minute, "split3");
+		panel.add(labelChoice2, "wrap");
+		panel.add(labelDay);
+		panel.add(labelchoice, "wrap");
+
+
+		JLabel labelSerie = new JLabel( "Für welche Serien wollen sie benachrichtigt werden?" );
+		JLabel labelBeispiel = new JLabel( "Serie 1" );
+		JCheckBox serie = new JCheckBox("", false);
+		serie.setFocusable(false);
+		serie.addActionListener(this);
+		
+		panel.add(labelSerie, "wrap");
+		panel.add(labelBeispiel);
+		panel.add(serie, "wrap");
+		
+		JButton saveButton = new JButton( "Save" );
+		panel.add(saveButton);
+		
 	}
 
 	/**
@@ -173,4 +220,11 @@ public class MessageSettingGUI extends JFrame {
 		TrackerClient.closeMSAndGotoGenreSetting();
 	}
 
+	 public void actionPerformed(ActionEvent e) {
+
+	        JCheckBox source = (JCheckBox) e.getSource();
+	        boolean state = source.isSelected();     
+
+	    }
+	
 }

@@ -150,6 +150,18 @@ public class TrackerClient {
 		messageSettingGUI.setVisible( true );
 	}
 	
+	public static void closeHomeAndGotoMySerie() {
+		homeGUI.setVisible( false );
+		homeGUI.dispose();
+		profileSettingGUI.setVisible( true );
+	}
+	
+	public static void closeHomeAndGotoMyList() {
+		homeGUI.setVisible( false );
+		homeGUI.dispose();
+		messageSettingGUI.setVisible( true );
+	}
+	
 	
 	
 }

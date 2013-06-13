@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -30,7 +31,9 @@ public class HomeGUI extends JFrame {
 	private ConnectionHandler ch;
 
 	private JLabel labelUsername;
+	private JTextField inputSearch;
 
+	
 	private JComboBox existingNodes;
 
 	public HomeGUI() {
@@ -109,6 +112,35 @@ public class HomeGUI extends JFrame {
 		panel.add(toolbar,  "wrap");
 		
 		
+		JLabel labelSearch = new JLabel( "Suche:" );
+		inputSearch = new JTextField(20);
+		
+		panel.add(labelSearch, "wrap");
+
+		JLabel labelEpisodes = new JLabel( "Ihre nächsten Episoden:" );
+		panel.add(labelEpisodes, "wrap");
+		
+		JButton serieButton = new JButton( "Meine Serien" );
+		serieButton.addActionListener( new ActionListener() {
+			public void actionPerformed( ActionEvent e ) {
+				gotoMySerie( e );
+			}
+		});
+		
+		panel.add(serieButton, "wrap");
+		
+		JButton listButton = new JButton( "Meine Listen" );
+		listButton.addActionListener( new ActionListener() {
+			public void actionPerformed( ActionEvent e ) {
+				gotoMyList( e );
+			}
+		});
+
+		panel.add(listButton, "wrap");
+		
+		JLabel labelSerie = new JLabel( "Serien die Ihnen gefallen könnten:" );
+		panel.add(labelSerie, "wrap");
+		
 	}
 
 	/**
@@ -133,6 +165,15 @@ public class HomeGUI extends JFrame {
 	public void pubsubtest() {
 
 	}
+	
+	public void gotoMySerie( ActionEvent e ) {	
+		TrackerClient.closeHomeAndGotoMySerie();
+	};
+	
+	public void gotoMyList( ActionEvent e ) {	
+		TrackerClient.closeHomeAndGotoMyList();
+	};
+	
 	
 
 }
