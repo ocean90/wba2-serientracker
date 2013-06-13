@@ -5,33 +5,49 @@ import java.util.Calendar;
 
 
 public class Logger {
-	public static boolean enabled = true;
+
+	public enum ErrorType {
+		E_NONE( 0 ), E_ERROR( 1 ), E_ALL( 2 );
+
+		private int code;
+
+		private ErrorType( int c ) {
+			code = c;
+		}
+
+		public int getCode() {
+			return code;
+		}
+	}
+
+	public static ErrorType errortype = ErrorType.E_ALL;
+
 	private Logger() {}
 
 	public static void log( String message ) {
-		if ( enabled )
+		if ( errortype.getCode() == 2 )
 			System.out.printf(
-					"%s: %s::%s() - %s\n",
-					getDateTime(),
-					getClassName(),
-					getMethodName(),
-					message
+				"%s: %s::%s() - %s\n",
+				getDateTime(),
+				getClassName(),
+				getMethodName(),
+				message
 			);
 	}
 
 	public static void err( String message ) {
-		if ( enabled )
+		if ( errortype.getCode() == 1 || errortype.getCode() == 2 )
 			System.err.printf(
-					"%s: %s::%s() - %s\n",
-					getDateTime(),
-					getClassName(),
-					getMethodName(),
-					message
+				"%s: %s::%s() - %s\n",
+				getDateTime(),
+				getClassName(),
+				getMethodName(),
+				message
 			);
 	}
 
 	private static String getDateTime() {
-		return new SimpleDateFormat( "yyyy.MM.dd HH:mm:ss.SSS").format( Calendar.getInstance().getTime() );
+		return new SimpleDateFormat( "yyyy.MM.dd HH:mm:ss.SSS" ).format( Calendar.getInstance().getTime() );
 	}
 
 	private static String getMethodName() {

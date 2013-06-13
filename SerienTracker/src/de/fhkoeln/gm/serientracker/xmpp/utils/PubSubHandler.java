@@ -121,7 +121,10 @@ public class PubSubHandler {
 			try {
 				this.psm.deleteNode( node );
 			} catch ( XMPPException e ) {
-				e.printStackTrace();
+				if ( e.getXMPPError().getCode() == 403 )
+					Logger.err( "Not allowed to the delete the node '" + node + "'" );
+				else
+					e.printStackTrace();
 			}
 		}
 	}

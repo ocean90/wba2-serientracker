@@ -30,7 +30,7 @@
 	<xs:element name="episodeNumber">
 		<xs:simpleType>
 			<xs:restriction base="xs:positiveInteger">
-					<xs:maxInclusive value="25"/>
+				<xs:maxInclusive value="25"/>
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
@@ -38,6 +38,6 @@
 	<!-- Austrahlungstag der Episode  -->
 	<xs:element name="airdate" type="xs:dateTime"/>
 
-	
+
 
 </xs:schema>

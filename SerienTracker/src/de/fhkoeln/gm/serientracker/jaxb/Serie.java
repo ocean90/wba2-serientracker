@@ -2,13 +2,12 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.06.11 um 01:54:05 AM CEST 
+// Generiert: 2013.06.13 um 11:30:09 AM CEST 
 //
 
 
 package de.fhkoeln.gm.serientracker.jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -74,11 +73,11 @@ public class Serie {
     protected Integer year;
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar firstaired;
-    protected String country;
+    protected Country country;
     protected String overview;
-    protected BigInteger episoderuntime;
-    protected String network;
-    protected String airday;
+    protected Runtime episoderuntime;
+    protected Network network;
+    protected Weekday airday;
     @XmlSchemaType(name = "time")
     protected XMLGregorianCalendar airtime;
     protected Images images;
@@ -187,10 +186,10 @@ public class Serie {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Country }
      *     
      */
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
@@ -199,10 +198,10 @@ public class Serie {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Country }
      *     
      */
-    public void setCountry(String value) {
+    public void setCountry(Country value) {
         this.country = value;
     }
 
@@ -235,10 +234,10 @@ public class Serie {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Runtime }
      *     
      */
-    public BigInteger getEpisoderuntime() {
+    public Runtime getEpisoderuntime() {
         return episoderuntime;
     }
 
@@ -247,10 +246,10 @@ public class Serie {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Runtime }
      *     
      */
-    public void setEpisoderuntime(BigInteger value) {
+    public void setEpisoderuntime(Runtime value) {
         this.episoderuntime = value;
     }
 
@@ -259,10 +258,10 @@ public class Serie {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Network }
      *     
      */
-    public String getNetwork() {
+    public Network getNetwork() {
         return network;
     }
 
@@ -271,10 +270,10 @@ public class Serie {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Network }
      *     
      */
-    public void setNetwork(String value) {
+    public void setNetwork(Network value) {
         this.network = value;
     }
 
@@ -283,10 +282,10 @@ public class Serie {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Weekday }
      *     
      */
-    public String getAirday() {
+    public Weekday getAirday() {
         return airday;
     }
 
@@ -295,10 +294,10 @@ public class Serie {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Weekday }
      *     
      */
-    public void setAirday(String value) {
+    public void setAirday(Weekday value) {
         this.airday = value;
     }
 

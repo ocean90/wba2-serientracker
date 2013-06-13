@@ -1,0 +1,35 @@
+<jaxb:bindings
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:extensionBindingPrefixes="xjc"
+	version="2.1">
+
+	<jaxb:bindings schemaLocation="Serie.xsd">
+		<jaxb:bindings node="//xs:element[@name='country']/xs:simpleType">
+			<jaxb:typesafeEnumClass name="Country" />
+		</jaxb:bindings>
+		<jaxb:bindings node="//xs:element[@name='network']/xs:simpleType">
+			<jaxb:typesafeEnumClass name="Network" />
+		</jaxb:bindings>
+		<jaxb:bindings node="//xs:element[@name='airday']/xs:simpleType">
+			<jaxb:typesafeEnumClass name="Weekday" />
+		</jaxb:bindings>
+		<jaxb:bindings node="//xs:element[@name='genre']/xs:simpleType">
+			<jaxb:typesafeEnumClass name="Genre" />
+		</jaxb:bindings>
+		<jaxb:bindings node="//xs:element[@name='episoderuntime']/xs:simpleType">
+			<jaxb:typesafeEnumClass name="Runtime">
+				<jaxb:typesafeEnumMember value="10" name="TEN" />
+				<jaxb:typesafeEnumMember value="20" name="TWENTY" />
+				<jaxb:typesafeEnumMember value="30" name="THIRTY" />
+				<jaxb:typesafeEnumMember value="40" name="FORTY" />
+				<jaxb:typesafeEnumMember value="50" name="FIFTY" />
+				<jaxb:typesafeEnumMember value="60" name="SIXTY" />
+				<jaxb:typesafeEnumMember value="70" name="SEVENTY" />
+				<jaxb:typesafeEnumMember value="80" name="EIGHTY" />
+				<jaxb:typesafeEnumMember value="90" name="NINETY" />
+			</jaxb:typesafeEnumClass>
+		</jaxb:bindings>
+	</jaxb:bindings>
+
+</jaxb:bindings>
