@@ -66,7 +66,7 @@
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
 				<xs:enumeration value="male"/>
-					<xs:enumeration value="female"/>
+				<xs:enumeration value="female"/>
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
@@ -99,7 +99,6 @@
 		</xs:simpleType>
 	</xs:element>
 
-
 	<!-- Eintrittsdatum -->
 	<xs:element name="joined" type="xs:dateTime"/>
 
@@ -108,7 +107,7 @@
 
 	<!-- Adminrechte -->
 	<xs:attribute name="admin" type="xs:boolean" default="false"/>
-	
+
 	<!-- Abonnierte Typen -->
 	<xs:element name="subscriptions" >
 		<xs:complexType>
@@ -118,8 +117,5 @@
 				</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
-	
-	
 
 </xs:schema>

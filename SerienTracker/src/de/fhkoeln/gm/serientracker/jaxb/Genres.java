@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.06.11 um 01:54:05 AM CEST 
+// Generiert: 2013.06.13 um 11:30:09 AM CEST 
 //
 
 
@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Genres {
 
     @XmlElement(required = true)
-    protected List<String> genre;
+    protected List<Genre> genre;
 
     /**
      * Gets the value of the genre property.
@@ -64,13 +64,13 @@ public class Genres {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * {@link Genre }
      * 
      * 
      */
-    public List<String> getGenre() {
+    public List<Genre> getGenre() {
         if (genre == null) {
-            genre = new ArrayList<String>();
+            genre = new ArrayList<Genre>();
         }
         return this.genre;
     }

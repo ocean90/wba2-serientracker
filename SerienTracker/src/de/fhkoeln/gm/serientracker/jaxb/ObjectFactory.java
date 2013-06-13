@@ -2,13 +2,12 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.06.11 um 01:54:05 AM CEST 
+// Generiert: 2013.06.13 um 11:30:09 AM CEST 
 //
 
 
 package de.fhkoeln.gm.serientracker.jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -195,12 +194,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Genre }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "genre")
-    public JAXBElement<String> createGenre(String value) {
-        return new JAXBElement<String>(_Genre_QNAME, String.class, null, value);
+    public JAXBElement<Genre> createGenre(Genre value) {
+        return new JAXBElement<Genre>(_Genre_QNAME, Genre.class, null, value);
     }
 
     /**
@@ -258,12 +257,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Network }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "network")
-    public JAXBElement<String> createNetwork(String value) {
-        return new JAXBElement<String>(_Network_QNAME, String.class, null, value);
+    public JAXBElement<Network> createNetwork(Network value) {
+        return new JAXBElement<Network>(_Network_QNAME, Network.class, null, value);
     }
 
     /**
@@ -339,12 +338,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Runtime }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "episoderuntime")
-    public JAXBElement<BigInteger> createEpisoderuntime(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Episoderuntime_QNAME, BigInteger.class, null, value);
+    public JAXBElement<Runtime> createEpisoderuntime(Runtime value) {
+        return new JAXBElement<Runtime>(_Episoderuntime_QNAME, Runtime.class, null, value);
     }
 
     /**
@@ -357,12 +356,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Weekday }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "airday")
-    public JAXBElement<String> createAirday(String value) {
-        return new JAXBElement<String>(_Airday_QNAME, String.class, null, value);
+    public JAXBElement<Weekday> createAirday(Weekday value) {
+        return new JAXBElement<Weekday>(_Airday_QNAME, Weekday.class, null, value);
     }
 
     /**
@@ -384,12 +383,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Country }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "country")
-    public JAXBElement<String> createCountry(String value) {
-        return new JAXBElement<String>(_Country_QNAME, String.class, null, value);
+    public JAXBElement<Country> createCountry(Country value) {
+        return new JAXBElement<Country>(_Country_QNAME, Country.class, null, value);
     }
 
     /**

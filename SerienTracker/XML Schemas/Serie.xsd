@@ -91,7 +91,7 @@
 				<xs:enumeration value="AMC"/>
 				<xs:enumeration value="BBC America"/>
 				<xs:enumeration value="BBC One"/>
-				
+
 				<xs:enumeration value="CBC"/>
 				<xs:enumeration value="Comedy Central"/>
 				<xs:enumeration value="The CW"/>
@@ -143,7 +143,7 @@
 		</xs:complexType>
 	</xs:element>
 
-<!-- Genres -->
+	<!-- Genres -->
 	<xs:element name="genre">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
@@ -171,5 +171,4 @@
 		</xs:simpleType>
 	</xs:element>
 
-	
 </xs:schema>
