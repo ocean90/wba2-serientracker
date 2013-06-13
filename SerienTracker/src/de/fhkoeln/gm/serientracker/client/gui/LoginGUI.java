@@ -176,7 +176,7 @@ public class LoginGUI extends JFrame {
 	};
 
 	/**
-	 * Helper method to show an error dialog.
+	 * Helper method to show an error dialog
 	 *
 	 * @param String message
 	 */
