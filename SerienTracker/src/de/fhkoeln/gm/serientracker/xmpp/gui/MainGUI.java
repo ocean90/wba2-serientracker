@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 
+import de.fhkoeln.gm.serientracker.jaxb.Genre;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
@@ -87,10 +88,18 @@ public class MainGUI extends JFrame {
 			}
 		});
 
+		// Genres
+		JComboBox genres = new JComboBox();
+		genres.setBounds( 130, 100, 200, 30 );
+		Genre[] genre_values = Genre.values();
+		for ( Genre genre : genre_values )
+			genres.addItem( genre.value() );
+
 		panel.add( labelUsername );
 		panel.add( labelExistingNodes );
 		panel.add( existingNodes );
 		panel.add( buttonTest );
+		panel.add( genres );
 	}
 
 	/**
