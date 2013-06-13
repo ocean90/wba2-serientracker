@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
@@ -21,22 +22,31 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
+import de.fhkoeln.gm.serientracker.jaxb.Country;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
-public class HomeGUI extends JFrame {
+public class EditSerieGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private ConnectionHandler ch;
 
 	private JLabel labelUsername;
-	private JTextField inputSearch;
+	private JTextField inputTitle;
+	private JTextField inputYear;
+	private JTextField inputFirstaired;
+	private JTextField inputOverview;
+	private JTextField inputEpisoderuntime;
+	private JTextField inputAirtime;
+
+
+
 
 	
 	private JComboBox existingNodes;
 
-	public HomeGUI() {
+	public EditSerieGUI() {
 		this.ch = ConnectionHandler.getInstance();
 
 		try {
@@ -112,36 +122,107 @@ public class HomeGUI extends JFrame {
 		panel.add(toolbar,  "wrap");
 		
 		
-		JLabel labelSearch = new JLabel( "Suche:" );
-		inputSearch = new JTextField(20);
-		
-		panel.add(labelSearch);
-		panel.add(inputSearch, "wrap");
 
-
-		JLabel labelEpisodes = new JLabel( "Ihre nächsten Episoden:" );
-		panel.add(labelEpisodes, "wrap");
-		
-		JButton serieButton = new JButton( "Meine Serien" );
-		serieButton.addActionListener( new ActionListener() {
+		JButton backButton = new JButton( "Zurück" );
+		backButton.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent e ) {
-				gotoMySerie( e );
+				gotoSerieInfo( e );
 			}
 		});
 		
-		panel.add(serieButton, "wrap");
+		// Label for titel
+		JLabel labelTitle = new JLabel( "Name:" );
+				
+		// Label for genres
+		JLabel labelGenre = new JLabel( "Genre:" );
 		
-		JButton listButton = new JButton( "Meine Listen" );
-		listButton.addActionListener( new ActionListener() {
-			public void actionPerformed( ActionEvent e ) {
-				gotoMyList( e );
-			}
-		});
+		// Genres
+		JComboBox countries = new JComboBox();
+		countries.setBounds( 130, 100, 200, 30 );
+		Country[] country_values = Country.values();
+			for ( Country country : country_values )
+				countries.addItem( country.value() );
+		
+		
 
-		panel.add(listButton, "wrap");
+		// Label for year
+		JLabel labelYear = new JLabel( "Jahr:" );
+
+		// Label for firstaired
+		JLabel labelFirstaired = new JLabel( "Erstaustrahlung:" );
+				
+		// Label for country
+		JLabel labelCountry = new JLabel( "Produktionsland:" );
+			
+		// Label for overview
+		JLabel labelOverview = new JLabel( "Beschreibung:" );
+			
+		// Label for episoderuntime
+		JLabel labelEpisoderuntime = new JLabel( "Episodenlänge:" );
+				
+		// Label for network
+		JLabel labelNetwork = new JLabel( "Sender:" );
+				
+		// Label for airday
+		JLabel labelAirday = new JLabel( "Austrahlungstag:" );
 		
-		JLabel labelSerie = new JLabel( "Serien die Ihnen gefallen könnten:" );
-		panel.add(labelSerie, "wrap");
+		// Label for airtime
+		JLabel labelAirtime = new JLabel( "Austrahlungszeit:" );
+		
+
+		// Label for images
+		JLabel labelImages = new JLabel( "Bilder:" );
+
+		
+		
+		// Input field for username
+		inputTitle = new JTextField(20);
+		
+		// Input field for password
+		inputYear = new JTextField(20);
+
+		// Input field for fristname
+		inputFirstaired = new JTextField(20);
+				
+		// Input field for lastname
+		inputOverview = new JTextField(20);
+				
+		// Input field for Age
+		inputEpisoderuntime = new JTextField(20); //Dropdown auswahl
+				
+		// Input field for Location
+		inputAirtime = new JTextField(20);
+
+		// Add items to panel
+		panel.add( labelTitle );
+		panel.add( inputTitle, "wrap" );
+
+		panel.add( labelGenre, "wrap" );
+
+		panel.add( labelYear );
+		panel.add( inputYear, "wrap"  );
+				
+		panel.add( labelFirstaired );
+		panel.add( inputFirstaired, "wrap"  );
+				
+		panel.add( labelCountry );
+		panel.add( countries );
+
+//				
+//		panel.add( labelAge );
+//		panel.add( inputAge, "wrap"  );
+//				
+//		panel.add( labelLocation );
+//		panel.add( inputLocation, "wrap"  );
+//				
+//		panel.add( labelAbout );
+//		panel.add( inputAbout, "wrap"  );
+//				
+//		panel.add( labelAvatar );
+//		panel.add( inputAvatar, "wrap"  );
+//				
+//		panel.add( buttonNext, "split 2" );
+
 		
 	}
 
@@ -168,13 +249,11 @@ public class HomeGUI extends JFrame {
 
 	}
 	
-	public void gotoMySerie( ActionEvent e ) {	
+	public void gotoSerieInfo( ActionEvent e ) {	
 		TrackerClient.closeHomeAndGotoMySerie();
 	};
 	
-	public void gotoMyList( ActionEvent e ) {	
-		TrackerClient.closeHomeAndGotoMyList();
-	};
+
 	
 	
 

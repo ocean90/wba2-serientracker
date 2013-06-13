@@ -70,7 +70,7 @@ public class LoginGUI extends JFrame {
 		JLabel labelUsername = new JLabel( "Username:" );
 
 		// Label for password
-		JLabel labelPassword = new JLabel( "Password:" );
+		JLabel labelPassword = new JLabel( "Passwort:" );
 
 		// Label for hostname
 		JLabel lableHostname = new JLabel( "Hostname:" );

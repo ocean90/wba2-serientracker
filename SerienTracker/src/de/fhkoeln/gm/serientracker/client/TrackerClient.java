@@ -9,6 +9,8 @@ import de.fhkoeln.gm.serientracker.client.gui.RegisterGUI2;
 import de.fhkoeln.gm.serientracker.client.gui.ProfileSettingGUI;
 import de.fhkoeln.gm.serientracker.client.gui.GenreSettingGUI;
 import de.fhkoeln.gm.serientracker.client.gui.MessageSettingGUI;
+import de.fhkoeln.gm.serientracker.client.gui.EditSerieGUI;
+
 
 
 public class TrackerClient {
@@ -21,6 +23,7 @@ public class TrackerClient {
 	static ProfileSettingGUI profileSettingGUI = new ProfileSettingGUI();
 	static GenreSettingGUI genreSettingGUI = new GenreSettingGUI();
 	static MessageSettingGUI messageSettingGUI = new MessageSettingGUI();
+	static EditSerieGUI editSerieGUI = new EditSerieGUI();
 
 	
 	/**
@@ -153,7 +156,7 @@ public class TrackerClient {
 	public static void closeHomeAndGotoMySerie() {
 		homeGUI.setVisible( false );
 		homeGUI.dispose();
-		profileSettingGUI.setVisible( true );
+		editSerieGUI.setVisible( true );
 	}
 	
 	public static void closeHomeAndGotoMyList() {
@@ -161,6 +164,7 @@ public class TrackerClient {
 		homeGUI.dispose();
 		messageSettingGUI.setVisible( true );
 	}
+	
 	
 	
 	

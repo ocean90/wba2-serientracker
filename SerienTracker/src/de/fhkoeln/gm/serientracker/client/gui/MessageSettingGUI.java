@@ -20,6 +20,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import net.miginfocom.swing.MigLayout;
 
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
+import de.fhkoeln.gm.serientracker.jaxb.Weekday;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
@@ -78,7 +79,7 @@ public class MessageSettingGUI extends JFrame implements ActionListener {
 			}
 		});
 	    
-	    JButton settingButton = new JButton("Setting");
+	    JButton settingButton = new JButton("Einstellung");
 //	    settingButton.addActionListener(new ActionListener() {
 //	           public void actionPerformed(ActionEvent e) {
 //	       			TrackerClient.closeHomeAndGotoSetting();
@@ -98,7 +99,7 @@ public class MessageSettingGUI extends JFrame implements ActionListener {
 	    toolbar.add(settingButton);
 	    toolbar.add(exitButton);
 	    
-	    JButton profileButton = new JButton("Profile");
+	    JButton profileButton = new JButton("Profil");
 	    profileButton.addActionListener( new ActionListener() {
 		public void actionPerformed( ActionEvent e ) {
 					gotoProfile( e );
@@ -112,7 +113,7 @@ public class MessageSettingGUI extends JFrame implements ActionListener {
 	 		}
 	 	});
 	 	
-	 	JButton messageButton = new JButton("Message");
+	 	JButton messageButton = new JButton("Benachrichtigung");
 //		messageButton.addActionListener( new ActionListener() {
 //		public void actionPerformed( ActionEvent e ) {
 //		 		gotoMessage( e );
@@ -131,7 +132,7 @@ public class MessageSettingGUI extends JFrame implements ActionListener {
 		setContentPane( panel );
 
 		// Label for username
-		labelUsername = new JLabel("Hello "+ this.ch.getAccountAttribute( "username" ));
+		labelUsername = new JLabel("Hallo "+ this.ch.getAccountAttribute( "username" ));
 		labelUsername.setHorizontalAlignment( SwingConstants.LEFT );
 
 		panel.setLayout( new MigLayout() );
@@ -155,19 +156,31 @@ public class MessageSettingGUI extends JFrame implements ActionListener {
 		minute.setFocusable(false);
 		minute.addActionListener(this);
 
-		JLabel labelDay = new JLabel( "Tag?" );
-		JLabel labelchoice = new JLabel( "Hier kommt Auswahlfeld" );
-
+		JLabel labelDay = new JLabel( "Fester Wochentag" );
+		// Tag
+		JComboBox day = new JComboBox();
+		day.setBounds( 130, 100, 200, 30 );
+		Weekday[] genre_values = Weekday.values();
+			for ( Weekday wday : genre_values )
+				day.addItem( wday.value() );
+			
+		JCheckBox dayCB = new JCheckBox("", false);
+		time.setFocusable(false);
+		time.addActionListener(this);		
+		
 		
 		panel.add(labelText, "wrap");
 		panel.add(labelTime);
 		panel.add(time, "split3");
 		panel.add(inputTime, "wrap");
+		panel.add(labelDay);
+		panel.add(dayCB, "split3");
+		panel.add(day, "wrap");
+	
 		panel.add(labelMinute);
 		panel.add(minute, "split3");
 		panel.add(labelChoice2, "wrap");
-		panel.add(labelDay);
-		panel.add(labelchoice, "wrap");
+		
 
 
 		JLabel labelSerie = new JLabel( "Für welche Serien wollen sie benachrichtigt werden?" );
