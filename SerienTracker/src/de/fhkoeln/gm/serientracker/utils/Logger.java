@@ -5,11 +5,27 @@ import java.util.Calendar;
 
 
 public class Logger {
-	public static boolean enabled = true;
+
+	public enum ErrorType {
+		 E_NONE( 0 ), E_ERROR( 1 ), E_ALL( 2 );
+
+		 private int code;
+
+		 private ErrorType( int c ) {
+			 code = c;
+		 }
+
+		 public int getCode() {
+			 return code;
+		 }
+	}
+
+	public static ErrorType enabled = ErrorType.E_ALL;
+
 	private Logger() {}
 
 	public static void log( String message ) {
-		if ( enabled )
+		if ( enabled.getCode() == 2 )
 			System.out.printf(
 					"%s: %s::%s() - %s\n",
 					getDateTime(),
@@ -20,7 +36,7 @@ public class Logger {
 	}
 
 	public static void err( String message ) {
-		if ( enabled )
+		if ( enabled.getCode() == 1 || enabled.getCode() == 2 )
 			System.err.printf(
 					"%s: %s::%s() - %s\n",
 					getDateTime(),
