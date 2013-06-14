@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
@@ -22,33 +21,22 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
-import de.fhkoeln.gm.serientracker.jaxb.Country;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
-public class EditSerieGUI extends JFrame {
+public class SearchGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private ConnectionHandler ch;
 
 	private JLabel labelUsername;
-	
-	
-	private JTextField inputTitle;
-	private JTextField inputYear;
-	private JTextField inputFirstaired;
-	private JTextField inputOverview;
-	private JTextField inputEpisoderuntime;
-	private JTextField inputAirtime;
-
-
-
+	private JTextField inputSearch;
 
 	
 	private JComboBox existingNodes;
 
-	public EditSerieGUI() {
+	public SearchGUI() {
 		this.ch = ConnectionHandler.getInstance();
 
 		try {
@@ -116,119 +104,79 @@ public class EditSerieGUI extends JFrame {
 		setContentPane( panel );
 
 		// Label for username
-		labelUsername = new JLabel("Hello "+ this.ch.getAccountAttribute( "username" ));
+		labelUsername = new JLabel();
 		labelUsername.setHorizontalAlignment( SwingConstants.LEFT );
 
-		panel.setLayout( new MigLayout() );
-		panel.add( labelUsername); 
-		panel.add(toolbar, "cell 5 0");
+		JLabel labelSearch = new JLabel( "Suche:" );
+		inputSearch = new JTextField(20);
 		
+		JLabel labelEpisodesInfo = new JLabel( "Ihre nächsten Episoden:" );
+
+		JLabel labelSerie = new JLabel( "Serien die Ihnen gefallen könnten:" );
+		
+		JLabel labelSerieCover = new JLabel( "Cover" );
+		JLabel labelSerieCover2 = new JLabel( "Cover" );
+		JLabel labelSerieCover3 = new JLabel( "Cover" );
+
+		JLabel labelSerieTitle = new JLabel( "Title" );
+		JLabel labelSerieTitle2 = new JLabel( "Title" );
+		JLabel labelSerieTitle3 = new JLabel( "Title" );
+		
+		JLabel labelSerieEp = new JLabel( "Episode" );
+		JLabel labelSerieEp2 = new JLabel( "Episode" );
+		JLabel labelSerieEp3 = new JLabel( "Episode" );
+		
+		JLabel labelSerieDay = new JLabel( "Day" );
+		JLabel labelSerieDay2 = new JLabel( "Day" );
+		JLabel labelSerieDay3 = new JLabel( "Day" );
 		
 
-		JButton backButton = new JButton( "Zurück" );
-		backButton.addActionListener( new ActionListener() {
+		
+
+		JButton serieButton = new JButton( "Meine Serien" );
+		serieButton.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent e ) {
-				gotoSerieInfo( e );
+				gotoMySerie( e );
 			}
 		});
 		
-		// Label for titel
-		JLabel labelTitle = new JLabel( "Name:" );
-				
-		// Label for genres
-		JLabel labelGenre = new JLabel( "Genre:" );
-		
-		// Genres
-		JComboBox countries = new JComboBox();
-		countries.setBounds( 130, 100, 200, 30 );
-		Country[] country_values = Country.values();
-			for ( Country country : country_values )
-				countries.addItem( country.value() );
+		JButton listButton = new JButton( "Meine Listen" );
+		listButton.addActionListener( new ActionListener() {
+			public void actionPerformed( ActionEvent e ) {
+				gotoMyList( e );
+			}
+		});
 		
 		
+		panel.setLayout( new MigLayout() );
+		panel.add( labelUsername); 
+		panel.add(toolbar,  "wrap");
 
-		// Label for year
-		JLabel labelYear = new JLabel( "Jahr:" );
-
-		// Label for firstaired
-		JLabel labelFirstaired = new JLabel( "Erstaustrahlung:" );
-				
-		// Label for country
-		JLabel labelCountry = new JLabel( "Produktionsland:" );
-			
-		// Label for overview
-		JLabel labelOverview = new JLabel( "Beschreibung:" );
-			
-		// Label for episoderuntime
-		JLabel labelEpisoderuntime = new JLabel( "Episodenlänge:" );
-				
-		// Label for network
-		JLabel labelNetwork = new JLabel( "Sender:" );
-				
-		// Label for airday
-		JLabel labelAirday = new JLabel( "Austrahlungstag:" );
+		panel.add(labelSearch);
+		panel.add(inputSearch, "wrap");
 		
-		// Label for airtime
-		JLabel labelAirtime = new JLabel( "Austrahlungszeit:" );
+		panel.add(labelEpisodesInfo, "wrap");
 		
-		// Label for images
-		JLabel labelImages = new JLabel( "Bilder:" );
-
+		panel.add(labelSerieCover );
+		panel.add(labelSerieCover2 );
+		panel.add(labelSerieCover3, "wrap");
 		
+		panel.add(labelSerieTitle);
+		panel.add(labelSerieTitle2);
+		panel.add(labelSerieTitle3, "wrap");
+
+		panel.add(labelSerieEp);
+		panel.add(labelSerieEp2);
+		panel.add(labelSerieEp3, "wrap");
 		
-		// Input field for title
-		inputTitle = new JTextField(20);
+		panel.add(labelSerieDay);
+		panel.add(labelSerieDay2);
+		panel.add(labelSerieDay3, "wrap");
 		
-		// Input field for year
-		inputYear = new JTextField(20);
+		panel.add(labelSerie, "wrap");
 
-		// Input field for firstaired
-		inputFirstaired = new JTextField(20);
-				
-		// Input field for overview
-		inputOverview = new JTextField(20);
-				
-		// Input field for episoderuntime
-		inputEpisoderuntime = new JTextField(20); //Dropdown auswahl
-				
-		// Input field for airtime
-		inputAirtime = new JTextField(20);
-
-		// Add items to panel
-		panel.add( labelTitle );
-		panel.add( inputTitle, "wrap" );
-
-		panel.add( labelGenre, "wrap" );
-
-		panel.add( labelYear );
-		panel.add( inputYear, "wrap"  );
-				
-		panel.add( labelFirstaired );
-		panel.add( inputFirstaired, "wrap"  );
-				
-		panel.add( labelCountry );
-		panel.add( countries );
-
-//				
-//		panel.add( labelAge );
-//		panel.add( inputAge, "wrap"  );
-//				
-//		panel.add( labelLocation );
-//		panel.add( inputLocation, "wrap"  );
-//				
-//		panel.add( labelAbout );
-//		panel.add( inputAbout, "wrap"  );
-//				
-//		panel.add( labelAvatar );
-//		panel.add( inputAvatar, "wrap"  );
-//				
-//		panel.add( buttonNext, "split 2" );
-
-		
-	}
-
-	protected void gotoHome(ActionEvent e) {
-		TrackerClient.closeEditSerieAndGotoHome();
+		panel.add(serieButton, "wrap");
+		panel.add(listButton, "wrap");
 		
 	}
 
@@ -255,11 +203,13 @@ public class EditSerieGUI extends JFrame {
 
 	}
 	
-	public void gotoSerieInfo( ActionEvent e ) {	
+	public void gotoMySerie( ActionEvent e ) {	
 		TrackerClient.closeHomeAndGotoMySerie();
 	};
 	
-
+	public void gotoMyList( ActionEvent e ) {	
+		TrackerClient.closeHomeAndGotoMyList();
+	};
 	
 	
 

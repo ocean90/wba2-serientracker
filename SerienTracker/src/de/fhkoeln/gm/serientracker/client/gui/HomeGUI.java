@@ -1,6 +1,5 @@
 package de.fhkoeln.gm.serientracker.client.gui;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -16,7 +14,6 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.EmptyBorder;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -66,11 +63,10 @@ public class HomeGUI extends JFrame {
 		// Disable resizing
 		setResizable( true );
 
-		JMenuBar menubar = new JMenuBar();
-	    setJMenuBar(menubar);
-
+		// Create new Toolbar
 	    JToolBar toolbar = new JToolBar();
 
+	    // Create homebutton
 	    JButton homeButton = new JButton("Home");
 //	    homeButton.addActionListener( new ActionListener() {
 //		public void actionPerformed( ActionEvent e ) {
@@ -78,6 +74,7 @@ public class HomeGUI extends JFrame {
 //			}
 //		});
 	    
+	    // Create Settingbutton
 	    JButton settingButton = new JButton("Setting");
 	    settingButton.addActionListener(new ActionListener() {
 	           public void actionPerformed(ActionEvent e) {
@@ -86,12 +83,14 @@ public class HomeGUI extends JFrame {
 	           
 	    });
 	    
+	    // Add Logoutbutton to toolbar
 	    JButton exitButton = new JButton("Logout");
 	    exitButton.addActionListener(new ActionListener() {
 	           public void actionPerformed(ActionEvent event) {
 	               System.exit(0);}
 	           
 	    });
+	    
 	    
 	    toolbar.add(homeButton);
 	    toolbar.add(settingButton);

@@ -148,7 +148,15 @@ public class SerieGUI extends JFrame {
 		
 		// Label for next Episode
 		JLabel labelNextEp = new JLabel( "Next Episode" );
-		JLabel labelNextEpCov = new JLabel( "Image" );
+		
+		// Button for episode
+		JButton episodeButton = new JButton("Image");
+		episodeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TrackerClient.closeSerieAndGotoEpisode();	}
+						           
+		});
+		
 		JLabel labelNextEpTitle = new JLabel( "Title" );
 		JLabel labelNextEpAirdate = new JLabel( "Airdate" );
 
@@ -156,7 +164,14 @@ public class SerieGUI extends JFrame {
 		
 		// Label for last seen Episode
 		JLabel labelLastEp = new JLabel( "Last seen Episode" );
-		JLabel labelLastEpCov = new JLabel( "Image" );
+		// Button for episode
+		JButton episodeButton2 = new JButton("Image");
+		episodeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TrackerClient.closeSerieAndGotoEpisode();}
+								           
+		});
+		
 		JLabel labelLastEpTitle = new JLabel( "Title" );
 		JLabel labelLastEpAirdate = new JLabel( "Airdate" );
 	
@@ -232,9 +247,9 @@ public class SerieGUI extends JFrame {
 		panel.add( labelLastEp, "cell 0 18");  
 		panel.add( labelNextEp, "cell 4 18");
 		
-		panel.add( labelLastEpCov, "cell 0 19");  
+		panel.add( episodeButton, "cell 0 19");  
 		panel.add( labelLastEpTitle, "cell 1 19");  
-		panel.add( labelNextEpCov, "cell 3 19");  
+		panel.add( episodeButton2, "cell 3 19");  
 
 		panel.add( labelNextEpTitle, "cell 4 19");  
 		panel.add( labelLastEpAirdate, "cell 1 20");  
@@ -243,6 +258,10 @@ public class SerieGUI extends JFrame {
 
 		
 	}
+
+//	protected void gotoEpisode(ActionEvent e) {
+//		TrackerClient.closeSerieAndGotoEpisode();		
+//	}
 
 	/**
 	 * Update GUI components

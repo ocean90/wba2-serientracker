@@ -19,6 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import net.miginfocom.swing.MigLayout;
 
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
+import de.fhkoeln.gm.serientracker.jaxb.Genre;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
@@ -146,108 +147,24 @@ public class GenreSettingGUI extends JFrame implements ActionListener{
 		panel.add(labelText, "wrap");
 		panel.add(labelText2, "wrap");
 		
-		JCheckBox action = new JCheckBox("Action", false);
-	    action.setFocusable(false);
-	    action.addActionListener(this);
-	    
-	    JCheckBox adventure = new JCheckBox("Adventure", false);
-	    adventure.setFocusable(false);
-	    adventure.addActionListener(this);
-	    
-	    JCheckBox animation = new JCheckBox("Animation", false);
-	    animation.setFocusable(false);
-	    animation.addActionListener(this);
+		  int i = 0;
 		
-	    JCheckBox children = new JCheckBox("Children", false);
-	    children.setFocusable(false);
-	    children.addActionListener(this);
-		
-	    JCheckBox comedy = new JCheckBox("Comedy", false);
-	    comedy.setFocusable(false);
-	    comedy.addActionListener(this);
-	    
-	    JCheckBox crime = new JCheckBox("Crime", false);
-	    crime.setFocusable(false);
-	    crime.addActionListener(this);
-	    
-	    JCheckBox drama = new JCheckBox("Drama", false);
-	    drama.setFocusable(false);
-	    drama.addActionListener(this);
-	    
-	    JCheckBox documentary = new JCheckBox("Documentary", false);
-	    documentary.setFocusable(false);
-	    documentary.addActionListener(this);
-	    
-	    JCheckBox fantasy = new JCheckBox("Fantasy", false);
-	    fantasy.setFocusable(false);
-	    fantasy.addActionListener(this);
-	    
-	    JCheckBox gameshow = new JCheckBox("Game Show", false);
-	    gameshow.setFocusable(false);
-	    gameshow.addActionListener(this);
-	    
-	    JCheckBox historical = new JCheckBox("Historical", false);
-	    historical.setFocusable(false);
-	    historical.addActionListener(this);
-	    
-	    JCheckBox horror = new JCheckBox("Horror", false);
-	    horror.setFocusable(false);
-	    horror.addActionListener(this);
-	    
-	    JCheckBox mystery = new JCheckBox("Mystery", false);
-	    mystery.setFocusable(false);
-	    mystery.addActionListener(this);
-	    
-	    JCheckBox news = new JCheckBox("News", false);
-	    news.setFocusable(false);
-	    news.addActionListener(this);
-	    
-	    JCheckBox romance = new JCheckBox("Romance", false);
-	    romance.setFocusable(false);
-	    romance.addActionListener(this);
-	    
-	    JCheckBox sciencefiction = new JCheckBox("Scifi", false);
-	    sciencefiction.setFocusable(false);
-	    sciencefiction.addActionListener(this);
-	    
-	    JCheckBox sport = new JCheckBox("Sport", false);
-	    sport.setFocusable(false);
-	    sport.addActionListener(this);
-	    
-	    JCheckBox suspence = new JCheckBox("Suspence", false);
-	    suspence.setFocusable(false);
-	    suspence.addActionListener(this);
-	    
-	    JCheckBox thriller = new JCheckBox("Thriller", false);
-	    thriller.setFocusable(false);
-	    thriller.addActionListener(this);
-	    
-	    JCheckBox western = new JCheckBox("Western", false);
-	    western.setFocusable(false);
-	    western.addActionListener(this);
-	    
-	    
-		panel.add( action,"split4"  );
-		panel.add( adventure );
-		panel.add( animation);
-		panel.add( children, "wrap");
-		panel.add( comedy,"split4");
-		panel.add( crime);
-		panel.add( drama);
-		panel.add( documentary,"wrap");
-		panel.add( fantasy,"split4");
-		panel.add( gameshow);
-		panel.add( historical);
-		panel.add( horror,"wrap");
-		panel.add( mystery,"split4");
-		panel.add( news);
-		panel.add( romance);
-		panel.add( sciencefiction, "wrap");
-		panel.add( sport,"split4");
-		panel.add( suspence);
-		panel.add( thriller);
-		panel.add( western, "wrap");
+		Genre[] genres = Genre.values();
+		for ( Genre genre : genres ){			
+			JCheckBox box = new JCheckBox(genre.name(), false);
+			box.setFocusable(false);
+			box.addActionListener(this);
 
+			if(i == 3 || i == 7 || i == 11 || i == 15 || i == 19){
+				panel.add( box, "wrap" );}
+		
+			else  {
+				panel.add(box, "split 4") ;
+				}
+			
+			i++;
+
+		}
 		
 		// Next button
 		JButton saveButton = new JButton( "Save" );

@@ -80,7 +80,7 @@ public class StartGUI extends JFrame {
 
 
 	/**
-	 * Check user input and try to connect/login to the XMPP server.
+	 * Goto Login page
 	 *
 	 * @param ActionEvent e
 	 */
@@ -88,6 +88,12 @@ public class StartGUI extends JFrame {
 		TrackerClient.closeStartAndGotoLogin();
 	}
 
+	
+	/**
+	 * Goto Register page
+	 *
+	 * @param ActionEvent e
+	 */
 	public void gotoRegister( ActionEvent e ) {
 		TrackerClient.closeStartAndGotoRegister();
 	}

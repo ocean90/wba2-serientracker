@@ -31,7 +31,6 @@ public class RegisterGUI extends JFrame implements ActionListener {
 	private JTextField inputAbout;
 	private JTextField inputAvatar;
 
-
 	public RegisterGUI() {
 		initComponents();
 	}
@@ -110,13 +109,23 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		// Input field for Avatar
 		inputAvatar = new JTextField(20);
 
+		//CheckBox for male
 		JCheckBox maleCB = new JCheckBox("Male", false);
 	    maleCB.setFocusable(false);
-	    maleCB.addActionListener(this);
+	    maleCB.addActionListener(new ActionListener() {
+			public void actionPerformed( ActionEvent e) {
+				maleChecked( e );
+			}
+		});
 	     
+	    //CheckBox for female
 	    JCheckBox femaleCB = new JCheckBox("Female", false);
 	    femaleCB.setFocusable(false);     
-	    femaleCB.addActionListener(this);
+	    femaleCB.addActionListener(new ActionListener() {
+			public void actionPerformed( ActionEvent e ) {
+				femaleChecked( e );
+			}
+		});
 
 		
 
@@ -164,7 +173,32 @@ public class RegisterGUI extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Check user input and try to connect/login to the XMPP server.
+	 * Action Event for female checkBox, if checked, uncheck maleCB
+	 *
+	 * @param ActionEvent e
+	 */
+	protected void femaleChecked(ActionEvent e) {
+	    JCheckBox source1 = (JCheckBox) e.getSource();
+        boolean female = source1.isSelected() ;
+        
+        // male checkbox aus
+        
+	}
+
+	/**
+	 * Action Event for male checkBox, if checked, uncheck femaleCB
+	 *
+	 * @param ActionEvent e
+	 */
+	protected void maleChecked(ActionEvent e) {
+		  JCheckBox source2 = (JCheckBox) e.getSource();
+	        boolean male = source2.isSelected();  
+	        
+	        // female checkbox aus
+	}
+
+	/**
+	 * Check user input and go to next register page
 	 *
 	 * @param ActionEvent e
 	 */
@@ -189,12 +223,7 @@ public class RegisterGUI extends JFrame implements ActionListener {
 	
 	}
 		
-	 public void actionPerformed(ActionEvent e) {
-
-	        JCheckBox source = (JCheckBox) e.getSource();
-	        boolean state = source.isSelected();     
-
-	    }
+	
 
 
 	
@@ -207,5 +236,12 @@ public class RegisterGUI extends JFrame implements ActionListener {
 	private void errorDialog( String message ) {
 		JOptionPane.showMessageDialog( null, message, "Error", JOptionPane.ERROR_MESSAGE );
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

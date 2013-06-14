@@ -9,6 +9,7 @@ import de.fhkoeln.gm.serientracker.client.gui.RegisterGUI2;
 import de.fhkoeln.gm.serientracker.client.gui.ProfileSettingGUI;
 import de.fhkoeln.gm.serientracker.client.gui.GenreSettingGUI;
 import de.fhkoeln.gm.serientracker.client.gui.MessageSettingGUI;
+import de.fhkoeln.gm.serientracker.client.gui.EpisodeGUI;
 import de.fhkoeln.gm.serientracker.client.gui.SerieGUI;
 import de.fhkoeln.gm.serientracker.client.gui.SeasonGUI;
 import de.fhkoeln.gm.serientracker.client.gui.MySerieGUI;
@@ -31,6 +32,7 @@ public class TrackerClient {
 	static EditSerieGUI editSerieGUI = new EditSerieGUI();
 	static MySerieGUI mySerieGUI = new MySerieGUI();
 	static SeasonGUI seasonGUI = new SeasonGUI();
+	static EpisodeGUI episodeGUI = new EpisodeGUI();
 
 
 	
@@ -267,10 +269,17 @@ public class TrackerClient {
 		serieGUI.dispose();
 		seasonGUI.setVisible( true );		
 	}
+	
+	public static void closeSerieAndGotoEpisode() {
+		serieGUI.setVisible( false );
+		serieGUI.dispose();
+		episodeGUI.setVisible( true );		
+	}
 
-	public static void closeEditSerieAndGotoGome() {
-		// TODO Auto-generated method stub
-		
+	public static void closeEditSerieAndGotoHome() {
+		editSerieGUI.setVisible( false );
+		editSerieGUI.dispose();
+		homeGUI.setVisible( true );	
 	}
 
 //	public static void closeEpisodeAndGotoEditEpisode() {
@@ -278,12 +287,12 @@ public class TrackerClient {
 //		episodeGUI.dispose();
 //		editEpisodeGUI.setVisible( true );		
 //	}
-//
-//	public static void closeEpisodeAndGotoSeason() {
-//		episodeGUI.setVisible( false );
-//		episodeGUI.dispose();
-//		seasonGUI.setVisible( true );		
-//	}
+
+	public static void closeEpisodeAndGotoSeason() {
+		episodeGUI.setVisible( false );
+		episodeGUI.dispose();
+		seasonGUI.setVisible( true );		
+	}
 //	
 	
 }
