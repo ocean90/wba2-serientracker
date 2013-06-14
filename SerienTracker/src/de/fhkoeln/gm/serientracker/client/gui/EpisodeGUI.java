@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
@@ -22,33 +21,21 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
-import de.fhkoeln.gm.serientracker.jaxb.Country;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
-public class EditSerieGUI extends JFrame {
+public class EpisodeGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private ConnectionHandler ch;
 
 	private JLabel labelUsername;
-	
-	
-	private JTextField inputTitle;
-	private JTextField inputYear;
-	private JTextField inputFirstaired;
-	private JTextField inputOverview;
-	private JTextField inputEpisoderuntime;
-	private JTextField inputAirtime;
-
-
-
 
 	
 	private JComboBox existingNodes;
 
-	public EditSerieGUI() {
+	public EpisodeGUI() {
 		this.ch = ConnectionHandler.getInstance();
 
 		try {
@@ -84,20 +71,21 @@ public class EditSerieGUI extends JFrame {
 	    JToolBar toolbar = new JToolBar();
 
 	    JButton homeButton = new JButton("Home");
-//	    homeButton.addActionListener( new ActionListener() {
-//		public void actionPerformed( ActionEvent e ) {
-//			gotoHome( e );
-//			}
-//		});
+	    homeButton.addActionListener( new ActionListener() {
+		public void actionPerformed( ActionEvent e ) {
+				gotoHome(e);
+			}
+		});
 	    
 	    JButton settingButton = new JButton("Setting");
 	    settingButton.addActionListener(new ActionListener() {
 	           public void actionPerformed(ActionEvent e) {
-	       			TrackerClient.closeHomeAndGotoProfileSetting();
+	       			gotoSetting(e);
 	           }
 	           
 	    });
 	    
+	    // Button for logout
 	    JButton exitButton = new JButton("Logout");
 	    exitButton.addActionListener(new ActionListener() {
 	           public void actionPerformed(ActionEvent event) {
@@ -105,9 +93,18 @@ public class EditSerieGUI extends JFrame {
 	           
 	    });
 	    
+	    // Button for edit Serie for Admin
+	    JButton backButton = new JButton("Back to Season");
+//	    backButton.addActionListener(new ActionListener() {
+//	 		public void actionPerformed(ActionEvent e) {
+//	 				gotoSeason(e);
+//	 			}
+//	 		});		
+	    
 	    toolbar.add(homeButton);
 	    toolbar.add(settingButton);
 	    toolbar.add(exitButton);
+	   
 	   
 	   
 		
@@ -121,116 +118,86 @@ public class EditSerieGUI extends JFrame {
 
 		panel.setLayout( new MigLayout() );
 		panel.add( labelUsername); 
-		panel.add(toolbar, "cell 5 0");
 		
-		
-
-		JButton backButton = new JButton( "Zurück" );
-		backButton.addActionListener( new ActionListener() {
-			public void actionPerformed( ActionEvent e ) {
-				gotoSerieInfo( e );
-			}
-		});
-		
-		// Label for titel
-		JLabel labelTitle = new JLabel( "Name:" );
+		// Label for episodetitel
+		JLabel labelEpisodeTitle = new JLabel( "Episodetitle" );
 				
-		// Label for genres
-		JLabel labelGenre = new JLabel( "Genre:" );
+		// Label for serietitel
+		JLabel labelTitle = new JLabel( "Title" );
 		
-		// Genres
-		JComboBox countries = new JComboBox();
-		countries.setBounds( 130, 100, 200, 30 );
-		Country[] country_values = Country.values();
-			for ( Country country : country_values )
-				countries.addItem( country.value() );
+		// Label for image
+		JLabel labelImage = new JLabel( "Image" );
 		
-		
-
-		// Label for year
-		JLabel labelYear = new JLabel( "Jahr:" );
-
-		// Label for firstaired
-		JLabel labelFirstaired = new JLabel( "Erstaustrahlung:" );
+		// Label for season
+		JLabel labelSeason = new JLabel( "Season x" );
 				
-		// Label for country
-		JLabel labelCountry = new JLabel( "Produktionsland:" );
-			
 		// Label for overview
-		JLabel labelOverview = new JLabel( "Beschreibung:" );
+		JLabel labelOverview = new JLabel( "Overview" );
 			
-		// Label for episoderuntime
-		JLabel labelEpisoderuntime = new JLabel( "Episodenlänge:" );
-				
-		// Label for network
-		JLabel labelNetwork = new JLabel( "Sender:" );
-				
-		// Label for airday
-		JLabel labelAirday = new JLabel( "Austrahlungstag:" );
-		
 		// Label for airtime
-		JLabel labelAirtime = new JLabel( "Austrahlungszeit:" );
+		JLabel labelAirtime = new JLabel( "Airtime" );
 		
-		// Label for images
-		JLabel labelImages = new JLabel( "Bilder:" );
-
+		// Label for network
+		JLabel labelNetwork = new JLabel( "Network" );
 		
-		
-		// Input field for title
-		inputTitle = new JTextField(20);
-		
-		// Input field for year
-		inputYear = new JTextField(20);
-
-		// Input field for firstaired
-		inputFirstaired = new JTextField(20);
+		// Label for episoderuntime
+		JLabel labelEpisodenumber = new JLabel( "Episode 23" );
 				
-		// Input field for overview
-		inputOverview = new JTextField(20);
-				
-		// Input field for episoderuntime
-		inputEpisoderuntime = new JTextField(20); //Dropdown auswahl
-				
-		// Input field for airtime
-		inputAirtime = new JTextField(20);
+		
 
+		// Button for edit Serie for Admin
+		JButton editEpisodeButton = new JButton("Edit Episode");
+//		settingButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				gotoEditEpisode(e);
+//			}
+//		});		
+		
 		// Add items to panel
-		panel.add( labelTitle );
-		panel.add( inputTitle, "wrap" );
+		panel.add(toolbar, "wrap");
+		panel.add(backButton);
+		panel.add(labelImage, "wrap"); // "cell column row width height"
+		
+		panel.add( labelEpisodeTitle); 
+		
+		panel.add( labelSeason, "wrap"); 
+		panel.add( labelEpisodenumber, "wrap"); 
+		panel.add( labelNetwork, "wrap"); 
+		panel.add( labelAirtime, "wrap"); 
+		panel.add( labelOverview, "wrap"); 
 
-		panel.add( labelGenre, "wrap" );
-
-		panel.add( labelYear );
-		panel.add( inputYear, "wrap"  );
-				
-		panel.add( labelFirstaired );
-		panel.add( inputFirstaired, "wrap"  );
-				
-		panel.add( labelCountry );
-		panel.add( countries );
-
-//				
-//		panel.add( labelAge );
-//		panel.add( inputAge, "wrap"  );
-//				
-//		panel.add( labelLocation );
-//		panel.add( inputLocation, "wrap"  );
-//				
-//		panel.add( labelAbout );
-//		panel.add( inputAbout, "wrap"  );
-//				
-//		panel.add( labelAvatar );
-//		panel.add( inputAvatar, "wrap"  );
-//				
-//		panel.add( buttonNext, "split 2" );
-
+		panel.add( editEpisodeButton, "wrap");  
 		
 	}
 
-//	protected void gotoHome(ActionEvent e) {
-//		TrackerClient.closeEditSerieAndGotoGome();
+//	protected void gotoEditEpisode(ActionEvent e) {
+//		TrackerClient.closeEpisodeAndGotoEditEpisode();
+//	}
+//
+//	protected void gotoSeason(ActionEvent e) {
+//		TrackerClient.closeEpisodeAndGotoSeason();
 //		
 //	}
+
+	protected void gotoSetting(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void gotoHome(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void gotoEditSeason(ActionEvent e) {
+		TrackerClient.closeSeasonAndGotoEditSeason();
+		
+	}
+
+	protected void gotoEditEpisode() {
+		TrackerClient.closeSeasonAndGotoEditEpisode();
+		
+	}
 
 	/**
 	 * Update GUI components
@@ -255,11 +222,11 @@ public class EditSerieGUI extends JFrame {
 
 	}
 	
-	public void gotoSerieInfo( ActionEvent e ) {	
-		TrackerClient.closeHomeAndGotoMySerie();
+	public void gotoEditSerie( ActionEvent e ) {	
+		TrackerClient.closeSerieAndGotoEditSerie();
 	};
 	
-
+	
 	
 	
 

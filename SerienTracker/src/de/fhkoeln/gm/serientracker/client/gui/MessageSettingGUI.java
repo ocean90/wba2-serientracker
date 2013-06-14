@@ -139,7 +139,7 @@ public class MessageSettingGUI extends JFrame implements ActionListener {
 		panel.add( labelUsername); 
 	
 		panel.add(toolbar, "wrap");
-		panel.add(toolbar2, "wrap");
+		panel.add(toolbar2,  "wrap");
 		
 		
 		JLabel labelText = new JLabel( "Wie wollen sie benachrichtigungen erhalten?" );

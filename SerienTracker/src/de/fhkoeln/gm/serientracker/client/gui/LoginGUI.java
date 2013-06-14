@@ -67,7 +67,12 @@ public class LoginGUI extends JFrame {
 		setContentPane( panel );
 
 		// Label for username
+		JLabel labelInfo = new JLabel( "Bitte geben sie ihren Benutzernamen und Passwort ein" );
+		
+		
+		// Label for username
 		JLabel labelUsername = new JLabel( "Username:" );
+		
 
 		// Label for password
 		JLabel labelPassword = new JLabel( "Passwort:" );
@@ -104,8 +109,10 @@ public class LoginGUI extends JFrame {
 		
 
 		panel.setLayout( new MigLayout() );
+		panel.add( labelInfo, "wrap");
+		
 		panel.add( labelUsername );
-		panel.add( inputUsername, "wrap" );
+		panel.add( inputUsername, "wrap");
 		panel.add( labelPassword );
 		panel.add( inputPassword, "wrap" );
 //		panel.add( lableHostname );

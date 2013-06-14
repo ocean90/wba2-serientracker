@@ -140,9 +140,9 @@ public class GenreSettingGUI extends JFrame implements ActionListener{
 		labelText2 = new JLabel("An welchen Genres sind sie interessiert?");
 		
 		panel.setLayout( new MigLayout() );
-		panel.add( labelUsername, "wrap" ); 
+		panel.add( labelUsername); 
 		panel.add(toolbar, "wrap");
-		panel.add(toolbar2, "wrap");
+		panel.add(toolbar2,"wrap");
 		panel.add(labelText, "wrap");
 		panel.add(labelText2, "wrap");
 		

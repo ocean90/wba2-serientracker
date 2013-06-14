@@ -71,9 +71,9 @@ public class StartGUI extends JFrame {
 
 		// Add items to panel
 		panel.setLayout( new MigLayout() );
-		panel.add( labelWelcome, "wrap" );
-		panel.add( labelText, "wrap" );
-		panel.add( buttonLogin );
+		panel.add( labelWelcome, "wrap"); // "cell column row width height"
+		panel.add( labelText, "wrap " );
+		panel.add( buttonLogin);
 		panel.add( buttonRegister );
 
 	}
