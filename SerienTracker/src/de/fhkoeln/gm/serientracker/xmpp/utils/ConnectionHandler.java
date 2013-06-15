@@ -6,9 +6,6 @@ import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.SASLAuthentication;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smackx.pubsub.LeafNode;
-import org.jivesoftware.smackx.pubsub.PayloadItem;
-import org.jivesoftware.smackx.pubsub.SimplePayload;
 
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
@@ -131,21 +128,6 @@ public class ConnectionHandler {
 		this.psh = new PubSubHandler();
 
 		return true;
-	}
-
-	// TODO
-	public void testPubSub() {
-		String t = "Science Fiction";
-
-		LeafNode node = this.psh.getNode( t );
-
-		this.psh.unsubscribeFromNode( t ); // TODO
-		this.psh.subscribeToNode( t );
-
-		/*Logger.log( "Sending message..." );
-		SimplePayload payload = new SimplePayload( "message", "",  "<message>" + System.currentTimeMillis() + "</message>");
-		PayloadItem<SimplePayload> item = new PayloadItem<SimplePayload>( "message:" + System.currentTimeMillis(), payload );
-		node.publish( item );*/
 	}
 
 	/**

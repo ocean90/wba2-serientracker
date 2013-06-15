@@ -30,7 +30,7 @@ public class HomeGUI extends JFrame {
 	private JLabel labelUsername;
 	private JTextField inputSearch;
 
-	
+
 	private JComboBox existingNodes;
 
 	public HomeGUI() {
@@ -73,31 +73,31 @@ public class HomeGUI extends JFrame {
 //			gotoHome( e );
 //			}
 //		});
-	    
+
 	    // Create Settingbutton
 	    JButton settingButton = new JButton("Setting");
 	    settingButton.addActionListener(new ActionListener() {
 	           public void actionPerformed(ActionEvent e) {
 	       			TrackerClient.closeHomeAndGotoProfileSetting();
 	           }
-	           
+
 	    });
-	    
+
 	    // Add Logoutbutton to toolbar
 	    JButton exitButton = new JButton("Logout");
 	    exitButton.addActionListener(new ActionListener() {
 	           public void actionPerformed(ActionEvent event) {
 	               System.exit(0);}
-	           
+
 	    });
-	    
-	    
+
+
 	    toolbar.add(homeButton);
 	    toolbar.add(settingButton);
 	    toolbar.add(exitButton);
-	   
-	   
-		
+
+
+
 		// Content Panel
 		JPanel panel = new JPanel(new MigLayout());
 		setContentPane( panel );
@@ -108,11 +108,11 @@ public class HomeGUI extends JFrame {
 
 		JLabel labelSearch = new JLabel( "Suche:" );
 		inputSearch = new JTextField(20);
-		
+
 		JLabel labelEpisodesInfo = new JLabel( "Ihre nächsten Episoden:" );
 
 		JLabel labelSerie = new JLabel( "Serien die Ihnen gefallen könnten:" );
-		
+
 		JLabel labelSerieCover = new JLabel( "Cover" );
 		JLabel labelSerieCover2 = new JLabel( "Cover" );
 		JLabel labelSerieCover3 = new JLabel( "Cover" );
@@ -120,17 +120,17 @@ public class HomeGUI extends JFrame {
 		JLabel labelSerieTitle = new JLabel( "Title" );
 		JLabel labelSerieTitle2 = new JLabel( "Title" );
 		JLabel labelSerieTitle3 = new JLabel( "Title" );
-		
+
 		JLabel labelSerieEp = new JLabel( "Episode" );
 		JLabel labelSerieEp2 = new JLabel( "Episode" );
 		JLabel labelSerieEp3 = new JLabel( "Episode" );
-		
+
 		JLabel labelSerieDay = new JLabel( "Day" );
 		JLabel labelSerieDay2 = new JLabel( "Day" );
 		JLabel labelSerieDay3 = new JLabel( "Day" );
-		
 
-		
+
+
 
 		JButton serieButton = new JButton( "Meine Serien" );
 		serieButton.addActionListener( new ActionListener() {
@@ -138,28 +138,28 @@ public class HomeGUI extends JFrame {
 				gotoMySerie( e );
 			}
 		});
-		
+
 		JButton listButton = new JButton( "Meine Listen" );
 		listButton.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent e ) {
 				gotoMyList( e );
 			}
 		});
-		
-		
+
+
 		panel.setLayout( new MigLayout() );
-		panel.add( labelUsername); 
+		panel.add( labelUsername);
 		panel.add(toolbar,  "wrap");
 
 		panel.add(labelSearch);
 		panel.add(inputSearch, "wrap");
-		
+
 		panel.add(labelEpisodesInfo, "wrap");
-		
+
 		panel.add(labelSerieCover );
 		panel.add(labelSerieCover2 );
 		panel.add(labelSerieCover3, "wrap");
-		
+
 		panel.add(labelSerieTitle);
 		panel.add(labelSerieTitle2);
 		panel.add(labelSerieTitle3, "wrap");
@@ -167,16 +167,16 @@ public class HomeGUI extends JFrame {
 		panel.add(labelSerieEp);
 		panel.add(labelSerieEp2);
 		panel.add(labelSerieEp3, "wrap");
-		
+
 		panel.add(labelSerieDay);
 		panel.add(labelSerieDay2);
 		panel.add(labelSerieDay3, "wrap");
-		
+
 		panel.add(labelSerie, "wrap");
 
 		panel.add(serieButton, "wrap");
 		panel.add(listButton, "wrap");
-		
+
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class HomeGUI extends JFrame {
 	 */
 	public void update() {
 		this.updateUserInfo();
-		this.updateNodes();
+		//this.updateNodes();
 	}
 
 	private void updateUserInfo() {
@@ -201,15 +201,15 @@ public class HomeGUI extends JFrame {
 	public void pubsubtest() {
 
 	}
-	
-	public void gotoMySerie( ActionEvent e ) {	
+
+	public void gotoMySerie( ActionEvent e ) {
 		TrackerClient.closeHomeAndGotoMySerie();
 	};
-	
-	public void gotoMyList( ActionEvent e ) {	
+
+	public void gotoMyList( ActionEvent e ) {
 		TrackerClient.closeHomeAndGotoMyList();
 	};
-	
-	
+
+
 
 }

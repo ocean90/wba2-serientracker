@@ -33,7 +33,7 @@ public class MySerieGUI extends JFrame {
 	private JLabel labelUsername;
 	private JTextField inputSearch;
 
-	
+
 	private JComboBox existingNodes;
 
 	public MySerieGUI() {
@@ -77,28 +77,28 @@ public class MySerieGUI extends JFrame {
 			gotoHome( e );
 			}
 		});
-	    
+
 	    JButton settingButton = new JButton("Setting");
 	    settingButton.addActionListener(new ActionListener() {
 	           public void actionPerformed(ActionEvent e) {
 	       			TrackerClient.closeMySerieAndGotoProfileSetting();
 	           }
-	           
+
 	    });
-	    
+
 	    JButton exitButton = new JButton("Logout");
 	    exitButton.addActionListener(new ActionListener() {
 	           public void actionPerformed(ActionEvent event) {
 	               System.exit(0);}
-	           
+
 	    });
-	    
+
 	    toolbar.add(homeButton);
 	    toolbar.add(settingButton);
 	    toolbar.add(exitButton);
-	   
-	   
-		
+
+
+
 		// Content Panel
 		JPanel panel = new JPanel(new MigLayout());
 		setContentPane( panel );
@@ -109,7 +109,7 @@ public class MySerieGUI extends JFrame {
 
 		JLabel labelSearch = new JLabel( "Suche:" );
 		inputSearch = new JTextField(20);
-		
+
 		JLabel labelEpisodesInfo = new JLabel( "Nächste Episode:" );
 		labelEpisodesInfo.setHorizontalAlignment( SwingConstants.RIGHT);
 
@@ -122,65 +122,65 @@ public class MySerieGUI extends JFrame {
 		JLabel labelSerieTitle = new JLabel( "Title" );
 		JLabel labelSerieTitle2 = new JLabel( "Title" );
 		JLabel labelSerieTitle3 = new JLabel( "Title" );
-		
+
 		JLabel labelSerieEp = new JLabel( "Episode" );
 		JLabel labelSerieEp2 = new JLabel( "Episode" );
 		JLabel labelSerieEp3 = new JLabel( "Episode" );
-		
+
 		JLabel labelSerieDay = new JLabel( "Day" );
 		JLabel labelSerieDay2 = new JLabel( "Day" );
 		JLabel labelSerieDay3 = new JLabel( "Day" );
-		
+
 		JButton coverButton = new JButton("Cover");
 		    coverButton.addActionListener(new ActionListener() {
 		           public void actionPerformed(ActionEvent e) {
-		               gotoSerie( e );} 
-		           
+		               gotoSerie( e );}
+
 		    });
-		
+
 		    JButton coverButton2 = new JButton("Cover");
 		    coverButton2.addActionListener(new ActionListener() {
 		           public void actionPerformed(ActionEvent e) {
-		               gotoSerie( e );} 
-		           
+		               gotoSerie( e );}
+
 		    });
-		
+
 		    JButton coverButton3 = new JButton("Cover");
 		    coverButton3.addActionListener(new ActionListener() {
 		           public void actionPerformed(ActionEvent e) {
-		               gotoSerie( e );} 
-		           
+		               gotoSerie( e );}
+
 		    });
-		
-		
+
+
 		panel.setLayout( new MigLayout() );
-		panel.add( labelUsername); 
+		panel.add( labelUsername);
 		panel.add(toolbar,  "wrap");
 
 		panel.add(labelSearch);
 		panel.add(inputSearch, "wrap");
-		
+
 		panel.add(labelEpisodesInfo, "wrap");
-		
+
 		panel.add(coverButton );
 		panel.add(labelSerieTitle);
 		panel.add(labelSerieEp, "wrap");
 		panel.add(labelProgress);
 		panel.add(labelSerieDay, "wrap");
-		
+
 		panel.add(coverButton2  );
 		panel.add(labelSerieTitle2);
 		panel.add(labelSerieEp2, "wrap");
 		panel.add(labelProgress2);
 		panel.add(labelSerieDay2, "wrap");
-		
+
 		panel.add( coverButton3  );
 		panel.add(labelSerieTitle3);
 		panel.add(labelSerieEp3, "wrap");
 		panel.add(labelProgress3);
 		panel.add(labelSerieDay3, "wrap");
 
-		
+
 
 
 	}
@@ -207,15 +207,15 @@ public class MySerieGUI extends JFrame {
 	public void pubsubtest() {
 
 	}
-	
-	public void gotoHome( ActionEvent e ) {	
+
+	public void gotoHome( ActionEvent e ) {
 		TrackerClient.closeMySerieAndGotoHome();
 	};
-	
-	public void gotoSerie( ActionEvent e ) {	
+
+	public void gotoSerie( ActionEvent e ) {
 		TrackerClient.closeMySerieAndGotoSerie();
 	};
-	
-	
+
+
 
 }

@@ -8,24 +8,27 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.EmptyBorder;
 
-import de.fhkoeln.gm.serientracker.jaxb.Genre;
+import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
-public class MainGUI extends JFrame {
+public class MainGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
 	private ConnectionHandler ch;
 
-	private JLabel labelUsername;
+	private JPanel top;
+	private JPanel sidebar;
+	private JPanel main;
 
-	private JComboBox existingNodes;
+	private JLabel lblUsername;
+	private JComboBox coboxExistingNodes;
+	private JTextArea txtarNodeInfo;
 
 	public MainGUI() {
 		this.ch = ConnectionHandler.getInstance();
@@ -46,10 +49,10 @@ public class MainGUI extends JFrame {
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 		// Set frame title
-		setTitle( "SERIENTRACKER" );
+		setTitle( "SERIENTRACKER - XMPP Client" );
 
 		// Set minimum frame size (x, y, width, height)
-		setBounds( 0, 0, 600, 600 );
+		setBounds( 0, 0, 800, 400 );
 
 		// Center frame on screen
 		setLocationRelativeTo( null );
@@ -57,49 +60,70 @@ public class MainGUI extends JFrame {
 		// Disable resizing
 		setResizable( false );
 
-		// Content Panel
-		JPanel panel = new JPanel();
-		setContentPane( panel );
-		panel.setLayout( null ); // Parent size
+		setLayout( new MigLayout( "gap 0 0", "[300][grow]", "[][grow]" ) );
 
-		// Label for username
-		labelUsername = new JLabel();
-		labelUsername.setHorizontalAlignment( SwingConstants.RIGHT );
-		labelUsername.setBounds( 0, 0, 600, 20 );
-		labelUsername.setBorder( new EmptyBorder( 10, 0, 0, 10 ) );
 
-		// Label for existing nodes
+		/********
+		 * PANELS
+		 */
+
+		top = new JPanel( new MigLayout( "ins 0", "grow", "grow" ) );
+		sidebar = new JPanel( new MigLayout( "ins 0", "grow" ) );
+		main = new JPanel( new MigLayout( "ins 0", "grow", "grow" ) );
+
+		add( top, "cell 0 0 2 1, gapbottom 10, grow" ); // cell: col row colspan rowspan
+		add( sidebar, "cell 0 1, gapright 10, grow"); // cell: col row
+		add( main, "cell 1 1, grow" );
+
+
+		/********
+		 * TOP
+		 */
+
+		// Label: username
+		lblUsername = new JLabel();
+		lblUsername.setHorizontalAlignment( JLabel.RIGHT );
+		top.add( lblUsername, "grow" );
+
+
+		/********
+		 * SIDEBAR
+		 */
+
+		// Label: existing nodes
 		JLabel labelExistingNodes = new JLabel();
-		labelExistingNodes.setText( "Existing Nodes:" );
-		labelExistingNodes.setBounds( 30, 30, 120, 30 );
+		labelExistingNodes.setText( "Nodes:" );
+		sidebar.add( labelExistingNodes );
 
-		// Existing nodes
-		existingNodes = new JComboBox();
-		existingNodes.setBounds( 130, 30, 200, 30 );
+		// Dropdown: existing nodes
+		coboxExistingNodes = new JComboBox();
+		sidebar.add( coboxExistingNodes, "spanx 2, grow, wrap" );
 
-		// Send a test message
-		JButton buttonTest = new JButton( "Send test message" );
-		buttonTest.setBounds( 330, 30, 200, 30 );
-		final MainGUI self = this;
-		buttonTest.addActionListener( new ActionListener() {
-			public void actionPerformed( ActionEvent e ) {
-				ConnectionHandler.getInstance().testPubSub();
-				self.updateNodes();
-			}
-		});
+		// Button: get node info
+		JButton btnNodeInfo = new JButton( "Info" );
+		btnNodeInfo.setActionCommand( "NODEINFO" );
+		btnNodeInfo.addActionListener( this );
+		sidebar.add( btnNodeInfo, "sizegroup button" );
 
-		// Genres
-		JComboBox genres = new JComboBox();
-		genres.setBounds( 130, 100, 200, 30 );
-		Genre[] genre_values = Genre.values();
-		for ( Genre genre : genre_values )
-			genres.addItem( genre.value() );
+		JButton btnNodeSubscribe = new JButton( "Subscribe" );
+		btnNodeSubscribe.setActionCommand( "NODESUBSCRIBE" );
+		btnNodeSubscribe.addActionListener( this );
+		sidebar.add( btnNodeSubscribe, "sizegroup button" );
 
-		panel.add( labelUsername );
-		panel.add( labelExistingNodes );
-		panel.add( existingNodes );
-		panel.add( buttonTest );
-		panel.add( genres );
+		JButton btnNodeUnsubscribe = new JButton( "Unsubscribe" );
+		btnNodeUnsubscribe.setActionCommand( "NODEUNSUBSCRIBE" );
+		btnNodeUnsubscribe.addActionListener( this );
+		sidebar.add( btnNodeUnsubscribe, "sizegroup button" );
+
+
+		/********
+		 * MAIN
+		 */
+
+		// TextArea: display node info
+		txtarNodeInfo = new JTextArea();
+		txtarNodeInfo.setEditable( false );
+		main.add( txtarNodeInfo, "grow" );
 	}
 
 	/**
@@ -111,18 +135,36 @@ public class MainGUI extends JFrame {
 	}
 
 	private void updateUserInfo() {
-		labelUsername.setText( "Hello "+ this.ch.getAccountAttribute( "username" ) );
+		lblUsername.setText( "Hello "+ this.ch.getAccountAttribute( "name" ) );
 	}
 
 	private void updateNodes() {
-		PubSubHandler psh = ConnectionHandler.getInstance().getPubSubHandler();
+		PubSubHandler psh = this.ch.getPubSubHandler();
 		for ( String node : psh.getAllNodes() )
-			existingNodes.addItem( node );
+			coboxExistingNodes.addItem( node );
 
 	}
 
-	public void pubsubtest() {
+	@Override
+	public void actionPerformed( ActionEvent e ) {
+		String selectedNode = (String) coboxExistingNodes.getSelectedItem();
 
+		if ( e.getActionCommand().equals( "NODEINFO" ) ) {
+			this.showNodeInfo( selectedNode );
+		} else if ( e.getActionCommand().equals( "NODESUBSCRIBE" ) ) {
+			// TODO: Functionality
+			txtarNodeInfo.setText( "Subscribed to " + selectedNode );
+		} else if ( e.getActionCommand().equals( "NODEUNSUBSCRIBE" ) ) {
+			// TODO: Functionality
+			txtarNodeInfo.setText( "Unsubscribed from " + selectedNode );
+		}
+	}
+
+	private void showNodeInfo( String nodeName ) {
+		PubSubHandler psh = this.ch.getPubSubHandler();
+
+		String nodeInfo = psh.getNodeInfo( nodeName );
+		txtarNodeInfo.setText( nodeInfo );
 	}
 
 }

@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smackx.ServiceDiscoveryManager;
+import org.jivesoftware.smackx.packet.DiscoverInfo;
+import org.jivesoftware.smackx.packet.DiscoverInfo.Identity;
 import org.jivesoftware.smackx.packet.DiscoverItems;
 import org.jivesoftware.smackx.pubsub.AccessModel;
 import org.jivesoftware.smackx.pubsub.ConfigureForm;
@@ -15,6 +18,7 @@ import org.jivesoftware.smackx.pubsub.PublishModel;
 import org.jivesoftware.smackx.pubsub.Subscription;
 
 import de.fhkoeln.gm.serientracker.utils.Logger;
+import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 
 public class PubSubHandler {
 
@@ -36,8 +40,6 @@ public class PubSubHandler {
 
 		// Init a new Pub Sub manager
 		this.psm = new PubSubManager( this.cnh.getConnection() );
-
-		this.deleteAllNodes(); // TODO: Entfernen, nur für Testzwecke
 	}
 
 	/**
@@ -98,9 +100,10 @@ public class PubSubHandler {
 			form.setNotifyRetract( true );
 			// Persistent data
 			form.setPersistentItems( false );
+
+			form.setTitle( "TEST" );
 			// Create new node with configuration
 			node = (LeafNode) this.psm.createNode( name, form );
-
 			Logger.log( "Node created: " + node.getId() );
 		} catch ( XMPPException e ) {
 			Logger.err( "Node creation failed" );
@@ -152,23 +155,6 @@ public class PubSubHandler {
 		}
 
 		return nodes;
-	}
-
-
-	// TODO: Gibt was anderes als eigentlich gedacht...
-	public List<String> getSubscribers( String name ) {
-		LeafNode node = this.getNode( name );
-
-		List<String> users = new ArrayList<String>();
-
-		try {
-			for (Subscription subscriber : node.getSubscriptions() )
-				users.add( subscriber.getJid() );
-		} catch (XMPPException e) {
-			e.printStackTrace();
-		}
-
-		return users;
 	}
 
 	/**
@@ -224,5 +210,48 @@ public class PubSubHandler {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Returns information about a node.
+	 *
+	 * @param String nodeName
+	 * @return String
+	 */
+	public String getNodeInfo( String nodeName ) {
+		ServiceDiscoveryManager sdm = ServiceDiscoveryManager.getInstanceFor( this.cnh.getConnection() );
+		String nodeInfo = "";
+
+		try {
+			DiscoverInfo discoInfo = sdm.discoverInfo( "pubsub." + this.cnh.getConnection().getServiceName(), nodeName );
+
+			Iterator<Identity> identities = discoInfo.getIdentities();
+
+			while ( identities.hasNext() ) {
+				DiscoverInfo.Identity identity = (DiscoverInfo.Identity) identities.next();
+
+				nodeInfo += "Name:\t" + identity.getName() + "\n" +
+							"Type:\t" + identity.getType() + "\n" +
+							"Category:\t" + identity.getCategory() + "\n";
+
+					LeafNode node = this.getNode( nodeName, false );
+
+					// TODO: Gibt nicht alle Abonnenten aus?
+					List<Subscription> subscriptions = node.getSubscriptions();
+
+					if ( ! subscriptions.isEmpty() ) {
+						nodeInfo += "Subscriber:\n";
+
+						for ( Subscription subscription : subscriptions )
+							nodeInfo += "\t" + subscription.getJid() + "\n";
+					}
+				}
+
+		} catch ( XMPPException e ) {
+			Logger.err( "Node discovery failed" );
+			e.printStackTrace();
+		}
+
+		return nodeInfo;
 	}
 }
