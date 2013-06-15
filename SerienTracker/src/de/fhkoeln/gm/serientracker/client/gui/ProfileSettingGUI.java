@@ -140,7 +140,7 @@ public class ProfileSettingGUI extends JFrame implements ActionListener{
 		setContentPane( panel );
 
 		// Label for username
-		labelUsername = new JLabel("Hello "+ this.ch.getAccountAttribute( "username" ));
+		labelUsername = new JLabel();
 		labelUsername.setHorizontalAlignment( SwingConstants.LEFT );
 
 		panel.setLayout( new MigLayout() );

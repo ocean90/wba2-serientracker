@@ -116,7 +116,7 @@ public class EditSerieGUI extends JFrame {
 		setContentPane( panel );
 
 		// Label for username
-		labelUsername = new JLabel("Hello "+ this.ch.getAccountAttribute( "username" ));
+		labelUsername = new JLabel();
 		labelUsername.setHorizontalAlignment( SwingConstants.LEFT );
 
 		panel.setLayout( new MigLayout() );

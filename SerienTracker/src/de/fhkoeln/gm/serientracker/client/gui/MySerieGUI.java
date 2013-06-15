@@ -104,7 +104,7 @@ public class MySerieGUI extends JFrame {
 		setContentPane( panel );
 
 		// Label for username
-		labelUsername = new JLabel("Hello "+ this.ch.getAccountAttribute( "username" ) );
+		labelUsername = new JLabel( );
 		labelUsername.setHorizontalAlignment( SwingConstants.LEFT );
 
 		JLabel labelSearch = new JLabel( "Suche:" );
@@ -154,10 +154,10 @@ public class MySerieGUI extends JFrame {
 
 
 		panel.setLayout( new MigLayout() );
-		panel.add( labelUsername);
-		panel.add(toolbar,  "wrap");
+		panel.add( labelUsername, "span2");
+		panel.add(toolbar,  "span2, wrap");
 
-		panel.add(labelSearch);
+		panel.add(labelSearch, "skip");
 		panel.add(inputSearch, "wrap");
 
 		panel.add(labelEpisodesInfo, "wrap");

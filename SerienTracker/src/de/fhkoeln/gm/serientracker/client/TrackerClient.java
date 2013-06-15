@@ -104,6 +104,7 @@ public class TrackerClient {
 	public static void closeHomeAndGotoProfileSetting() {
 		homeGUI.setVisible( false );
 		homeGUI.dispose();
+		profileSettingGUI.update();
 		profileSettingGUI.setVisible( true );
 	}
 	
@@ -113,6 +114,7 @@ public class TrackerClient {
 	public static void closePSAndGotoHome() {
 		profileSettingGUI.setVisible( false );
 		profileSettingGUI.dispose();
+		homeGUI.update();
 		homeGUI.setVisible( true );
 	}
 	
@@ -123,6 +125,7 @@ public class TrackerClient {
 	public static void closePSAndGotoGenreSetting() {
 		profileSettingGUI.setVisible( false );
 		profileSettingGUI.dispose();
+		genreSettingGUI.update();
 		genreSettingGUI.setVisible( true );
 	}
 	
@@ -142,6 +145,7 @@ public class TrackerClient {
 	public static void closeMSAndGotoHome() {
 		messageSettingGUI.setVisible( false );
 		messageSettingGUI.dispose();
+		homeGUI.update();
 		homeGUI.setVisible( true );
 	}
 	
@@ -151,6 +155,7 @@ public class TrackerClient {
 	public static void closeMSAndGotoProfileSetting() {
 		messageSettingGUI.setVisible( false );
 		messageSettingGUI.dispose();
+		profileSettingGUI.update();
 		profileSettingGUI.setVisible( true );
 	}
 	
@@ -160,6 +165,7 @@ public class TrackerClient {
 	public static void closeMSAndGotoGenreSetting() {
 		messageSettingGUI.setVisible( false );
 		messageSettingGUI.dispose();
+		genreSettingGUI.update();
 		genreSettingGUI.setVisible( true );
 	}
 	
@@ -169,60 +175,70 @@ public class TrackerClient {
 	public static void closeGSAndGotoHome() {
 		genreSettingGUI.setVisible( false );
 		genreSettingGUI.dispose();
+		homeGUI.update();
 		homeGUI.setVisible( true );
 	}
 	
 	public static void closeGSAndGotoProfileSetting() {
 		genreSettingGUI.setVisible( false );
 		genreSettingGUI.dispose();
+		profileSettingGUI.update();
 		profileSettingGUI.setVisible( true );
 	}
 	
 	public static void closeGSAndGotoMessageSetting() {
 		genreSettingGUI.setVisible( false );
 		genreSettingGUI.dispose();
+		messageSettingGUI.update();
 		messageSettingGUI.setVisible( true );
 	}
 	
 	public static void closeHomeAndGotoMySerie() {
 		homeGUI.setVisible( false );
 		homeGUI.dispose();
+		mySerieGUI.update();
 		mySerieGUI.setVisible( true );
 	}
 	
 	public static void closeHomeAndGotoMyList() {
 		homeGUI.setVisible( false );
 		homeGUI.dispose();
+		messageSettingGUI.update();
 		messageSettingGUI.setVisible( true );
 	}
 	
 	public static void closeSerieAndGotoEditSerie() {
 		serieGUI.setVisible( false );
 		serieGUI.dispose();
+		editSerieGUI.update();
 		editSerieGUI.setVisible( true );
 	}
 	
 	public static void closeSerieAndGotoHome() {
 		serieGUI.setVisible( false );
 		serieGUI.dispose();
+		homeGUI.update();
 		homeGUI.setVisible( true );
 	}
 	
 	public static void closeSerieAndGotoProfileSetting() {
 		serieGUI.setVisible( false );
 		serieGUI.dispose();
+		profileSettingGUI.update();
 		profileSettingGUI.setVisible( true );
 	}
 	
 	public static void closeMySerieAndGotoHome() {
 		mySerieGUI.setVisible( false );
 		mySerieGUI.dispose();
+		homeGUI.update();
 		homeGUI.setVisible( true );
 	}
 	
 	public static void closeMySerieAndGotoSerie() {
 		mySerieGUI.setVisible( false );
 		mySerieGUI.dispose();
+		serieGUI.update();
 		serieGUI.setVisible( true );
 	}
 	
@@ -230,24 +246,28 @@ public class TrackerClient {
 	public static void closeMySerieAndGotoProfileSetting() {
 		mySerieGUI.setVisible( false );
 		mySerieGUI.dispose();
+		profileSettingGUI.update();
 		profileSettingGUI.setVisible( true );
 	}
 
 	public static void closeSeasonAndGotoHome() {
 		seasonGUI.setVisible( false );
 		seasonGUI.dispose();
+		homeGUI.update();
 		homeGUI.setVisible( true );		
 	}
 
 	public static void closeSeasonAndGotoSerie() {
 		seasonGUI.setVisible( false );
 		seasonGUI.dispose();
+		serieGUI.update();
 		serieGUI.setVisible( true );			
 	}
 
 	public static void closeSeasonAndGotoProfileSetting() {
 		seasonGUI.setVisible( false );
 		seasonGUI.dispose();
+		profileSettingGUI.update();
 		profileSettingGUI.setVisible( true );	
 		
 	}
@@ -255,30 +275,35 @@ public class TrackerClient {
 	public static void closeSeasonAndGotoEditSeason() {
 		seasonGUI.setVisible( false );
 		seasonGUI.dispose();
+		profileSettingGUI.update();
 		profileSettingGUI.setVisible( true );			
 	}
 
 	public static void closeSeasonAndGotoEditEpisode() {
 		seasonGUI.setVisible( false );
 		seasonGUI.dispose();
+		profileSettingGUI.update();
 		profileSettingGUI.setVisible( true );			
 	}
 
 	public static void closeSerieAndGotoSeason() {
 		serieGUI.setVisible( false );
 		serieGUI.dispose();
+		seasonGUI.update();
 		seasonGUI.setVisible( true );		
 	}
 	
 	public static void closeSerieAndGotoEpisode() {
 		serieGUI.setVisible( false );
 		serieGUI.dispose();
+		episodeGUI.update();
 		episodeGUI.setVisible( true );		
 	}
 
 	public static void closeEditSerieAndGotoHome() {
 		editSerieGUI.setVisible( false );
 		editSerieGUI.dispose();
+		homeGUI.update();
 		homeGUI.setVisible( true );	
 	}
 
@@ -291,6 +316,7 @@ public class TrackerClient {
 	public static void closeEpisodeAndGotoSeason() {
 		episodeGUI.setVisible( false );
 		episodeGUI.dispose();
+		seasonGUI.update();
 		seasonGUI.setVisible( true );		
 	}
 //	

@@ -169,7 +169,7 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		panel.add( labelAvatar );
 		panel.add( inputAvatar, "wrap"  );
 		
-		panel.add( buttonNext, "split 2" );
+		panel.add( buttonNext,  "skip" );
 	}
 
 	/**

@@ -132,7 +132,7 @@ public class MessageSettingGUI extends JFrame implements ActionListener {
 		setContentPane( panel );
 
 		// Label for username
-		labelUsername = new JLabel("Hallo "+ this.ch.getAccountAttribute( "username" ));
+		labelUsername = new JLabel();
 		labelUsername.setHorizontalAlignment( SwingConstants.LEFT );
 
 		panel.setLayout( new MigLayout() );

@@ -92,6 +92,7 @@ public class RegisterGUI2 extends JFrame implements ActionListener{
 		panel.add( labelUser,"wrap" );
 		panel.add( labelText,"wrap" );
 		panel.add( labelText2,"wrap" );
+		panel.add( labelGenre,"wrap" );
 
 		
 		// Add checkBox for each genre

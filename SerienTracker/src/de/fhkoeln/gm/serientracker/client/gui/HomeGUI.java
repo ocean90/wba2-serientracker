@@ -147,18 +147,18 @@ public class HomeGUI extends JFrame {
 		});
 
 
-		panel.setLayout( new MigLayout() );
-		panel.add( labelUsername);
-		panel.add(toolbar,  "wrap");
+		panel.setLayout( new MigLayout("debug 500") );
+		panel.add( labelUsername, "span 3" );
+		panel.add(toolbar,  "span 3, gapleft 90, wrap");
 
-		panel.add(labelSearch);
+		panel.add(labelSearch, "skip 2");
 		panel.add(inputSearch, "wrap");
 
 		panel.add(labelEpisodesInfo, "wrap");
 
 		panel.add(labelSerieCover );
-		panel.add(labelSerieCover2 );
-		panel.add(labelSerieCover3, "wrap");
+		panel.add(labelSerieCover2);
+		panel.add(labelSerieCover3, " wrap");
 
 		panel.add(labelSerieTitle);
 		panel.add(labelSerieTitle2);
@@ -184,7 +184,7 @@ public class HomeGUI extends JFrame {
 	 */
 	public void update() {
 		this.updateUserInfo();
-		//this.updateNodes();
+		this.updateNodes();
 	}
 
 	private void updateUserInfo() {
