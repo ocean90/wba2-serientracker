@@ -109,19 +109,19 @@ public class LoginGUI extends JFrame {
 		
 
 		panel.setLayout( new MigLayout() );
-		panel.add( labelInfo, "wrap");
+		panel.add( labelInfo, "span 4,  wrap");
 		
-		panel.add( labelUsername );
-		panel.add( inputUsername, "wrap");
-		panel.add( labelPassword );
-		panel.add( inputPassword, "wrap" );
+		panel.add( labelUsername  );
+		panel.add( inputUsername, "grow, wrap");
+		panel.add( labelPassword);
+		panel.add( inputPassword, "grow, wrap" );
 //		panel.add( lableHostname );
 //		panel.add( inputHostname, "wrap" );
 		
 //		ßpanel.add( labelPort);
 //		panel.add( inputPort, "wrap" );
 		
-		panel.add( buttonNext );
+		panel.add( buttonNext, "skip " );
 	}
 
 	/**

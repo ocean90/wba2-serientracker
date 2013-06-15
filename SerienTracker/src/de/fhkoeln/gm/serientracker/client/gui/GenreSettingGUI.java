@@ -134,7 +134,7 @@ public class GenreSettingGUI extends JFrame implements ActionListener{
 		setContentPane( panel );
 
 		// Label for username
-		labelUsername = new JLabel("Hello "+ this.ch.getAccountAttribute( "username" ));
+		labelUsername = new JLabel();
 		labelUsername.setHorizontalAlignment( SwingConstants.LEFT );
 		
 		labelText = new JLabel("Sie haben die Möglichkeit Benachrichtigung zu Serien bestimmter Genres zu erhalten. ");
