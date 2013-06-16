@@ -1,8 +1,11 @@
 package de.fhkoeln.gm.serientracker.xmpp.gui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -11,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.TitledBorder;
 
 import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
@@ -71,7 +75,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		sidebar = new JPanel( new MigLayout( "ins 0", "grow" ) );
 		main = new JPanel( new MigLayout( "ins 0", "grow", "grow" ) );
 
-		add( top, "cell 0 0 2 1, gapbottom 10, grow" ); // cell: col row colspan rowspan
+		add( top, "cell 0 0 2 1, grow" ); // cell: col row colspan rowspan
 		add( sidebar, "cell 0 1, gapright 10, grow"); // cell: col row
 		add( main, "cell 1 1, grow" );
 
@@ -89,11 +93,14 @@ public class MainGUI extends JFrame implements ActionListener {
 		/********
 		 * SIDEBAR
 		 */
+		sidebar.setBorder( BorderFactory.createTitledBorder( null,
+				"Nodes", TitledBorder.LEFT, TitledBorder.TOP,
+				new Font( "", Font.BOLD, 12 ) ) );
 
 		// Label: existing nodes
 		JLabel labelExistingNodes = new JLabel();
-		labelExistingNodes.setText( "Nodes:" );
-		sidebar.add( labelExistingNodes );
+		labelExistingNodes.setText( "Choose a node:" );
+		sidebar.add( labelExistingNodes, "right" );
 
 		// Dropdown: existing nodes
 		coboxExistingNodes = new JComboBox();
@@ -119,6 +126,10 @@ public class MainGUI extends JFrame implements ActionListener {
 		/********
 		 * MAIN
 		 */
+		main.setBorder( BorderFactory.createTitledBorder( null,
+				"Output", TitledBorder.LEFT, TitledBorder.TOP,
+				new Font( "", Font.BOLD, 12 ) ) );
+
 
 		// TextArea: display node info
 		txtarNodeInfo = new JTextArea();

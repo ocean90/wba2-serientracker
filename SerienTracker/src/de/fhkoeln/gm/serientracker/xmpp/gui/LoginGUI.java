@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import net.miginfocom.swing.MigLayout;
+
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPClient;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
@@ -50,7 +52,7 @@ public class LoginGUI extends JFrame {
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 		// Set frame title
-		setTitle( "LOGIN" );
+		setTitle( "XMPPCLIENT | LOGIN" );
 
 		// Set minimum frame size (x, y, width, height)
 		setBounds( 0, 0, 300, 220 );
@@ -62,49 +64,39 @@ public class LoginGUI extends JFrame {
 		setResizable( false );
 
 		// Content Panel
-		JPanel panel = new JPanel();
-		setContentPane( panel );
-		panel.setLayout( null ); // Parent size
+		JPanel panel = new JPanel( new MigLayout( "", "[100][grow]", "[][][][][grow]" ) );
+		add( panel );
 
 		// Label for username
 		JLabel labelUsername = new JLabel( "Username:" );
-		labelUsername.setBounds( 20, 20, 90, 16 );
 
 		// Label for password
 		JLabel labelPassword = new JLabel( "Password:" );
-		labelPassword.setBounds( 20, 50, 90, 16 );
 
 		// Label for hostname
 		JLabel lableHostname = new JLabel( "Hostname:" );
-		lableHostname.setBounds( 20, 95, 90, 16 );
 
 		// Label for port
 		JLabel labelPort = new JLabel( "Port:" );
-		labelPort.setBounds( 20, 122, 90, 16);
 
 		// Input field for username
 		inputUsername = new JTextField();
 		inputUsername.setText( "test" ); // TODO
-		inputUsername.setBounds( 100, 15, 180, 25 );
 
 		// Input field for password
 		inputPassword = new JPasswordField();
 		inputPassword.setText( "test" ); // TODO
-		inputPassword.setBounds( 100, 45, 180, 25 );
 
 		// Input field for hostname
 		inputHostname = new JTextField();
 		inputHostname.setText( XMPPConfig.hostname );
-		inputHostname.setBounds( 100, 90, 180, 25 );
 
 		// Input field for port
 		inputPort = new JTextField();
 		inputPort.setText( String.valueOf( XMPPConfig.port ) );
-		inputPort.setBounds( 100, 120, 180, 25 );
 
 		// Login button
 		JButton buttonLogin = new JButton( "Login" );
-		buttonLogin.setBounds( 183, 160, 100, 25 );
 		buttonLogin.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent e ) {
 				loginActionPerformed( e );
@@ -113,20 +105,21 @@ public class LoginGUI extends JFrame {
 
 		// Register button
 		JButton buttonRegister = new JButton( "Register" );
-		buttonRegister.setBounds( 15, 160, 100, 25 );
 		buttonRegister.setEnabled( false );
 
 		// Add items to panel
-		panel.add( labelUsername );
-		panel.add( labelPassword );
-		panel.add( lableHostname );
-		panel.add( labelPort );
-		panel.add( inputUsername );
-		panel.add( inputPassword );
-		panel.add( inputHostname );
-		panel.add( inputPort );
-		panel.add( buttonLogin );
-		panel.add( buttonRegister );
+		panel.add( labelUsername, "cell 0 0" );
+		panel.add( labelPassword, "cell 0 1"  );
+		panel.add( lableHostname, "cell 0 2" );
+		panel.add( labelPort, "cell 0 3" );
+
+		panel.add( inputUsername, "cell 1 0, grow" );
+		panel.add( inputPassword, "cell 1 1, grow" );
+		panel.add( inputHostname, "cell 1 2, grow" );
+		panel.add( inputPort, "cell 1 3, grow" );
+
+		panel.add( buttonRegister, "cell 0 4" );
+		panel.add( buttonLogin, "cell 1 4, right" );
 	}
 
 	/**
