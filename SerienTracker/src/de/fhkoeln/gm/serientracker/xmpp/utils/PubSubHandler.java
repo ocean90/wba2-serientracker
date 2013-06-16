@@ -1,12 +1,15 @@
 package de.fhkoeln.gm.serientracker.xmpp.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.packet.PacketExtension;
 import org.jivesoftware.smackx.ServiceDiscoveryManager;
 import org.jivesoftware.smackx.packet.DiscoverInfo;
+import org.jivesoftware.smackx.packet.DiscoverInfo.Feature;
 import org.jivesoftware.smackx.packet.DiscoverInfo.Identity;
 import org.jivesoftware.smackx.packet.DiscoverItems;
 import org.jivesoftware.smackx.pubsub.AccessModel;
@@ -18,7 +21,6 @@ import org.jivesoftware.smackx.pubsub.PublishModel;
 import org.jivesoftware.smackx.pubsub.Subscription;
 
 import de.fhkoeln.gm.serientracker.utils.Logger;
-import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 
 public class PubSubHandler {
 
@@ -100,8 +102,6 @@ public class PubSubHandler {
 			form.setNotifyRetract( true );
 			// Persistent data
 			form.setPersistentItems( false );
-
-			form.setTitle( "TEST" );
 			// Create new node with configuration
 			node = (LeafNode) this.psm.createNode( name, form );
 			Logger.log( "Node created: " + node.getId() );
@@ -223,7 +223,9 @@ public class PubSubHandler {
 		String nodeInfo = "";
 
 		try {
-			DiscoverInfo discoInfo = sdm.discoverInfo( "pubsub." + this.cnh.getConnection().getServiceName(), nodeName );
+			String entity = "pubsub." + this.cnh.getConnection().getServiceName();
+			DiscoverInfo discoInfo = sdm.discoverInfo( entity, nodeName );
+			Logger.log( "DiscoverInfo: " + entity + " Node: " + nodeName );
 
 			Iterator<Identity> identities = discoInfo.getIdentities();
 
@@ -234,18 +236,29 @@ public class PubSubHandler {
 							"Type:\t" + identity.getType() + "\n" +
 							"Category:\t" + identity.getCategory() + "\n";
 
-					LeafNode node = this.getNode( nodeName, false );
+				LeafNode node = this.getNode( nodeName, false );
+				Collection<PacketExtension> nodeExtensions = node.discoverInfo().getExtensions();
 
-					// TODO: Gibt nicht alle Abonnenten aus?
-					List<Subscription> subscriptions = node.getSubscriptions();
-
-					if ( ! subscriptions.isEmpty() ) {
-						nodeInfo += "Subscriber:\n";
-
-						for ( Subscription subscription : subscriptions )
-							nodeInfo += "\t" + subscription.getJid() + "\n";
-					}
+				for ( Iterator<PacketExtension> extensions = nodeExtensions.iterator(); extensions.hasNext();) {
+					PacketExtension packetExtension = (PacketExtension) extensions.next();
+					nodeInfo += "Extension:\t" + packetExtension.toXML() + "\n";
 				}
+
+				for ( Iterator<Feature> nodeFeatures = node.discoverInfo().getFeatures(); nodeFeatures.hasNext();) {
+					Feature nodeFeature = (Feature) nodeFeatures.next();
+					nodeInfo += "Feature:\t" + nodeFeature.getVar() + "\n";
+				}
+
+				// TODO: Gibt nicht alle Abonnenten aus?
+				List<Subscription> subscriptions = node.getSubscriptions();
+
+				if ( ! subscriptions.isEmpty() ) {
+					nodeInfo += "Subscriber:\n";
+
+					for ( Subscription subscription : subscriptions )
+						nodeInfo += "\t" + subscription.getJid() + "\n";
+				}
+			}
 
 		} catch ( XMPPException e ) {
 			Logger.err( "Node discovery failed" );

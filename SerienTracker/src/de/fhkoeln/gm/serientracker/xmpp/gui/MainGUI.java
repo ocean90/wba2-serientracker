@@ -1,6 +1,5 @@
 package de.fhkoeln.gm.serientracker.xmpp.gui;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -134,7 +134,9 @@ public class MainGUI extends JFrame implements ActionListener {
 		// TextArea: display node info
 		txtarNodeInfo = new JTextArea();
 		txtarNodeInfo.setEditable( false );
-		main.add( txtarNodeInfo, "grow" );
+		txtarNodeInfo.setLineWrap( true );
+		JScrollPane scrollPaneNodeInfo = new JScrollPane( txtarNodeInfo );
+		main.add( scrollPaneNodeInfo, "grow" );
 	}
 
 	/**
