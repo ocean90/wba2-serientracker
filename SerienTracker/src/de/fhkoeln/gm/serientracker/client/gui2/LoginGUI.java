@@ -1,4 +1,4 @@
-package de.fhkoeln.gm.serientracker.xmpp.gui;
+package de.fhkoeln.gm.serientracker.client.gui2;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
-import de.fhkoeln.gm.serientracker.xmpp.XMPPClient;
+import de.fhkoeln.gm.serientracker.client.TrackerClient2;
+import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
@@ -47,7 +48,7 @@ public class LoginGUI extends JFrame {
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 		// Set frame title
-		setTitle( "XMPPCLIENT | LOGIN" );
+		setTitle( "SERIENTRACKER | LOGIN" );
 
 		// Set minimum frame size (x, y, width, height)
 		setBounds( 0, 0, 300, 220 );
@@ -159,20 +160,14 @@ public class LoginGUI extends JFrame {
 			return;
 		}
 
-		// Try to connect to the server
-		if ( this.ch.connect( hostname, port ) ) {
-			// Try to login
-			if ( this.ch.login( username, password, "xmppclient" ) ) {
-				XMPPClient.closeLogin();
-			} else {
-				errorDialog( "Login failed." );
-				return;
-			}
-		} else {
-			errorDialog( "Connection failed." );
-			return;
-		}
+		LoginHandler loginHandler = new LoginHandler( username, password, hostname, port );
+		loginHandler.execute();
 
+		if ( loginHandler.getErrorMessage() == null ) {
+			TrackerClient2.showMain();
+		} else {
+			this.errorDialog( loginHandler.getErrorMessage() );
+		}
 	};
 
 	/**

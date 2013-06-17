@@ -1,12 +1,13 @@
-package de.fhkoeln.gm.serientracker.xmpp;
+package de.fhkoeln.gm.serientracker.client;
 
 import javax.swing.SwingUtilities;
 
-import de.fhkoeln.gm.serientracker.xmpp.gui.LoginGUI;
-import de.fhkoeln.gm.serientracker.xmpp.gui.MainGUI;
+import de.fhkoeln.gm.serientracker.client.gui2.LoginGUI;
+import de.fhkoeln.gm.serientracker.client.gui2.MainGUI;
 
 
-public class XMPPClient {
+
+public class TrackerClient2 {
 
 	static LoginGUI loginGUI;
 	static MainGUI mainGUI;
@@ -19,28 +20,21 @@ public class XMPPClient {
 			@Override
 			public void run() {
 				loginGUI = new LoginGUI();
-				mainGUI = new MainGUI();
-
-				init();
+				loginGUI.setVisible( true );
 			}
 		} );
 	}
 
 	/**
-	 * Show the login GUI.
-	 */
-	public static void init() {
-		loginGUI.setVisible( true );
-	}
-
-	/**
 	 * Hide login GUI and show Main GUI.
 	 */
-	public static void closeLogin() {
+	public static void showMain() {
 		loginGUI.setVisible( false );
 		loginGUI.dispose();
-		mainGUI.update();
+		mainGUI = new MainGUI();
 		mainGUI.setVisible( true );
 	}
+
+
 
 }

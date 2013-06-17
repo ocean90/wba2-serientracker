@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<user
+	userID="us_00000012" admin="true">
+	<username>test</username>
+    <lastname>Schilling</lastname>
+    <firstname>Dominik</firstname>
+    <gender>male</gender>
+    <age>23</age>
+    <location>Gummersbach</location>
+    <about>ocean blablabla</about>
+    <joined>2001-10-26T21:32:52+02:00</joined>
+</user>

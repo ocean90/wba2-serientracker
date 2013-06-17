@@ -82,6 +82,13 @@ public class ConnectionHandler {
 		return true;
 	}
 
+	public void disconnect() {
+		if ( cn != null && ! cn.isConnected() )
+			return;
+
+		cn.disconnect();
+	}
+
 	/**
 	 * Returns connection status.
 	 *

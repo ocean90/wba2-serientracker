@@ -36,7 +36,7 @@ import de.fhkoeln.gm.serientracker.webservice.data.ListsDataHandler;
 @Path( "/lists" )
 public class ListsService {
 
-	private ListsDataHandler dh = new ListsDataHandler();
+	/*private ListsDataHandler dh = new ListsDataHandler();
 
 	@GET
 	@Produces( MediaType.APPLICATION_XML )
@@ -146,5 +146,5 @@ public class ListsService {
 
 		return Response.noContent().build();
 	}
-
+	*/
 }
