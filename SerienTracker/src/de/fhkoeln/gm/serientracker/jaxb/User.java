@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.06.13 um 11:30:09 AM CEST 
+// Generiert: 2013.06.17 um 03:19:42 PM CEST 
 //
 
 
@@ -70,7 +70,7 @@ public class User {
     protected String username;
     protected String lastname;
     protected String firstname;
-    protected String gender;
+    protected Gender gender;
     protected Integer age;
     protected String location;
     protected String about;
@@ -162,10 +162,10 @@ public class User {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Gender }
      *     
      */
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
@@ -174,10 +174,10 @@ public class User {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Gender }
      *     
      */
-    public void setGender(String value) {
+    public void setGender(Gender value) {
         this.gender = value;
     }
 

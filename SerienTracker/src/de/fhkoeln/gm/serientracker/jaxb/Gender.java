@@ -21,13 +21,8 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;simpleType>
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Monday"/>
- *     &lt;enumeration value="Tuesday"/>
- *     &lt;enumeration value="Wednesday"/>
- *     &lt;enumeration value="Thursday"/>
- *     &lt;enumeration value="Friday"/>
- *     &lt;enumeration value="Saturday"/>
- *     &lt;enumeration value="Sunday"/>
+ *     &lt;enumeration value="male"/>
+ *     &lt;enumeration value="female"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -35,25 +30,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "")
 @XmlEnum
-public enum Weekday {
+public enum Gender {
 
-    @XmlEnumValue("Monday")
-    MONDAY("Monday"),
-    @XmlEnumValue("Tuesday")
-    TUESDAY("Tuesday"),
-    @XmlEnumValue("Wednesday")
-    WEDNESDAY("Wednesday"),
-    @XmlEnumValue("Thursday")
-    THURSDAY("Thursday"),
-    @XmlEnumValue("Friday")
-    FRIDAY("Friday"),
-    @XmlEnumValue("Saturday")
-    SATURDAY("Saturday"),
-    @XmlEnumValue("Sunday")
-    SUNDAY("Sunday");
+    @XmlEnumValue("male")
+    MALE("male"),
+    @XmlEnumValue("female")
+    FEMALE("female");
     private final String value;
 
-    Weekday(String v) {
+    Gender(String v) {
         value = v;
     }
 
@@ -61,8 +46,8 @@ public enum Weekday {
         return value;
     }
 
-    public static Weekday fromValue(String v) {
-        for (Weekday c: Weekday.values()) {
+    public static Gender fromValue(String v) {
+        for (Gender c: Gender.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

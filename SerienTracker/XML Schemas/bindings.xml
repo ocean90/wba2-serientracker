@@ -32,4 +32,10 @@
 		</jaxb:bindings>
 	</jaxb:bindings>
 
+	<jaxb:bindings schemaLocation="User.xsd">
+		<jaxb:bindings node="//xs:element[@name='gender']/xs:simpleType">
+			<jaxb:typesafeEnumClass name="Gender" />
+		</jaxb:bindings>
+	</jaxb:bindings>
+
 </jaxb:bindings>

@@ -17,14 +17,15 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
+import de.fhkoeln.gm.serientracker.client.utils.SessionStore;
+import de.fhkoeln.gm.serientracker.jaxb.Gender;
 import de.fhkoeln.gm.serientracker.utils.Logger;
-import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
 public class SettingsGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private ConnectionHandler ch;
+	private SessionStore session;
 
 	private JPanel main;
 
@@ -42,7 +43,7 @@ public class SettingsGUI extends JFrame implements ActionListener {
 	private JButton btnCancel;
 
 	public SettingsGUI() {
-		this.ch = ConnectionHandler.getInstance();
+		this.session = SessionStore.getInstance();
 
 		try {
 			UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
@@ -111,15 +112,17 @@ public class SettingsGUI extends JFrame implements ActionListener {
 		// Input field for username
 		inputUsername = new JTextField();
 		inputUsername.setEnabled( false );
-		inputUsername.setText( this.ch.getAccountAttribute( "username" ) );
+		inputUsername.setText( this.session.getUser().getUsername() );
 		profileTab.add( inputUsername, "cell 1 0, grow" );
 
 		// Input field for firstname
 		inputFirstname = new JTextField();
+		inputFirstname.setText( this.session.getUser().getFirstname() );
 		profileTab.add( inputFirstname, "cell 1 1, grow" );
 
 		// Input field for lastname
 		inputLastname = new JTextField();
+		inputLastname.setText( this.session.getUser().getLastname() );
 		profileTab.add( inputLastname, "cell 1 2, grow" );
 
 		// Input field for password
@@ -129,6 +132,12 @@ public class SettingsGUI extends JFrame implements ActionListener {
 		// Input field for gender
 		JRadioButton male = new JRadioButton( "Male" );
 		JRadioButton female = new JRadioButton( "Female" );
+
+		if ( this.session.getUser().getGender() == Gender.MALE )
+			male.setSelected( true );
+		else if ( this.session.getUser().getGender() == Gender.FEMALE )
+			female.setSelected( true );
+
 		ButtonGroup inputGender = new ButtonGroup();
 		inputGender.add( male );
 		inputGender.add( female );
@@ -137,15 +146,18 @@ public class SettingsGUI extends JFrame implements ActionListener {
 
 		// Input field for age
 		inputAge = new JTextField();
+		inputAge.setText( this.session.getUser().getAge().toString() );
 		profileTab.add( inputAge, "cell 1 5, width 50" );
 
 		// Input field for location
 		inputLocation = new JTextField();
+		inputLocation.setText( this.session.getUser().getLocation() );
 		profileTab.add( inputLocation, "cell 1 6, grow" );
 
 		// Input field for about text
 		inputAbout = new JTextArea();
 		inputAbout.setRows( 3 );
+		inputAbout.setText( this.session.getUser().getAbout() );
 		JScrollPane inputAboutScoll = new JScrollPane( inputAbout );
 		inputAboutScoll.setBorder( new JTextField().getBorder() ); // Workaround for same styling
 		profileTab.add( inputAboutScoll, "cell 1 7, growx, gaptop 5" );
