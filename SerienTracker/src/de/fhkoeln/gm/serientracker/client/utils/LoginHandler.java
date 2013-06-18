@@ -6,8 +6,8 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import de.fhkoeln.gm.serientracker.jaxb.Serie;
 import de.fhkoeln.gm.serientracker.jaxb.User;
+import de.fhkoeln.gm.serientracker.utils.Hasher;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.webservice.RESTServerConfig;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
@@ -66,10 +66,15 @@ public class LoginHandler {
 		return this.error;
 	}
 
+	public boolean hasError() {
+		return this.error == null;
+	}
+
 	private User fetchUserData() {
 		Logger.log( "Fetching userdata..." );
 
-		WebResource wrs = Client.create().resource( RESTServerConfig.getServerURL() + "/users/test" );
+		String id = "us_" + Hasher.createHash( username );
+		WebResource wrs = Client.create().resource( RESTServerConfig.getServerURL() + "/users/" + id );
 
 		ClientResponse response = wrs
 				.accept( MediaType.APPLICATION_XML )

@@ -19,20 +19,30 @@ public class TrackerClient2 {
 		SwingUtilities.invokeLater( new Runnable() {
 			@Override
 			public void run() {
-				loginGUI = new LoginGUI();
-				loginGUI.setVisible( true );
+				// Start with the login window
+				TrackerClient2.showLogin();
 			}
 		} );
 	}
 
 	/**
-	 * Hide login GUI and show Main GUI.
+	 * Hide login GUI and show main GUI.
 	 */
 	public static void showMain() {
-		loginGUI.setVisible( false );
 		loginGUI.dispose();
 		mainGUI = new MainGUI();
 		mainGUI.setVisible( true );
+	}
+
+	/**
+	 * Hide main GUI and show login GUI.
+	 */
+	public static void showLogin() {
+		if ( mainGUI != null )
+			mainGUI.dispose();
+
+		loginGUI = new LoginGUI();
+		loginGUI.setVisible( true );
 	}
 
 

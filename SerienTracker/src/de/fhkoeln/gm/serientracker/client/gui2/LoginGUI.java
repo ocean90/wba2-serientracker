@@ -16,13 +16,10 @@ import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.TrackerClient2;
 import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
-import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
 public class LoginGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
-	private ConnectionHandler ch;
 
 	private JTextField inputUsername;
 	private JPasswordField inputPassword;
@@ -30,8 +27,6 @@ public class LoginGUI extends JFrame {
 	private JTextField inputPort;
 
 	public LoginGUI() {
-		this.ch = ConnectionHandler.getInstance();
-
 		try {
 			UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
 		} catch ( Exception e ) {
@@ -160,10 +155,11 @@ public class LoginGUI extends JFrame {
 			return;
 		}
 
+		// Call login handler and execute the login
 		LoginHandler loginHandler = new LoginHandler( username, password, hostname, port );
 		loginHandler.execute();
 
-		if ( loginHandler.getErrorMessage() == null ) {
+		if ( loginHandler.hasError() ) {
 			TrackerClient2.showMain();
 		} else {
 			this.errorDialog( loginHandler.getErrorMessage() );
