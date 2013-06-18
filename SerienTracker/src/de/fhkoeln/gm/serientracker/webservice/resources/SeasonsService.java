@@ -53,7 +53,7 @@ public class SeasonsService {
 
 		Seasons seasons = (Seasons) filehandler.readXML( "Database/Seasons.xml" );
 
-		String id = "sn_" + Hasher.createHash( "test" ); //newSeason.getSeasonNumber() ); TODO
+		String id = "sn_" + Hasher.createHash( "test" ); //newSeason.getSeasonNumber() ); TODO: Series title + " " + season number
 
 		List<Season> seasonsList = seasons.getSeason();
 

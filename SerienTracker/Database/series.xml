@@ -1,2 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<series/>
+<series>
+	<serie serieID="ss_70f9844e">
+		<title>The Walking Dead</title>
+		<genres>
+			<genre>Action</genre>
+			<genre>Drama</genre>
+			<genre>Horror</genre>
+		</genres>
+		<year>2010</year>
+		<firstaired>2010-10-01</firstaired>
+		<country>USA</country>
+		<overview>The Walking Dead is an American horror television drama series developed by Frank Darabont.
+It is based on the comic book series of the same name by Robert Kirkman, Tony Moore, and Charlie Adlard.
+
+The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens from a coma to find a post-apocalyptic world dominated by flesh-eating "walkers", resembling zombies.</overview>
+		<episoderuntime>50</episoderuntime>
+		<network>AMC</network>
+        <airday>Sunday</airday>
+        <airtime>22:00:00</airtime>
+		<images>
+			<image src="Walking-Dead-s35-key-art2.jpg"/>
+			<image src="Walwalking-dead-cast-hed-2012.jpg"/>
+		</images>
+
+		<seasons serieID="ss_70f9844e">
+			<season serieID="ss_70f9844e" seasonID="sn_998db704">
+            	<seasonNumber>1</seasonNumber>
+
+            	<episodes>
+            		<episode episodeID="ep_80d0bdf7" serieID="ss_70f9844e" seasonID="sn_998db704">
+            			<episodeNumber>1</episodeNumber>
+						<title>Days Gone Bye</title>
+						<overview>Deputy Sheriff Rick Grimes wakes up in the hospital, after being shot, to find his town overrun by flesh-eating zombies. After making friends with survivor Morgan Jones and his son Duane, Rick sets out to find his wife and son.</overview>
+						<airdate>2010-11-01T22:00:00</airdate>
+						<images>
+							<image src="plakat1.jpg"/>
+						</images>
+					</episode>
+				</episodes>
+
+			</season>
+
+		</seasons>
+
+	</serie>
+
+</series>

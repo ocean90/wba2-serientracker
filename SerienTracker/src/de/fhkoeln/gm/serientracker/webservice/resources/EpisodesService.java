@@ -53,7 +53,7 @@ public class EpisodesService {
 
 		Episodes episodes = (Episodes) filehandler.readXML( "Database/Episodes.xml" );
 
-		String id = "ep_" + Hasher.createHash( newEpisode.getTitle() );
+		String id = "ep_" + Hasher.createHash( newEpisode.getTitle() ); // TODO: series name + " " + season id + " " + episode title
 
 		List<Episode> seasonsList = episodes.getEpisode();
 
