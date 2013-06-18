@@ -23,6 +23,7 @@
 					<xs:element ref="avatar"/>
 					<xs:element ref="subscriptions" minOccurs="0"/>
 					<xs:element ref="lists" minOccurs="0"/>
+					<xs:element ref="settings" minOccurs="0"/>
 				</xs:sequence>
 			</xs:choice>
 
@@ -115,6 +116,24 @@
 					<xs:element ref="list" maxOccurs="unbounded"/>
 					<xs:element ref="serie" maxOccurs="unbounded"/>
 				</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Einstellungen -->
+	<xs:element name="settings" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="setting" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="setting">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="key" type="xs:string"/>
+				<xs:element name="value" type="xs:string"/>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 

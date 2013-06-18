@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.06.17 um 03:19:42 PM CEST 
+// Generiert: 2013.06.18 um 05:40:03 PM CEST 
 //
 
 
@@ -39,6 +39,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;element ref="{}avatar"/>
  *           &lt;element ref="{}subscriptions" minOccurs="0"/>
  *           &lt;element ref="{}lists" minOccurs="0"/>
+ *           &lt;element ref="{}settings" minOccurs="0"/>
  *         &lt;/sequence>
  *       &lt;/choice>
  *       &lt;attribute ref="{}admin use="required""/>
@@ -62,7 +63,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "joined",
     "avatar",
     "subscriptions",
-    "lists"
+    "lists",
+    "settings"
 })
 @XmlRootElement(name = "user")
 public class User {
@@ -80,6 +82,7 @@ public class User {
     protected String avatar;
     protected Subscriptions subscriptions;
     protected Lists lists;
+    protected Settings settings;
     @XmlAttribute(name = "admin", required = true)
     protected boolean admin;
     @XmlAttribute(name = "userID", required = true)
@@ -347,6 +350,30 @@ public class User {
      */
     public void setLists(Lists value) {
         this.lists = value;
+    }
+
+    /**
+     * Ruft den Wert der settings-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Settings }
+     *     
+     */
+    public Settings getSettings() {
+        return settings;
+    }
+
+    /**
+     * Legt den Wert der settings-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Settings }
+     *     
+     */
+    public void setSettings(Settings value) {
+        this.settings = value;
     }
 
     /**

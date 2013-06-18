@@ -54,7 +54,7 @@ public class UsersService {
 
 		FileHandler<User> filehandler = new FileHandler<User>( User.class );
 
-		User user = (User) filehandler.readXML( "Database/users/test.xml" );
+		User user = (User) filehandler.readXML( "Database/users/" + id + ".xml" );
 
 		if ( user == null )
 			return Response.status( 404 ).build();
