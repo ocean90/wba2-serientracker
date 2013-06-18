@@ -14,9 +14,8 @@ import javax.swing.JSeparator;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
+import de.fhkoeln.gm.serientracker.client.TrackerClient2;
 import de.fhkoeln.gm.serientracker.client.utils.SessionStore;
-import de.fhkoeln.gm.serientracker.utils.Logger;
-import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
 public class MainGUI extends JFrame implements ActionListener {
 
@@ -31,6 +30,11 @@ public class MainGUI extends JFrame implements ActionListener {
 	private JMenuItem fullnameMenuItem;
 	private JMenuItem settingsMenuItem;
 	private JMenuItem logoutMenuItem;
+	private JMenuItem closeMenuItem;
+	private JMenu newContentMenu;
+	private JMenuItem newSerieMenuItem;
+	private JMenuItem newSeasonMenuItem;
+	private JMenuItem newEpisodeMenuItem;
 
 	public MainGUI() {
 		this.session = SessionStore.getInstance();
@@ -69,9 +73,38 @@ public class MainGUI extends JFrame implements ActionListener {
 		menuBar = new JMenuBar();
 		add( menuBar, "dock north, gapbottom 15" );
 
+		menuBar.add( Box.createHorizontalGlue() ); // Push items to the right side
+
+		/********
+		 * NEW CONTENT MENU
+		 */
+
+		if ( this.session.UserIsAdmin() ) {
+			newContentMenu = new JMenu();
+			newContentMenu.setText( "+" );
+			newContentMenu.setToolTipText( "Add new content" );
+			menuBar.add( newContentMenu );
+
+			newSerieMenuItem = new JMenuItem( );
+			newSerieMenuItem.setText( "New Series" );
+			newContentMenu.add( newSerieMenuItem );
+
+			newSeasonMenuItem = new JMenuItem( );
+			newSeasonMenuItem.setText( "New Season" );
+			newContentMenu.add( newSeasonMenuItem );
+
+			newEpisodeMenuItem = new JMenuItem( );
+			newEpisodeMenuItem.setText( "New Episode" );
+			newContentMenu.add( newEpisodeMenuItem );
+		}
+
+
+		/********
+		 * MAIN MENU
+		 */
+
 		mainMenu = new JMenu();
 		mainMenu.setText( "Hello, " + session.getUser().getUsername() );
-		menuBar.add( Box.createHorizontalGlue() ); // Push it to the right side
 		menuBar.add( mainMenu );
 
 		fullnameMenuItem = new JMenuItem( );
@@ -89,6 +122,13 @@ public class MainGUI extends JFrame implements ActionListener {
 		logoutMenuItem = new JMenuItem( "Logout" );
 		logoutMenuItem.addActionListener( this );
 		mainMenu.add( logoutMenuItem );
+
+		JSeparator sep2 = new JSeparator( JSeparator.HORIZONTAL );
+		mainMenu.add( sep2 );
+
+		closeMenuItem = new JMenuItem( "Quit" );
+		closeMenuItem.addActionListener( this );
+		mainMenu.add( closeMenuItem );
 
 
 		/********
@@ -108,19 +148,18 @@ public class MainGUI extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed( ActionEvent e ) {
-		if ( e.getSource() == settingsMenuItem ){
+		if ( e.getSource() == settingsMenuItem ) {
+			// Settings
 			SettingsGUI settingsGUI = new SettingsGUI();
 			settingsGUI.setVisible( true );
-        } else if ( e.getSource() == logoutMenuItem ){
-    		Logger.log( "NOTIFY" );
-        	try {
-				Thread.sleep( 4 * 1000 );
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			NotificationFrame notify = new NotificationFrame();
-			notify.setVisible( true );
+        } else if ( e.getSource() == logoutMenuItem ) {
+        	// Logout
+        	this.session.destroySession();
+        	TrackerClient2.showLogin();
+        } else if ( e.getSource() == closeMenuItem ) {
+        	// Exit
+        	this.session.destroySession();
+        	this.dispose();
         }
 	}
 
