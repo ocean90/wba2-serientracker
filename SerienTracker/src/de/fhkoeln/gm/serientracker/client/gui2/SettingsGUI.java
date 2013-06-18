@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +20,7 @@ import javax.swing.UIManager;
 import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.utils.SessionStore;
 import de.fhkoeln.gm.serientracker.jaxb.Gender;
+import de.fhkoeln.gm.serientracker.jaxb.Weekday;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
 public class SettingsGUI extends JFrame implements ActionListener {
@@ -26,8 +28,6 @@ public class SettingsGUI extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	private SessionStore session;
-
-	private JPanel main;
 
 	private JTabbedPane settingTabs;
 	private JPanel profileTab;
@@ -41,6 +41,16 @@ public class SettingsGUI extends JFrame implements ActionListener {
 	private JTextArea inputAbout;
 	private JButton btnSave;
 	private JButton btnCancel;
+
+	private JComboBox notificationTimes;
+
+	private JRadioButton notificationTypMinutes;
+
+	private ButtonGroup notificationTyp;
+
+	private JRadioButton notificationTypDay;
+
+	private JComboBox notificationDays;
 
 	public SettingsGUI() {
 		this.session = SessionStore.getInstance();
@@ -79,9 +89,7 @@ public class SettingsGUI extends JFrame implements ActionListener {
 		settingTabs.addTab( "Profile", getProfilTab() );
 
 		notificationsTab = new JPanel();
-		settingTabs.addTab( "Notifcations", notificationsTab );
-
-		notificationsTab.add( new JLabel( "Notifcations" ) );
+		settingTabs.addTab( "Notifcations", getNotificationsTab() );
 
 
 		/********
@@ -98,7 +106,7 @@ public class SettingsGUI extends JFrame implements ActionListener {
 	}
 
 	private JPanel getProfilTab() {
-		profileTab = new JPanel( new MigLayout( "gap 0 0", "[30%][grow]" ));
+		profileTab = new JPanel( new MigLayout( "gap 0 0", "[30%][grow]" ) );
 
 		profileTab.add( new JLabel( "Username:" ), "cell 0 0" );
 		profileTab.add( new JLabel( "Firstname:" ), "cell 0 1" );
@@ -156,7 +164,8 @@ public class SettingsGUI extends JFrame implements ActionListener {
 
 		// Input field for about text
 		inputAbout = new JTextArea();
-		inputAbout.setRows( 3 );
+		inputAbout.setRows( 5 );
+		inputAbout.setLineWrap( true );
 		inputAbout.setText( this.session.getUser().getAbout() );
 		JScrollPane inputAboutScoll = new JScrollPane( inputAbout );
 		inputAboutScoll.setBorder( new JTextField().getBorder() ); // Workaround for same styling
@@ -165,11 +174,49 @@ public class SettingsGUI extends JFrame implements ActionListener {
 		return profileTab;
 	}
 
+	private JPanel getNotificationsTab() {
+		notificationsTab = new JPanel( new MigLayout( "gap 0 0", "[10][][]" ) );
+
+		notificationsTab.add( new JLabel( "When should we send you the notifications?" ), "span, grow, gapbottom 20" );
+
+		// Notification Type: Minutes
+		notificationTypMinutes = new JRadioButton();
+		notificationsTab.add( notificationTypMinutes, "cell 0 1" );
+
+		// Dropdown: Notification times
+		notificationTimes = new JComboBox();
+		notificationTimes.addItem( 5 );
+		notificationTimes.addItem( 10 );
+		notificationTimes.addItem( 15 );
+		notificationsTab.add( notificationTimes, "cell 1 1" );
+
+		notificationsTab.add( new JLabel( "Minutes before broadcasting" ), "cell 2 1" );
+
+		// Notification Type: Day
+		notificationTypDay = new JRadioButton();
+		notificationsTab.add( notificationTypDay, "cell 0 2" );
+
+		notificationsTab.add( new JLabel( "Only on " ), "cell 1 2" );
+
+		// Dropdown: Notification times
+		notificationDays = new JComboBox();
+		Weekday[] weekdays = Weekday.values();
+		for ( Weekday weekday : weekdays )
+			notificationDays.addItem( weekday.value() );
+		notificationsTab.add( notificationDays, "cell 2 2" );
+
+		notificationTyp = new ButtonGroup();
+		notificationTyp.add( notificationTypMinutes );
+		notificationTyp.add( notificationTypDay );
+
+		return notificationsTab;
+	}
+
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 		if ( e.getSource() == btnSave ) {
 			Logger.log( "SAVE" );
-		} else if( e.getSource() == btnCancel ) {
+		} else if ( e.getSource() == btnCancel ) {
 			this.dispose();
 		}
 	}
