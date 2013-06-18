@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<user
+	userID="us_21232f29" admin="true">
+	<username>admin</username>
+    <lastname>Chef</lastname>
+    <firstname>Administrator</firstname>
+    <gender>male</gender>
+    <age>30</age>
+    <location>Berlin</location>
+    <about>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+
+Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </about>
+    <joined>2001-10-26T21:32:52+02:00</joined>
+</user>

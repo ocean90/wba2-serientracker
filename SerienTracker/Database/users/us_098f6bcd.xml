@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<user
+	userID="us_098f6bcd" admin="false">
+	<username>test</username>
+    <lastname>Mustermann</lastname>
+    <firstname>Max</firstname>
+    <gender>male</gender>
+    <age>23</age>
+    <location>Gummersbach</location>
+    <about>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+
+Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </about>
+    <joined>2001-10-26T21:32:52+02:00</joined>
+</user>
