@@ -44,8 +44,10 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 	private JPanel infoPanel;
 	private JPanel seriesInfo;
 	private CardLayout mainCardLayout;
-	private JLabel seriesInfoImage;
 	private JButton btnViewDetails;
+	private JPanel seriesDetails;
+	private JButton btnSubscribe;
+	private JButton btnBackToOverview;
 
 	public SeriesListPanel() {
 		mainCardLayout = new CardLayout();
@@ -88,7 +90,7 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 		JPanel seriesDetails = new JPanel( new MigLayout( "debug", "grow", "grow" ) );
 		seriesDetails.add( new JLabel( "Details" ), "center" );
 
-	    this.add( seriesDetails, "SERIESDETAILS" );
+	    this.add( this.getSeriesDetails(), "SERIESDETAILS" );
 
 
 	    this.add( seriesOverview, "SERIESOVERVIEW" );
@@ -125,10 +127,10 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 
 		Serie serie = this.getSelectedSerie();
 		if ( serie != null ) {
-			ImageIcon image = this.getSeriesImage();
+			ImageIcon image = this.getSeriesImage( 150, 150 );
 			if ( image != null ) {
-				seriesInfoImage = new JLabel( image );
-				seriesInfo.add( seriesInfoImage, "wrap" );
+				JLabel seriesImage = new JLabel( image );
+				seriesInfo.add( seriesImage, "wrap" );
 			}
 
 			seriesInfo.add( new JLabel( serie.getTitle() ), "wrap" );
@@ -143,16 +145,53 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 
 	}
 
-	private ImageIcon getSeriesImage() {
+	private JPanel getSeriesDetails() {
+		this.updateSeriesDetails();
+
+		return seriesDetails;
+	}
+
+	private void updateSeriesDetails() {
+		if ( seriesDetails == null ) {
+			seriesDetails = new JPanel( new MigLayout( "fill", "grow", "grow" ) );
+			seriesDetails.setVisible( false );
+		} else {
+			seriesDetails.setVisible( false );
+			seriesDetails.removeAll();
+		}
+
+		Serie serie = this.getSelectedSerie();
+		if ( serie != null ) {
+			ImageIcon image = this.getSeriesImage( 300, 300 );
+			if ( image != null ) {
+				JLabel seriesImage = new JLabel( image );
+				seriesDetails.add( seriesImage, "wrap" );
+			}
+
+			seriesDetails.add( new JLabel( serie.getTitle() ), "wrap" );
+			seriesDetails.add( new JLabel( "Year: " + serie.getYear() ), "wrap" );
+
+			btnSubscribe = new JButton( "Subscribe" );
+			btnSubscribe.addActionListener( this );
+			seriesDetails.add( btnSubscribe, "bottom, right" );
+		}
+
+		btnBackToOverview = new JButton( "Overview" );
+		btnBackToOverview.addActionListener( this );
+		seriesDetails.add( btnBackToOverview, "bottom, right" );
+
+		seriesDetails.setVisible( true );
+	}
+
+	private ImageIcon getSeriesImage( int width, int height ) {
 		Serie serie = this.getSelectedSerie();
 
 		if ( serie.getImages() != null && serie.getImages().getImage().size() != 0 ) {
 			String image = RESTServerConfig.getServerURL() + "/images/" +
 							serie.getSerieID() + "/" + serie.getImages().getImage().get( 0 ).getSrc();
 			try {
-				Image imageScaled = new ImageIcon( new URL( image ) ).getImage().getScaledInstance( 150, 150, Image.SCALE_DEFAULT );
-				seriesInfoImage = new JLabel( new ImageIcon( imageScaled ) );
-				seriesInfo.add( seriesInfoImage, "wrap" );
+				Image imageScaled = new ImageIcon( new URL( image ) ).getImage().getScaledInstance( width, height, Image.SCALE_DEFAULT );
+				return new ImageIcon( imageScaled );
 			} catch ( MalformedURLException e ) {
 				e.printStackTrace();
 			}
@@ -204,7 +243,13 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 	public void actionPerformed( ActionEvent e ) {
 		if ( e.getSource() == btnViewDetails ) {
 			Logger.log( "Details clicked" );
+			this.updateSeriesDetails();
 		    mainCardLayout.show( this, "SERIESDETAILS" );
+		} else if ( e.getSource() == btnBackToOverview ) {
+			Logger.log( "Back clicked" );
+		    mainCardLayout.show( this, "SERIESOVERVIEW" );
+		} else if ( e.getSource() == btnSubscribe ) {
+			Logger.log( "Subscribe clicked" );
 		}
 	}
 }
