@@ -160,9 +160,9 @@ public class LoginGUI extends JFrame {
 		loginHandler.execute();
 
 		if ( loginHandler.hasError() ) {
-			TrackerClient2.showMain();
-		} else {
 			this.errorDialog( loginHandler.getErrorMessage() );
+		} else {
+			TrackerClient2.showMain();
 		}
 	};
 

@@ -1,5 +1,7 @@
 package de.fhkoeln.gm.serientracker.client.gui2;
 
+import java.awt.CardLayout;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JSeparator;
 import javax.swing.UIManager;
 
@@ -35,6 +38,8 @@ public class MainGUI extends JFrame implements ActionListener {
 	private JMenuItem newSerieMenuItem;
 	private JMenuItem newSeasonMenuItem;
 	private JMenuItem newEpisodeMenuItem;
+
+	private CardLayout mainPanels;
 
 	public MainGUI() {
 		this.session = SessionStore.getInstance();
@@ -71,7 +76,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		 */
 
 		menuBar = new JMenuBar();
-		add( menuBar, "dock north, gapbottom 15" );
+		add( menuBar, "dock north" );
 
 		menuBar.add( Box.createHorizontalGlue() ); // Push items to the right side
 
@@ -135,15 +140,10 @@ public class MainGUI extends JFrame implements ActionListener {
 		 * PANELS
 		 */
 
-		main = new JPanel( new MigLayout( "debug", "grow", "grow" ) );
-		add( main, "cell 0 0, grow" ); // cell: col row
+		main = new JPanel( new MigLayout( "insets 0, fill" ) );
+		add( main, "grow" );
 
-
-		/********
-		 * MAIN
-		 */
-
-		main.add( new JLabel( "Main" ), "grow" );
+		main.add( new SeriesListPanel(), "grow" );
 	}
 
 	@Override

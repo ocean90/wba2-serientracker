@@ -1,15 +1,9 @@
 package de.fhkoeln.gm.serientracker.client.utils;
 
-import javax.ws.rs.core.MediaType;
-
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
-
+import de.fhkoeln.gm.serientracker.client.utils.HTTPClient.HTTPMethod;
 import de.fhkoeln.gm.serientracker.jaxb.User;
 import de.fhkoeln.gm.serientracker.utils.Hasher;
 import de.fhkoeln.gm.serientracker.utils.Logger;
-import de.fhkoeln.gm.serientracker.webservice.RESTServerConfig;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
 public class LoginHandler {
@@ -36,10 +30,8 @@ public class LoginHandler {
 			// Fetch userdata
 			User userdata = this.fetchUserData();
 
-			if ( userdata == null ) {
+			if ( this.hasError() ) {
 				this.ch.disconnect();
-				this.error = "Couldn't fetch userdata.";
-				return;
 			} else {
 				session.setUser( userdata );
 			}
@@ -67,28 +59,29 @@ public class LoginHandler {
 	}
 
 	public boolean hasError() {
-		return this.error == null;
+		return this.error != null;
 	}
 
 	private User fetchUserData() {
 		Logger.log( "Fetching userdata..." );
 
 		String id = "us_" + Hasher.createHash( username );
-		WebResource wrs = Client.create().resource( RESTServerConfig.getServerURL() + "/users/" + id );
 
-		ClientResponse response = wrs
-				.accept( MediaType.APPLICATION_XML )
-				.get( ClientResponse.class );
+		HTTPClient httpClient = new HTTPClient();
+		httpClient.setMethod( HTTPMethod.GET );
+		httpClient.setEndpoint( "/users/" + id );
+		httpClient.execute();
 
-		if ( response.getStatus() != 200 ) {
-			Logger.err( "Failed: HTTP error code: " + response.getStatus() );
+		if ( httpClient.hasError() ) {
+			Logger.err( "HTTPClient has returned an error" );
+			this.error = httpClient.getErrorMessage();
 			return null;
 		}
 
-		User output = response.getEntity( User.class );
-		Logger.log( "Userdata fetched for " + output.getFirstname() + " " + output.getLastname() );
 
-		return output;
+		User user = httpClient.getResponse().getEntity( User.class );
+		Logger.log( "Userdata fetched for " + user.getFirstname() + " " + user.getLastname() );
+		return user;
 	}
 
 
