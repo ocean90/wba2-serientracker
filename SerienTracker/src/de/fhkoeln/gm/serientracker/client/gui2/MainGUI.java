@@ -18,7 +18,9 @@ import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.TrackerClient2;
+import de.fhkoeln.gm.serientracker.client.gui2.NewContentGUI.Context;
 import de.fhkoeln.gm.serientracker.client.utils.SessionStore;
+import de.fhkoeln.gm.serientracker.utils.Logger;
 
 public class MainGUI extends JFrame implements ActionListener {
 
@@ -38,8 +40,6 @@ public class MainGUI extends JFrame implements ActionListener {
 	private JMenuItem newSerieMenuItem;
 	private JMenuItem newSeasonMenuItem;
 	private JMenuItem newEpisodeMenuItem;
-
-	private CardLayout mainPanels;
 
 	public MainGUI() {
 		this.session = SessionStore.getInstance();
@@ -92,14 +92,17 @@ public class MainGUI extends JFrame implements ActionListener {
 
 			newSerieMenuItem = new JMenuItem( );
 			newSerieMenuItem.setText( "New Series" );
+			newSerieMenuItem.addActionListener( this );
 			newContentMenu.add( newSerieMenuItem );
 
 			newSeasonMenuItem = new JMenuItem( );
 			newSeasonMenuItem.setText( "New Season" );
+			newSeasonMenuItem.addActionListener( this );
 			newContentMenu.add( newSeasonMenuItem );
 
 			newEpisodeMenuItem = new JMenuItem( );
 			newEpisodeMenuItem.setText( "New Episode" );
+			newEpisodeMenuItem.addActionListener( this );
 			newContentMenu.add( newEpisodeMenuItem );
 		}
 
@@ -160,6 +163,23 @@ public class MainGUI extends JFrame implements ActionListener {
         	// Exit
         	this.session.destroySession();
         	this.dispose();
+        } else if ( e.getSource() == newSerieMenuItem ) {
+        	// New series
+        	NewContentGUI newContentGUI = new NewContentGUI();
+        	newContentGUI.setContext( Context.SERIES );
+        	newContentGUI.setVisible( true );
+        } else if ( e.getSource() == newSeasonMenuItem ) {
+        	// New season
+        	NewContentGUI newContentGUI = new NewContentGUI();
+        	newContentGUI.setContext( Context.SEASON );
+        	newContentGUI.setVisible( true );
+        } else if ( e.getSource() == newEpisodeMenuItem ) {
+        	// New episode
+        	NewContentGUI newContentGUI = new NewContentGUI();
+        	newContentGUI.setContext( Context.EPISODE );
+        	newContentGUI.setVisible( true );
+        } else {
+        	Logger.err( "Action not implemented" );
         }
 	}
 

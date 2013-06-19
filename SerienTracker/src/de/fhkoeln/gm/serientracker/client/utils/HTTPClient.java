@@ -1,7 +1,6 @@
 package de.fhkoeln.gm.serientracker.client.utils;
 
 import java.io.IOException;
-import java.net.ConnectException;
 import java.net.Socket;
 
 import javax.ws.rs.core.MediaType;

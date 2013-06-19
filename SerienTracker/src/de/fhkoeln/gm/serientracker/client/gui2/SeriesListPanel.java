@@ -3,6 +3,8 @@ package de.fhkoeln.gm.serientracker.client.gui2;
 import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -30,7 +32,7 @@ import de.fhkoeln.gm.serientracker.jaxb.Series;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.webservice.RESTServerConfig;
 
-public class SeriesListPanel extends JPanel implements ListSelectionListener {
+public class SeriesListPanel extends JPanel implements ListSelectionListener, ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JList seriesList;
@@ -43,7 +45,7 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener {
 	private JPanel seriesInfo;
 	private CardLayout mainCardLayout;
 	private JLabel seriesInfoImage;
-	private Serie selectedModel;
+	private JButton btnViewDetails;
 
 	public SeriesListPanel() {
 		mainCardLayout = new CardLayout();
@@ -82,11 +84,11 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener {
 			}
 		} );
 
-	    /*
-		JPanel panel2 = new JPanel( new MigLayout( "debug", "grow", "grow" ) );
-		panel2.add( new JLabel( "panel 2" ), "center" );
 
-	    this.add( panel2, "2" );*/
+		JPanel seriesDetails = new JPanel( new MigLayout( "debug", "grow", "grow" ) );
+		seriesDetails.add( new JLabel( "Details" ), "center" );
+
+	    this.add( seriesDetails, "SERIESDETAILS" );
 
 
 	    this.add( seriesOverview, "SERIESOVERVIEW" );
@@ -107,42 +109,56 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener {
 
 	private JPanel getSeriesInfo() {
 
-		this.updateSeriesInfo( null );
+		this.updateSeriesInfo();
 
 		return seriesInfo;
 	}
 
-	private void updateSeriesInfo( Serie serie ) {
+	private void updateSeriesInfo() {
 		if ( seriesInfo == null ) {
-			seriesInfo = new JPanel( new MigLayout( "debug, gap 0 0", "grow", "grow" ) );
+			seriesInfo = new JPanel( new MigLayout( "fill", "grow", "grow" ) );
 			seriesInfo.setVisible( false );
 		} else {
 			seriesInfo.setVisible( false );
 			seriesInfo.removeAll();
 		}
 
+		Serie serie = this.getSelectedSerie();
 		if ( serie != null ) {
-			if ( serie.getImages() != null && serie.getImages().getImage().size() != 0 ) {
-				String image = RESTServerConfig.getServerURL() + "/images/" +
-								serie.getSerieID() + "/" + serie.getImages().getImage().get( 0 ).getSrc();
-				try {
-					Image imageScaled = new ImageIcon( new URL( image ) ).getImage().getScaledInstance( 150, 150, Image.SCALE_DEFAULT );
-					seriesInfoImage = new JLabel( new ImageIcon( imageScaled ) );
-					seriesInfo.add( seriesInfoImage, "wrap" );
-				} catch ( MalformedURLException e ) {
-					e.printStackTrace();
-				}
+			ImageIcon image = this.getSeriesImage();
+			if ( image != null ) {
+				seriesInfoImage = new JLabel( image );
+				seriesInfo.add( seriesInfoImage, "wrap" );
 			}
 
 			seriesInfo.add( new JLabel( serie.getTitle() ), "wrap" );
 			seriesInfo.add( new JLabel( "Year: " + serie.getYear() ), "wrap" );
 
-			JButton details = new JButton( "View Details" );
-			seriesInfo.add( details, "bottom, right" );
+			btnViewDetails = new JButton( "View Details" );
+			btnViewDetails.addActionListener( this );
+			seriesInfo.add( btnViewDetails, "bottom, right" );
 		}
 
 		seriesInfo.setVisible( true );
 
+	}
+
+	private ImageIcon getSeriesImage() {
+		Serie serie = this.getSelectedSerie();
+
+		if ( serie.getImages() != null && serie.getImages().getImage().size() != 0 ) {
+			String image = RESTServerConfig.getServerURL() + "/images/" +
+							serie.getSerieID() + "/" + serie.getImages().getImage().get( 0 ).getSrc();
+			try {
+				Image imageScaled = new ImageIcon( new URL( image ) ).getImage().getScaledInstance( 150, 150, Image.SCALE_DEFAULT );
+				seriesInfoImage = new JLabel( new ImageIcon( imageScaled ) );
+				seriesInfo.add( seriesInfoImage, "wrap" );
+			} catch ( MalformedURLException e ) {
+				e.printStackTrace();
+			}
+		}
+
+		return null;
 	}
 
 	private void fetchSeries() {
@@ -171,12 +187,24 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener {
 		loadingStatus.setVisible( false );
 	}
 
+	private Serie getSelectedSerie() {
+		return (Serie) seriesList.getSelectedValue();
+	}
+
 	@Override
 	public void valueChanged( ListSelectionEvent e ) {
 		if ( e.getSource() == seriesList && e.getValueIsAdjusting() ) {
-			Serie serie = (Serie) seriesList.getSelectedValue();
+			Serie serie = this.getSelectedSerie();
 			Logger.log( "Clicked " + serie.getTitle() );
-			this.updateSeriesInfo( serie );
+			this.updateSeriesInfo();
+		}
+	}
+
+	@Override
+	public void actionPerformed( ActionEvent e ) {
+		if ( e.getSource() == btnViewDetails ) {
+			Logger.log( "Details clicked" );
+		    mainCardLayout.show( this, "SERIESDETAILS" );
 		}
 	}
 }
