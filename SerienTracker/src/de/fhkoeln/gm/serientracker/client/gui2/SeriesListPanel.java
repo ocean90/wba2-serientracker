@@ -214,7 +214,13 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 				seriesListScroll = new JScrollPane( episodesList );
 				seriesListScroll.setBorder( null );
 				seriesDetails.add( seriesListScroll, "cell 1 5 2 1, grow" );
-				this.updateEpisodelist( 1 );
+
+				final SeriesListPanel self = this;
+				SwingUtilities.invokeLater( new Runnable() {
+					public void run() {
+						self.updateEpisodelist( 1 );
+					}
+				} );
 			}
 
 		}
