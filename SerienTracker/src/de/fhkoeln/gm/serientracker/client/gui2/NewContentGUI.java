@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import de.fhkoeln.gm.serientracker.jaxb.Country;
 import de.fhkoeln.gm.serientracker.jaxb.Genre;
 import de.fhkoeln.gm.serientracker.jaxb.Network;
+import de.fhkoeln.gm.serientracker.jaxb.Shows;
 
 import de.fhkoeln.gm.serientracker.jaxb.Runtime;
 import de.fhkoeln.gm.serientracker.jaxb.Weekday;
@@ -64,6 +65,8 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	private JComboBox runtimeBox;
 	private JComboBox networkBox;
 	private JComboBox airdayBox;
+	private JComboBox serieBox1;
+	private JComboBox serieBox2;
 
 
 
@@ -157,12 +160,10 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSerieTab.add( new JLabel( "Airday:" ), "cell 0 8" );
 		newSerieTab.add( new JLabel( "Airtime:" ), "cell 0 9" );
 		newSerieTab.add( new JLabel( "Images:" ), "cell 0 10" );
-		newSerieTab.add( new JLabel( "Seasons:" ), "cell 0 11" );
 
 		
 		// Input field for title
 		inputTitle = new JTextField();
-		inputTitle.setEnabled( false );
 		newSerieTab.add( inputTitle, "cell 1 0, grow" );
 		
 		// Dropdown: Genres
@@ -221,8 +222,6 @@ public class NewContentGUI extends JFrame implements ActionListener {
 			newSerieTab.add( airdayBox, "cell 1 8" );
 		}
 
-	
-
 		// Input field for airtime
 		inputAirtime = new JTextField();
 		newSerieTab.add( inputAirtime, "cell 1 9, grow" );
@@ -243,6 +242,9 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		inputSeriestitle = new JTextField();
 		inputSeriestitle.setEnabled( false );
 		newSeasonTab.add( inputSeriestitle, "cell 1 0, grow" );
+		
+		// Dropdown: Serie
+		
 		
 		// Input field for seasonnumber
 		inputSeasonnumber = new JTextField();
