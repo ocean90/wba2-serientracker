@@ -27,6 +27,7 @@ import javax.swing.event.ListSelectionListener;
 
 import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.utils.HTTPClient;
+import de.fhkoeln.gm.serientracker.client.utils.ImageLoader;
 import de.fhkoeln.gm.serientracker.client.utils.HTTPClient.HTTPMethod;
 import de.fhkoeln.gm.serientracker.jaxb.Episode;
 import de.fhkoeln.gm.serientracker.jaxb.Episodes;
@@ -257,15 +258,8 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 			String imageURL = RESTServerConfig.getServerURL() + "/images/" +
 							serie.getSerieID() + "/" + serie.getImages().getImage().get( 0 ).getSrc();
 
-			BufferedImage img;
-			try {
-				img = ImageIO.read( new URL( imageURL ) );
-			} catch ( Exception e) {
-				e.printStackTrace();
-				return null;
-			}
-
-			return img.getScaledInstance( width, height, Image.SCALE_SMOOTH );
+			ImageLoader il = ImageLoader.getInstance();
+			return il.loadImageFromUrl( imageURL, width, height );
 		}
 
 		return null;
