@@ -1,48 +1,1023 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <series>
-	<serie serieID="ss_70f9844e">
-		<title>The Walking Dead</title>
-		<genres>
-			<genre>Action</genre>
-			<genre>Drama</genre>
-			<genre>Horror</genre>
-		</genres>
-		<year>2010</year>
-		<firstaired>2010-10-01</firstaired>
-		<country>USA</country>
-		<overview>The Walking Dead is an American horror television drama series developed by Frank Darabont.
-It is based on the comic book series of the same name by Robert Kirkman, Tony Moore, and Charlie Adlard.
-
-The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens from a coma to find a post-apocalyptic world dominated by flesh-eating "walkers", resembling zombies.</overview>
-		<episoderuntime>50</episoderuntime>
-		<network>AMC</network>
+    <serie serieID="ss_70f9844e">
+        <title>The Walking Dead</title>
+        <genres>
+            <genre>Action</genre>
+            <genre>Drama</genre>
+            <genre>Horror</genre>
+        </genres>
+        <year>2010</year>
+        <firstaired>2010-10-01</firstaired>
+        <country>USA</country>
+        <overview>The Walking Dead is an American horror television drama series developed by Frank Darabont. It is based on the comic book series of the same name by Robert Kirkman, Tony Moore, and Charlie Adlard.
+    	The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens from a coma to find a post-apocalyptic world dominated by flesh-eating "walkers", resembling zombies.</overview>
+        <episoderuntime>50</episoderuntime>
+        <network>AMC</network>
         <airday>Sunday</airday>
         <airtime>22:00:00</airtime>
-		<images>
-			<image src="Walking-Dead-s35-key-art2.jpg"/>
-			<image src="Walwalking-dead-cast-hed-2012.jpg"/>
-		</images>
-
-		<seasons serieID="ss_70f9844e">
-			<season serieID="ss_70f9844e" seasonID="sn_998db704">
-            	<seasonNumber>1</seasonNumber>
-
-            	<episodes>
-            		<episode episodeID="ep_80d0bdf7" serieID="ss_70f9844e" seasonID="sn_998db704">
-            			<episodeNumber>1</episodeNumber>
-						<title>Days Gone Bye</title>
-						<overview>Deputy Sheriff Rick Grimes wakes up in the hospital, after being shot, to find his town overrun by flesh-eating zombies. After making friends with survivor Morgan Jones and his son Duane, Rick sets out to find his wife and son.</overview>
-						<airdate>2010-11-01T22:00:00</airdate>
-						<images>
-							<image src="plakat1.jpg"/>
-						</images>
-					</episode>
-				</episodes>
-
-			</season>
-
-		</seasons>
-
-	</serie>
-
+        <images>
+            <image src="ss_70f9844e_plakat.jpg"/>
+            <image src="ss_70f9844e_cast.jpg"/>
+        </images>
+        <seasons serieID="ss_70f9844e">
+            <season serieID="ss_70f9844e" seasonID="sn_998db704">
+                <seasonNumber>1</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_70f9844e" seasonID="sn_998db704" episodeID="ep_80d0bdf7">
+                        <episodeNumber>1</episodeNumber>
+                        <title>Days Gone Bye</title>
+                        <overview>Deputy Sheriff Rick Grimes wakes up in the hospital, after being shot, to find his town overrun by flesh-eating zombies. After making friends with survivor Morgan Jones and his son Duane, Rick sets out to find his wife and son.</overview>
+                        <airdate>2010-11-01T22:00:00</airdate>
+                        <images>
+                            <image src="ep_80d0bdf7_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_998db704" episodeID="ep_6325168e">
+                        <episodeNumber>2</episodeNumber>
+                        <title>Guts</title>
+                        <overview>Rick unknowingly causes a group of survivors to be trapped by walkers. The group dynamic devolves from accusations to violence, as Rick must confront an enemy far more dangerous than the undead.</overview>
+                        <airdate>2010-11-08T23:00:00</airdate>
+                        <images>
+                            <image src="ep_6325168e_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_998db704" episodeID="ep_5b9425d0">
+                        <episodeNumber>3</episodeNumber>
+                        <title>Tell it to the frogs</title>
+                        <overview>After returning to the camp with the department store survivors and an emotional reunion with his wife and son, Rick decides to go against Shane's advice and go back to Atlanta for Merle Dixon and his dropped bag of guns accompanied by Merle's younger brother, Darryl Dixon, as well as Glenn and T-Dog.</overview>
+                        <airdate>2010-11-15T23:00:00</airdate>
+                        <images>
+                            <image src="ep_5b9425d0_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_998db704" episodeID="ep_1d64a001">
+                        <episodeNumber>4</episodeNumber>
+                        <title>Vatos</title>
+                        <overview>While still in search of Merle, the group tries to retrieve the bag of guns but are attacked by several living men who are also after the weapons. The group manages to grab the injured attacker; however, several of the attackers escape and take Glenn hostage. Back at camp a large group of walkers venture up the hill and take the survivors by surprise.</overview>
+                        <airdate>2010-11-22T23:00:00</airdate>
+                        <images>
+                            <image src="ep_1d64a001_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_998db704" episodeID="ep_5c9687d4">
+                        <episodeNumber>5</episodeNumber>
+                        <title>Wildfire</title>
+                        <overview>Rick leads the group to the CDC after the attack on the camp. Jim must make a terrible life and death decision.</overview>
+                        <airdate>2010-11-29T23:00:00</airdate>
+                        <images>
+                            <image src="ep_5c9687d4_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_998db704" episodeID="ep_89900a3a">
+                        <episodeNumber>6</episodeNumber>
+                        <title>TS-19</title>
+                        <overview>Rick and the group are allowed into the CDC by a strange doctor, but all is not what it seems in their newfound haven.</overview>
+                        <airdate>2010-12-06T23:00:00</airdate>
+                        <images>
+                            <image src="ep_89900a3a_preview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="sn_998db704_plakat.jpg"/>
+                </images>
+            </season>
+            <season serieID="ss_70f9844e" seasonID="sn_a7e20c18">
+                <seasonNumber>2</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_102024f5">
+                        <episodeNumber>1</episodeNumber>
+                        <title>What lies ahead</title>
+                        <overview>Rick and the group leave Atlanta and encounter a threat on the highway the likes of which they've never seen. Elsewhere, the group search for a missing person.</overview>
+                        <airdate>2011-10-12T22:00:00</airdate>
+                        <images>
+                            <image src="ep_102024f5_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_47cecf19">
+                        <episodeNumber>2</episodeNumber>
+                        <title>Bloodletting</title>
+                        <overview>Rick discovers a possible safe haven. Shane must go on a dangerous mission to get needed medical supplies.</overview>
+                        <airdate>2011-10-24T22:00:00</airdate>
+                        <images>
+                            <image src="ep_47cecf19_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_ca0a4c39">
+                        <episodeNumber>3</episodeNumber>
+                        <title>Save the Last One</title>
+                        <overview>The group desperately awaits Shane's return. Shane finds himself trapped in a school, surrounded by the undead. Daryl and Andrea search for someone in the woods.</overview>
+                        <airdate>2011-10-31T21:00:00</airdate>
+                        <images>
+                            <image src="ep_ca0a4c39_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_99502ffc">
+                        <episodeNumber>4</episodeNumber>
+                        <title>Cherokee Rose</title>
+                        <overview>Shane makes a deadly sacrifice which leads to unusual behavior and self-distancing. The rest of the group tries to hang on somewhere between living to die and dying to live.</overview>
+                        <airdate>2011-11-07T23:00:00</airdate>
+                        <images>
+                            <image src="ep_99502ffc_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_edfad201">
+                        <episodeNumber>5</episodeNumber>
+                        <title>Chupacabra</title>
+                        <overview>Concerned for their safety, the group makes a plan – one that Hershel disagrees with adamantly. He makes it clear the group is fine to stay for now, but not indefinitely.</overview>
+                        <airdate>2011-11-14T23:00:00</airdate>
+                        <images>
+                            <image src="ep_edfad201_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_4bcfea2d">
+                        <episodeNumber>6</episodeNumber>
+                        <title>Secrets</title>
+                        <overview>Secrets are told and secrets are revealed. Hershel refuses to acknowledge the world’s new reality. Andrea comes out of her shell. Everyone is becoming more and more aware that “everything is food for something.”.</overview>
+                        <airdate>2011-11-21T23:00:00</airdate>
+                        <images>
+                            <image src="ep_4bcfea2d_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_ece31fc4">
+                        <episodeNumber>7</episodeNumber>
+                        <title>Pretty much dead already</title>
+                        <overview>Hershel sets a deadline. All secrets are out in the open. Glenn stands up for himself and Shane takes charge.</overview>
+                        <airdate>2011-11-28T23:00:00</airdate>
+                        <images>
+                            <image src="ep_ece31fc4_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_b71b51c5">
+                        <episodeNumber>8</episodeNumber>
+                        <title>Nebraska</title>
+                        <overview>Rick and the others try to restore order in the aftermath of a terrible discovery. Hershel takes up an old habit and disappears, Rick and Glenn must follow him into town.</overview>
+                        <airdate>2012-02-13T23:00:00</airdate>
+                        <images>
+                            <image src="ep_b71b51c5_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_c989e5dc">
+                        <episodeNumber>9</episodeNumber>
+                        <title>Triggerfinger</title>
+                        <overview>Rick, Hershel and Glen are trapped and fight to survive; Shane finds Lori in danger.</overview>
+                        <airdate>2012-02-20T23:00:00</airdate>
+                        <images>
+                            <image src="ep_c989e5dc_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_de6b9496">
+                        <episodeNumber>10</episodeNumber>
+                        <title>18 Miles Out</title>
+                        <overview>Rick and Shane are in conflict over the fate of an outsider; Andrea helps Hershel's daughter face a crucial decision.</overview>
+                        <airdate>2012-02-27T23:00:00</airdate>
+                        <images>
+                            <image src="ep_de6b9496_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_d0a209e2">
+                        <episodeNumber>11</episodeNumber>
+                        <title>Judge, Jury, Executioner</title>
+                        <overview>Rick sides with Shane causing Dale to worry that the group is losing its humanity; Carl's actions have unintended consequences.</overview>
+                        <airdate>2012-03-05T23:00:00</airdate>
+                        <images>
+                            <image src="ep_d0a209e2_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_7b55d39a">
+                        <episodeNumber>12</episodeNumber>
+                        <title>Better Angels</title>
+                        <overview>Someone dangerous may be loose near the farm; Rick, Shane, Daryl and Glenn keep the group safe.</overview>
+                        <airdate>2012-03-12T21:00:00</airdate>
+                        <images>
+                            <image src="ep_7b55d39a_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_a7e20c18" episodeID="ep_f1d7c018">
+                        <episodeNumber>13</episodeNumber>
+                        <title>Besides the dying Fire</title>
+                        <overview>Rick and Carl find the farm in jeopardy; the group is split up in the chaos; Rick's leadership is questioned.</overview>
+                        <airdate>2012-03-19T21:00:00</airdate>
+                        <images>
+                            <image src="ep_f1d7c018_preview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="http://serientracker.de/dummy1.png"/>
+                </images>
+            </season>
+            <season serieID="ss_70f9844e" seasonID="sn_8e92cad1">
+                <seasonNumber>3</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_c952776c">
+                        <episodeNumber>1</episodeNumber>
+                        <title>Seed</title>
+                        <overview>As the world grows more dangerous and Lori's pregnancy advances, Rick locates a potentially safe haven.</overview>
+                        <airdate>2012-10-15T22:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_bb0961df">
+                        <episodeNumber>2</episodeNumber>
+                        <title>Sick</title>
+                        <overview>A life hangs in the balance; the group deals with a threat to their new surroundings.</overview>
+                        <airdate>2012-10-22T22:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_e9eb3460">
+                        <episodeNumber>3</episodeNumber>
+                        <title>Walk with me</title>
+                        <overview>After witnessing an accident, Andrea and Michonne are introduced to a new community of survivors. As conflicts arise with their new acquaintances, a decision must be made.</overview>
+                        <airdate>2012-10-29T21:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_feeae8a3">
+                        <episodeNumber>4</episodeNumber>
+                        <title>Killer Within</title>
+                        <overview>The group is severed, placing lives in jeopardy. Merle has a request for the Governor. Meanwhile the prison doesn't seem to be a place as secure as they thought.</overview>
+                        <airdate>2012-11-05T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_9a501a4b">
+                        <episodeNumber>5</episodeNumber>
+                        <title>Say the World</title>
+                        <overview>Rick struggles after another loss. Michonne is suspicious of the Governor.</overview>
+                        <airdate>2012-11-12T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_f5d050c3">
+                        <episodeNumber>6</episodeNumber>
+                        <title>Hounded</title>
+                        <overview>Michonne makes a decision about Woodbury; Glenn and Maggie go on a run; Rick struggles.</overview>
+                        <airdate>2012-11-19T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_a2f41422">
+                        <episodeNumber>7</episodeNumber>
+                        <title>When the dead come knocking</title>
+                        <overview>The Governor presses for information. A new guest arrives at the prison, forcing Rick's hand.</overview>
+                        <airdate>2012-11-27T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_15034f87">
+                        <episodeNumber>8</episodeNumber>
+                        <title>Made to suffer</title>
+                        <overview>Andrea steps up when the people of Woodbury are thrown into uncharted territory. A new threat arises at the prison.</overview>
+                        <airdate>2012-12-03T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_a3d2974d">
+                        <episodeNumber>9</episodeNumber>
+                        <title>The Suicide King</title>
+                        <overview>After the invasion of Woodbury by Rick’s group, Daryl and Merle are captured by The Governor. Rick decides the fate of Tyreese’s group.</overview>
+                        <airdate>2013-02-11T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_bfa28e2f">
+                        <episodeNumber>10</episodeNumber>
+                        <title>Home</title>
+                        <overview>As the group debates their next course of action, Rick wanders after a lost friend. After helping another group of survivors flee a group of walkers, Daryl and Merle begin to have second thoughts about leaving the prison. The Governor cedes leadership of Woodbury to Andrea and makes plans to punish those responsible for the chaos.</overview>
+                        <airdate>2013-02-18T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_3a067f9f">
+                        <episodeNumber>11</episodeNumber>
+                        <title>I ain't a Judas</title>
+                        <overview>Rick and the group are forced to make a decision now that their safety is no longer guaranteed. Andrea feels uncomfortable now that Woodbury has become a police state.</overview>
+                        <airdate>2013-02-25T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_f270138f">
+                        <episodeNumber>12</episodeNumber>
+                        <title>Clear</title>
+                        <overview>Since they are outgunned against the Governor's forces, Rick undertakes a mission to get more weapons.</overview>
+                        <airdate>2013-03-04T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_f7d71519">
+                        <episodeNumber>13</episodeNumber>
+                        <title>Arrow on the doorpost</title>
+                        <overview>Rick and the Governor contemplate a peace treaty.</overview>
+                        <airdate>2013-03-11T21:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_7097276e">
+                        <episodeNumber>14</episodeNumber>
+                        <title>Prey</title>
+                        <overview>The Governor chases a fleeing dissenter; while the Governor is gone, a traitor tries to sabotage his plans.</overview>
+                        <airdate>2013-03-18T21:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_f07c5e22">
+                        <episodeNumber>15</episodeNumber>
+                        <title>The Sorrowful Life</title>
+                        <overview>Rick and the group are faced with a serious problem. If they want a truce with the Governor, they will have to make a huge sacrifice.</overview>
+                        <airdate>2013-03-25T21:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_70f9844e" seasonID="sn_8e92cad1" episodeID="ep_d1b8fffd">
+                        <episodeNumber>16</episodeNumber>
+                        <title>Welcome to the Tombs</title>
+                        <overview>Rick and the others consider the defense of the prison as the Governor's impending attack looms.</overview>
+                        <airdate>2013-04-01T22:00:00</airdate>
+                        <images>
+                            <image src="sn_8e92cad1_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="sn_8e92cad1_plakat.jpg"/>
+                </images>
+            </season>
+        </seasons>
+    </serie>
+    
+    <serie serieID="ss_471c836b">
+        <title>Homeland</title>
+        <genres>
+            <genre>Drama</genre>
+            <genre>Crime</genre>
+            <genre>Thriller</genre>
+        </genres>
+        <year>2011</year>
+        <firstaired>2011-10-02</firstaired>
+        <country>USA</country>
+        <overview>Carrie Mathison, a CIA operations officer, is on probation after carrying out an unauthorized operation in Iraq. As a result, she has been reassigned to the Counter terrorism center. Whilst in Iraq, she was warned that an American prisoner had been turned by Al-Qaeda. When Nicholas Brody, a U.S. Marine Sergeant, is rescued after being held hostage since 2003, she suspects that he is the turned American prisoner.</overview>
+        <episoderuntime>50</episoderuntime>
+        <network>Showtime</network>
+        <airday>Sunday</airday>
+        <airtime>22:00:00</airtime>
+        <images>
+            <image src="ss_471c836b_plakat.jpg"/>
+            <image src="ss_471c836b_episodepreview.jpg"/>
+        </images>
+        <seasons serieID="ss_471c836b">
+            <season serieID="ss_471c836b" seasonID="sn_2008934a">
+                <seasonNumber>1</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_c9802022">
+                        <episodeNumber>1</episodeNumber>
+                        <title>Pilot</title>
+                        <overview>After missing and presumed dead for eight years, Marine Sergeant Nicholas Brody is rescued in Iraq, and returns home to his family. But CIA agent Carrie Mathison suspects he might have been turned by his terrorist captors, and believes he could be part of a plan to attack America.</overview>
+                        <airdate>2011-10-03T22:00:00</airdate>
+                        <images>
+                            <image src="ep_c9802022_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_8543ca74">
+                        <episodeNumber>2</episodeNumber>
+                        <title>Grace</title>
+                        <overview>Carrie continues to surveil Brody but is unable to follow his actions into his garage which is a blind spot, where Brody begins to perform an Islamic prayer. Meanwhile, Carrie receives visual confirmation from an undercover agent that shows Al-Qaeda member Abu Nazir on video meeting with the Royal Prince of the Kingdom of Saudi Arabia.</overview>
+                        <airdate>2011-10-10T22:00:00</airdate>
+                        <images>
+                            <image src="ep_8543ca74_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_b2e4f532">
+                        <episodeNumber>3</episodeNumber>
+                        <title>Clean Skin</title>
+                        <overview>Brody prepares to enter the spotlight; Carrie closes in on an al-Qaeda plot.</overview>
+                        <airdate>2011-10-17T22:00:00</airdate>
+                        <images>
+                            <image src="ep_b2e4f532_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_e5d1526b">
+                        <episodeNumber>4</episodeNumber>
+                        <title>Semper I</title>
+                        <overview>The political powers that be make big plans for national hero Brody, but his increasingly erratic behavior threatens his media darling status; Carrie grows desperate for evidence linking Brody with Abu Nazir, as Saul directs her to focus on Nazir's money trail.</overview>
+                        <airdate>2011-10-24T22:00:00</airdate>
+                        <images>
+                            <image src="ep_e5d1526b_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_48e49204">
+                        <episodeNumber>5</episodeNumber>
+                        <title>Blind Spot</title>
+                        <overview>Brody confronts the lone survivor among the insurgents that held him, leading Carrie to believe she may be proved right about Brody once and for all - but Brody's reunion with his captor surprises everyone; the agency is hot on the trail of the lovers who bought a house near the airport with funds from a stolen necklace.</overview>
+                        <airdate>2011-10-31T21:00:00</airdate>
+                        <images>
+                            <image src="ep_48e49204_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_01310a8e">
+                        <episodeNumber>6</episodeNumber>
+                        <title>The Good Soldier</title>
+                        <overview>Reeling after losing key players in Nazir's plot against America, the CIA orders polygraphs on everyone who came in contact with them, including Brody, which Carrie sees as an opportunity to finally learn the truth.</overview>
+                        <airdate>2011-11-07T23:00:00</airdate>
+                        <images>
+                            <image src="ep_01310a8e_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_31ae30ae">
+                        <episodeNumber>7</episodeNumber>
+                        <title>The Weekend</title>
+                        <overview>The relationship between Carrie and Brody becomes more complicated when they head into the countryside for the weekend, while Mike and Jessica face the fallout of the truth about their relationship, and Saul catches Aileen on the run to Mexico.</overview>
+                        <airdate>2011-11-14T23:00:00</airdate>
+                        <images>
+                            <image src="ep_31ae30ae_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_b9a10721">
+                        <episodeNumber>8</episodeNumber>
+                        <title>Achilles Heel</title>
+                        <overview>As Carrie and Saul reel from the news that Walker is alive, the intelligence community clashes on the best way to capture him; Brody learns a shocking truth about his captivity.</overview>
+                        <airdate>2011-11-21T23:00:00</airdate>
+                        <images>
+                            <image src="ep_b9a10721_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_d810f08a">
+                        <episodeNumber>9</episodeNumber>
+                        <title>Crossfire</title>
+                        <overview>After his attempt to sever ties with Abu Nazir, Brody finds himself reliving his captivity and recommits to his mission; Carrie finds herself in the middle of a public relations nightmare on the heels of the mosque shooting.</overview>
+                        <airdate>2011-11-28T21:00:00</airdate>
+                        <images>
+                            <image src="ep_d810f08a_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_28dee528">
+                        <episodeNumber>10</episodeNumber>
+                        <title>Representative Brody</title>
+                        <overview>Carrie and Saul identify Walker's contact in Washington but their target has diplomatic immunity; Brody is approached to run for a disgraced congressman's seat in the House of Representatives.</overview>
+                        <airdate>2011-12-05T23:00:00</airdate>
+                        <images>
+                            <image src="ep_28dee528_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_5d7304f9">
+                        <episodeNumber>11</episodeNumber>
+                        <title>The Vest</title>
+                        <overview>In the wake of the explosion, Saul finds Carrie hospitalized and manic, but realizes her chaotic theories have merit; before his congressional campaign begins, Brody takes his family on a weekend trip to Gettysburg, where he retrieves an important item.</overview>
+                        <airdate>2011-12-12T23:00:00</airdate>
+                        <images>
+                            <image src="ep_5d7304f9_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_2008934a" episodeID="ep_f993910a">
+                        <episodeNumber>12</episodeNumber>
+                        <title>Marine One</title>
+                        <overview>While Carrie is near catatonic and confined to bed, Saul investigates the unsettling implications of her timeline; Walker secures a perch for his mission; Brody makes his final preparations for the Vice President's policy summit at the State Department.</overview>
+                        <airdate>2011-12-19T23:00:00</airdate>
+                        <images>
+                            <image src="ep_f993910a_preview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="sn_2008934a_plakat.jpg"/>
+                </images>
+            </season>
+            <season serieID="ss_471c836b" seasonID="sn_8609f7d6">
+                <seasonNumber>2</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_2b6d1638">
+                        <episodeNumber>1</episodeNumber>
+                        <title>The Smile</title>
+                        <overview>Months after undergoing Electroconvulsive Therapy, former CIA case officer Carrie Mathison has found a modicum of peace in her family's suburban embrace. But the strides she's made towards mental health are threatened when an asset from her former life comes in from the cold. </overview>
+                        <airdate>2012-10-01T22:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_461fbfa3">
+                        <episodeNumber>2</episodeNumber>
+                        <title>Beirut is back</title>
+                        <overview>Fatima tells Carrie about a meeting her Hezbollah commander husband will be having in Beirut with Abu Nazir and Carrie and Saul request a special forces team to capture him.</overview>
+                        <airdate>2012-10-08T22:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_79da2171">
+                        <episodeNumber>3</episodeNumber>
+                        <title>State of Independence</title>
+                        <overview>After her Beirut adventures, Carrie hopes for a triumphant return to the CIA. Brody learns that his bomb maker is in danger of imminent discovery and attempts a last minute extraction. Jessica steps into the political limelight.</overview>
+                        <airdate>2012-10-15T22:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_11d7f290">
+                        <episodeNumber>4</episodeNumber>
+                        <title>New Car Smell</title>
+                        <overview>Estes authorizes a covert operation to investigate intel recovered in Beirut. Brody gets a shock when he runs into Carrie at Langley. Dana discovers she has something in common with the Vice President's son.</overview>
+                        <airdate>2012-10-22T22:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_9180a0d6">
+                        <episodeNumber>5</episodeNumber>
+                        <title>Q and A</title>
+                        <overview>Brody is a prisoner again. Carrie plays second fiddle after her rash judgment call at the hotel as Estes is busy keeping Jessica off their trail. Dana and Finn's date night turns deadly serious.</overview>
+                        <airdate>2012-10-29T21:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_8648401e">
+                        <episodeNumber>6</episodeNumber>
+                        <title>A Gettysburg Address</title>
+                        <overview>Dana is shocked by her visit to the hospital. Faber's Tom Walker questions get him tangled up with the CIA. Brody agrees to help stop an attack on America, but his loyalty is questioned when Gettysburg once again becomes a battleground.</overview>
+                        <airdate>2012-11-05T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_58a69e6b">
+                        <episodeNumber>7</episodeNumber>
+                        <title>The Clearing</title>
+                        <overview>Carrie and the team struggle to regain control of their operation. Saul visits Aileen in solitary confinement. Dana pressures Finn to come clean about their hidden crime with unforeseen consequences.</overview>
+                        <airdate>2012-11-12T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_73db283e">
+                        <episodeNumber>8</episodeNumber>
+                        <title>I'll fly away</title>
+                        <overview>Brody heads towards meltdown as he struggles to keep his complicated alliances clear. Carrie stages a risky intervention to keep Brody in line, forcing both of them to confront their mixed emotions. Dana turns to an unlikely source for comfort.</overview>
+                        <airdate>2012-11-19T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_40e612f2">
+                        <episodeNumber>9</episodeNumber>
+                        <title>Two Hats</title>
+                        <overview>Brody makes a necessary phone call. Saul teams up with Virgil and Max to dig up some information on one of their own. Carrie finds herself preparing for the most important meeting of her career.</overview>
+                        <airdate>2012-11-26T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_ded2a94f">
+                        <episodeNumber>10</episodeNumber>
+                        <title>Broken Hearts</title>
+                        <overview>Saul catches up with an old friend and discovers evidence of covert activities by Estes. Brody and Vice President Walden find themselves at odds over the future of their political relationship, while Dana and Finn come to terms with their own differences.</overview>
+                        <airdate>2012-12-03T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_2b1bfdb3">
+                        <episodeNumber>11</episodeNumber>
+                        <title>In Memoriam</title>
+                        <overview>Dangerously close to exhaustion, Carrie continues her hunt for Nazir and begins to suspect there is a mole in the CIA. Roya reveals her true colours under interrogation and Saul finds himself fighting to save his career under unexpected circumstances. Meanwhile, the Brodys struggle to maintain anything close to a state of sanity.</overview>
+                        <airdate>2012-12-10T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_8609f7d6" episodeID="ep_7fff9bdd">
+                        <episodeNumber>12</episodeNumber>
+                        <title>The Choice</title>
+                        <overview>Carrie is faced with a pivotal decision, while Brody meets with Faber to contemplate the future of the family. Meanwhile, Saul undertakes a secret assignment; and Quinn has a decision to make that may prove to be a game-changer.</overview>
+                        <airdate>2012-12-17T23:00:00</airdate>
+                        <images>
+                            <image src="sn_8609f7d6_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="sn_8609f7d6_plakat.jpg"/>
+                </images>
+            </season>
+            <season serieID="ss_471c836b" seasonID="sn_dd744d3a">
+                <seasonNumber>3</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_471c836b" seasonID="sn_dd744d3a" episodeID="ep_e576b4c0">
+                        <episodeNumber>1</episodeNumber>
+                        <title>Tin Man is Down</title>
+                        <overview>No Information</overview>
+                        <airdate>2013-09-30T22:00:00</airdate>
+                        <images>
+                            <image src="sn_dd744d3a_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_471c836b" seasonID="sn_dd744d3a" episodeID="ep_8caf78d5">
+                        <episodeNumber>2</episodeNumber>
+                        <title>Tower of David</title>
+                        <overview>No Information</overview>
+                        <airdate>2013-10-07T22:00:00</airdate>
+                        <images>
+                            <image src="sn_dd744d3a_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="sn_dd744d3a_plakat.jpg"/>
+                </images>
+            </season>
+        </seasons>
+    </serie>
+    
+    <serie serieID="ss_193583e3">
+        <title>Hannibal</title>
+        <genres>
+            <genre>Drama</genre>
+            <genre>Crime</genre>
+        </genres>
+        <year>2013</year>
+        <firstaired>2010-10-01</firstaired>
+        <country>USA</country>
+        <overview>Explores the early relationship between the renowned psychiatrist and his patient, a young FBI criminal profiler, who is haunted by his ability to empathize with serial killers. </overview>
+        <episoderuntime>60</episoderuntime>
+        <network>NBC</network>
+        <airday>Thursday</airday>
+        <airtime>23:00:00</airtime>
+        <images>
+            <image src="ss_193583e3_plakat.jpg"/>
+            <image src="ss_193583e3_preview.png"/>
+        </images>
+        <seasons serieID="ss_193583e3">
+            <season serieID="ss_193583e3" seasonID="sn_27273061">
+                <seasonNumber>1</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_d61b70ee">
+                        <episodeNumber>1</episodeNumber>
+                        <title>Aperitif</title>
+                        <overview>When the FBI takes on a case of disappearing college girls, Jack Crawford recruits Will Graham, a gifted criminal profiler with a unique view into the psyche of serial killers, to consult. Jack also seeks the help of Dr. Hannibal Lecter, a brilliant psychiatrist, who, unbeknownst to him, is not only one of the most successful serial killers of all time, but also a cannibal. </overview>
+                        <airdate>2013-04-05T23:00:00</airdate>
+                        <images>
+                            <image src="ep_d61b70ee_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_af3e9ac0">
+                        <episodeNumber>2</episodeNumber>
+                        <title>Amuse-Bouche</title>
+                        <overview>Will Graham, now an official special investigator with the FBI, helps Jack Crawford and the BAU unit search for a murderer who buries his victims alive to grow mushrooms. In their therapy sessions, Hannibal begins to gain Will's trust as they bond over responsibility for Abigail, and helps Will open up about his true feelings about killing Hobbs. Meanwhile, Freddie Lounds snoops around the BAU's investigation.</overview>
+                        <airdate>2013-04-12T23:00:00</airdate>
+                        <images>
+                            <image src="ep_af3e9ac0_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_bcc0c886">
+                        <episodeNumber>3</episodeNumber>
+                        <title>Potage</title>
+                        <overview>Jack theorizes that Abigail may have aided her father, Garret Jacob Hobbs in his serial killings. Against Dr. Alana Bloom's advice, but at Hannibal's behest, Abigail is escorted back to Minnesota, where she discovers much violent hostility against her and her family. Things go from bad to worse when a copycat killer murders a friend of Abigail. Hannibal suggests they hide the body to protect Abigail - but secrets come at a cost.</overview>
+                        <airdate>2013-04-19T23:00:00</airdate>
+                        <images>
+                            <image src="ep_bcc0c886_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_138b10cd">
+                        <episodeNumber>4</episodeNumber>
+                        <title>CEuf</title>
+                        <overview>Two families are found murdered, with both mothers killed last. The only link between the families is that they both have sons who have been on the missing persons list for approximately a year. Graham concludes these "Lost Boys" are killing their old families to bond more closely to their new family. </overview>
+                        <airdate>2013-04-27T23:00:00</airdate>
+                        <images>
+                            <image src="ep_138b10cd_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_aab42536">
+                        <episodeNumber>5</episodeNumber>
+                        <title>Coquilles</title>
+                        <overview>Will Graham and the BAU team track a serial killer whose bloody ritual includes cutting the victims' back flesh and stretching it to look like angel wings. Returning to the field weighs heavily on Will's psyche and Hannibal tries to drive a wedge between Will and Jack. Meanwhile, Jack Crawford's wife Bella pulls away from him and begins seeing Hannibal as her therapist, in an effort to come to terms with the fact she is dying.</overview>
+                        <airdate>2013-04-26T23:00:00</airdate>
+                        <images>
+                            <image src="ep_aab42536_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_0003hani" seasonID="sn_27273061" episodeID="ep_ea9053db">
+                        <episodeNumber>6</episodeNumber>
+                        <title>Entree</title>
+                        <overview>Jack and Alana are contacted by a former colleague, Dr. Chilton, who believes he has The Chesapeake Ripper in custody, but then one of his patients commits a murder that matches The Ripper's profile. The team determines the Ripper was a surgeon and is still at large when Jack's former protégé Miriam becomes the next victim. Jack copes with her loss and the prospect of losing his wife by opening-up to Hannibal.</overview>
+                        <airdate>2013-05-03T23:00:00</airdate>
+                        <images>
+                            <image src="ep_ea9053db_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_8bdf0493">
+                        <episodeNumber>7</episodeNumber>
+                        <title>Sorbet</title>
+                        <overview>When the BAU investigates a murder involving organ removal Jack believes that the Chesapeake Ripper may have resurfaced, but Will determines that the victim's murder is the result of illegal organ harvesting accident. Meanwhile, Will suffers from nightmares where he is Abigail's father, and Hannibal slowly starts to seduce Alana Bloom and begins to visit his own therapist, Dr. Bedelia Du Maurier.</overview>
+                        <airdate>2013-05-10T23:00:00</airdate>
+                        <images>
+                            <image src="ep_8bdf0493_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_1a1a6990">
+                        <episodeNumber>8</episodeNumber>
+                        <title>Fromage</title>
+                        <overview>The BAU investigates a murder in which the killer exposes the victim's vocal cords to literally play them like a cello. Meanwhile, Hannibal discovers that the killer, Tobias, murdered the victim as an attempt to gain Hannibal's attention but then makes an attempt to take Lecter’s life.</overview>
+                        <airdate>2013-05-17T23:00:00</airdate>
+                        <images>
+                            <image src="ep_1a1a6990_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_a7f728cb">
+                        <episodeNumber>9</episodeNumber>
+                        <title>Trou Normand</title>
+                        <overview>The BAU team hunts a serial killer who digs up his victims, creating a totem pole of their bodies as a macabre trophy. When Nick Boyle's body is found, Jack and Alana question Abigail about his death. The resurrection of Nick's body enlightens Will to some of Abigail's secrets and Hannibal convinces Will to keep some of his own. </overview>
+                        <airdate>2013-05-24T23:00:00</airdate>
+                        <images>
+                            <image src="ep_a7f728cb_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_a3d1a7e9">
+                        <episodeNumber>10</episodeNumber>
+                        <title>Buffed Froid</title>
+                        <overview>BAU investigates a murder in which two victims' faces are similarly mutilated; given a “Glasgow Smile.” For the first time, Will contaminates a crime scene thinking he committed the first murder and an MRI shows he suffers from Advanced Encephalitis. But Hannibal intimidates the attending physician, Dr. Sutcliffe, into telling Will he's okay. </overview>
+                        <airdate>2013-05-31T23:00:00</airdate>
+                        <images>
+                            <image src="ep_a3d1a7e9_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_ca98bd9e">
+                        <episodeNumber>11</episodeNumber>
+                        <title>Roti</title>
+                        <overview>When Dr.Gideon escapes from police custody, he seeks to kill psychiatrists who have profiled him. Will and the BAU team try to track him down by following Freddie Lounds' blog before Gideon can get to Alana. Hannibal misleads the BAU team in order to put Will in the same room as Gideon, and Jack questions Dr. Chilton regarding Gideon’s escape.</overview>
+                        <airdate>2013-06-07T23:00:00</airdate>
+                        <images>
+                            <image src="ep_ca98bd9e_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_6ec36d37">
+                        <episodeNumber>12</episodeNumber>
+                        <title>Releves</title>
+                        <overview>After Georgia Madchen dies in an explosion, Will asserts that the copy cat killer is still alive. The BAU team links Abigail to the Minnesota Shrike victims and plan to arrest her only to find Will has checked her out of the hospital. Will's hallucinations intensify, causing him to lose Abigail in Minnesota. </overview>
+                        <airdate>2013-06-14T23:00:00</airdate>
+                        <images>
+                            <image src="ep_6ec36d37_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_193583e3" seasonID="sn_27273061" episodeID="ep_114672b9">
+                        <episodeNumber>13</episodeNumber>
+                        <title>Savoureux</title>
+                        <overview>No Information</overview>
+                        <airdate>2013-06-21T23:00:00</airdate>
+                        <images>
+                            <image src="ep_114672b9_preview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="sn_27273061_plakat.jpg"/>
+                </images>
+            </season>
+        </seasons>
+    </serie>
+    <serie serieID="ss_c3e3b26d">
+        <title>Sherlock</title>
+        <genres>
+            <genre>Action</genre>
+            <genre>Crime</genre>
+            <genre>Adventure</genre>
+            <genre>Drama</genre>
+        </genres>
+        <year>2010</year>
+        <firstaired>2010-07-25</firstaired>
+        <country>England</country>
+        <overview>In this modernized version of the Conan Doyle characters, using his detective plots, Sherlock Holmes lives in early 21st century London and acts more cocky towards Scotland Yard's detective inspector Lestrade because he's actually less confident. Doctor Watson is now a fairly young veteran of the Afghan war, less adoring and more active.</overview>
+        <episoderuntime>90</episoderuntime>
+        <network>BBC One</network>
+        <airday>Sunday</airday>
+        <airtime>21:30:00</airtime>
+        <images>
+            <image src="ss_c3e3b26d_plakat.jpg"/>
+            <image src="ss_c3e3b26d_preview.jpg"/>
+        </images>
+        <seasons serieID="ss_c3e3b26d">
+            <season serieID="ss_c3e3b26d" seasonID="sn_5197196e">
+                <seasonNumber>1</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_c3e3b26d" seasonID="sn_5197196e" episodeID="ep_b7922771">
+                        <episodeNumber>1</episodeNumber>
+                        <title>A study in pink</title>
+                        <overview>A war hero, invalided home from Afghanistan, meets a strange but charismatic genius who is looking for a flatmate; it is London, 2010, and Dr Watson and Sherlock Holmes are meeting for the first time. A string of impossible suicides has Scotland Yard baffled - and only one man can help.</overview>
+                        <airdate>2010-07-25T21:30:00</airdate>
+                        <images>
+                            <image src="ep_b7922771_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_c3e3b26d" seasonID="sn_5197196e" episodeID="ep_41a107aa">
+                        <episodeNumber>2</episodeNumber>
+                        <title>The Blind Baker</title>
+                        <overview>A mysterious cipher is being scrawled on the walls around London. The first person to see the cipher is dead within hours of reading it. Sherlock plunges into a world of codes and symbols, consulting with London's best graffiti artists. He soon learns that the city is in the grip a gang of international smugglers, a secret society called the Black Lotus.</overview>
+                        <airdate>2010-08-01T21:30:00</airdate>
+                        <images>
+                            <image src="ep_41a107aa_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_c3e3b26d" seasonID="sn_5197196e" episodeID="ep_eec0c31b">
+                        <episodeNumber>3</episodeNumber>
+                        <title>The Great Game</title>
+                        <overview>A strange clue in an empty room, a blood-soaked car, a priceless Old Master, a deranged bomber. With the clock ticking, the curtain rises on a battle of wits between Sherlock, John and the shadowy stranger who seems to know all the answers...</overview>
+                        <airdate>2010-08-08T21:30:00</airdate>
+                        <images>
+                            <image src="ep_eec0c31b_preview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="sn_5197196e_plakat.jpg"/>
+                </images>
+            </season>
+            <season serieID="ss_c3e3b26d" seasonID="sn_bd80d61c">
+                <seasonNumber>2</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_c3e3b26d" seasonID="sn_bd80d61c" episodeID="ep_ca998c11">
+                        <episodeNumber>1</episodeNumber>
+                        <title>A scandal in Belgrevia</title>
+                        <overview>Compromising photographs and a case of blackmail threaten the very heart of the British establishment, but for Sherlock and John the game is on in more ways than one as they find themselves battling international terrorism, rogue CIA agents, and a secret conspiracy involving the British government.</overview>
+                        <airdate>2012-01-01T21:30:00</airdate>
+                        <images>
+                            <image src="ep_ca998c11_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_c3e3b26d" seasonID="sn_bd80d61c" episodeID="ep_9de4f890">
+                        <episodeNumber>2</episodeNumber>
+                        <title>The Hounds of Baskerville</title>
+                        <overview>Something terrible has happened to Henry Knight; Sherlock and John investigate the truth about the monstrous creature which apparently killed their client's father. </overview>
+                        <airdate>2012-01-08T21:30:00</airdate>
+                        <images>
+                            <image src="ep_9de4f890_preview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_c3e3b26d" seasonID="sn_bd80d61c" episodeID="ep_08e70ee8">
+                        <episodeNumber>3</episodeNumber>
+                        <title>The Reichenbach Fall</title>
+                        <overview>James Moriarty possesses the greatest criminal mind that the world has ever seen. Sherlock and John knew he wouldn't stay hidden for long, but even they never guessed the sheer scale and audacity of the crime that would propel Moriarty back into the headlines.</overview>
+                        <airdate>2012-01-15T21:30:00</airdate>
+                        <images>
+                            <image src="ep_08e70ee8_preview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="sn_bd80d61c_plakat.jpg"/>
+                </images>
+            </season>
+            <season serieID="ss_c3e3b26d" seasonID="sn_1657e042">
+                <seasonNumber>3</seasonNumber>
+                <episodes>
+                    <episode serieID="ss_c3e3b26d" seasonID="sn_1657e042" episodeID="ep_999536dd">
+                        <episodeNumber>1</episodeNumber>
+                        <title>The Empty Hearse</title>
+                        <overview>No Information</overview>
+                        <airdate>2014-01-01T21:30:00</airdate>
+                        <images>
+                            <image src="sn_1657e042_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_c3e3b26d" seasonID="sn_1657e042" episodeID="ep_b0a2c24d">
+                        <episodeNumber>2</episodeNumber>
+                        <title>The Sign of Three</title>
+                        <overview>Nof Information</overview>
+                        <airdate>2014-01-01T21:30:00</airdate>
+                        <images>
+                            <image src="sn_1657e042_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                    <episode serieID="ss_c3e3b26d" seasonID="sn_1657e042" episodeID="ep_10f7b52c">
+                        <episodeNumber>3</episodeNumber>
+                        <title>Episode 3</title>
+                        <overview>No Information.</overview>
+                        <airdate>2014-01-01T21:30:00</airdate>
+                        <images>
+                            <image src="sn_1657e042_episodepreview.jpg"/>
+                        </images>
+                    </episode>
+                </episodes>
+                <images>
+                    <image src="sn_1657e042_plakat.jpg"/>
+                </images>
+            </season>
+        </seasons>
+    </serie>
+    
+     <serie serieID="ss_583e9780">
+        <title>Game of Thrones</title>
+        <genres>
+            <genre>Action</genre>
+            <genre>Adventure</genre>
+            <genre>Drama</genre>
+            <genre>Fantasy</genre>
+        </genres>
+        <year>2011</year>
+        <firstaired>2011-04-17</firstaired>
+        <country>USA</country>
+        <overview>Seven noble families fight for control of the mythical land of Westeros. Political and sexual intrigue is pervasive. Robert Baratheon, King of Westeros, asks his old friend Eddard, Lord Stark, to serve as Hand of the King, or highest official. Secretly warned that the previous Hand was assassinated, Eddard accepts in order to investigate further.</overview>
+        <episoderuntime>60</episoderuntime>
+        <network>HBO</network>
+        <airday>Sunday</airday>
+        <airtime>22:00:00</airtime>
+        <images>
+            <image src="ss_583e9780_plakat.jpg"/>
+        </images>
+    </serie>
+    
+    <serie serieID="ss_5dcacd4d">
+        <title>Breaking Bad</title>
+        <genres>
+            <genre>Drama</genre>
+            <genre>Crime</genre>
+            <genre>Suspense</genre>
+        </genres>
+        <year>2008</year>
+        <firstaired>2008-11-15</firstaired>
+        <country>USA</country>
+        <overview>When chemistry teacher, Walter White, is diagnosed with Stage III cancer and given only two years to live, he decides he has nothing to lose. He lives with his wife and teenage son, who has cerebral palsy, in New Mexico. Determined to ensure that his family will have a secure future, White embarks on a career of drugs and crime.</overview>
+        <episoderuntime>60</episoderuntime>
+        <network>AMC</network>
+        <airday>Sunday</airday>
+        <airtime>22:00:00</airtime>
+        <images>
+            <image src="ss_5dcacd4d_plakat.jpg"/>
+            <image src="ss_5dcacd4d_cast.jpg"/>
+        </images>
+    </serie>
+    
+    <serie serieID="ss_07050cd1">
+        <title>Arrested Developement</title>
+        <genres>
+            <genre>Comedy</genre>
+        </genres>
+        <year>2003</year>
+        <firstaired>2003-11-01</firstaired>
+        <country>USA</country>
+        <overview>Level-headed son Michael Bluth takes over family affairs after his father is imprisoned. But the rest of his spoiled, dysfunctional family are making his job unbearable.</overview>
+        <episoderuntime>30</episoderuntime>
+        <network>NBC</network>
+        <airday>Friday</airday>
+        <airtime>20:00:00</airtime>
+        <images>
+            <image src="ss_07050cd1_plakat.jpg"/>
+            <image src="ss_07050cd1_cast.jpg"/>
+        </images>
+    </serie>
+    
+    <serie serieID="ss_de4f010d">
+        <title>Mad Men</title>
+        <genres>
+            <genre>Drama</genre>
+        </genres>
+        <year>2007</year>
+        <firstaired>2007-07-19</firstaired>
+        <country>USA</country>
+        <overview>A drama about one of New York's most prestigious ad agencies at the beginning of the 1960s, focusing on one of the firm's most mysterious but extremely talented ad executives, Donald Draper.</overview>
+        <episoderuntime>60</episoderuntime>
+        <network>AMC</network>
+        <airday>Sunday</airday>
+        <airtime>23:00:00</airtime>
+        <images>
+            <image src="ss_de4f010d_plakat.jpg"/>
+        </images>
+    </serie>
+    
+     <serie serieID="ss_11081b0c">
+        <title>Castle</title>
+        <genres>
+            <genre>Drama</genre>
+            <genre>Comedy</genre>
+            <genre>Crime</genre>   
+        </genres>
+        <year>2009</year>
+        <firstaired>2009-03-09</firstaired>
+        <country>USA</country>
+        <overview>After a serial killer imitates the plots of his novels, successful mystery novelist Richard "Rick" Castle gets permission from the Mayor of New York City to tag along with an NYPD homicide investigation team for research purposes.</overview>
+        <episoderuntime>60</episoderuntime>
+        <network>ABC</network>
+        <airday>Monday</airday>
+        <airtime>23:00:00</airtime>
+        <images>
+            <image src="ss_11081b0c_plakat.jpg"/>
+        </images>
+    </serie>
+    
+    
+    
 </series>

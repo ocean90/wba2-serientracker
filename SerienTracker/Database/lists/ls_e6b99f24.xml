@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Beispielgenreliste des Typ Comedy -->
+<list
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/List.xsd"
+	userID="us_21232f29" listID="ls_e6b99f24" public="true">
+
+	<name>Comedy</name>
+	<type>genre</type>
+	<series>
+		<!-- Castle -->
+		<serie serieID="ss_11081b0c"/>
+		<!-- Arrested Developement -->
+		<serie serieID="ss_07050cd1"/>
+		
+		
+	</series>
+
+
+</list>

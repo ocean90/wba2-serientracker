@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Frei Benutzerliste. IDform: Username Titel: test Best Drama Shows -->
+
+<list
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/List.xsd"
+	userID="us_098f6bcd" listID="ls_9cf5c0dc" public="true">
+
+	<name>Best Drama Shows</name>
+	<type>user</type>
+	<series>
+		<!-- Homeland -->
+		<serie serieID="ss_471c836b"/>
+		<!-- Breaking Bad -->
+		<serie serieID="ss_5dcacd4d"/>
+		<!-- Mad Men -->
+		<serie serieID="ss_de4f010d"/>
+		
+	</series>
+
+
+</list>
+

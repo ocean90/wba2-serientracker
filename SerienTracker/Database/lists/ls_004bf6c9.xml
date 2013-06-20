@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Beispielgenreliste des Typ Action -->
+<list
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/List.xsd"
+	userID="us_21232f29" listID="ls_004bf6c9" public="true">
+
+	<name>Action</name>
+	<type>genre</type>
+	<series>
+		<!-- The Walking Dead -->
+		<serie serieID="ss_70f9844e"/>
+		<!-- Sherlock -->
+		<serie serieID="ss_c3e3b26d"/>
+		<!-- Game of Thrones -->
+		<serie serieID="ss_583e9780"/>
+		
+		
+	</series>
+
+
+</list>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Beispielgenreliste des Typ Crime -->
+<list
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/List.xsd"
+	userID="us_21232f29" listID="ls_c967a0db" public="true">
+
+	<name>Crime</name>
+	<type>genre</type>
+	<series>
+		<!-- Castle -->
+		<serie serieID="ss_11081b0c"/>
+		<!-- Breaking Bad -->
+		<serie serieID="ss_5dcacd4d"/>
+		<!-- Hannibal -->
+		<serie serieID="ss_193583e3"/>
+		<!-- Homeland -->
+		<serie serieID="ss_471c836b"/>
+		<!-- Sherlock -->
+		<serie serieID="ss_c3e3b26d"/>
+		
+		
+	</series>
+
+
+</list>

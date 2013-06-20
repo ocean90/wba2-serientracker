@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Beispielgenreliste des Typ Adventure -->
+<list
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/List.xsd"
+	userID="us_21232f29" listID="ls_dc1d2a4d" public="true">
+
+	<name>Adventure</name>
+	<type>genre</type>
+	<series>
+		<!-- Game of Thrones -->
+		<serie serieID="ss_583e9780"/>
+		<!-- Sherlock -->
+		<serie serieID="ss_c3e3b26d"/>
+		
+		
+	</series>
+
+
+</list>

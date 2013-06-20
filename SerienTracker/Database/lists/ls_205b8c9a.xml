@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Beispielgenreliste des Typ Drama -->
+<list
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/List.xsd"
+	userID="us_21232f29" listID="ls_205b8c9a" public="true">
+
+	<name>Drama</name>
+	<type>genre</type>
+	<series>
+		<!-- The Walking Dead -->
+		<serie serieID="ss_70f9844e"/>
+		<!-- Homeland -->
+		<serie serieID="ss_471c836b"/>
+		<!-- Hannibal -->
+		<serie serieID="ss_193583e3"/>
+		<!-- Sherlock -->
+		<serie serieID="ss_c3e3b26d"/>
+		<!-- Game of Thrones -->
+		<serie serieID="ss_583e9780"/>
+		<!-- Breaking Bad -->
+		<serie serieID="ss_5dcacd4d"/>
+		<!-- Mad Men -->
+		<serie serieID="ss_de4f010d"/>
+		<!-- Castle -->
+		<serie serieID="ss_11081b0c"/>
+		
+	</series>
+
+
+</list>

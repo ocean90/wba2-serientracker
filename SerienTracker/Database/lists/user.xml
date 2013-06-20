@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lists die alle Userlisten enthält -->
+<lists
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/Lists.xsd">
+
+	
+	<list listID="ls_b180a83b" userID="us_098f6bcd" public="true"/>
+	<list listID="ls_9cf5c0dc" userID="us_098f6bcd" public="true"/>
+	
+	
+
+
+
+</lists>

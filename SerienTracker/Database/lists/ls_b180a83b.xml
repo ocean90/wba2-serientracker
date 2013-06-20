@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Frei Benutzerliste. IDform: Username Titel: test Top 10 Shows -->
+
+<list
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../XML Schemas/List.xsd"
+	userID="us_098f6bcd" listID="ls_b180a83b" public="true">
+
+	<name>Top 10 Shows</name>
+	<type>user</type>
+	<series>
+		<!-- The Walking Dead -->
+		<serie serieID="ss_70f9844e"/>
+		<!-- Sherlock -->
+		<serie serieID="ss_c3e3b26d"/>
+		<!-- Game of Thrones -->
+		<serie serieID="ss_583e9780"/>
+		<!-- Homeland -->
+		<serie serieID="ss_471c836b"/>
+		<!-- Hannibal -->
+		<serie serieID="ss_193583e3"/>
+		<!-- Breaking Bad -->
+		<serie serieID="ss_5dcacd4d"/>
+		<!-- Mad Men -->
+		<serie serieID="ss_de4f010d"/>
+		<!-- Castle -->
+		<serie serieID="ss_11081b0c"/>
+		
+	</series>
+
+
+</list>
+
