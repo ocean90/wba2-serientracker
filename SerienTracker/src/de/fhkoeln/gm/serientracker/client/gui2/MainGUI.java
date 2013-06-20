@@ -161,18 +161,15 @@ public class MainGUI extends JFrame implements ActionListener {
         	this.dispose();
         } else if ( e.getSource() == newSerieMenuItem ) {
         	// New series
-        	NewContentGUI newContentGUI = new NewContentGUI();
-        	newContentGUI.setContext( Context.SERIES );
+        	NewContentGUI newContentGUI = new NewContentGUI( Context.SERIES );
         	newContentGUI.setVisible( true );
         } else if ( e.getSource() == newSeasonMenuItem ) {
         	// New season
-        	NewContentGUI newContentGUI = new NewContentGUI();
-        	newContentGUI.setContext( Context.SEASON );
+        	NewContentGUI newContentGUI = new NewContentGUI( Context.SEASON );
         	newContentGUI.setVisible( true );
         } else if ( e.getSource() == newEpisodeMenuItem ) {
         	// New episode
-        	NewContentGUI newContentGUI = new NewContentGUI();
-        	newContentGUI.setContext( Context.EPISODE );
+        	NewContentGUI newContentGUI = new NewContentGUI( Context.EPISODE );
         	newContentGUI.setVisible( true );
         } else {
         	Logger.err( "Action not implemented" );
