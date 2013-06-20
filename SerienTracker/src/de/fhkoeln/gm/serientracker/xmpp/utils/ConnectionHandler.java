@@ -23,6 +23,7 @@ public class ConnectionHandler {
 	// Singleton class
 	private static ConnectionHandler instance;
 
+	// Private constructor, call getInstance()
 	private ConnectionHandler() {}
 
 	/**

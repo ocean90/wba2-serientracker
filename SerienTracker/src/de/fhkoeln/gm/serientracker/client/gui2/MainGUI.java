@@ -142,7 +142,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		main = new JPanel( new MigLayout( "insets 0, fill" ) );
 		add( main, "grow" );
 
-		main.add( new SeriesListPanel(), "grow" );
+		main.add( new SeriesOverviewPanel(), "grow" );
 	}
 
 	@Override
