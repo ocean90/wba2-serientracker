@@ -81,6 +81,24 @@ public class PubSubHandler {
 	}
 
 	/**
+	 * Checks if a node exists
+	 *
+	 * @param String name
+	 * @return boolean
+	 */
+	public boolean nodeExists( String name ) {
+		LeafNode node = null;
+
+		try {
+			node = (LeafNode) this.psm.getNode( name );
+		} catch ( XMPPException e ) {
+			return false;
+		}
+
+		return node != null;
+	}
+
+	/**
 	 * Creates a new node.
 	 *
 	 * @param String name
