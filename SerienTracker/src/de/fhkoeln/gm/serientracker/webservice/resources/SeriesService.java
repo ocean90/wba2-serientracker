@@ -130,6 +130,7 @@ public class SeriesService {
 	public Response getSeasonsOfSerie(
 			@PathParam( "serieID" ) String serieID
 		) {
+		// TODO
 		Logger.log( String.format( "Serien ID: %s", serieID ) );
 
 		return Response.noContent().build();
@@ -142,6 +143,7 @@ public class SeriesService {
 			@PathParam( "serieID" ) String serieID,
 			@PathParam( "seasonID" ) String seasonID
 		) {
+		// TODO
 		Logger.log( String.format( "Serien ID: %s | Season ID: %s\n", serieID, seasonID ) );
 
 		return Response.noContent().build();
@@ -154,6 +156,7 @@ public class SeriesService {
 			@PathParam( "serieID" ) String serieID,
 			@PathParam( "seasonID" ) String seasonID
 		) {
+		// TODO
 		Logger.log( String.format( "Serien ID: %s | Season ID: %s\n", serieID, seasonID ) );
 
 		return Response.noContent().build();
@@ -167,6 +170,7 @@ public class SeriesService {
 			@PathParam( "seasonID" ) String seasonID,
 			@PathParam( "episodeID" ) String episodeID
 		) {
+		// TODO
 		Logger.log( String.format( "Serien ID: %s | Season ID: %s | Episode ID: %s\n", serieID, seasonID, episodeID ) );
 
 		return Response.noContent().build();

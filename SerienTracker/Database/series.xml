@@ -888,7 +888,7 @@ The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens fro
                         <episodeNumber>1</episodeNumber>
                         <title>The Empty Hearse</title>
                         <overview>No Information</overview>
-                        <airdate>2014-01-01T21:30:00</airdate>
+                        <airdate>2013-10-31T21:30:00</airdate>
                         <images>
                             <image src="sn_1657e042_episodepreview.jpg"/>
                         </images>
@@ -897,16 +897,16 @@ The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens fro
                         <episodeNumber>2</episodeNumber>
                         <title>The Sign of Three</title>
                         <overview>Nof Information</overview>
-                        <airdate>2014-01-01T21:30:00</airdate>
+                        <airdate>2013-11-07T21:30:00</airdate>
                         <images>
                             <image src="sn_1657e042_episodepreview.jpg"/>
                         </images>
                     </episode>
                     <episode serieID="ss_c3e3b26d" seasonID="sn_1657e042" episodeID="ep_10f7b52c">
                         <episodeNumber>3</episodeNumber>
-                        <title>Episode 3</title>
+                        <title>Episode #3.3</title>
                         <overview>No Information.</overview>
-                        <airdate>2014-01-01T21:30:00</airdate>
+                        <airdate>2013-11-14T21:30:00</airdate>
                         <images>
                             <image src="sn_1657e042_episodepreview.jpg"/>
                         </images>
