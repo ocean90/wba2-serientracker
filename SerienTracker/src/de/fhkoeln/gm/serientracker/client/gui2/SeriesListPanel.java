@@ -5,13 +5,15 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -110,6 +112,7 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 	}
 
 	private JPanel getSeriesInfo() {
+		seriesInfo = new JPanel( new MigLayout( "fill", "grow", "grow" ) );
 
 		this.updateSeriesInfo();
 
@@ -117,23 +120,19 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 	}
 
 	private void updateSeriesInfo() {
-		if ( seriesInfo == null ) {
-			seriesInfo = new JPanel( new MigLayout( "fill", "grow", "grow" ) );
-			seriesInfo.setVisible( false );
-		} else {
-			seriesInfo.setVisible( false );
-			seriesInfo.removeAll();
-		}
+		seriesInfo.removeAll();
 
 		Serie serie = this.getSelectedSerie();
 		if ( serie != null ) {
-			ImageIcon image = this.getSeriesImage( 150, 150 );
+			Image image = this.getSeriesImage( 150, 200 );
 			if ( image != null ) {
-				JLabel seriesImage = new JLabel( image );
+				ImagePanel seriesImage = new ImagePanel( image );
 				seriesInfo.add( seriesImage, "wrap" );
 			}
 
-			seriesInfo.add( new JLabel( serie.getTitle() ), "wrap" );
+			JLabel seriesTitle = new JLabel( serie.getTitle() );
+			seriesTitle.setFont( new Font( null, Font.BOLD, 14 ) );
+			seriesInfo.add( seriesTitle, "wrap" );
 			seriesInfo.add( new JLabel( "Year: " + serie.getYear() ), "wrap" );
 
 			btnViewDetails = new JButton( "View Details" );
@@ -141,34 +140,32 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 			seriesInfo.add( btnViewDetails, "bottom, right" );
 		}
 
-		seriesInfo.setVisible( true );
-
+		seriesInfo.validate();
+		seriesInfo.repaint();
 	}
 
 	private JPanel getSeriesDetails() {
+		seriesDetails = new JPanel( new MigLayout( "fill", "grow", "grow" ) );
+
 		this.updateSeriesDetails();
 
 		return seriesDetails;
 	}
 
 	private void updateSeriesDetails() {
-		if ( seriesDetails == null ) {
-			seriesDetails = new JPanel( new MigLayout( "fill", "grow", "grow" ) );
-			seriesDetails.setVisible( false );
-		} else {
-			seriesDetails.setVisible( false );
-			seriesDetails.removeAll();
-		}
+		seriesDetails.removeAll();
 
 		Serie serie = this.getSelectedSerie();
 		if ( serie != null ) {
-			ImageIcon image = this.getSeriesImage( 300, 300 );
+			Image image = this.getSeriesImage( 300, 300 );
 			if ( image != null ) {
-				JLabel seriesImage = new JLabel( image );
+				ImagePanel seriesImage = new ImagePanel( image );
 				seriesDetails.add( seriesImage, "wrap" );
 			}
 
-			seriesDetails.add( new JLabel( serie.getTitle() ), "wrap" );
+			JLabel seriesTitle = new JLabel( serie.getTitle() );
+			seriesTitle.setFont( new Font( null, Font.BOLD, 14 ) );
+			seriesDetails.add( seriesTitle, "wrap" );
 			seriesDetails.add( new JLabel( "Year: " + serie.getYear() ), "wrap" );
 
 			btnSubscribe = new JButton( "Subscribe" );
@@ -180,21 +177,26 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 		btnBackToOverview.addActionListener( this );
 		seriesDetails.add( btnBackToOverview, "bottom, right" );
 
-		seriesDetails.setVisible( true );
+		seriesInfo.validate();
+		seriesInfo.repaint();
 	}
 
-	private ImageIcon getSeriesImage( int width, int height ) {
+	private Image getSeriesImage( int width, int height ) {
 		Serie serie = this.getSelectedSerie();
 
 		if ( serie.getImages() != null && serie.getImages().getImage().size() != 0 ) {
-			String image = RESTServerConfig.getServerURL() + "/images/" +
+			String imageURL = RESTServerConfig.getServerURL() + "/images/" +
 							serie.getSerieID() + "/" + serie.getImages().getImage().get( 0 ).getSrc();
+
+			BufferedImage img;
 			try {
-				Image imageScaled = new ImageIcon( new URL( image ) ).getImage().getScaledInstance( width, height, Image.SCALE_DEFAULT );
-				return new ImageIcon( imageScaled );
-			} catch ( MalformedURLException e ) {
+				img = ImageIO.read( new URL( imageURL ) );
+			} catch ( Exception e) {
 				e.printStackTrace();
+				return null;
 			}
+
+			return img.getScaledInstance( width, height, Image.SCALE_SMOOTH );
 		}
 
 		return null;
@@ -202,7 +204,6 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 
 	private void fetchSeries() {
 		Logger.log( "Fetching series..." );
-
 
 		HTTPClient httpClient = new HTTPClient();
 		httpClient.setMethod( HTTPMethod.GET );

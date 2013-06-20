@@ -1,23 +1,19 @@
 package de.fhkoeln.gm.serientracker.client.gui2;
 
-import java.awt.CardLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JSeparator;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
-import de.fhkoeln.gm.serientracker.client.TrackerClient2;
+import de.fhkoeln.gm.serientracker.client.TrackerClient;
 import de.fhkoeln.gm.serientracker.client.gui2.NewContentGUI.Context;
 import de.fhkoeln.gm.serientracker.client.utils.SessionStore;
 import de.fhkoeln.gm.serientracker.utils.Logger;
@@ -158,7 +154,7 @@ public class MainGUI extends JFrame implements ActionListener {
         } else if ( e.getSource() == logoutMenuItem ) {
         	// Logout
         	this.session.destroySession();
-        	TrackerClient2.showLogin();
+        	TrackerClient.showLogin();
         } else if ( e.getSource() == closeMenuItem ) {
         	// Exit
         	this.session.destroySession();

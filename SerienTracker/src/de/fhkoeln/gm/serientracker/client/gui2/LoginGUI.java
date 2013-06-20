@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
-import de.fhkoeln.gm.serientracker.client.TrackerClient2;
+import de.fhkoeln.gm.serientracker.client.TrackerClient;
 import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 
@@ -162,7 +162,7 @@ public class LoginGUI extends JFrame {
 		if ( loginHandler.hasError() ) {
 			this.errorDialog( loginHandler.getErrorMessage() );
 		} else {
-			TrackerClient2.showMain();
+			TrackerClient.showMain();
 		}
 	};
 
