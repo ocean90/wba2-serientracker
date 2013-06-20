@@ -11,7 +11,7 @@
         <firstaired>2010-10-01</firstaired>
         <country>USA</country>
         <overview>The Walking Dead is an American horror television drama series developed by Frank Darabont. It is based on the comic book series of the same name by Robert Kirkman, Tony Moore, and Charlie Adlard.
-    	The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens from a coma to find a post-apocalyptic world dominated by flesh-eating "walkers", resembling zombies.</overview>
+The series stars Andrew Lincoln as sheriff's deputy Rick Grimes, who awakens from a coma to find a post-apocalyptic world dominated by flesh-eating "walkers", resembling zombies.</overview>
         <episoderuntime>50</episoderuntime>
         <network>AMC</network>
         <airday>Sunday</airday>
@@ -362,7 +362,7 @@
             </season>
         </seasons>
     </serie>
-    
+
     <serie serieID="ss_471c836b">
         <title>Homeland</title>
         <genres>
@@ -643,7 +643,7 @@
             </season>
         </seasons>
     </serie>
-    
+
     <serie serieID="ss_193583e3">
         <title>Hannibal</title>
         <genres>
@@ -918,7 +918,7 @@
             </season>
         </seasons>
     </serie>
-    
+
      <serie serieID="ss_583e9780">
         <title>Game of Thrones</title>
         <genres>
@@ -939,7 +939,7 @@
             <image src="ss_583e9780_plakat.jpg"/>
         </images>
     </serie>
-    
+
     <serie serieID="ss_5dcacd4d">
         <title>Breaking Bad</title>
         <genres>
@@ -960,7 +960,7 @@
             <image src="ss_5dcacd4d_cast.jpg"/>
         </images>
     </serie>
-    
+
     <serie serieID="ss_07050cd1">
         <title>Arrested Developement</title>
         <genres>
@@ -979,7 +979,7 @@
             <image src="ss_07050cd1_cast.jpg"/>
         </images>
     </serie>
-    
+
     <serie serieID="ss_de4f010d">
         <title>Mad Men</title>
         <genres>
@@ -997,13 +997,13 @@
             <image src="ss_de4f010d_plakat.jpg"/>
         </images>
     </serie>
-    
+
      <serie serieID="ss_11081b0c">
         <title>Castle</title>
         <genres>
             <genre>Drama</genre>
             <genre>Comedy</genre>
-            <genre>Crime</genre>   
+            <genre>Crime</genre>
         </genres>
         <year>2009</year>
         <firstaired>2009-03-09</firstaired>
@@ -1017,7 +1017,7 @@
             <image src="ss_11081b0c_plakat.jpg"/>
         </images>
     </serie>
-    
-    
-    
+
+
+
 </series>

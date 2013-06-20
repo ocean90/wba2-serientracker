@@ -6,8 +6,6 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
@@ -20,6 +18,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
@@ -29,6 +28,9 @@ import javax.swing.event.ListSelectionListener;
 import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.utils.HTTPClient;
 import de.fhkoeln.gm.serientracker.client.utils.HTTPClient.HTTPMethod;
+import de.fhkoeln.gm.serientracker.jaxb.Episode;
+import de.fhkoeln.gm.serientracker.jaxb.Episodes;
+import de.fhkoeln.gm.serientracker.jaxb.Season;
 import de.fhkoeln.gm.serientracker.jaxb.Serie;
 import de.fhkoeln.gm.serientracker.jaxb.Series;
 import de.fhkoeln.gm.serientracker.utils.Logger;
@@ -50,6 +52,7 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 	private JPanel seriesDetails;
 	private JButton btnSubscribe;
 	private JButton btnBackToOverview;
+	private JList episodesList;
 
 	public SeriesListPanel() {
 		mainCardLayout = new CardLayout();
@@ -145,7 +148,7 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 	}
 
 	private JPanel getSeriesDetails() {
-		seriesDetails = new JPanel( new MigLayout( "fill", "grow", "grow" ) );
+		seriesDetails = new JPanel( new MigLayout( "", "[300][grow][]", "[40][20][20][150][20][140][30]" ) );
 
 		this.updateSeriesDetails();
 
@@ -157,28 +160,88 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 
 		Serie serie = this.getSelectedSerie();
 		if ( serie != null ) {
-			Image image = this.getSeriesImage( 300, 300 );
+			Image image = this.getSeriesImage( 300, 400 );
 			if ( image != null ) {
 				ImagePanel seriesImage = new ImagePanel( image );
-				seriesDetails.add( seriesImage, "wrap" );
+				seriesDetails.add( seriesImage, "cell 0 0 1 6, gapright 10" ); // cell: col row colspan rowspan
 			}
 
 			JLabel seriesTitle = new JLabel( serie.getTitle() );
-			seriesTitle.setFont( new Font( null, Font.BOLD, 14 ) );
-			seriesDetails.add( seriesTitle, "wrap" );
-			seriesDetails.add( new JLabel( "Year: " + serie.getYear() ), "wrap" );
+			seriesTitle.setFont( new Font( null, Font.BOLD, 20 ) );
+			seriesDetails.add( seriesTitle, "cell 1 0, top" );
 
 			btnSubscribe = new JButton( "Subscribe" );
 			btnSubscribe.addActionListener( this );
-			seriesDetails.add( btnSubscribe, "bottom, right" );
+			seriesDetails.add( btnSubscribe, "cell 2 0, top, right" );
+
+			seriesDetails.add( new JLabel( "Year: " + serie.getYear() ), "cell 1 1, width 20%" );
+			seriesDetails.add( new JLabel( "Network: " + serie.getNetwork() ), "cell 1 1" );
+
+			seriesDetails.add( new JLabel( "Country: " + serie.getCountry().value() ), "cell 1 2, width 20%" );
+			seriesDetails.add( new JLabel( "Runtime: " + serie.getEpisoderuntime().value() ), "cell 1 2" );
+
+			JTextArea seriesDescription = new JTextArea( serie.getOverview() );
+			seriesDescription.setFont( new Font( null, Font.ITALIC, 14 ) );
+			seriesDescription.setLineWrap( true );
+			seriesDescription.setWrapStyleWord( true );
+			seriesDescription.setBackground( getBackground() );
+			seriesDescription.setEditable( false );
+			seriesDescription.setHighlighter( null );
+			JScrollPane seriesDescriptionScroll = new JScrollPane( seriesDescription );
+			seriesDescriptionScroll.setBorder( null );
+			seriesDetails.add( seriesDescriptionScroll, "cell 1 3 2 1, gaptop 10, grow" );
+
+			if ( serie.getSeasons() != null && serie.getSeasons().getSeason().size() != 0 ) {
+				seriesDetails.add( new JLabel( "Seasons: " ), "cell 1 4 2 1" );
+
+				for ( Season season : serie.getSeasons().getSeason() ) {
+					JButton btnSeason = new JButton();
+					btnSeason.setText( String.valueOf( season.getSeasonNumber() ) );
+					btnSeason.setActionCommand( "SEASONSWITCH:" + season.getSeasonNumber() );
+					btnSeason.addActionListener( this );
+					seriesDetails.add( btnSeason, "cell 1 4 2 1" );
+				}
+
+				episodesList = new JList();
+				episodesList.setCellRenderer( new EpisodeListCellRenderer() );
+				episodesList.setSelectionMode( ListSelectionModel.SINGLE_INTERVAL_SELECTION );
+				episodesList.setLayoutOrientation( JList.HORIZONTAL_WRAP );
+				episodesList.setVisibleRowCount( 1 );
+				episodesList.addListSelectionListener( this );
+				episodesList.setBackground( getBackground() );
+
+
+				seriesListScroll = new JScrollPane( episodesList );
+				seriesListScroll.setBorder( null );
+				seriesDetails.add( seriesListScroll, "cell 1 5 2 1, grow" );
+				this.updateEpisodelist( 1 );
+			}
+
 		}
 
 		btnBackToOverview = new JButton( "Overview" );
 		btnBackToOverview.addActionListener( this );
-		seriesDetails.add( btnBackToOverview, "bottom, right" );
+		seriesDetails.add( btnBackToOverview, "cell 0 6 3 1, right" );
 
 		seriesInfo.validate();
 		seriesInfo.repaint();
+	}
+
+	private void updateEpisodelist( int seasonNumber ) {
+		Serie serie = this.getSelectedSerie();
+
+		DefaultListModel model = new DefaultListModel();
+
+		Episodes episodes = serie.getSeasons().getSeason().get( seasonNumber - 1 ).getEpisodes();
+
+		if ( episodes == null )
+			return;
+
+		for ( Episode episode : episodes.getEpisode() ) {
+			model.addElement( episode );
+		}
+
+		episodesList.setModel( model );
 	}
 
 	private Image getSeriesImage( int width, int height ) {
@@ -251,6 +314,10 @@ public class SeriesListPanel extends JPanel implements ListSelectionListener, Ac
 		    mainCardLayout.show( this, "SERIESOVERVIEW" );
 		} else if ( e.getSource() == btnSubscribe ) {
 			Logger.log( "Subscribe clicked" );
+		} else if ( e.getActionCommand().contains( "SEASONSWITCH:" ) ) {
+			String[] command = e.getActionCommand().split( ":" );
+			Logger.log( "Season switch to " + command[1] );
+			this.updateEpisodelist( Integer.valueOf( command[1] ) );
 		}
 	}
 }
