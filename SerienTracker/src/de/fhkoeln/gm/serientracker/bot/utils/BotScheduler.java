@@ -6,20 +6,40 @@ import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.impl.StdSchedulerFactory;
 
+import de.fhkoeln.gm.serientracker.utils.Logger;
+
 public class BotScheduler {
+
+	// The scheduler instance
 	private Scheduler scheduler = null;
 
+	// Singleton class
+	private static BotScheduler instance = null;
+
 	/**
-	 * Constructor.
+	 * Private constructor, call getInstance();
 	 * Initialize the scheduler instance.
 	 */
-	public BotScheduler() {
+	private BotScheduler() {
 		try {
 	        // Grab the Scheduler instance from the Factory
 			this.scheduler = StdSchedulerFactory.getDefaultScheduler();
+			Logger.log( "Scheduler name: " + this.scheduler.getSchedulerName() );
 		} catch ( SchedulerException e ) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Returns the instance of this class.
+	 *
+	 * @return BotScheduler
+	 */
+	public static BotScheduler getInstance() {
+		if ( instance == null )
+			instance = new BotScheduler();
+
+		return instance;
 	}
 
 	/**
