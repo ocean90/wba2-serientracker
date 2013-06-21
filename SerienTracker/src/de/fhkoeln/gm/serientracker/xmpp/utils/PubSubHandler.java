@@ -15,10 +15,12 @@ import org.jivesoftware.smackx.packet.DiscoverItems;
 import org.jivesoftware.smackx.pubsub.AccessModel;
 import org.jivesoftware.smackx.pubsub.ConfigureForm;
 import org.jivesoftware.smackx.pubsub.FormType;
+import org.jivesoftware.smackx.pubsub.Item;
 import org.jivesoftware.smackx.pubsub.LeafNode;
 import org.jivesoftware.smackx.pubsub.PubSubManager;
 import org.jivesoftware.smackx.pubsub.PublishModel;
 import org.jivesoftware.smackx.pubsub.Subscription;
+import org.jivesoftware.smackx.pubsub.listener.ItemEventListener;
 
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
@@ -169,7 +171,7 @@ public class PubSubHandler {
 	 * @param String nodeID
 	 * @return Boolean
 	 */
-	public boolean subscribeToNode( String nodeID ) {
+	public boolean subscribeToNode( String nodeID, ItemEventListener<Item> listener ) {
 		LeafNode node = this.getNode( nodeID );
 
 		if ( node == null )
@@ -177,7 +179,7 @@ public class PubSubHandler {
 
 		try {
 			// Add the event listener
-			node.addItemEventListener( new ItemEventCoordinator() );
+			node.addItemEventListener( listener );
 
 			// Subscribe the user
 			node.subscribe( this.cnh.getJID( false ) );
@@ -198,15 +200,15 @@ public class PubSubHandler {
 	 * @param String nodeID
 	 * @return Boolean
 	 */
-	public boolean unsubscribeFromNode( String nodeID ) {
+	public boolean unsubscribeFromNode( String nodeID, ItemEventListener<Item> listener ) {
 		LeafNode node = this.getNode( nodeID );
 
 		if ( node == null )
 			return false;
 
 		try {
-			// TODO
-			// node.removeItemEventListener( listener );
+			// Remove the listener
+			node.removeItemEventListener( listener );
 
 			// Unsubscribe the user
 			node.unsubscribe( this.cnh.getJID( false ) );

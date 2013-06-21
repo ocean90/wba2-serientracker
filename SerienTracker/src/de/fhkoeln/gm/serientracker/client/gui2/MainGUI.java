@@ -37,7 +37,9 @@ public class MainGUI extends JFrame implements ActionListener {
 	private JMenuItem newSeasonMenuItem;
 	private JMenuItem newEpisodeMenuItem;
 
+
 	public MainGUI() {
+		// Get the current session
 		this.session = SessionStore.getInstance();
 
 		try {

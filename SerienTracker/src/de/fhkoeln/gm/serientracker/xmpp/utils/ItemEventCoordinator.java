@@ -23,13 +23,10 @@ public class ItemEventCoordinator implements ItemEventListener<Item> {
 
 		for ( Item item : items.getItems() ) {
 			@SuppressWarnings("unchecked")
-			PayloadItem<SimplePayload> rawData = ( PayloadItem<SimplePayload> ) item;
+			String rawXML = ((PayloadItem<SimplePayload>) item).getPayload().toXML();
 
-			// Remove the <item> element wrapper and the namespace
-			String xml = rawData.toXML()
-					.replaceFirst( "<item id=''>", "")
-					.replaceFirst( "</item>", "" )
-					.replaceFirst( " xmlns=\"http://jabber.org/protocol/pubsub\"", "" );
+			// Remove the the namespace
+			String xml = rawXML.replaceFirst( " xmlns=\"http://jabber.org/protocol/pubsub\"", "" );
 
 			Message payload = null;
 	    	try {

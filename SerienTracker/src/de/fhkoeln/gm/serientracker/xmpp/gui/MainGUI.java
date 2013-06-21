@@ -3,6 +3,7 @@ package de.fhkoeln.gm.serientracker.xmpp.gui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.StringWriter;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,8 +15,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import net.miginfocom.swing.MigLayout;
+
+import org.jivesoftware.smackx.pubsub.LeafNode;
+import org.jivesoftware.smackx.pubsub.PayloadItem;
+import org.jivesoftware.smackx.pubsub.SimplePayload;
+
+import de.fhkoeln.gm.serientracker.jaxb.Message;
+import de.fhkoeln.gm.serientracker.jaxb.ObjectFactory;
+import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
@@ -211,7 +223,35 @@ public class MainGUI extends JFrame implements ActionListener {
 	}
 
 	private void sendPayload() {
-		String payload = testNodePayload.getText();
+    	ObjectFactory factory = new ObjectFactory();
+    	Message message = factory.createMessage();
+    	message.setContent( testNodePayload.getText() );
+
+    	StringWriter notification = new StringWriter();
+    	try {
+			JAXBContext jaxb_context = JAXBContext.newInstance( Message.class );
+	    	Marshaller marshaller = jaxb_context.createMarshaller();
+            marshaller.setProperty( Marshaller.JAXB_FRAGMENT, true ); // Marshall without namespace
+            marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+            marshaller.marshal( message, notification );
+		} catch ( JAXBException e ) {}
+
+		String selectedNode = (String) coboxExistingNodes.getSelectedItem();
+
+		PubSubHandler psh = this.ch.getPubSubHandler();
+    	LeafNode node = psh.getNode( selectedNode );
+		Logger.log( "Sending notification" );
+
+        node.publish(
+    		new PayloadItem<SimplePayload>(
+				null,
+				new SimplePayload(
+					"message",              // Element name
+					"",                     // Namespace
+					notification.toString() // Payload
+				)
+    		)
+        );
 
 		testNodePayload.setText( null );
 	}
