@@ -52,7 +52,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	private JComboBox airdayBox;
 	private JComboBox serieBox1;
 	private JComboBox serieBox2;
-	
+
 	private JButton btnSaveSeries;
 	private JButton btnCancelSeries;
 	private JButton btnSaveSeason;
@@ -86,7 +86,8 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		setLayout( new MigLayout( "gap 0 0", "[grow]", "[30%][grow]" ) );
 
 		newContentCardLayout = new CardLayout();
-		newContentPanels= new JPanel (newContentCardLayout ) ;
+		newContentPanels= new JPanel( newContentCardLayout );
+		this.add( newContentPanels );
 
 		this.setLayout( newContentCardLayout );
 
@@ -118,7 +119,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 
 	private JPanel getNewSeriesPanel() {
 		newSeriesPanel = new JPanel( new MigLayout( "gap 0 0", "[30%][grow]" ) );
-		
+
 		newSeriesPanel.add( new JLabel( "Title:" ), "cell 0 0" );
 		newSeriesPanel.add( new JLabel( "Genres:" ), "cell 0 1" );
 		newSeriesPanel.add( new JLabel( "Year:" ), "cell 0 2" );
