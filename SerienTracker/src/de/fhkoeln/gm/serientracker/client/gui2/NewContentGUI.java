@@ -36,7 +36,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	
+
 	private CardLayout newContentCardLayout;
 
 	private JPanel newContentPanels;
@@ -52,8 +52,8 @@ public class NewContentGUI extends JFrame implements ActionListener {
 
 	private JTextField inputSeriestitle;
 	private JTextField inputSeasonnumber;
-	
-	
+
+
 	private JTextField inputEpisodetitle;
 	private JTextField inputEpisodenumber;
 	private JTextField inputAirdate;
@@ -77,10 +77,10 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	private JButton btnCancelSeason;
 	private JButton btnSaveEpisode;
 	private JButton btnCancelEpisode;
-	
+
 	private JButton btnAddEpisode;
 	private JButton btnAddSeason;
-	
+
 	public enum Context {
 		SERIES, SEASON, EPISODE
 	}
@@ -102,30 +102,31 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		setResizable( false );
 
 		setLayout( new MigLayout( "gap 0 0", "[grow]", "[30%][grow]" ) );
-		
-		newContentPanels= new JPanel ( new CardLayout()) ;
+
+		newContentCardLayout = new CardLayout();
+		newContentPanels= new JPanel (newContentCardLayout ) ;
 
 		this.setLayout( newContentCardLayout );
 
 		newContentPanels.add( this.getNewSeriesPanel(), "SERIES" );
 		newContentPanels.add( this.getNewSeasonPanel(), "SEASON" );
 		newContentPanels.add( this.getNewEpisodePanel(), "EPISODE" );
-		
-			
+
+
 		switch ( this.context ) {
 			case EPISODE:
 				Logger.log( "New episode" );
-				newContentCardLayout.show( this, "EPISODE" );
+				newContentCardLayout.show( newContentPanels, "EPISODE" );
 				break;
-				
+
 			case SEASON:
 				Logger.log( "New season" );
-				newContentCardLayout.show( this, "SEASON" );
+				newContentCardLayout.show( newContentPanels, "SEASON" );
 				break;
-				
+
 			case SERIES:
 				Logger.log( "New series" );
-				newContentCardLayout.show( this, "SERIES" );
+				newContentCardLayout.show( newContentPanels, "SERIES" );
 				break;
 			default:
 				break;
@@ -135,7 +136,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 
 	private JPanel getNewSeriesPanel() {
 		newSeriesPanel = new JPanel( new MigLayout( "gap 0 0", "[30%][grow]" ) );
-		
+
 
 		newSeriesPanel.add( new JLabel( "Title:" ), "cell 0 0" );
 		newSeriesPanel.add( new JLabel( "Genres:" ), "cell 0 1" );
@@ -151,15 +152,15 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSeriesPanel.add( new JLabel( "Seasons:" ), "cell 0 10" );
 
 
-		
+
 		// Input field for title
 		inputTitle = new JTextField();
 		newSeriesPanel.add( inputTitle, "cell 1 0, grow" );
-		
+
 		// Dropdown: Genres
 		genreBox = new JComboBox();
 		Genre[] genres = Genre.values();
-		for ( Genre genre : genres ){			
+		for ( Genre genre : genres ){
 			genreBox.addItem( genre.value() );
 			newSeriesPanel.add( genreBox, "cell 1 1" );
 		}
@@ -171,11 +172,11 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		// Input field for firstaired
 		inputFirstaired = new JTextField();
 		newSeriesPanel.add( inputFirstaired, "cell 1 3, grow" );
-		
+
 		// Dropdown: Country
 		countryBox = new JComboBox();
 		Country[] countries = Country.values();
-		for ( Country country : countries ){			
+		for ( Country country : countries ){
 			countryBox.addItem( country.value() );
 			newSeriesPanel.add( genreBox, "cell 1 4" );
 		}
@@ -191,7 +192,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		// Dropdown: Runtime
 		runtimeBox = new JComboBox();
 		Runtime[] runtimes = Runtime.values();
-		for ( Runtime runtime : runtimes ){			
+		for ( Runtime runtime : runtimes ){
 			runtimeBox.addItem( runtime.value() );
 			newSeriesPanel.add( runtimeBox, "cell 1 6" );
 		}
@@ -199,15 +200,15 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		// Dropdown: Network
 		networkBox = new JComboBox();
 		Network[] networks = Network.values();
-		for ( Network network : networks ){			
+		for ( Network network : networks ){
 			networkBox.addItem( network.value() );
 			newSeriesPanel.add( networkBox, "cell 1 7" );
 		}
-		
+
 		// Dropdown: Airday
 		airdayBox = new JComboBox();
 		Weekday[] weekdays = Weekday.values();
-		for ( Weekday weekday : weekdays ){			
+		for ( Weekday weekday : weekdays ){
 			airdayBox.addItem( weekday.value() );
 			newSeriesPanel.add( airdayBox, "cell 1 8" );
 		}
@@ -215,12 +216,12 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		// Input field for airtime
 		inputAirtime = new JTextField();
 		newSeriesPanel.add( inputAirtime, "cell 1 9, grow" );
-		
+
 		// Button for new season
 		btnAddSeason = new JButton( "Add Season" );
 		btnAddSeason.addActionListener( this );
 		add( btnAddSeason, "cell 1 10, right" );
-		
+
 		/********
 		 * ACTIONS
 		 */
@@ -233,8 +234,8 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		btnSaveSeries.addActionListener( this );
 		add( btnSaveSeries, "cell 1 11, right" );
 
-	
-		
+
+
 		return newSeriesPanel;
 	}
 
@@ -245,26 +246,26 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSeasonPanel.add( new JLabel( "Seasonnumber:" ), "cell 0 2" );
 		newSeasonPanel.add( new JLabel( "Episodes:" ), "cell 0 3" );
 
-				
 
-		
+
+
 		// Input field for title
 		inputSeriestitle = new JTextField();
 		inputSeriestitle.setEnabled( true );
 		newSeasonPanel.add( inputSeriestitle, "cell 1 0, grow" );
-		
+
 		// Dropdown: Serie
-		
-		
+
+
 		// Input field for seasonnumber
 		inputSeasonnumber = new JTextField();
 		newSeasonPanel.add( inputSeasonnumber, "cell 1 2, grow" );
-		
+
 		// Button for new season
 		btnAddEpisode = new JButton( "Add Episode" );
 		btnAddEpisode.addActionListener( this );
 		add( btnAddEpisode, "cell 1 3, right" );
-		
+
 		btnCancelSeason = new JButton( "Cancel" );
 		btnCancelSeason.addActionListener( this );
 		add( btnCancelSeason, "cell 0 4, right" );
@@ -272,13 +273,13 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		btnSaveSeason = new JButton( "Save" );
 		btnSaveSeason.addActionListener( this );
 		add( btnSaveSeason, "cell 1 4, right" );
-			
 
-		
-		
+
+
+
 		return newSeasonPanel;
-	}	
-	
+	}
+
 
 	private JPanel getNewEpisodePanel() {
 		newEpisodePanel = new JPanel( new MigLayout( "gap 0 0", "[30%][grow]" ) );
@@ -292,20 +293,20 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newEpisodePanel.add( new JLabel( "Images:" ), "cell 0 7" );
 
 
-		
+
 		// Input field for title
 		inputEpisodetitle = new JTextField();
 		newEpisodePanel.add( inputEpisodetitle, "cell 1 3, grow" );
-		
+
 		// Input field for episodenumber
 		inputEpisodenumber = new JTextField();
 		newEpisodePanel.add( inputEpisodenumber, "cell 1 4, grow" );
-		
+
 		// Input field for airdate
 		inputAirdate = new JTextField();
 		newEpisodePanel.add( inputAirdate, "cell 1 5, grow" );
-				
-	
+
+
 		// Input field for about overview
 		inputEpisodeoverview = new JTextArea();
 		inputEpisodeoverview.setRows( 5 );
@@ -321,16 +322,16 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		btnSaveEpisode = new JButton( "Save" );
 		btnSaveEpisode.addActionListener( this );
 		add( btnSaveEpisode, "cell 1 6, right" );
-		
-		
+
+
 		return newEpisodePanel;
-	}	
-	
-	
+	}
+
+
 	public void setContext( Context context ) {
 		this.context = context;
 	}
-	
+
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 		if ( e.getSource() == btnSaveSeries ) {
@@ -341,18 +342,18 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		}
 		else if ( e.getSource() == btnSaveSeason ) {
 			Logger.log( "SAVE SEASON" );
-		} 
+		}
 		else if ( e.getSource() == btnCancelSeason ) {
 			this.dispose();
 		}
 		else if ( e.getSource() == btnSaveEpisode ) {
 			Logger.log( "SAVE EPISODE" );
-		} 
+		}
 		else if ( e.getSource() == btnCancelEpisode ) {
 			this.dispose();
 		}
-		
-		
+
+
 		else if ( e.getSource() == btnAddSeason ) {
 			// Goto Season
 			Logger.log( "Add Season clicked" );
@@ -367,5 +368,5 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		    }
 	}
 
-	
+
 }
