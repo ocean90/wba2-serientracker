@@ -1,42 +1,31 @@
 package de.fhkoeln.gm.serientracker.client.gui2;
 
 import java.awt.CardLayout;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-
 
 import de.fhkoeln.gm.serientracker.jaxb.Country;
 import de.fhkoeln.gm.serientracker.jaxb.Genre;
 import de.fhkoeln.gm.serientracker.jaxb.Network;
-import de.fhkoeln.gm.serientracker.jaxb.Shows;
-
 import de.fhkoeln.gm.serientracker.jaxb.Runtime;
 import de.fhkoeln.gm.serientracker.jaxb.Weekday;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
 import net.miginfocom.swing.MigLayout;
 
+
 public class NewContentGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-
-
 	private CardLayout newContentCardLayout;
 
 	private JPanel newContentPanels;
@@ -49,17 +38,12 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	private JTextField inputFirstaired;
 	private JTextArea inputOverview;
 	private JTextField inputAirtime;
-
-	private JTextField inputSeriestitle;
 	private JTextField inputSeasonnumber;
-
 
 	private JTextField inputEpisodetitle;
 	private JTextField inputEpisodenumber;
 	private JTextField inputAirdate;
-
 	private JTextArea inputEpisodeoverview;
-
 
 	private JComboBox genreBox;
 	private JComboBox countryBox;
@@ -68,9 +52,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	private JComboBox airdayBox;
 	private JComboBox serieBox1;
 	private JComboBox serieBox2;
-
-
-
+	
 	private JButton btnSaveSeries;
 	private JButton btnCancelSeries;
 	private JButton btnSaveSeason;
@@ -136,8 +118,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 
 	private JPanel getNewSeriesPanel() {
 		newSeriesPanel = new JPanel( new MigLayout( "gap 0 0", "[30%][grow]" ) );
-
-
+		
 		newSeriesPanel.add( new JLabel( "Title:" ), "cell 0 0" );
 		newSeriesPanel.add( new JLabel( "Genres:" ), "cell 0 1" );
 		newSeriesPanel.add( new JLabel( "Year:" ), "cell 0 2" );
@@ -150,8 +131,6 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSeriesPanel.add( new JLabel( "Airtime:" ), "cell 0 9" );
 		newSeriesPanel.add( new JLabel( "Images:" ), "cell 0 10" );
 		newSeriesPanel.add( new JLabel( "Seasons:" ), "cell 0 10" );
-
-
 
 		// Input field for title
 		inputTitle = new JTextField();
@@ -220,7 +199,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		// Button for new season
 		btnAddSeason = new JButton( "Add Season" );
 		btnAddSeason.addActionListener( this );
-		add( btnAddSeason, "cell 1 10, right" );
+		newSeriesPanel.add( btnAddSeason, "cell 1 10" );
 
 		/********
 		 * ACTIONS
@@ -228,13 +207,11 @@ public class NewContentGUI extends JFrame implements ActionListener {
 
 		btnCancelSeries = new JButton( "Cancel" );
 		btnCancelSeries.addActionListener( this );
-		add( btnCancelSeries, "cell 0 11, right" );
+		newSeriesPanel.add( btnCancelSeries, "cell 0 11, right" );
 
 		btnSaveSeries = new JButton( "Save" );
 		btnSaveSeries.addActionListener( this );
-		add( btnSaveSeries, "cell 1 11, right" );
-
-
+		newSeriesPanel.add( btnSaveSeries, "cell 1 11, right" );
 
 		return newSeriesPanel;
 	}
@@ -246,14 +223,6 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSeasonPanel.add( new JLabel( "Seasonnumber:" ), "cell 0 2" );
 		newSeasonPanel.add( new JLabel( "Episodes:" ), "cell 0 3" );
 
-
-
-
-		// Input field for title
-		inputSeriestitle = new JTextField();
-		inputSeriestitle.setEnabled( true );
-		newSeasonPanel.add( inputSeriestitle, "cell 1 0, grow" );
-
 		// Dropdown: Serie
 
 
@@ -264,18 +233,15 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		// Button for new season
 		btnAddEpisode = new JButton( "Add Episode" );
 		btnAddEpisode.addActionListener( this );
-		add( btnAddEpisode, "cell 1 3, right" );
+		newSeasonPanel.add( btnAddEpisode, "cell 1 3, right" );
 
 		btnCancelSeason = new JButton( "Cancel" );
 		btnCancelSeason.addActionListener( this );
-		add( btnCancelSeason, "cell 0 4, right" );
+		newSeasonPanel.add( btnCancelSeason, "cell 0 4, right" );
 
 		btnSaveSeason = new JButton( "Save" );
 		btnSaveSeason.addActionListener( this );
-		add( btnSaveSeason, "cell 1 4, right" );
-
-
-
+		newSeasonPanel.add( btnSaveSeason, "cell 1 4, right" );
 
 		return newSeasonPanel;
 	}
@@ -292,8 +258,6 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newEpisodePanel.add( new JLabel( "Overview:" ), "cell 0 6" );
 		newEpisodePanel.add( new JLabel( "Images:" ), "cell 0 7" );
 
-
-
 		// Input field for title
 		inputEpisodetitle = new JTextField();
 		newEpisodePanel.add( inputEpisodetitle, "cell 1 3, grow" );
@@ -306,7 +270,6 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		inputAirdate = new JTextField();
 		newEpisodePanel.add( inputAirdate, "cell 1 5, grow" );
 
-
 		// Input field for about overview
 		inputEpisodeoverview = new JTextArea();
 		inputEpisodeoverview.setRows( 5 );
@@ -317,12 +280,11 @@ public class NewContentGUI extends JFrame implements ActionListener {
 
 		btnCancelEpisode = new JButton( "Cancel" );
 		btnCancelEpisode.addActionListener( this );
-		add( btnCancelEpisode, "cell 0 6, right" );
+		newEpisodePanel.add( btnCancelEpisode, "cell 0 6, right" );
 
 		btnSaveEpisode = new JButton( "Save" );
 		btnSaveEpisode.addActionListener( this );
-		add( btnSaveEpisode, "cell 1 6, right" );
-
+		newEpisodePanel.add( btnSaveEpisode, "cell 1 6, right" );
 
 		return newEpisodePanel;
 	}
@@ -352,20 +314,16 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		else if ( e.getSource() == btnCancelEpisode ) {
 			this.dispose();
 		}
-
-
 		else if ( e.getSource() == btnAddSeason ) {
 			// Goto Season
 			Logger.log( "Add Season clicked" );
-			newContentCardLayout.show( this, "SEASON" );
-
-		    }
+			newContentCardLayout.show( newContentPanels, "SEASON" );
+		}
 		else if ( e.getSource() == btnAddEpisode ) {
 			// Goto Episode
 			Logger.log( "Add Episode clicked" );
-			newContentCardLayout.show( this, "EPISODE" );
-
-		    }
+			newContentCardLayout.show( newContentPanels, "EPISODE" );
+		}
 	}
 
 
