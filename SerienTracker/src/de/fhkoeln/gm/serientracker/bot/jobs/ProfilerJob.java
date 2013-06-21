@@ -31,6 +31,10 @@ public class ProfilerJob implements Job {
 	// Where is the series database
 	final String SERIES_DATABASE = "Database/series.xml";
 
+	private Series data;
+
+	private Scheduler scheduler;
+
 	/**
 	 * Called when the job is in fired.
 	 */
@@ -54,23 +58,69 @@ public class ProfilerJob implements Job {
 		 */
 
 		try {
-			Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+			this.scheduler = StdSchedulerFactory.getDefaultScheduler();
 		} catch ( SchedulerException e ) {
-			Logger.err( "Scheduler failure");
+			Logger.err( "Scheduler failure" );
 			return;
 		}
 
-		List<Episode> futureEpisodes = this.getFutureEpisodes();
+		this.data = this.getData();
+
+		if ( this.data == null ) {
+			Logger.err( "Data failure" );
+			return;
+		}
 
 
-		for ( Episode episode : futureEpisodes ) {
-			String seriesID = episode.getSerieID();
+		// Create the nodes
+		List<Serie> series = this.getSeries();
+		if ( series != null ) {
+			int[] notifcationTimes = { 5, 10, 15 };
+			for ( Serie serie : series ) {
+				String seriesID = serie.getSerieID();
 
-			String nodeID = "series:" + seriesID;
-			if ( ! pubSubHandler.nodeExists( nodeID ) ) {
-				Logger.err( "Node doesn't exists: " + nodeID );
+				for ( int notifcationTime : notifcationTimes ) {
+					String nodeID = String.format( "series:%s:%s", seriesID, notifcationTime );
+
+					if ( ! pubSubHandler.nodeExists( nodeID ) ) {
+						Logger.err( "Node doesn't exists: " + nodeID );
+						pubSubHandler.createNode( nodeID, serie.getTitle() );
+					} else {
+						Logger.log( "Node exists: " + nodeID );
+					}
+				}
 			}
 		}
+
+		// Create the event jobs
+		List<Episode> futureEpisodes = this.getFutureEpisodes();
+		if ( futureEpisodes != null ) {
+			for ( Episode episode : futureEpisodes ) {
+				String seriesID = episode.getSerieID();
+
+				String nodeID = "series:" + seriesID;
+				if ( ! pubSubHandler.nodeExists( nodeID ) ) {
+					Logger.err( "Node doesn't exists: " + nodeID );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Loads the series data.
+	 *
+	 * @return Series
+	 */
+	private Series getData() {
+		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
+		return (Series) filehandler.readXML( SERIES_DATABASE );
+	}
+
+	private List<Serie> getSeries() {
+		if ( this.data.getSerie() == null )
+			return null;
+
+		return this.data.getSerie();
 	}
 
 	/**
@@ -79,11 +129,8 @@ public class ProfilerJob implements Job {
 	 * @return List
 	 */
 	private List<Episode> getFutureEpisodes() {
-		FileHandler<Series> filehandler = new FileHandler<Series>( Series.class );
-		Series series = (Series) filehandler.readXML( SERIES_DATABASE );
-
 		// Check for error
-		if ( series == null || series.getSerie() == null )
+		if ( this.data.getSerie() == null )
 			return null;
 
 		// Get current date
@@ -92,7 +139,7 @@ public class ProfilerJob implements Job {
 		// The list for future episodes
 		List<Episode> futureEpisodes = new ArrayList<Episode>();
 
-		for ( Serie serie : series.getSerie() ) {
+		for ( Serie serie : this.data.getSerie() ) {
 			// Check seasons
 			if ( serie.getSeasons() == null )
 				continue;
