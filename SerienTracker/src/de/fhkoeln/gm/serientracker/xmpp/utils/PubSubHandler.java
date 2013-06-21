@@ -45,52 +45,37 @@ public class PubSubHandler {
 	}
 
 	/**
-	 * Returns a node by name. Calls createNode() if node doesn't
-	 * exists.
-	 *
-	 * @param String name
-	 * @return LeafNode
-	 */
-	public LeafNode getNode( String name ) {
-		return getNode( name, true );
-	}
-
-	/**
-	 * Returns a node by name. Calls createNode() if force = true and node doesn't
+	 * Returns a node by node ID.
 	 * exists.
 	 *
 	 * @param String name
 	 * @param Boolean force
 	 * @return LeafNode
 	 */
-	public LeafNode getNode( String name, Boolean force ) {
+	public LeafNode getNode( String nodeID ) {
 		LeafNode node = null;
 
 		try {
-			node = (LeafNode) this.psm.getNode( name );
+			node = (LeafNode) this.psm.getNode( nodeID );
 			Logger.log( "Node exists: " + node.getId() );
 		} catch ( XMPPException e ) {
 			Logger.err( "Node doesn't exists" );
-
-			// Node doesn't exists and force is true, create a new node
-			if ( force )
-				node = this.createNode( name );
 		}
 
 		return node;
 	}
 
 	/**
-	 * Checks if a node exists
+	 * Checks if a node exists.
 	 *
-	 * @param String name
+	 * @param String nodeID
 	 * @return boolean
 	 */
-	public boolean nodeExists( String name ) {
+	public boolean nodeExists( String nodeID ) {
 		LeafNode node = null;
 
 		try {
-			node = (LeafNode) this.psm.getNode( name );
+			node = (LeafNode) this.psm.getNode( nodeID );
 		} catch ( XMPPException e ) {
 			return false;
 		}
@@ -101,10 +86,11 @@ public class PubSubHandler {
 	/**
 	 * Creates a new node.
 	 *
-	 * @param String name
+	 * @param String nodeID
+	 * @param String nodeTitle
 	 * @return LeafNode
 	 */
-	public LeafNode createNode( String name ) {
+	public LeafNode createNode( String nodeID, String nodeTitle ) {
 		LeafNode node = null;
 
 		try {
@@ -120,8 +106,11 @@ public class PubSubHandler {
 			form.setNotifyRetract( true );
 			// Persistent data
 			form.setPersistentItems( false );
+			// An frindly name
+			form.setTitle( nodeTitle );
+
 			// Create new node with configuration
-			node = (LeafNode) this.psm.createNode( name, form );
+			node = (LeafNode) this.psm.createNode( nodeID, form );
 			Logger.log( "Node created: " + node.getId() );
 		} catch ( XMPPException e ) {
 			Logger.err( "Node creation failed" );
@@ -137,7 +126,7 @@ public class PubSubHandler {
 	 * Deletes all nodes.
 	 *
 	 */
-	private void deleteAllNodes() {
+	public void deleteAllNodes() {
 		for ( String node : this.getAllNodes() ) {
 			try {
 				this.psm.deleteNode( node );
@@ -178,11 +167,11 @@ public class PubSubHandler {
 	/**
 	 * Subscribes the current user to a node.
 	 *
-	 * @param String name
+	 * @param String nodeID
 	 * @return Boolean
 	 */
-	public boolean subscribeToNode( String name ) {
-		LeafNode node = this.getNode( name, false );
+	public boolean subscribeToNode( String nodeID ) {
+		LeafNode node = this.getNode( nodeID );
 
 		if ( node == null )
 			return false;
@@ -194,7 +183,7 @@ public class PubSubHandler {
 			// Subscribe the user
 			node.subscribe( this.cnh.getJID( false ) );
 
-			Logger.log( this.cnh.getJID( false ) + " subscriped to " + name );
+			Logger.log( this.cnh.getJID( false ) + " subscriped to " + nodeID );
 		} catch ( XMPPException e ) {
 			Logger.err( "Subscription failed" );
 
@@ -207,20 +196,23 @@ public class PubSubHandler {
 	/**
 	 * Unsubscribes the current user from a node.
 	 *
-	 * @param String name
+	 * @param String nodeID
 	 * @return Boolean
 	 */
-	public boolean unsubscribeFromNode( String name ) {
-		LeafNode node = this.getNode( name, false );
+	public boolean unsubscribeFromNode( String nodeID ) {
+		LeafNode node = this.getNode( nodeID );
 
 		if ( node == null )
 			return false;
 
 		try {
+			// TODO
+			// node.removeItemEventListener( listener );
+
 			// Unsubscribe the user
 			node.unsubscribe( this.cnh.getJID( false ) );
 
-			Logger.log( this.cnh.getJID( false ) + " unsubscriped from " + name );
+			Logger.log( this.cnh.getJID( false ) + " unsubscriped from " + nodeID );
 		} catch ( XMPPException e ) {
 			Logger.err( "Unsubscription failed" );
 
@@ -230,20 +222,38 @@ public class PubSubHandler {
 		return true;
 	}
 
+	public String getNodeTitle( String nodeID ) {
+		LeafNode node = this.getNode( nodeID );
+
+		if ( node == null )
+			return null;
+
+		ConfigureForm nodeConfig;
+		try {
+			nodeConfig = node.getNodeConfiguration();
+		} catch ( XMPPException e ) {
+			return null;
+		}
+
+		return nodeConfig.getTitle();
+	}
+
 	/**
 	 * Returns information about a node.
 	 *
-	 * @param String nodeName
+	 * @param String nodeID
 	 * @return String
 	 */
-	public String getNodeInfo( String nodeName ) {
+	public String getNodeInfo( String nodeID ) {
 		ServiceDiscoveryManager sdm = ServiceDiscoveryManager.getInstanceFor( this.cnh.getConnection() );
 		String nodeInfo = "";
 
+		nodeInfo += "Title: " + this.getNodeTitle( nodeID ) + "\n\n";
+
 		try {
 			String entity = "pubsub." + this.cnh.getConnection().getServiceName();
-			DiscoverInfo discoInfo = sdm.discoverInfo( entity, nodeName );
-			Logger.log( "DiscoverInfo: " + entity + " Node: " + nodeName );
+			DiscoverInfo discoInfo = sdm.discoverInfo( entity, nodeID );
+			Logger.log( "DiscoverInfo: " + entity + " Node: " + nodeID );
 
 			Iterator<Identity> identities = discoInfo.getIdentities();
 
@@ -252,15 +262,17 @@ public class PubSubHandler {
 
 				nodeInfo += "Name:\t" + identity.getName() + "\n" +
 							"Type:\t" + identity.getType() + "\n" +
-							"Category:\t" + identity.getCategory() + "\n";
+							"Category:\t" + identity.getCategory() + "\n\n";
 
-				LeafNode node = this.getNode( nodeName, false );
+				LeafNode node = this.getNode( nodeID );
 				Collection<PacketExtension> nodeExtensions = node.discoverInfo().getExtensions();
 
 				for ( Iterator<PacketExtension> extensions = nodeExtensions.iterator(); extensions.hasNext();) {
 					PacketExtension packetExtension = (PacketExtension) extensions.next();
 					nodeInfo += "Extension:\t" + packetExtension.toXML() + "\n";
 				}
+
+				nodeInfo += "\n";
 
 				for ( Iterator<Feature> nodeFeatures = node.discoverInfo().getFeatures(); nodeFeatures.hasNext();) {
 					Feature nodeFeature = (Feature) nodeFeatures.next();
