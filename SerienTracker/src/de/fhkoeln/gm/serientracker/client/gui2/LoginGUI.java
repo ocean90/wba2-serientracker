@@ -15,9 +15,10 @@ import javax.swing.UIManager;
 import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
 import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
+import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 
-public class LoginGUI extends JFrame {
+public class LoginGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,6 +26,8 @@ public class LoginGUI extends JFrame {
 	private JPasswordField inputPassword;
 	private JTextField inputHostname;
 	private JTextField inputPort;
+	private JButton buttonLogin;
+	private JButton buttonRegister;
 
 	public LoginGUI() {
 		try {
@@ -73,29 +76,33 @@ public class LoginGUI extends JFrame {
 		// Input field for username
 		inputUsername = new JTextField();
 		inputUsername.setText( "test" ); // TODO
+		inputUsername.setActionCommand( "RETURN" );
+		inputUsername.addActionListener( this );
 
 		// Input field for password
 		inputPassword = new JPasswordField();
 		inputPassword.setText( "test" ); // TODO
+		inputPassword.setActionCommand( "RETURN" );
+		inputPassword.addActionListener( this );
 
 		// Input field for hostname
 		inputHostname = new JTextField();
 		inputHostname.setText( XMPPConfig.hostname );
+		inputHostname.setActionCommand( "RETURN" );
+		inputHostname.addActionListener( this );
 
 		// Input field for port
 		inputPort = new JTextField();
 		inputPort.setText( String.valueOf( XMPPConfig.port ) );
+		inputPort.setActionCommand( "RETURN" );
+		inputPort.addActionListener( this );
 
 		// Login button
-		JButton buttonLogin = new JButton( "Login" );
-		buttonLogin.addActionListener( new ActionListener() {
-			public void actionPerformed( ActionEvent e ) {
-				loginActionPerformed( e );
-			}
-		});
+		buttonLogin = new JButton( "Login" );
+		buttonLogin.addActionListener( this );
 
 		// Register button
-		JButton buttonRegister = new JButton( "Register" );
+		buttonRegister = new JButton( "Register" );
 		buttonRegister.setEnabled( false );
 
 		// Add items to panel
@@ -111,14 +118,13 @@ public class LoginGUI extends JFrame {
 
 		panel.add( buttonRegister, "cell 0 4" );
 		panel.add( buttonLogin, "cell 1 4, right" );
+
 	}
 
 	/**
 	 * Check user input and try to connect/login to the XMPP server.
-	 *
-	 * @param ActionEvent e
 	 */
-	public void loginActionPerformed( ActionEvent e ) {
+	public void loginActionPerformed() {
 		// Check username
 		String username = inputUsername.getText().trim();
 		if ( username.length() <= 0 ) {
@@ -173,6 +179,19 @@ public class LoginGUI extends JFrame {
 	 */
 	private void errorDialog( String message ) {
 		JOptionPane.showMessageDialog( null, message, "Error", JOptionPane.ERROR_MESSAGE );
+	}
+
+	/**
+	 * Event listener for button actions.
+	 *
+	 * @param ActionEvent e
+	 */
+	@Override
+	public void actionPerformed( ActionEvent e ) {
+		// Login action
+		if ( e.getSource() == buttonLogin || e.getActionCommand().equals( "RETURN" ) ) {
+			this.loginActionPerformed();
+		}
 	}
 
 }
