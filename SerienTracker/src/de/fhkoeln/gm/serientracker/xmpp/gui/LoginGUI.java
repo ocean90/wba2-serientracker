@@ -76,11 +76,11 @@ public class LoginGUI extends JFrame {
 
 		// Input field for username
 		inputUsername = new JTextField();
-		inputUsername.setText( "test" ); // TODO
+		inputUsername.setText( "bot" ); // TODO
 
 		// Input field for password
 		inputPassword = new JPasswordField();
-		inputPassword.setText( "test" ); // TODO
+		inputPassword.setText( "bot" ); // TODO
 
 		// Input field for hostname
 		inputHostname = new JTextField();

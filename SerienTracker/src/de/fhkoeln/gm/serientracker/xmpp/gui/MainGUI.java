@@ -25,13 +25,13 @@ public class MainGUI extends JFrame implements ActionListener {
 
 	private ConnectionHandler ch;
 
-	private JPanel top;
 	private JPanel sidebar;
 	private JPanel main;
 
-	private JLabel lblUsername;
 	private JComboBox coboxExistingNodes;
 	private JTextArea txtarNodeInfo;
+
+	private JTextArea testNodePayload;
 
 	public MainGUI() {
 		this.ch = ConnectionHandler.getInstance();
@@ -49,7 +49,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 		// Set frame title
-		setTitle( "SERIENTRACKER - XMPP Client" );
+		setTitle( "XMPPCLIENT | DEBUG WINDOW" );
 
 		// Set minimum frame size (x, y, width, height)
 		setBounds( 0, 0, 800, 400 );
@@ -60,30 +60,18 @@ public class MainGUI extends JFrame implements ActionListener {
 		// Disable resizing
 		setResizable( false );
 
-		setLayout( new MigLayout( "gap 0 0", "[300][grow]", "[][grow]" ) );
+		setLayout( new MigLayout( "gap 0 0, fill", "[300][500]", "grow" ) );
 
 
 		/********
 		 * PANELS
 		 */
 
-		top = new JPanel( new MigLayout( "ins 0", "grow", "grow" ) );
-		sidebar = new JPanel( new MigLayout( "ins 0", "grow" ) );
-		main = new JPanel( new MigLayout( "ins 0", "grow", "grow" ) );
+		sidebar = new JPanel( new MigLayout() );
+		main = new JPanel( new MigLayout( "", "grow", "grow" ) );
 
-		add( top, "cell 0 0 2 1, grow" ); // cell: col row colspan rowspan
-		add( sidebar, "cell 0 1, gapright 10, grow"); // cell: col row
-		add( main, "cell 1 1, grow" );
-
-
-		/********
-		 * TOP
-		 */
-
-		// Label: username
-		lblUsername = new JLabel();
-		lblUsername.setHorizontalAlignment( JLabel.RIGHT );
-		top.add( lblUsername, "grow" );
+		add( sidebar, "cell 0 0, grow"); // cell: col row
+		add( main, "cell 1 0, grow" );
 
 
 		/********
@@ -96,27 +84,59 @@ public class MainGUI extends JFrame implements ActionListener {
 		// Label: existing nodes
 		JLabel labelExistingNodes = new JLabel();
 		labelExistingNodes.setText( "Choose a node:" );
-		sidebar.add( labelExistingNodes, "right" );
+		sidebar.add( labelExistingNodes, "cell 0 0" );
 
 		// Dropdown: existing nodes
 		coboxExistingNodes = new JComboBox();
-		sidebar.add( coboxExistingNodes, "spanx 2, grow, wrap" );
+		sidebar.add( coboxExistingNodes, "cell 1 0 2 1, grow" );
 
 		// Button: get node info
 		JButton btnNodeInfo = new JButton( "Info" );
 		btnNodeInfo.setActionCommand( "NODEINFO" );
 		btnNodeInfo.addActionListener( this );
-		sidebar.add( btnNodeInfo, "sizegroup button" );
+		sidebar.add( btnNodeInfo, "cell 0 1, grow" );
 
 		JButton btnNodeSubscribe = new JButton( "Subscribe" );
 		btnNodeSubscribe.setActionCommand( "NODESUBSCRIBE" );
 		btnNodeSubscribe.addActionListener( this );
-		sidebar.add( btnNodeSubscribe, "sizegroup button" );
+		sidebar.add( btnNodeSubscribe, "cell 1 1, grow" );
 
 		JButton btnNodeUnsubscribe = new JButton( "Unsubscribe" );
 		btnNodeUnsubscribe.setActionCommand( "NODEUNSUBSCRIBE" );
 		btnNodeUnsubscribe.addActionListener( this );
-		sidebar.add( btnNodeUnsubscribe, "sizegroup button" );
+		sidebar.add( btnNodeUnsubscribe, "cell 2 1, grow" );
+
+
+		JButton btnDeleteAllNodes = new JButton( "Delete all nodes" );
+		btnDeleteAllNodes.setActionCommand( "DELETENODES" );
+		btnDeleteAllNodes.addActionListener( this );
+		sidebar.add( btnDeleteAllNodes, "cell 0 2, gaptop 20" );
+
+		JButton btnRefreshNodes = new JButton( "Refresh nodes" );
+		btnRefreshNodes.setActionCommand( "REFRESHNODES" );
+		btnRefreshNodes.addActionListener( this );
+		sidebar.add( btnRefreshNodes, "cell 1 2, gaptop 20" );
+
+
+		JPanel testNodeItemPanel = new JPanel( new MigLayout( "fill" ) );
+		testNodeItemPanel.setBorder( BorderFactory.createTitledBorder( null,
+				"Send Notification", TitledBorder.LEFT, TitledBorder.TOP,
+				new Font( "", Font.BOLD, 12 ) ) );
+
+		sidebar.add( testNodeItemPanel, "cell 0 3 3 1, gaptop 20, grow" );
+
+
+		// TextArea: Test node item payload
+		testNodePayload = new JTextArea();
+		testNodePayload.setLineWrap( true );
+		testNodePayload.setRows( 6 );
+		JScrollPane testNodePayloadScroll = new JScrollPane( testNodePayload );
+		testNodeItemPanel.add( testNodePayloadScroll, "grow, wrap" );
+
+		JButton btnSendPayload = new JButton( "Send" );
+		btnSendPayload.setActionCommand( "SENDPAYLOAD" );
+		btnSendPayload.addActionListener( this );
+		testNodeItemPanel.add( btnSendPayload, "right" );
 
 
 		/********
@@ -131,6 +151,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		txtarNodeInfo = new JTextArea();
 		txtarNodeInfo.setEditable( false );
 		txtarNodeInfo.setLineWrap( true );
+		txtarNodeInfo.setFont( new Font( "Monospace", Font.PLAIN, 10 ) );
 		JScrollPane scrollPaneNodeInfo = new JScrollPane( txtarNodeInfo );
 		main.add( scrollPaneNodeInfo, "grow" );
 	}
@@ -139,15 +160,11 @@ public class MainGUI extends JFrame implements ActionListener {
 	 * Update GUI components
 	 */
 	public void update() {
-		this.updateUserInfo();
 		this.updateNodes();
 	}
 
-	private void updateUserInfo() {
-		lblUsername.setText( "Hello "+ this.ch.getAccountAttribute( "name" ) );
-	}
-
 	private void updateNodes() {
+		coboxExistingNodes.removeAllItems();
 		PubSubHandler psh = this.ch.getPubSubHandler();
 		for ( String node : psh.getAllNodes() )
 			coboxExistingNodes.addItem( node );
@@ -166,6 +183,15 @@ public class MainGUI extends JFrame implements ActionListener {
 		} else if ( e.getActionCommand().equals( "NODEUNSUBSCRIBE" ) ) {
 			// TODO: Functionality
 			txtarNodeInfo.setText( "Unsubscribed from " + selectedNode );
+		} else if ( e.getActionCommand().equals( "DELETENODES" ) ) {
+			this.deleteNodes();
+			txtarNodeInfo.setText( "Nodes deleted" );
+		} else if ( e.getActionCommand().equals( "REFRESHNODES" ) ) {
+			this.updateNodes();
+			txtarNodeInfo.setText( "Nodes refreshed" );
+		} else if ( e.getActionCommand().equals( "SENDPAYLOAD" ) ) {
+			this.sendPayload();
+			txtarNodeInfo.setText( "Payload send" );
 		}
 	}
 
@@ -174,6 +200,19 @@ public class MainGUI extends JFrame implements ActionListener {
 
 		String nodeInfo = psh.getNodeInfo( nodeName );
 		txtarNodeInfo.setText( nodeInfo );
+	}
+
+	private void deleteNodes() {
+		PubSubHandler psh = this.ch.getPubSubHandler();
+
+		psh.deleteAllNodes();
+		this.updateNodes();
+	}
+
+	private void sendPayload() {
+		String payload = testNodePayload.getText();
+
+		testNodePayload.setText( null );
 	}
 
 }
