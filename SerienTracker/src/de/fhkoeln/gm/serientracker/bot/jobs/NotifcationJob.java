@@ -35,6 +35,9 @@ public class NotifcationJob implements Job {
     		return;
     	}
 
+    	// TODO
+    	/*
+
     	ObjectFactory factory = new ObjectFactory();
     	Message message = factory.createMessage();
     	message.setContent( "Hallo, es startet was" );
