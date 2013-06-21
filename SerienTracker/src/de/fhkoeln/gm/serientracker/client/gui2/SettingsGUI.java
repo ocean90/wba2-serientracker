@@ -185,9 +185,11 @@ public class SettingsGUI extends JFrame implements ActionListener {
 
 		// Dropdown: Notification times
 		notificationTimes = new JComboBox();
-		notificationTimes.addItem( 5 );
-		notificationTimes.addItem( 10 );
-		notificationTimes.addItem( 15 );
+
+		int[] notifcationTimeItems = { 5, 10, 15 };
+		for ( int notifcationTimeItem : notifcationTimeItems )
+			notificationTimes.addItem( notifcationTimeItem );
+
 		notificationsTab.add( notificationTimes, "cell 1 1" );
 
 		notificationsTab.add( new JLabel( "Minutes before broadcasting" ), "cell 2 1" );
@@ -209,6 +211,26 @@ public class SettingsGUI extends JFrame implements ActionListener {
 		notificationTyp.add( notificationTypMinutes );
 		notificationTyp.add( notificationTypDay );
 
+		// TODO: Disabled for now
+		notificationTypDay.setEnabled( false );
+		notificationDays.setEnabled( false );
+
+		// Set user setting
+		String settingNotificationTyp = this.session.getUserSetting( "notificationTyp" );
+		if ( settingNotificationTyp == null || settingNotificationTyp.equals( "minutes" ) ) {
+			notificationTypMinutes.setSelected( true );
+		} else if ( settingNotificationTyp.equals( "days" ) ) {
+			notificationTypDay.setSelected( true );
+		}
+
+		// Set user setting
+		String settingNotificationMinutes = this.session.getUserSetting( "notificationMinutes" );
+		if ( settingNotificationTyp == null ) {
+			notificationTimes.setSelectedItem( 5 );
+		} else {
+			notificationTimes.setSelectedItem( Integer.valueOf( settingNotificationMinutes ) );
+		}
+
 		return notificationsTab;
 	}
 
@@ -220,6 +242,5 @@ public class SettingsGUI extends JFrame implements ActionListener {
 			this.dispose();
 		}
 	}
-
 
 }

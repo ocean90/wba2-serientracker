@@ -12,4 +12,14 @@
 
 Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </about>
     <joined>2001-10-26T21:32:52+02:00</joined>
+    <settings>
+    	<setting>
+    		<key>notificationTyp</key>
+    		<value>minutes</value>
+    	</setting>
+    	<setting>
+    		<key>notificationMinutes</key>
+    		<value>10</value>
+    	</setting>
+    </settings>
 </user>
