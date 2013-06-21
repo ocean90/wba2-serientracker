@@ -124,7 +124,6 @@ public class PubSubHandler {
 
 	/**
 	 * Deletes all nodes.
-	 *
 	 */
 	public void deleteAllNodes() {
 		for ( String node : this.getAllNodes() ) {
@@ -183,7 +182,7 @@ public class PubSubHandler {
 			// Subscribe the user
 			node.subscribe( this.cnh.getJID( false ) );
 
-			Logger.log( this.cnh.getJID( false ) + " subscriped to " + nodeID );
+			Logger.log( this.cnh.getJID( false ) + " subscribed to " + nodeID );
 		} catch ( XMPPException e ) {
 			Logger.err( "Subscription failed" );
 
@@ -212,7 +211,7 @@ public class PubSubHandler {
 			// Unsubscribe the user
 			node.unsubscribe( this.cnh.getJID( false ) );
 
-			Logger.log( this.cnh.getJID( false ) + " unsubscriped from " + nodeID );
+			Logger.log( this.cnh.getJID( false ) + " unsubscribed from " + nodeID );
 		} catch ( XMPPException e ) {
 			Logger.err( "Unsubscription failed" );
 
@@ -222,6 +221,12 @@ public class PubSubHandler {
 		return true;
 	}
 
+	/**
+	 * Returns the user friendly node title.
+	 *
+	 * @param String nodeID
+	 * @return String
+	 */
 	public String getNodeTitle( String nodeID ) {
 		LeafNode node = this.getNode( nodeID );
 
@@ -236,6 +241,32 @@ public class PubSubHandler {
 		}
 
 		return nodeConfig.getTitle();
+	}
+
+	/**
+	 * Returns a list of subscribed node IDs from the current user.
+	 *
+	 * @return List
+	 */
+	public List<String> getUserSubscriptions() {
+		List<String> subscriptionIDs = new ArrayList<String>();
+
+		List<Subscription> subscriptions;
+		try {
+			subscriptions = this.psm.getSubscriptions();
+		} catch ( XMPPException e ) {
+			Logger.err( "Error while loading subscriptions" );
+			return null;
+		}
+
+		Logger.log( "Subscriptions count: " + subscriptions.size() );
+
+		for ( Subscription subscription : subscriptions ) {
+			Logger.log( subscription.getNode() );
+			subscriptionIDs.add( subscription.getNode() );
+		}
+
+		return subscriptionIDs;
 	}
 
 	/**

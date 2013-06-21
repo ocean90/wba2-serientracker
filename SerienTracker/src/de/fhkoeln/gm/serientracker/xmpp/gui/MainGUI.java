@@ -30,8 +30,8 @@ public class MainGUI extends JFrame implements ActionListener {
 
 	private JComboBox coboxExistingNodes;
 	private JTextArea txtarNodeInfo;
-
 	private JTextArea testNodePayload;
+	private JScrollPane scrollPaneNodeInfo;
 
 	public MainGUI() {
 		this.ch = ConnectionHandler.getInstance();
@@ -152,7 +152,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		txtarNodeInfo.setEditable( false );
 		txtarNodeInfo.setLineWrap( true );
 		txtarNodeInfo.setFont( new Font( "Monospace", Font.PLAIN, 10 ) );
-		JScrollPane scrollPaneNodeInfo = new JScrollPane( txtarNodeInfo );
+		scrollPaneNodeInfo = new JScrollPane( txtarNodeInfo );
 		main.add( scrollPaneNodeInfo, "grow" );
 	}
 
@@ -200,6 +200,7 @@ public class MainGUI extends JFrame implements ActionListener {
 
 		String nodeInfo = psh.getNodeInfo( nodeName );
 		txtarNodeInfo.setText( nodeInfo );
+		txtarNodeInfo.setCaretPosition( 0 ); // Scroll back to top
 	}
 
 	private void deleteNodes() {

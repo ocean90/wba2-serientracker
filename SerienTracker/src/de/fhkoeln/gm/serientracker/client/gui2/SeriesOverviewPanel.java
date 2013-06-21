@@ -11,7 +11,6 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -28,6 +27,7 @@ import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.utils.HTTPClient;
 import de.fhkoeln.gm.serientracker.client.utils.HTTPClient.HTTPMethod;
 import de.fhkoeln.gm.serientracker.client.utils.ImageLoader;
+import de.fhkoeln.gm.serientracker.client.utils.SubscriptionHandler;
 import de.fhkoeln.gm.serientracker.jaxb.Episode;
 import de.fhkoeln.gm.serientracker.jaxb.Episodes;
 import de.fhkoeln.gm.serientracker.jaxb.Season;
@@ -55,7 +55,7 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 	private CardLayout mainCardLayout;
 	private JButton btnViewDetails;
 	private JPanel seriesDetails;
-	private JButton btnSubscribe;
+	private JButton btnSubscription;
 	private JButton btnBackToOverview;
 	private JList episodesList;
 
@@ -200,9 +200,10 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 			seriesDetails.add( seriesTitle, "cell 1 0, top" );
 
 			// Add a (Un)Subscribe button
-			btnSubscribe = new JButton( "Subscribe" );
-			btnSubscribe.addActionListener( this );
-			seriesDetails.add( btnSubscribe, "cell 2 0, top, right" );
+			btnSubscription = new JButton();
+			this.updateSubscriptionButton();
+			btnSubscription.addActionListener( this );
+			seriesDetails.add( btnSubscription, "cell 2 0, top, right" );
 
 			// Display year and network
 			seriesDetails.add( new JLabel( "Year: " + serie.getYear() ), "cell 1 1, width 20%" );
@@ -281,6 +282,20 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 		// Repaint the panel
 		seriesInfo.validate();
 		seriesInfo.repaint();
+	}
+
+	private void updateSubscriptionButton() {
+		// Get the selected series
+		Serie serie = this.getSelectedSerie();
+
+		SubscriptionHandler subHandler = new SubscriptionHandler();
+		if ( subHandler.isSubscribed( serie.getSerieID() ) ) {
+			btnSubscription.setText( "Unsubscribe" );
+			btnSubscription.setActionCommand( "UNSUBSCRIBE" );
+		} else {
+			btnSubscription.setText( "Subscribe" );
+			btnSubscription.setActionCommand( "SUBSCRIBE" );
+		}
 	}
 
 	/**
@@ -403,9 +418,10 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 			// Back To Overview
 			Logger.log( "Back clicked" );
 		    mainCardLayout.show( this, "SERIESOVERVIEW" );
-		} else if ( e.getSource() == btnSubscribe ) {
+		} else if ( e.getSource() == btnSubscription ) {
 			// (Un)Subscribe
 			Logger.log( "Subscribe clicked" );
+			this.subscriptionActionPerformed( e.getActionCommand() );
 		} else if ( e.getActionCommand().contains( "SEASONSWITCH:" ) ) {
 			// Season switch
 			String[] command = e.getActionCommand().split( ":" );
@@ -422,5 +438,20 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 
 			this.updateEpisodelist( Integer.valueOf( command[1] ) );
 		}
+	}
+
+	private void subscriptionActionPerformed( String type ) {
+		SubscriptionHandler subHandler = new SubscriptionHandler();
+		Serie serie = this.getSelectedSerie();
+
+		if ( type.equals( "UNSUBSCRIBE" ) ) {
+			Logger.log( "UNSUBSCRIBE" );
+			subHandler.unsubscribeFrom( serie.getSerieID() );
+		} else {
+			Logger.log( "SUBSCRIBE" );
+			subHandler.subscribeTo( serie.getSerieID() );
+		}
+
+		this.updateSubscriptionButton();
 	}
 }

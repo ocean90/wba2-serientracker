@@ -15,7 +15,6 @@ import javax.swing.UIManager;
 import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
 import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
-import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 
 public class LoginGUI extends JFrame implements ActionListener {
