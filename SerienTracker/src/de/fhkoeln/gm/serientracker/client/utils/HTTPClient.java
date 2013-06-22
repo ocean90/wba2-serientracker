@@ -43,6 +43,9 @@ public class HTTPClient {
 	// Holds the request type
 	private String type = MediaType.APPLICATION_XML;
 
+	// Holds the entity
+	private Object entity;
+
 	// Holds the client instance
 	private WebResource client;
 
@@ -119,6 +122,15 @@ public class HTTPClient {
 	}
 
 	/**
+	 * Sets the entity.
+	 *
+	 * @param String type
+	 */
+	public void setEntity( Object entity ) {
+		this.entity = entity;
+	}
+
+	/**
 	 * Returns the latest error message.
 	 *
 	 * @return String
@@ -190,27 +202,46 @@ public class HTTPClient {
 		Logger.log( "GET request for: " + resource.getURI().toString() );
 
 		// Do the request and save the response
-		ClientResponse response = resource
+		ClientResponse _response = resource
 				.accept( this.accept )
 				.get( ClientResponse.class );
 
 		// Check response status code
-		if ( response.getStatus() != 200 ) {
-			Logger.err( "Request failed! HTTP code: " + response.getStatus() );
-			this.error = "Request failed with HTTP Code " + response.getStatus();
+		if ( _response.getStatus() != 200 ) {
+			Logger.err( "Request failed! HTTP code: " + _response.getStatus() );
+			this.error = "Request failed with HTTP Code " + _response.getStatus();
 			return;
 		}
 
 		// Set the response
-		this.response = response ;
+		this.response = _response;
 	}
 
 	/**
 	 * Implements the HTTP POST method.
 	 */
 	private void post() {
-		// TODO
-		return ;
+		// Get the resource
+		WebResource resource = this.getResource();
+
+		Logger.log( "POST request for: " + resource.getURI().toString() );
+
+		// Do the request and save the response
+		ClientResponse _response = resource
+				.accept( this.accept )
+				.type( this.type )
+				.entity( this.entity )
+				.post( ClientResponse.class );
+
+		// Check response status code
+		if ( _response.getStatus() != 201 ) {
+			Logger.err( "Request failed! HTTP code: " + _response.getStatus() );
+			this.error = "Request failed with HTTP Code " + _response.getStatus();
+			return;
+		}
+
+		// Set the response
+		this.response = _response;
 	}
 
 	/**
