@@ -1,5 +1,8 @@
 package de.fhkoeln.gm.serientracker.webservice.resources;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -12,7 +15,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import de.fhkoeln.gm.serientracker.jaxb.User;
+import de.fhkoeln.gm.serientracker.utils.Hasher;
 import de.fhkoeln.gm.serientracker.utils.Logger;
+import de.fhkoeln.gm.serientracker.webservice.RESTServerConfig;
+import de.fhkoeln.gm.serientracker.webservice.data.SeriesDataHandler;
+import de.fhkoeln.gm.serientracker.webservice.data.UsersDataHandler;
 import de.fhkoeln.gm.serientracker.webservice.utils.FileHandler;
 
 
@@ -28,6 +35,8 @@ import de.fhkoeln.gm.serientracker.webservice.utils.FileHandler;
 @Path( "/users" )
 public class UsersService {
 
+	private UsersDataHandler dh = new UsersDataHandler();
+
 	@GET
 	@Produces( MediaType.APPLICATION_XML )
 	public Response getUsers() {
@@ -40,10 +49,26 @@ public class UsersService {
 	@POST
 	@Consumes( MediaType.APPLICATION_XML )
 	public Response addUser( User newUser ) {
-		Logger.log( "POST user called." );
+		Logger.log( newUser.getUsername() );
 
-		// TODO
-		return Response.status( 409 ).build();
+		String id = "us_" + Hasher.createHash( newUser.getUsername() );
+
+		if ( dh.UserExistsByID( id ) )
+			return Response.status( 409 ).build();
+
+		newUser.setUserID( id );
+
+		if ( ! dh.addUser( newUser ) )
+			return Response.status( 500 ).build();
+
+		URI location = null;
+		try {
+			location = new URI( RESTServerConfig.getServerURL() + "/users/" + id );
+		} catch ( URISyntaxException e ) {
+			e.printStackTrace();
+		}
+
+		return Response.created( location ).build();
 	}
 
 	@Path( "{userID}" )
@@ -52,12 +77,10 @@ public class UsersService {
 	public Response getUser( @PathParam( "userID" ) String id ) {
 		Logger.log( "GET user called." );
 
-		FileHandler<User> filehandler = new FileHandler<User>( User.class );
-		filehandler.setAutoCreateFiles( false );
-		User user = (User) filehandler.readXML( "Database/users/" + id + ".xml" );
-
-		if ( user == null )
+		if ( ! dh.UserExistsByID( id ) )
 			return Response.status( 404 ).build();
+
+		User user = dh.getUserByID( id );
 
 		return Response.ok().entity( user ).build();
 	}

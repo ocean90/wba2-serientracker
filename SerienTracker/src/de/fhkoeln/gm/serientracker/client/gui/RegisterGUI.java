@@ -3,6 +3,7 @@ package de.fhkoeln.gm.serientracker.client.gui;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URI;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -20,12 +21,17 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
+import de.fhkoeln.gm.serientracker.client.utils.HTTPClient;
 import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
+import de.fhkoeln.gm.serientracker.client.utils.HTTPClient.HTTPMethod;
 import de.fhkoeln.gm.serientracker.jaxb.Country;
 import de.fhkoeln.gm.serientracker.jaxb.Gender;
 import de.fhkoeln.gm.serientracker.jaxb.Genre;
 import de.fhkoeln.gm.serientracker.jaxb.Network;
+import de.fhkoeln.gm.serientracker.jaxb.ObjectFactory;
 import de.fhkoeln.gm.serientracker.jaxb.Runtime;
+import de.fhkoeln.gm.serientracker.jaxb.Serie;
+import de.fhkoeln.gm.serientracker.jaxb.User;
 import de.fhkoeln.gm.serientracker.jaxb.Weekday;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
@@ -306,7 +312,7 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		 */
 		String location = inputLocation.getText().trim();
 		if ( location.length() != 0 ) {
-			if ( location.length() < 40 ) {
+			if ( location.length() > 40 ) {
 				errorDialog( "Location must be less than 40 characters." );
 				inputLocation.requestFocusInWindow();
 				return;
@@ -318,7 +324,7 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		 */
 		String about = inputAbout.getText().trim();
 		if ( about.length() != 0 ) {
-			if ( about.length() < 200 ) {
+			if ( about.length() > 200 ) {
 				errorDialog( "About must be less than 200 characters." );
 				inputAbout.requestFocusInWindow();
 				return;
@@ -341,12 +347,48 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		connectionHandler.connect( XMPPConfig.hostname, XMPPConfig.port );
 		boolean success = connectionHandler.register( username, String.valueOf( password ) );
 
-		if ( success ) {
-			this.infoDialog( "The registration was successful.\nYou can log in with your data now." );
-			TrackerClient.showLogin();
-		} else {
-			this.errorDialog( "There was an error with the registration!" );
+		if ( ! success ) {
+			Logger.err( "XMPP Error" );
+			this.errorDialog( "There was an error while the registration!" );
+			return;
 		}
+
+		success = this.saveUserData();
+
+		if ( ! success ) {
+			Logger.err( "REST Error" );
+			this.errorDialog( "There was an error while the registration!" );
+			return;
+		}
+
+		this.infoDialog( "The registration was successful.\nYou can log in with your data now." );
+		TrackerClient.showLogin();
+	}
+
+	private boolean saveUserData() {
+		User user = new ObjectFactory().createUser();
+
+		user.setFirstname( inputFirstname.getText() );
+		user.setLastname( inputLastname.getText() );
+		user.setUsername( inputUsername.getText().trim() );
+		user.setAbout( inputAbout.getText() );
+		user.setAge( Integer.valueOf( inputAge.getText() ) );
+
+		HTTPClient httpClient = new HTTPClient();
+		httpClient.setMethod( HTTPMethod.POST );
+		httpClient.setEntity( user );
+		httpClient.setEndpoint( "/users/" );
+		httpClient.execute();
+
+		if ( httpClient.hasError() ) {
+			Logger.err( "HTTPClient has returned an error" );
+			return false;
+		}
+
+		URI output = httpClient.getResponse().getLocation();
+		Logger.log( "Response: " + output.toString() );
+
+		return true;
 	}
 
 	/**

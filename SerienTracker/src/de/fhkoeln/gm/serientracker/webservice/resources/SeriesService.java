@@ -71,7 +71,7 @@ public class SeriesService {
 		URI location = null;
 		try {
 			location = new URI( RESTServerConfig.getServerURL() + "/series/" + id );
-		} catch (URISyntaxException e) {
+		} catch ( URISyntaxException e ) {
 			e.printStackTrace();
 		}
 
