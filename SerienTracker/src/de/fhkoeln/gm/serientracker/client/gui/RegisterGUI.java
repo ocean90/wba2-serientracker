@@ -71,6 +71,12 @@ public class RegisterGUI extends JFrame implements ActionListener {
 
 	private JButton btnSave;
 
+	private ButtonGroup inputGender;
+
+	private JRadioButton male;
+
+	private JRadioButton female;
+
 
 
 	/**
@@ -160,8 +166,9 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		UserinformationPanel.add( inputLastname, "cell 1 4, grow" );
 
 		// Input field for gender
-		JRadioButton male = new JRadioButton( "Male" );
-		JRadioButton female = new JRadioButton( "Female" );
+		male = new JRadioButton( "Male" );
+		male.setSelected( true );
+		female = new JRadioButton( "Female" );
 
 		ButtonGroup inputGender = new ButtonGroup();
 		inputGender.add( male );
@@ -171,8 +178,8 @@ public class RegisterGUI extends JFrame implements ActionListener {
 
 
 		// Input field for age
-		inputAge = new JTextField(5);
-		UserinformationPanel.add( inputAge, "cell 1 6" );
+		inputAge = new JTextField();
+		UserinformationPanel.add( inputAge, "cell 1 6, width 50" );
 
 		// Input field for location
 		inputLocation = new JTextField();
@@ -373,6 +380,9 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		user.setUsername( inputUsername.getText().trim() );
 		user.setAbout( inputAbout.getText() );
 		user.setAge( Integer.valueOf( inputAge.getText() ) );
+		user.setLocation( inputLocation.getText() );
+		Gender gender = male.isSelected() ? Gender.MALE : Gender.FEMALE;
+		user.setGender( gender );
 
 		HTTPClient httpClient = new HTTPClient();
 		httpClient.setMethod( HTTPMethod.POST );
