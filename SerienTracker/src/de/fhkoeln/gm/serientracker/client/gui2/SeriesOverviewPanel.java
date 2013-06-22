@@ -209,7 +209,7 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 
 			// Display year and network
 			seriesDetails.add( new JLabel( "Year: " + serie.getYear() ), "cell 1 1, width 20%" );
-			seriesDetails.add( new JLabel( "Network: " + serie.getNetwork() ), "cell 1 1" );
+			seriesDetails.add( new JLabel( "Network: " + serie.getNetwork().value() ), "cell 1 1" );
 
 			// Display country and runtime
 			seriesDetails.add( new JLabel( "Country: " + serie.getCountry().value() ), "cell 1 2, width 20%" );

@@ -33,42 +33,6 @@ public class NewContentGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private CardLayout newContentCardLayout;
-
-	private JPanel newContentPanels;
-	private JPanel newSeriesPanel;
-	private JPanel newSeasonPanel;
-	private JPanel newEpisodePanel;
-
-	private JTextField inputTitle;
-	private JTextField inputYear;
-	private JTextField inputFirstaired;
-	private JTextArea inputOverview;
-	private JTextField inputAirtime;
-	private JTextField inputSeasonnumber;
-
-	private JTextField inputEpisodetitle;
-	private JTextField inputEpisodenumber;
-	private JTextField inputAirdate;
-	private JTextArea inputEpisodeoverview;
-
-	private JPanel genreBox;
-	private JComboBox countryBox;
-	private JComboBox runtimeBox;
-	private JComboBox networkBox;
-	private JComboBox airdayBox;
-
-
-	private JButton btnSaveSeries;
-	private JButton btnCancelSeries;
-	private JButton btnSaveSeason;
-	private JButton btnCancelSeason;
-	private JButton btnSaveEpisode;
-	private JButton btnCancelEpisode;
-
-	private JButton btnSaveAndAddEpisode;
-	private JButton btnAddSeason;
-
 	/**
 	 * Content Types: SERIES, SEASON, EPISODE
 	 */
@@ -79,13 +43,42 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	// Holds the current context
 	private Context context;
 
-	private JButton btnSaveAndAddSeason;
+	// Holds the card layout
+	private CardLayout newContentCardLayout;
 
-	private JButton btnSeriesAddImages;
-
+	// GUI components
+	private JPanel newContentPanels;
+	private JPanel newSeriesPanel;
+	private JPanel newSeasonPanel;
+	private JPanel newEpisodePanel;
+	private JTextField inputTitle;
+	private JTextField inputYear;
+	private JTextField inputFirstaired;
+	private JTextArea inputOverview;
+	private JTextField inputAirtime;
+	private JTextField inputSeasonnumber;
+	private JTextField inputEpisodetitle;
+	private JTextField inputEpisodenumber;
+	private JTextField inputAirdate;
+	private JTextArea inputEpisodeoverview;
+	private JPanel genreBox;
+	private JComboBox countryBox;
+	private JComboBox runtimeBox;
+	private JComboBox networkBox;
+	private JComboBox airdayBox;
 	private JComboBox seriesBox;
-
+	private JButton btnSaveSeriesAndAddSeason;
+	private JButton btnSeriesAddImages;
 	private JButton btnSeasonAddImages;
+	private JButton btnSaveSeries;
+	private JButton btnCancelSeries;
+	private JButton btnSaveSeason;
+	private JButton btnCancelSeason;
+	private JButton btnSaveEpisode;
+	private JButton btnCancelEpisode;
+	private JButton btnSaveSeasonAndAddEpisode;
+
+	private JButton btnEpisodeAddImages;
 
 	/**
 	 * Constructor.
@@ -108,9 +101,6 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	 * Sets up the GUI components.
 	 */
 	private void initComponents() {
-		// Set frame title
-		setTitle( "SERIENTRACKER | NEW CONTENT" );
-
 		// Disable resizing
 		setResizable( false );
 
@@ -129,32 +119,59 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newContentPanels.add( this.getNewSeasonPanel(), "SEASON" );
 		newContentPanels.add( this.getNewEpisodePanel(), "EPISODE" );
 
-		// Based on the current context show a panel
+		this.updatePanelDisplay();
+	}
+
+	/**
+	 * Shows the new content panel based on the current context.
+	 */
+	private void updatePanelDisplay() {
 		switch ( this.context ) {
 			case EPISODE:
 				Logger.log( "New episode" );
+
+				// Extend title
+				setTitle( "SERIENTRACKER | NEW CONTENT | EPISODE" );
+
 				// Set frame size
-				setBounds( 0, 0, 600, 200 );
+				setBounds( 0, 0, 600, 400 );
+
 				// Center frame on screen
 				setLocationRelativeTo( null );
+
+				// Show panel
 				newContentCardLayout.show( newContentPanels, "EPISODE" );
 				break;
 
 			case SEASON:
 				Logger.log( "New season" );
+
+				// Extend title
+				setTitle( "SERIENTRACKER | NEW CONTENT | SEASON" );
+
 				// Set frame size
 				setBounds( 0, 0, 600, 200 );
+
 				// Center frame on screen
 				setLocationRelativeTo( null );
+
+				// Show panel
 				newContentCardLayout.show( newContentPanels, "SEASON" );
 				break;
 
 			case SERIES:
 				Logger.log( "New series" );
+
+				// Extend title
+				setTitle( "SERIENTRACKER | NEW CONTENT | SERIES" );
+
 				// Set frame size
 				setBounds( 0, 0, 600, 700 );
+
 				// Center frame on screen
 				setLocationRelativeTo( null );
+
+				// Show panel
 				newContentCardLayout.show( newContentPanels, "SERIES" );
 				break;
 			default:
@@ -273,9 +290,9 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSeriesPanel.add( btnSaveSeries, "cell 1 11, right, gaptop 25" );
 
 		// Button for save and new season
-		btnSaveAndAddSeason = new JButton( "Save & Add Season" );
-		btnSaveAndAddSeason.addActionListener( this );
-		newSeriesPanel.add( btnSaveAndAddSeason, "cell 1 11, right, gaptop 25" );
+		btnSaveSeriesAndAddSeason = new JButton( "Save & Add Season" );
+		btnSaveSeriesAndAddSeason.addActionListener( this );
+		newSeriesPanel.add( btnSaveSeriesAndAddSeason, "cell 1 11, right, gaptop 25" );
 
 		return newSeriesPanel;
 	}
@@ -293,7 +310,6 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSeasonPanel.add( new JLabel( "Series:" ), "cell 0 0" );
 		newSeasonPanel.add( new JLabel( "Seasonnumber:" ), "cell 0 1" );
 		newSeasonPanel.add( new JLabel( "Images:" ), "cell 0 2" );
-
 
 		// Dropdown: Series
 		seriesBox = new JComboBox();
@@ -325,17 +341,24 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSeasonPanel.add( btnSaveSeason, "cell 1 3, right, gaptop 25" );
 
 		// Button for save and add new season
-		btnSaveAndAddEpisode = new JButton( "Save & Add Episode" );
-		btnSaveAndAddEpisode.addActionListener( this );
-		newSeasonPanel.add( btnSaveAndAddEpisode, "cell 1 3, right, gaptop 25" );
+		btnSaveSeasonAndAddEpisode = new JButton( "Save & Add Episode" );
+		btnSaveSeasonAndAddEpisode.addActionListener( this );
+		newSeasonPanel.add( btnSaveSeasonAndAddEpisode, "cell 1 3, right, gaptop 25" );
 
 		return newSeasonPanel;
 	}
 
 
+	/**
+	 * Returns the panel for a new episode.
+	 *
+	 * @return JPanel
+	 */
 	private JPanel getNewEpisodePanel() {
-		newEpisodePanel = new JPanel( new MigLayout( "gap 0 0", "[30%][grow]" ) );
+		// Set up the panel
+		newEpisodePanel = new JPanel( new MigLayout( "gap 0 0", "[150][grow]" ) );
 
+		// Print the labels
 		newEpisodePanel.add( new JLabel( "Serie:" ), "cell 0 0" );
 		newEpisodePanel.add( new JLabel( "Season:" ), "cell 0 1" );
 		newEpisodePanel.add( new JLabel( "Title:" ), "cell 0 3" );
@@ -364,22 +387,42 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		inputEpisodeoverviewScoll.setBorder( new JTextField().getBorder() ); // Workaround for same styling
 		newEpisodePanel.add( inputEpisodeoverviewScoll, "cell 1 6, growx, gaptop 5" );
 
+
+		/********
+		 * ACTIONS
+		 */
+
+		// Button for add images
+		btnEpisodeAddImages = new JButton( "Add Images" );
+		btnEpisodeAddImages.addActionListener( this );
+		btnEpisodeAddImages.setEnabled( false );
+		newEpisodePanel.add( btnEpisodeAddImages, "cell 1 7" );
+
+		// Button for cancel
 		btnCancelEpisode = new JButton( "Cancel" );
 		btnCancelEpisode.addActionListener( this );
-		newEpisodePanel.add( btnCancelEpisode, "cell 0 6, right" );
+		newEpisodePanel.add( btnCancelEpisode, "cell 0 8, left, gaptop 25" );
 
+		// Button for save
 		btnSaveEpisode = new JButton( "Save" );
 		btnSaveEpisode.addActionListener( this );
-		newEpisodePanel.add( btnSaveEpisode, "cell 1 6, right" );
+		newEpisodePanel.add( btnSaveEpisode, "cell 1 8, right, gaptop 25" );
 
 		return newEpisodePanel;
 	}
 
-
+	/**
+	 * Sets the context.
+	 *
+	 * @param Context context
+	 */
 	public void setContext( Context context ) {
 		this.context = context;
 	}
 
+	/**
+	 * Action handler for button actions.
+	 */
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 		if ( e.getSource() == btnSaveSeries ) {
@@ -400,15 +443,17 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		else if ( e.getSource() == btnCancelEpisode ) {
 			this.dispose();
 		}
-		else if ( e.getSource() == btnAddSeason ) {
+		else if ( e.getSource() == btnSaveSeriesAndAddSeason ) {
 			// Goto Season
 			Logger.log( "Add Season clicked" );
-			newContentCardLayout.show( newContentPanels, "SEASON" );
+			this.context = Context.SEASON;
+			this.updatePanelDisplay();
 		}
-		else if ( e.getSource() == btnSaveAndAddEpisode ) {
+		else if ( e.getSource() == btnSaveSeasonAndAddEpisode ) {
 			// Goto Episode
 			Logger.log( "Add Episode clicked" );
-			newContentCardLayout.show( newContentPanels, "EPISODE" );
+			this.context = Context.EPISODE;
+			this.updatePanelDisplay();
 		}
 	}
 
