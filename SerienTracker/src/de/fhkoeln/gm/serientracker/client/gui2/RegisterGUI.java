@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
+import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
 import de.fhkoeln.gm.serientracker.jaxb.Country;
 import de.fhkoeln.gm.serientracker.jaxb.Gender;
 import de.fhkoeln.gm.serientracker.jaxb.Genre;
@@ -27,6 +28,7 @@ import de.fhkoeln.gm.serientracker.jaxb.Network;
 import de.fhkoeln.gm.serientracker.jaxb.Runtime;
 import de.fhkoeln.gm.serientracker.jaxb.Weekday;
 import de.fhkoeln.gm.serientracker.utils.Logger;
+import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -323,10 +325,31 @@ public class RegisterGUI extends JFrame implements ActionListener {
 
 			
 		}
-	private void newRegistrationActionPerformed() {
-		TrackerClient.showMain2();		
-	}
+	private void newRegistrationActionPerformed() {		
+		String username = inputUsername.getText().trim();
+		char[] password = inputPassword.getPassword();
 	
+		// Set manual localhost and port for connection
+		String hostname = "localhost";
+		Integer port = 5222;
+		
+		// Creat new Account from1 userinput
+		ConnectionHandler connectionHandler = ConnectionHandler.getInstance();
+		connectionHandler.connect(hostname, port);
+		connectionHandler.register(username, String.valueOf(inputPassword));
+		
+
+		// Call login handler and execute the login
+		LoginHandler loginHandler = new LoginHandler(username, password, hostname, port);
+		loginHandler.execute();
+
+		if ( loginHandler.hasError() ) {
+			this.errorDialog( loginHandler.getErrorMessage() );
+		} else {
+			TrackerClient.showMain2();
+		}
+		
+	}
 	/**
 	 * Helper method to show an error dialog.
 	 *
@@ -335,6 +358,7 @@ public class RegisterGUI extends JFrame implements ActionListener {
 	private void errorDialog( String message ) {
 		JOptionPane.showMessageDialog( null, message, "Error", JOptionPane.ERROR_MESSAGE );
 	}
+
 
 
 }
