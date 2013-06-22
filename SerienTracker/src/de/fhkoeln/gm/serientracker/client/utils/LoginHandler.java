@@ -30,8 +30,6 @@ public class LoginHandler {
 			// Fetch userdata
 			User userdata = this.fetchUserData();
 
-			// TODO userdata == null check
-
 			if ( this.hasError() ) {
 				this.ch.disconnect();
 			} else {
@@ -76,15 +74,20 @@ public class LoginHandler {
 
 		if ( httpClient.hasError() ) {
 			Logger.err( "HTTPClient has returned an error" );
-			this.error = httpClient.getErrorMessage();
+
+			if ( httpClient.getResponse().getStatus() == 404 ) {
+				this.error = "The userdata for user '" + username + "' doesn't exists!";
+			} else {
+				this.error = httpClient.getErrorMessage();
+			}
+
 			return null;
 		}
 
-
 		User user = httpClient.getResponse().getEntity( User.class );
 		Logger.log( "Userdata fetched for " + user.getFirstname() + " " + user.getLastname() );
+
 		return user;
 	}
-
 
 }

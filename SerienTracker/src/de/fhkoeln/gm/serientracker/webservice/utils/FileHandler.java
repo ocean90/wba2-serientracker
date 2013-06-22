@@ -14,6 +14,8 @@ public class FileHandler<T> {
 	private JAXBContext jaxbContext;
 	private Class<T> type;
 
+	private boolean autoCreateFiles = true;
+
 	public FileHandler( Class<T> type ) {
 		this.type = type;
 
@@ -25,11 +27,19 @@ public class FileHandler<T> {
 			this.unMarshaller = this.jaxbContext.createUnmarshaller();
 
 			// Writing
-			this.marshaller   = this.jaxbContext.createMarshaller();
+			this.marshaller = this.jaxbContext.createMarshaller();
 			this.marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
 		} catch ( JAXBException e ) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Sets the autoCreateFiles variable. If true files will be created
+	 * if not exists.
+	 */
+	public void setAutoCreateFiles( boolean value ) {
+		this.autoCreateFiles = value;
 	}
 
 	/**
@@ -71,6 +81,10 @@ public class FileHandler<T> {
 		// Check if file exists
 		if ( file.exists() )
 			return file;
+
+		// Check if files should be created
+		if ( ! this.autoCreateFiles )
+			return null;
 
 		// File doesn't exist yet, create a new one
 		try {

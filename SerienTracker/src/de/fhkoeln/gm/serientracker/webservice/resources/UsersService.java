@@ -53,7 +53,7 @@ public class UsersService {
 		Logger.log( "GET user called." );
 
 		FileHandler<User> filehandler = new FileHandler<User>( User.class );
-
+		filehandler.setAutoCreateFiles( false );
 		User user = (User) filehandler.readXML( "Database/users/" + id + ".xml" );
 
 		if ( user == null )
