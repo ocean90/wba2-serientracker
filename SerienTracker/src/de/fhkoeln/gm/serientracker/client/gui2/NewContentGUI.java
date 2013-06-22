@@ -51,7 +51,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	private JPanel newSeriesPanel;
 	private JPanel newSeasonPanel;
 	private JPanel newEpisodePanel;
-	private JTextField inputTitle;
+	public JTextField inputTitle;
 	private JTextField inputYear;
 	private JTextField inputFirstaired;
 	private JTextArea inputOverview;
@@ -425,20 +425,25 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed( ActionEvent e ) {
+		NewContentController controller = new NewContentController( this );
+
 		if ( e.getSource() == btnSaveSeries ) {
 			Logger.log( "SAVE SERIES" );
+			controller.saveSeries();
 		}
 		else if ( e.getSource() == btnCancelSeries ) {
 			this.dispose();
 		}
 		else if ( e.getSource() == btnSaveSeason ) {
 			Logger.log( "SAVE SEASON" );
+			controller.saveSeason();
 		}
 		else if ( e.getSource() == btnCancelSeason ) {
 			this.dispose();
 		}
 		else if ( e.getSource() == btnSaveEpisode ) {
 			Logger.log( "SAVE EPISODE" );
+			controller.saveSeason();
 		}
 		else if ( e.getSource() == btnCancelEpisode ) {
 			this.dispose();
