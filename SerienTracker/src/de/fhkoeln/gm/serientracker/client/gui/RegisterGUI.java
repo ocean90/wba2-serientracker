@@ -28,6 +28,7 @@ import de.fhkoeln.gm.serientracker.jaxb.Network;
 import de.fhkoeln.gm.serientracker.jaxb.Runtime;
 import de.fhkoeln.gm.serientracker.jaxb.Weekday;
 import de.fhkoeln.gm.serientracker.utils.Logger;
+import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
 import net.miginfocom.swing.MigLayout;
@@ -234,18 +235,20 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		return PrioritiesPanel;
 	}
 
+	/**
+	 * Action handler for button actions.
+	 */
 	@Override
 	public void actionPerformed( ActionEvent e ) {
-		if ( e.getSource() == btnSave) {
+		if ( e.getSource() == btnSave ) {
 			Logger.log( "REGISTER NEW USER" );
 			this.newRegistrationActionPerformed();
-
 		}
 		else if ( e.getSource() == btnCancel1 ) {
-			this.dispose();
+			TrackerClient.showLogin();
 		}
 		else if ( e.getSource() == btnCancel2 ) {
-			this.dispose();
+			TrackerClient.showLogin();
 		}
 		else if ( e.getSource() == btnNextPage ) {
 			// Goto Episode
@@ -254,102 +257,98 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * Checks user input and opens the new panel on success.
+	 */
 	private void checkInformationActionPerformed(){
-	// Check username
-			String username = inputUsername.getText().trim();
-			if ( username.length() <3 || username.length() >40 ) {
-				errorDialog( "Username must have between 3 and 40 characters." );
-				inputUsername.requestFocusInWindow();
-				return;
-			}
-
-			// Check password
-			char[] password = inputPassword.getPassword();
-			if ( password.length == 0 ) {
-				errorDialog( "Password must not be empty." );
-				inputPassword.requestFocusInWindow();
-				return;
-
-			}
-
-			/**
-			 * Input not required, but if then check restriction
-			 */
-			String firstname = inputFirstname.getText().trim();
-			if(firstname.length() != 0){
-				if ( firstname.length() <2 || firstname.length() >50 ) {
-					errorDialog( "Firstname must have between 2 and 50 characters." );
-					inputFirstname.requestFocusInWindow();
-					return;
-
-					}
-
-			}
-
-			/**
-			 * Input not required, but if then check restriction
-			 */
-			String lastname = inputLastname.getText().trim();
-			if(lastname.length() != 0){
-				if ( lastname.length() <2 || lastname.length() >50 ) {
-					errorDialog( "Lastname must have between 2 and 50 characters." );
-					inputLastname.requestFocusInWindow();
-					return;
-					}
-			}
-
-			/**
-			 * Input not required, but if then check restriction
-			 */
-			String location = inputLocation.getText().trim();
-			if(location.length() != 0){
-				if ( location.length() <40) {
-					errorDialog( "Location must be less than 40 characters." );
-					inputLocation.requestFocusInWindow();
-					return;
-					}
-			}
-
-			/**
-			 * Input not required, but if then check restriction
-			 */
-			String about = inputAbout.getText().trim();
-			if(about.length() != 0){
-				if ( about.length() <200) {
-					errorDialog( "About must be less than 200 characters." );
-					inputAbout.requestFocusInWindow();
-					return;
-					}
-			}
-			registerCardLayout.show( RegisterPanels, "PRIORITIES" );
-
-
+		// Check username
+		String username = inputUsername.getText().trim();
+		if ( username.length() < 3 || username.length() > 40 ) {
+			errorDialog( "Username must have between 3 and 40 characters." );
+			inputUsername.requestFocusInWindow();
+			return;
 		}
+
+		// Check password
+		char[] password = inputPassword.getPassword();
+		if ( password.length == 0 ) {
+			errorDialog( "Password must not be empty." );
+			inputPassword.requestFocusInWindow();
+			return;
+		}
+
+		/**
+		 * Input not required, but if then check restriction
+		 */
+		String firstname = inputFirstname.getText().trim();
+		if ( firstname.length() != 0 ) {
+			if ( firstname.length() < 2 || firstname.length() > 50 ) {
+				errorDialog( "Firstname must have between 2 and 50 characters." );
+				inputFirstname.requestFocusInWindow();
+				return;
+			}
+		}
+
+		/**
+		 * Input not required, but if then check restriction
+		 */
+		String lastname = inputLastname.getText().trim();
+		if ( lastname.length() != 0 ) {
+			if ( lastname.length() < 2 || lastname.length() > 50 ) {
+				errorDialog( "Lastname must have between 2 and 50 characters." );
+				inputLastname.requestFocusInWindow();
+				return;
+			}
+		}
+
+		/**
+		 * Input not required, but if then check restriction
+		 */
+		String location = inputLocation.getText().trim();
+		if ( location.length() != 0 ) {
+			if ( location.length() < 40 ) {
+				errorDialog( "Location must be less than 40 characters." );
+				inputLocation.requestFocusInWindow();
+				return;
+			}
+		}
+
+		/**
+		 * Input not required, but if then check restriction
+		 */
+		String about = inputAbout.getText().trim();
+		if ( about.length() != 0 ) {
+			if ( about.length() < 200 ) {
+				errorDialog( "About must be less than 200 characters." );
+				inputAbout.requestFocusInWindow();
+				return;
+			}
+		}
+
+		// Show the new panel
+		registerCardLayout.show( RegisterPanels, "PRIORITIES" );
+	}
+
+	/**
+	 * Perfoms the register action.
+	 */
 	private void newRegistrationActionPerformed() {
 		String username = inputUsername.getText().trim();
 		char[] password = inputPassword.getPassword();
 
-		// Set manual localhost and port for connection
-		String hostname = "localhost";
-		Integer port = 5222;
-
-		// Creat new Account from1 userinput
+		// Create new Account from userinput
 		ConnectionHandler connectionHandler = ConnectionHandler.getInstance();
-		connectionHandler.connect(hostname, port);
-		connectionHandler.register(username, String.valueOf(inputPassword));
+		connectionHandler.connect( XMPPConfig.hostname, XMPPConfig.port );
+		boolean success = connectionHandler.register( username, String.valueOf( password ) );
 
-
-		// Call login handler and execute the login
-		LoginHandler loginHandler = new LoginHandler(username, password, hostname, port);
-		loginHandler.execute();
-
-		if ( loginHandler.hasError() ) {
-			this.errorDialog( loginHandler.getErrorMessage() );
+		if ( success ) {
+			this.infoDialog( "The registration was successful.\nYou can log in with your data now." );
+			TrackerClient.showLogin();
 		} else {
-			TrackerClient.showMain2();
+			this.errorDialog( "There was an error with the registration!" );
 		}
-
 	}
+
 	/**
 	 * Helper method to show an error dialog.
 	 *
@@ -359,6 +358,12 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog( null, message, "Error", JOptionPane.ERROR_MESSAGE );
 	}
 
-
-
+	/**
+	 * Helper method to show an info dialog.
+	 *
+	 * @param String message
+	 */
+	private void infoDialog( String message ) {
+		JOptionPane.showMessageDialog( null, message, "Info", JOptionPane.INFORMATION_MESSAGE );
+	}
 }

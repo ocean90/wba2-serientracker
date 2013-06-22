@@ -17,7 +17,7 @@ public class TrackerClient {
 
 	// Holds the login GUI instance
 	static LoginGUI loginGUI;
-	
+
 	// Holds the register GUI instance
 	static RegisterGUI registerGUI;
 
@@ -48,30 +48,28 @@ public class TrackerClient {
 		mainGUI.setVisible( true );
 	}
 
+
 	/**
-	 * Hide register GUI and show main GUI.
-	 */
-	public static void showMain2() {
-		registerGUI.dispose();
-		mainGUI = new MainGUI();
-		mainGUI.setVisible( true );
-	}
-	
-	/**
-	 * Hide main GUI and show login GUI.
+	 * Hide main or register GUI and show login GUI.
 	 */
 	public static void showLogin() {
 		if ( mainGUI != null )
 			mainGUI.dispose();
 
+		if ( registerGUI != null )
+			registerGUI.dispose();
+
 		loginGUI = new LoginGUI();
 		loginGUI.setVisible( true );
 	}
 
+	/**
+	 * Hide login GUI and show register GUI.
+	 */
 	public static void showRegister() {
 		loginGUI.dispose();
 		registerGUI = new RegisterGUI();
-		registerGUI.setVisible( true );		
+		registerGUI.setVisible( true );
 	}
 
 }

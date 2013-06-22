@@ -15,7 +15,7 @@ public class ConnectionHandler {
 	private Connection cn;
 
 	// Save the account manager
-	private static AccountManager ac;
+	private AccountManager ac;
 
 	// Save the pub sub handler
 	private PubSubHandler psh;
@@ -129,6 +129,7 @@ public class ConnectionHandler {
 			this.cn.login( username, password, resource );
 			Logger.log( "Login successful" );
 		} catch ( XMPPException e ) {
+			Logger.err( "Login failed" );
 			return false;
 		}
 
@@ -171,14 +172,26 @@ public class ConnectionHandler {
 
 		return ac.getAccountAttribute( key );
 	}
-	
-	public static boolean register(String username, String password){
-		try{
-			ac.createAccount(username, password);
-			}
-	     catch (XMPPException exception){
-				return false;
-	     }
+
+	/**
+	 * Register account to XMPP Server.
+	 *
+	 * @param String username
+	 * @param String password
+	 * @return boolean
+	 */
+	public boolean register( String username, String password ) {
+		if ( cn == null || ac == null )
+			return false;
+
+		try {
+			this.ac.createAccount( username, password );
+			Logger.log( "Account created for user " + username );
+		} catch ( XMPPException e ) {
+			Logger.err( "Couldn't create account" );
+			return false;
+		}
+
 		return true;
 	}
 }
