@@ -35,6 +35,8 @@ public class LoginHandler {
 			} else {
 				session.setUser( userdata );
 			}
+		} else {
+			this.ch.disconnect();
 		}
 	}
 

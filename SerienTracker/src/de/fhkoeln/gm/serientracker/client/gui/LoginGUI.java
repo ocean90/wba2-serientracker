@@ -207,7 +207,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 	}
 
 	private void registerActionPerformed() {
-		TrackerClient.showRegister();		
+		TrackerClient.showRegister();
 	}
 
 }
