@@ -188,7 +188,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		inputTitle = new JTextField();
 		newSeriesPanel.add( inputTitle, "cell 1 0, grow" );
 
-		// Dropdown: Genres
+		//Genres
 		genreBox = new JPanel( new MigLayout( "ins 0, fill" ) );
 		Genre[] genres = Genre.values();
 		int i = 0;

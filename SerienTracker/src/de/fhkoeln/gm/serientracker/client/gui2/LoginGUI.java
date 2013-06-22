@@ -112,7 +112,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 
 		// Register button
 		buttonRegister = new JButton( "Register" );
-		buttonRegister.setEnabled( false );
+		buttonRegister.addActionListener( this );
 
 		// Add items to panel
 		panel.add( labelUsername, "cell 0 0" );
@@ -201,6 +201,13 @@ public class LoginGUI extends JFrame implements ActionListener {
 		if ( e.getSource() == buttonLogin || e.getActionCommand().equals( "RETURN" ) ) {
 			this.loginActionPerformed();
 		}
+		if ( e.getSource() == buttonRegister ) {
+			this.registerActionPerformed();
+		}
+	}
+
+	private void registerActionPerformed() {
+		TrackerClient.showRegister();		
 	}
 
 }
