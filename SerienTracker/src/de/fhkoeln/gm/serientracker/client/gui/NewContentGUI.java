@@ -374,11 +374,11 @@ public class NewContentGUI extends JFrame implements ActionListener {
 
 		// Dropdown: Series
 		episodeSeriesRelation = new JComboBox();
-		newSeasonPanel.add( episodeSeriesRelation, "cell 1 0" );
+		newEpisodePanel.add( episodeSeriesRelation, "cell 1 0" );
 
 		// Dropdown: Seasons
 		episodeSeasonRelation = new JComboBox();
-		newSeasonPanel.add( episodeSeasonRelation, "cell 1 1" );
+		newEpisodePanel.add( episodeSeasonRelation, "cell 1 1" );
 
 		// Input field for title
 		episodeTitle = new JTextField();
