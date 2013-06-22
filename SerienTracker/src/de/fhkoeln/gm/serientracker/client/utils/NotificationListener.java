@@ -2,6 +2,7 @@ package de.fhkoeln.gm.serientracker.client.utils;
 
 import java.io.StringReader;
 
+import javax.swing.SwingUtilities;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -14,14 +15,25 @@ import org.jivesoftware.smackx.pubsub.PayloadItem;
 import org.jivesoftware.smackx.pubsub.SimplePayload;
 import org.jivesoftware.smackx.pubsub.listener.ItemEventListener;
 
+import de.fhkoeln.gm.serientracker.client.gui2.NotificationFrame;
 import de.fhkoeln.gm.serientracker.jaxb.Message;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
+/**
+ * The event listener for receiving node items.
+ * @author Dominik
+ *
+ */
 public class NotificationListener implements ItemEventListener<Item> {
 
-	@SuppressWarnings("unchecked")
+	// Holds the payload
+	private Message payload;
+
+	/**
+	 * Called when an item is published to a node.
+	 */
 	@Override
 	public void handlePublishedItems( ItemPublishEvent<Item> notifications ) {
 		Logger.log( "Notification received" );
@@ -29,23 +41,26 @@ public class NotificationListener implements ItemEventListener<Item> {
 		Logger.log( "Delayed: " + notifications.isDelayed() );
 		Logger.log( "Node ID: " + notifications.getNodeId() );
 
-
-		// Check if it's a delayed notifcation, if true
-		// ignore it.
+		// Check if it's a delayed notifcation, if true ignore the item.
 		if ( notifications.isDelayed() )
 			return;
 
+		// Get the node of the item
 		ConnectionHandler cn = ConnectionHandler.getInstance();
 		PubSubHandler psh = cn.getPubSubHandler();
 		LeafNode node = psh.getNode( notifications.getNodeId() );
 
+		// Get the published item(s)
 		for ( Item notification : notifications.getItems() ) {
+			// Get the raw XML payload
+			@SuppressWarnings("unchecked")
 			String rawXML = ((PayloadItem<SimplePayload>) notification).getPayload().toXML();
 
-			// Remove the the namespace
+			// Remove the the namespace for the raw payload otherwise the marshaller get's into
+			// trouble.
 			String xml = rawXML.replaceFirst( " xmlns=\"http://jabber.org/protocol/pubsub\"", "" );
 
-			Message payload = null;
+			// Get the JAXB object of the payload
 	    	try {
 				JAXBContext jaxbContext = JAXBContext.newInstance( Message.class );
 		    	Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -56,12 +71,14 @@ public class NotificationListener implements ItemEventListener<Item> {
 		    	e.printStackTrace();
 			}
 
+	    	// Sanity check
 	    	if ( payload == null ) {
 		    	Logger.err( "Payload Error" );
 		    	break;
 	    	}
 
-	    	/* Doesn't work: item-not-found(404)
+	    	// Delete the received item from the node, because it's now past.
+	    	// TODO: Doesn't work: item-not-found(404)
 	    	try {
 				node.deleteItem( notification.getId() );
 				Logger.log( "Item deleted: " + notification.getId() );
@@ -69,9 +86,18 @@ public class NotificationListener implements ItemEventListener<Item> {
 				Logger.err( "Couldn't delete item: " + notification.getId() );
 				e.printStackTrace();
 			}
-			*/
 
 	    	Logger.log( "Message Content: " + payload.getContent() );
+
+	    	// Display the notification frame with the payload
+	    	final NotificationListener self = this;
+			SwingUtilities.invokeLater( new Runnable() {
+				@Override
+				public void run() {
+			    	NotificationFrame frame = new NotificationFrame( self.payload );
+			    	frame.setVisible( true );
+				}
+			} );
 		}
 	}
 
