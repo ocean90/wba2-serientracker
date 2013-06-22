@@ -15,7 +15,7 @@ public class ConnectionHandler {
 	private Connection cn;
 
 	// Save the account manager
-	private AccountManager ac;
+	private static AccountManager ac;
 
 	// Save the pub sub handler
 	private PubSubHandler psh;
@@ -170,5 +170,15 @@ public class ConnectionHandler {
 			return null;
 
 		return ac.getAccountAttribute( key );
+	}
+	
+	public static boolean register(String username, String password){
+		try{
+			ac.createAccount(username, password);
+			}
+	     catch (XMPPException exception){
+				return false;
+	     }
+		return true;
 	}
 }

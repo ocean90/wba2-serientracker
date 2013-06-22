@@ -46,7 +46,7 @@ public class LoginHandler {
 		}
 
 		// Try to login
-		if ( ! this.ch.login( username, password, "xmppclient" ) ) {
+		if ( ! this.ch.login( username, password, "trackerclient" ) ) {
 			this.error = "Login failed.";
 			return false;
 		}
