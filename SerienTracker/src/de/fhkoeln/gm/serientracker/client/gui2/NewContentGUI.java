@@ -210,7 +210,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		seriesTitle = new JTextField();
 		newSeriesPanel.add( seriesTitle, "cell 1 0, grow" );
 
-		//Genres
+		// Genres
 		seriesGenreRelations = new JPanel( new MigLayout( "ins 0, fill" ) );
 		Genre[] genres = Genre.values();
 		int i = 0;
