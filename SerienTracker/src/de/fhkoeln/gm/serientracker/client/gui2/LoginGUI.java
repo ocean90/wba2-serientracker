@@ -17,10 +17,16 @@ import de.fhkoeln.gm.serientracker.client.TrackerClient;
 import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 
+/**
+ * Provides the login GUI.
+ *
+ * @author Dominik Schilling
+ */
 public class LoginGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
+	// GUI components
 	private JTextField inputUsername;
 	private JPasswordField inputPassword;
 	private JTextField inputHostname;
@@ -28,6 +34,10 @@ public class LoginGUI extends JFrame implements ActionListener {
 	private JButton buttonLogin;
 	private JButton buttonRegister;
 
+	/**
+	 * Constructor.
+	 * Sets the UI look and inits components.
+	 */
 	public LoginGUI() {
 		try {
 			UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
@@ -38,7 +48,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Set up the GUI components.
+	 * Sets up the GUI components.
 	 */
 	public void initComponents() {
 		// Close when exit

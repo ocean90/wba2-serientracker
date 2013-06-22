@@ -12,24 +12,47 @@ import com.sun.jersey.api.client.WebResource;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.webservice.RESTServerConfig;
 
+/**
+ * HTTP wrapper for the REST API.
+ *
+ * @author Dominik Schilling
+ */
 public class HTTPClient {
 
+	/**
+	 * HTTP Methods: GET, POST, PUT, DELETE
+	 */
 	public enum HTTPMethod {
 		GET, POST, PUT, DELETE;
 	}
 
 	private static final String RESTAPIROOT = RESTServerConfig.getServerURL();
 
+	// Holds the last error message
 	private String error;
 
+	// Holds the HTTP methode
 	private HTTPMethod method;
+
+	// Holds the API endpoint
 	private String endpoint;
+
+	// Holds the accept type
 	private String accept = MediaType.APPLICATION_XML;
+
+	// Holds the request type
 	private String type = MediaType.APPLICATION_XML;
 
+	// Holds the client instance
 	private WebResource client;
+
+	// Holds the server reponse
 	private ClientResponse response;
 
+	/**
+	 * Constructor.
+	 * Checks if the REST API is reachable.
+	 */
 	public HTTPClient() {
 		Logger.log( "HTTPClient started" );
 
@@ -59,34 +82,72 @@ public class HTTPClient {
 
 	}
 
+	/**
+	 * Sets the HTTP method.
+	 *
+	 * @param HTTPMethod method
+	 */
 	public void setMethod( HTTPMethod method ) {
 		this.method = method;
 	}
 
+	/**
+	 * Sets the API endpoint.
+	 *
+	 * @param String endpoint
+	 */
 	public void setEndpoint( String endpoint ) {
 		this.endpoint = endpoint;
 	}
 
+	/**
+	 * Sets the accept type.
+	 *
+	 * @param String accept
+	 */
 	public void setAccept( String accept ) {
-		this.accept = endpoint;
+		this.accept = accept;
 	}
 
+	/**
+	 * Sets the request type.
+	 *
+	 * @param String type
+	 */
 	public void setType( String type ) {
 		this.type = type;
 	}
 
+	/**
+	 * Returns the latest error message.
+	 *
+	 * @return String
+	 */
 	public String getErrorMessage() {
 		return this.error;
 	}
 
+	/**
+	 * Checks if an error exists.
+	 *
+	 * @return boolean
+	 */
 	public boolean hasError() {
 		return this.error != null;
 	}
 
+	/**
+	 * Returns the server response.
+	 *
+	 * @return ClientResponse
+	 */
 	public ClientResponse getResponse() {
 		return this.response;
 	}
 
+	/**
+	 * Executes the HTTP request based on the HTTP methode.
+	 */
 	public void execute() {
 		if ( this.hasError() )
 			return;
@@ -110,42 +171,62 @@ public class HTTPClient {
 		}
 	}
 
+	/**
+	 * Returns the resource of the REST API.
+	 *
+	 * @return WebResource
+	 */
 	private WebResource getResource() {
 		return client.path( this.endpoint );
 	}
 
+	/**
+	 * Implements the HTTP GET method.
+	 */
 	private void get() {
+		// Get the resource
 		WebResource resource = this.getResource();
 
 		Logger.log( "GET request for: " + resource.getURI().toString() );
 
+		// Do the request and save the response
 		ClientResponse response = resource
 				.accept( this.accept )
 				.get( ClientResponse.class );
 
+		// Check response status code
 		if ( response.getStatus() != 200 ) {
 			Logger.err( "Request failed! HTTP code: " + response.getStatus() );
 			this.error = "Request failed with HTTP Code " + response.getStatus();
 			return;
 		}
 
+		// Set the response
 		this.response = response ;
 	}
 
+	/**
+	 * Implements the HTTP POST method.
+	 */
 	private void post() {
 		// TODO
 		return ;
 	}
 
+	/**
+	 * Implements the HTTP PUT method.
+	 */
 	private void put() {
 		// TODO
 		return ;
 	}
 
+	/**
+	 * Implements the HTTP DELETE method.
+	 */
 	private void delete() {
 		// TODO
 		return ;
 	}
-
 
 }

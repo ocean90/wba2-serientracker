@@ -6,17 +6,21 @@ import de.fhkoeln.gm.serientracker.jaxb.Setting;
 import de.fhkoeln.gm.serientracker.jaxb.User;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
-
+/**
+ * Provides a store for an user object.
+ *
+ * @author Dominik Schilling
+ */
 public class SessionStore {
 
 	// Store the user object
 	private User user;
 
-	// Prite constructor
-	private SessionStore() {}
-
 	// Singleton class
 	private static SessionStore instance;
+
+	// Private constructor
+	private SessionStore() {}
 
 	/**
 	 * Creates and returns the instance of this object.

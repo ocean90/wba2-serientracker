@@ -2,7 +2,6 @@ package de.fhkoeln.gm.serientracker.client.utils;
 
 import java.util.List;
 
-import de.fhkoeln.gm.serientracker.client.gui2.MainGUI;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;

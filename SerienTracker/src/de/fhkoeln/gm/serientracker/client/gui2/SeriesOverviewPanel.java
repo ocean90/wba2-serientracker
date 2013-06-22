@@ -45,6 +45,7 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 
 	private static final long serialVersionUID = 1L;
 
+	// GUI components
 	private JList seriesList;
 	private JProgressBar loadingStatus;
 	private JScrollPane seriesListScroll;
@@ -58,18 +59,19 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 	private JButton btnSubscription;
 	private JButton btnBackToOverview;
 	private JList episodesList;
-
 	private JPanel seasonButtons;
 
 	// Constructor
 	public SeriesOverviewPanel() {
+		// Use CardLayout as layout manager
 		mainCardLayout = new CardLayout();
-
 		this.setLayout( mainCardLayout );
 
+		// Add the Panels
 		this.add( this.getSeriesOverviewPanel(), "SERIESOVERVIEW" );
 	    this.add( this.getSeriesDetailsPanel(), "SERIESDETAILS" );
 
+	    // Show the first panel
 	    mainCardLayout.show( this, "SERIESOVERVIEW" );
 	}
 
@@ -284,6 +286,9 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 		seriesInfo.repaint();
 	}
 
+	/**
+	 * Updates the subscription button text and action command.
+	 */
 	private void updateSubscriptionButton() {
 		// Get the selected series
 		Serie serie = this.getSelectedSerie();
@@ -378,7 +383,7 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 		// Set the new model
 		seriesList.setModel( seriesModel );
 
-		// Hode the loading status
+		// Hide the loading status
 		loadingStatus.setVisible( false );
 	}
 
@@ -399,7 +404,7 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 		if ( e.getSource() == seriesList && e.getValueIsAdjusting() ) {
 			// Series list
 			Serie serie = this.getSelectedSerie();
-			Logger.log( "Clicked " + serie.getTitle() );
+			Logger.log( "Selected " + serie.getTitle() );
 			this.updateSeriesShortInfo();
 		}
 	}
@@ -436,15 +441,21 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 				}
 			}
 
+			// Update the episode slider
 			this.updateEpisodelist( Integer.valueOf( command[1] ) );
 		}
 	}
 
-	private void subscriptionActionPerformed( String type ) {
+	/**
+	 * Action handler for the subscription button.
+	 *
+	 * @param String command
+	 */
+	private void subscriptionActionPerformed( String command ) {
 		SubscriptionHandler subHandler = new SubscriptionHandler();
 		Serie serie = this.getSelectedSerie();
 
-		if ( type.equals( "UNSUBSCRIBE" ) ) {
+		if ( command.equals( "UNSUBSCRIBE" ) ) {
 			Logger.log( "UNSUBSCRIBE" );
 			subHandler.unsubscribeFrom( serie.getSerieID() );
 		} else {
@@ -452,6 +463,7 @@ public class SeriesOverviewPanel extends JPanel implements ListSelectionListener
 			subHandler.subscribeTo( serie.getSerieID() );
 		}
 
+		// Update the button status
 		this.updateSubscriptionButton();
 	}
 }

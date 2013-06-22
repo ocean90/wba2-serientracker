@@ -23,8 +23,8 @@ import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
 /**
  * The event listener for receiving node items.
- * @author Dominik
  *
+ * @author Dominik Schilling
  */
 public class NotificationListener implements ItemEventListener<Item> {
 

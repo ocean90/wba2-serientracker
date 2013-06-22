@@ -6,13 +6,23 @@ import de.fhkoeln.gm.serientracker.client.gui2.LoginGUI;
 import de.fhkoeln.gm.serientracker.client.gui2.MainGUI;
 
 
-
+/**
+ * The main client for Serientracker.
+ *
+ * @author Dominik Schilling
+ *
+ */
 public class TrackerClient {
 
+	// Holds the login GUI instance
 	static LoginGUI loginGUI;
+
+	// Holds the main GUI instance
 	static MainGUI mainGUI;
 
 	/**
+	 * The main method. Starts with the login GUI
+	 *
 	 * @param args
 	 */
 	public static void main( String[] args ) {
@@ -44,7 +54,5 @@ public class TrackerClient {
 		loginGUI = new LoginGUI();
 		loginGUI.setVisible( true );
 	}
-
-
 
 }
