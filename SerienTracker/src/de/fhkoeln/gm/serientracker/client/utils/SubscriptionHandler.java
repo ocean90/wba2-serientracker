@@ -41,7 +41,6 @@ public class SubscriptionHandler {
 
 		// Get notification instance
 		this.listener = new NotificationListener();
-
 	}
 
 	/**

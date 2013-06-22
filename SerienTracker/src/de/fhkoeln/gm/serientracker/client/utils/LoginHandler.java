@@ -30,6 +30,8 @@ public class LoginHandler {
 			// Fetch userdata
 			User userdata = this.fetchUserData();
 
+			// TODO userdata == null check
+
 			if ( this.hasError() ) {
 				this.ch.disconnect();
 			} else {

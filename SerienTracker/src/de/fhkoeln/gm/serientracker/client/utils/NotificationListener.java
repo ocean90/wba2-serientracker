@@ -68,7 +68,7 @@ public class NotificationListener implements ItemEventListener<Item> {
 		    	payload = (Message) unmarshaller.unmarshal( xmlString );
 			} catch ( JAXBException e ) {
 		    	Logger.err( "Payload Error" );
-		    	e.printStackTrace();
+		    	//e.printStackTrace();
 			}
 
 	    	// Sanity check
