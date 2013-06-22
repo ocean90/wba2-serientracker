@@ -51,22 +51,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	private JPanel newSeriesPanel;
 	private JPanel newSeasonPanel;
 	private JPanel newEpisodePanel;
-	public JTextField inputTitle;
-	private JTextField inputYear;
-	private JTextField inputFirstaired;
-	private JTextArea inputOverview;
-	private JTextField inputAirtime;
-	private JTextField inputSeasonnumber;
-	private JTextField inputEpisodetitle;
-	private JTextField inputEpisodenumber;
-	private JTextField inputAirdate;
-	private JTextArea inputEpisodeoverview;
-	private JPanel genreBox;
-	private JComboBox countryBox;
-	private JComboBox runtimeBox;
-	private JComboBox networkBox;
-	private JComboBox airdayBox;
-	private JComboBox seriesBox;
+
 	private JButton btnSaveSeriesAndAddSeason;
 	private JButton btnSeriesAddImages;
 	private JButton btnSeasonAddImages;
@@ -77,8 +62,28 @@ public class NewContentGUI extends JFrame implements ActionListener {
 	private JButton btnSaveEpisode;
 	private JButton btnCancelEpisode;
 	private JButton btnSaveSeasonAndAddEpisode;
-
 	private JButton btnEpisodeAddImages;
+
+	public JTextField seasonNumber;
+	public JComboBox seasonSeriesRelation;
+
+	public JTextField seriesTitle;
+	public JTextField seriesYear;
+	public JTextField seriesFirstAired;
+	public JPanel seriesGenreRelations;
+	public JComboBox seriesCountry;
+	public JTextArea seriesOverview;
+	public JComboBox seriesRuntime;
+	public JComboBox seriesNetwork;
+	public JComboBox seriesAirday;
+	public JTextField seriesAirtime;
+
+	public JTextField episodeTitle;
+	public JTextField episodeNumber;
+	public JTextField episodeAirdate;
+	public JTextArea episodeOverview;
+	public JComboBox episodeSeriesRelation;
+	public JComboBox episodeSeasonRelation;
 
 	/**
 	 * Constructor.
@@ -202,11 +207,11 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSeriesPanel.add( new JLabel( "Images:" ), "cell 0 10" );
 
 		// Input field for title
-		inputTitle = new JTextField();
-		newSeriesPanel.add( inputTitle, "cell 1 0, grow" );
+		seriesTitle = new JTextField();
+		newSeriesPanel.add( seriesTitle, "cell 1 0, grow" );
 
 		//Genres
-		genreBox = new JPanel( new MigLayout( "ins 0, fill" ) );
+		seriesGenreRelations = new JPanel( new MigLayout( "ins 0, fill" ) );
 		Genre[] genres = Genre.values();
 		int i = 0;
 		for ( Genre genre : genres ) {
@@ -214,59 +219,59 @@ public class NewContentGUI extends JFrame implements ActionListener {
 			genreCheckbox.setText( genre.value() );
 			genreCheckbox.setName( genre.value() );
 			String constrain = ( ++i % 3 == 0 ) ? "wrap" : "";
-			genreBox.add( genreCheckbox, constrain );
+			seriesGenreRelations.add( genreCheckbox, constrain );
 		}
-		newSeriesPanel.add( genreBox, "cell 1 1" );
+		newSeriesPanel.add( seriesGenreRelations, "cell 1 1" );
 
 		// Input field for year
-		inputYear = new JTextField();
-		inputYear.setText( "2013" );
-		newSeriesPanel.add( inputYear, "cell 1 2, width 50" );
+		seriesYear = new JTextField();
+		seriesYear.setText( "2013" );
+		newSeriesPanel.add( seriesYear, "cell 1 2, width 50" );
 
 		// Input field for firstaired
-		inputFirstaired = new JTextField();
-		newSeriesPanel.add( inputFirstaired, "cell 1 3, grow" );
+		seriesFirstAired = new JTextField();
+		newSeriesPanel.add( seriesFirstAired, "cell 1 3, grow" );
 
 		// Dropdown: Country
-		countryBox = new JComboBox();
+		seriesCountry = new JComboBox();
 		Country[] countries = Country.values();
 		for ( Country country : countries )
-			countryBox.addItem( country.value() );
-		newSeriesPanel.add( countryBox, "cell 1 4" );
+			seriesCountry.addItem( country.value() );
+		newSeriesPanel.add( seriesCountry, "cell 1 4" );
 
 		// Input field for overview
-		inputOverview = new JTextArea();
-		inputOverview.setRows( 5 );
-		inputOverview.setLineWrap( true );
-		JScrollPane inputOverviewScoll = new JScrollPane( inputOverview );
-		inputOverviewScoll.setBorder( new JTextField().getBorder() ); // Workaround for same styling
-		newSeriesPanel.add( inputOverviewScoll, "cell 1 5, growx" );
+		seriesOverview = new JTextArea();
+		seriesOverview.setRows( 5 );
+		seriesOverview.setLineWrap( true );
+		JScrollPane seriesOverviewScoll = new JScrollPane( seriesOverview );
+		seriesOverviewScoll.setBorder( new JTextField().getBorder() ); // Workaround for same styling
+		newSeriesPanel.add( seriesOverviewScoll, "cell 1 5, growx" );
 
 		// Dropdown: Runtime
-		runtimeBox = new JComboBox();
+		seriesRuntime = new JComboBox();
 		Runtime[] runtimes = Runtime.values();
 		for ( Runtime runtime : runtimes )
-			runtimeBox.addItem( runtime.value() );
-		newSeriesPanel.add( runtimeBox, "cell 1 6" );
+			seriesRuntime.addItem( runtime.value() );
+		newSeriesPanel.add( seriesRuntime, "cell 1 6" );
 
 		// Dropdown: Network
-		networkBox = new JComboBox();
+		seriesNetwork = new JComboBox();
 		Network[] networks = Network.values();
 		for ( Network network : networks )
-			networkBox.addItem( network.value() );
-		newSeriesPanel.add( networkBox, "cell 1 7" );
+			seriesNetwork.addItem( network.value() );
+		newSeriesPanel.add( seriesNetwork, "cell 1 7" );
 
 		// Dropdown: Airday
-		airdayBox = new JComboBox();
+		seriesAirday = new JComboBox();
 		Weekday[] weekdays = Weekday.values();
 		for ( Weekday weekday : weekdays )
-			airdayBox.addItem( weekday.value() );
-		newSeriesPanel.add( airdayBox, "cell 1 8" );
+			seriesAirday.addItem( weekday.value() );
+		newSeriesPanel.add( seriesAirday, "cell 1 8" );
 
 		// Input field for airtime
-		inputAirtime = new JTextField();
-		inputAirtime.setText( "00:00:00" );
-		newSeriesPanel.add( inputAirtime, "cell 1 9, width 80" );
+		seriesAirtime = new JTextField();
+		seriesAirtime.setText( "00:00:00" );
+		newSeriesPanel.add( seriesAirtime, "cell 1 9, width 80" );
 
 
 		/********
@@ -312,12 +317,12 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newSeasonPanel.add( new JLabel( "Images:" ), "cell 0 2" );
 
 		// Dropdown: Series
-		seriesBox = new JComboBox();
-		newSeasonPanel.add( seriesBox, "cell 1 0" );
+		seasonSeriesRelation = new JComboBox();
+		newSeasonPanel.add( seasonSeriesRelation, "cell 1 0" );
 
 		// Input field for seasonnumber
-		inputSeasonnumber = new JTextField();
-		newSeasonPanel.add( inputSeasonnumber, "cell 1 1, width 50" );
+		seasonNumber = new JTextField();
+		newSeasonPanel.add( seasonNumber, "cell 1 1, width 50" );
 
 
 		/********
@@ -361,31 +366,39 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		// Print the labels
 		newEpisodePanel.add( new JLabel( "Serie:" ), "cell 0 0" );
 		newEpisodePanel.add( new JLabel( "Season:" ), "cell 0 1" );
-		newEpisodePanel.add( new JLabel( "Title:" ), "cell 0 3" );
-		newEpisodePanel.add( new JLabel( "Number:" ), "cell 0 4" );
-		newEpisodePanel.add( new JLabel( "Airdate:" ), "cell 0 5" );
-		newEpisodePanel.add( new JLabel( "Overview:" ), "cell 0 6" );
-		newEpisodePanel.add( new JLabel( "Images:" ), "cell 0 7" );
+		newEpisodePanel.add( new JLabel( "Title:" ), "cell 0 2" );
+		newEpisodePanel.add( new JLabel( "Number:" ), "cell 0 3" );
+		newEpisodePanel.add( new JLabel( "Airdate:" ), "cell 0 4" );
+		newEpisodePanel.add( new JLabel( "Overview:" ), "cell 0 5" );
+		newEpisodePanel.add( new JLabel( "Images:" ), "cell 0 6" );
+
+		// Dropdown: Series
+		episodeSeriesRelation = new JComboBox();
+		newSeasonPanel.add( episodeSeriesRelation, "cell 1 0" );
+
+		// Dropdown: Seasons
+		episodeSeasonRelation = new JComboBox();
+		newSeasonPanel.add( episodeSeasonRelation, "cell 1 1" );
 
 		// Input field for title
-		inputEpisodetitle = new JTextField();
-		newEpisodePanel.add( inputEpisodetitle, "cell 1 3, grow" );
+		episodeTitle = new JTextField();
+		newEpisodePanel.add( episodeTitle, "cell 1 2, grow" );
 
 		// Input field for episodenumber
-		inputEpisodenumber = new JTextField();
-		newEpisodePanel.add( inputEpisodenumber, "cell 1 4, grow" );
+		episodeNumber = new JTextField();
+		newEpisodePanel.add( episodeNumber, "cell 1 3, grow" );
 
 		// Input field for airdate
-		inputAirdate = new JTextField();
-		newEpisodePanel.add( inputAirdate, "cell 1 5, grow" );
+		episodeAirdate = new JTextField();
+		newEpisodePanel.add( episodeAirdate, "cell 1 4, grow" );
 
 		// Input field for about overview
-		inputEpisodeoverview = new JTextArea();
-		inputEpisodeoverview.setRows( 5 );
-		inputEpisodeoverview.setLineWrap( true );
-		JScrollPane inputEpisodeoverviewScoll = new JScrollPane( inputEpisodeoverview );
-		inputEpisodeoverviewScoll.setBorder( new JTextField().getBorder() ); // Workaround for same styling
-		newEpisodePanel.add( inputEpisodeoverviewScoll, "cell 1 6, growx, gaptop 5" );
+		episodeOverview = new JTextArea();
+		episodeOverview.setRows( 5 );
+		episodeOverview.setLineWrap( true );
+		JScrollPane episodeOverviewScoll = new JScrollPane( episodeOverview );
+		episodeOverviewScoll.setBorder( new JTextField().getBorder() ); // Workaround for same styling
+		newEpisodePanel.add( episodeOverviewScoll, "cell 1 5, growx" );
 
 
 		/********
@@ -396,17 +409,17 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		btnEpisodeAddImages = new JButton( "Add Images" );
 		btnEpisodeAddImages.addActionListener( this );
 		btnEpisodeAddImages.setEnabled( false );
-		newEpisodePanel.add( btnEpisodeAddImages, "cell 1 7" );
+		newEpisodePanel.add( btnEpisodeAddImages, "cell 1 6" );
 
 		// Button for cancel
 		btnCancelEpisode = new JButton( "Cancel" );
 		btnCancelEpisode.addActionListener( this );
-		newEpisodePanel.add( btnCancelEpisode, "cell 0 8, left, gaptop 25" );
+		newEpisodePanel.add( btnCancelEpisode, "cell 0 7, left, gaptop 25" );
 
 		// Button for save
 		btnSaveEpisode = new JButton( "Save" );
 		btnSaveEpisode.addActionListener( this );
-		newEpisodePanel.add( btnSaveEpisode, "cell 1 8, right, gaptop 25" );
+		newEpisodePanel.add( btnSaveEpisode, "cell 1 7, right, gaptop 25" );
 
 		return newEpisodePanel;
 	}
