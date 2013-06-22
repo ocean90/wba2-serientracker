@@ -4,6 +4,7 @@ import javax.swing.SwingUtilities;
 
 import de.fhkoeln.gm.serientracker.client.gui2.LoginGUI;
 import de.fhkoeln.gm.serientracker.client.gui2.MainGUI;
+import de.fhkoeln.gm.serientracker.client.gui2.RegisterGUI;
 
 
 /**
@@ -16,6 +17,9 @@ public class TrackerClient {
 
 	// Holds the login GUI instance
 	static LoginGUI loginGUI;
+	
+	// Holds the register GUI instance
+	static RegisterGUI registerGUI;
 
 	// Holds the main GUI instance
 	static MainGUI mainGUI;
@@ -45,6 +49,15 @@ public class TrackerClient {
 	}
 
 	/**
+	 * Hide register GUI and show main GUI.
+	 */
+	public static void showMain2() {
+		registerGUI.dispose();
+		mainGUI = new MainGUI();
+		mainGUI.setVisible( true );
+	}
+	
+	/**
 	 * Hide main GUI and show login GUI.
 	 */
 	public static void showLogin() {
@@ -53,6 +66,12 @@ public class TrackerClient {
 
 		loginGUI = new LoginGUI();
 		loginGUI.setVisible( true );
+	}
+
+	public static void showRegister() {
+		loginGUI.dispose();
+		registerGUI = new RegisterGUI();
+		registerGUI.setVisible( true );		
 	}
 
 }
