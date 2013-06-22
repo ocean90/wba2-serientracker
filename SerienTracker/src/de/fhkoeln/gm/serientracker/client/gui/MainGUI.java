@@ -1,4 +1,4 @@
-package de.fhkoeln.gm.serientracker.client.gui2;
+package de.fhkoeln.gm.serientracker.client.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +14,7 @@ import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
-import de.fhkoeln.gm.serientracker.client.gui2.NewContentGUI.Context;
+import de.fhkoeln.gm.serientracker.client.gui.NewContentGUI.Context;
 import de.fhkoeln.gm.serientracker.client.utils.SessionStore;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 

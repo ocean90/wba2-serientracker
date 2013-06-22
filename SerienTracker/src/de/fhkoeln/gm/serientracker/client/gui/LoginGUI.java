@@ -11,50 +11,54 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import net.miginfocom.swing.MigLayout;
-
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
+import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
-import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
-public class LoginGUI extends JFrame {
+
+/**
+ * Provides the login GUI.
+ *
+ * @author Dominik Schilling
+ */
+public class LoginGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private ConnectionHandler ch;
-
+	// GUI components
 	private JTextField inputUsername;
 	private JPasswordField inputPassword;
 	private JTextField inputHostname;
 	private JTextField inputPort;
+	private JButton buttonLogin;
+	private JButton buttonRegister;
 
+	/**
+	 * Constructor.
+	 * Sets the UI look and inits components.
+	 */
 	public LoginGUI() {
-		this.ch = ConnectionHandler.getInstance();
-
 		try {
 			UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
-		} catch ( ClassNotFoundException e ) {
-		} catch ( InstantiationException e ) {
-		} catch ( IllegalAccessException e ) {
-		} catch ( UnsupportedLookAndFeelException e ) {
+		} catch ( Exception e ) {
 		}
 
 		initComponents();
 	}
 
 	/**
-	 * Set up the GUI components.
+	 * Sets up the GUI components.
 	 */
 	public void initComponents() {
 		// Close when exit
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 		// Set frame title
-		setTitle( "LOGIN" );
+		setTitle( "SERIENTRACKER | LOGIN" );
 
 		// Set minimum frame size (x, y, width, height)
-		setBounds( 0, 0, 600, 600 );
+		setBounds( 0, 0, 300, 220 );
 
 		// Center frame on screen
 		setLocationRelativeTo( null );
@@ -63,73 +67,73 @@ public class LoginGUI extends JFrame {
 		setResizable( false );
 
 		// Content Panel
-		JPanel panel = new JPanel(new MigLayout());
-		setContentPane( panel );
+		JPanel panel = new JPanel( new MigLayout( "", "[100][grow]", "[][][][][grow]" ) );
+		add( panel );
 
-		// Label for username
-		JLabel labelInfo = new JLabel( "Bitte geben sie ihren Benutzernamen und Passwort ein" );
-		
-		
 		// Label for username
 		JLabel labelUsername = new JLabel( "Username:" );
-		
 
 		// Label for password
-		JLabel labelPassword = new JLabel( "Passwort:" );
+		JLabel labelPassword = new JLabel( "Password:" );
 
 		// Label for hostname
 		JLabel lableHostname = new JLabel( "Hostname:" );
 
 		// Label for port
 		JLabel labelPort = new JLabel( "Port:" );
-		
 
 		// Input field for username
-		inputUsername = new JTextField(20);
+		inputUsername = new JTextField();
+		inputUsername.setText( "test" ); // TODO
+		inputUsername.setActionCommand( "RETURN" );
+		inputUsername.addActionListener( this );
 
 		// Input field for password
-		inputPassword = new JPasswordField(20);
+		inputPassword = new JPasswordField();
+		inputPassword.setText( "test" ); // TODO
+		inputPassword.setActionCommand( "RETURN" );
+		inputPassword.addActionListener( this );
 
 		// Input field for hostname
-		inputHostname = new JTextField(20);
+		inputHostname = new JTextField();
 		inputHostname.setText( XMPPConfig.hostname );
+		inputHostname.setActionCommand( "RETURN" );
+		inputHostname.addActionListener( this );
 
 		// Input field for port
 		inputPort = new JTextField();
 		inputPort.setText( String.valueOf( XMPPConfig.port ) );
+		inputPort.setActionCommand( "RETURN" );
+		inputPort.addActionListener( this );
 
 		// Login button
-		JButton buttonNext = new JButton( "Weiter" );
-		buttonNext.addActionListener( new ActionListener() {
-			public void actionPerformed( ActionEvent e ) {
-				loginActionPerformed( e );
-			}
-		});
+		buttonLogin = new JButton( "Login" );
+		buttonLogin.addActionListener( this );
 
-		
+		// Register button
+		buttonRegister = new JButton( "Register" );
+		buttonRegister.addActionListener( this );
 
-		panel.setLayout( new MigLayout() );
-		panel.add( labelInfo, "span 4,  wrap");
-		
-		panel.add( labelUsername  );
-		panel.add( inputUsername, "grow, wrap");
-		panel.add( labelPassword);
-		panel.add( inputPassword, "grow, wrap" );
-//		panel.add( lableHostname );
-//		panel.add( inputHostname, "wrap" );
-		
-//		ßpanel.add( labelPort);
-//		panel.add( inputPort, "wrap" );
-		
-		panel.add( buttonNext, "skip " );
+		// Add items to panel
+		panel.add( labelUsername, "cell 0 0" );
+		panel.add( labelPassword, "cell 0 1"  );
+		panel.add( lableHostname, "cell 0 2" );
+		panel.add( labelPort, "cell 0 3" );
+
+		panel.add( inputUsername, "cell 1 0, grow" );
+		panel.add( inputPassword, "cell 1 1, grow" );
+		panel.add( inputHostname, "cell 1 2, grow" );
+		panel.add( inputPort, "cell 1 3, grow" );
+
+		panel.add( buttonRegister, "cell 0 4" );
+		panel.add( buttonLogin, "cell 1 4, right" );
+
 	}
 
 	/**
 	 * Check user input and try to connect/login to the XMPP server.
-	 *
-	 * @param ActionEvent e
 	 */
-	public void loginActionPerformed( ActionEvent e ) {
+	public void loginActionPerformed() {
 		// Check username
 		String username = inputUsername.getText().trim();
 		if ( username.length() <= 0 ) {
@@ -166,29 +170,44 @@ public class LoginGUI extends JFrame {
 			return;
 		}
 
-		// Try to connect to the server
-		if ( this.ch.connect( XMPPConfig.hostname, XMPPConfig.port  ) ) {
-			// Try to login
-			if ( this.ch.login( username, password, "xmppclient" ) ) {
-				TrackerClient.closeLoginAndGotoHome();
-			} else {
-				errorDialog( "Login failed." );
-				return;
-			}
-		} else {
-			errorDialog( "Connection failed." );
-			return;
-		}
+		// Call login handler and execute the login
+		LoginHandler loginHandler = new LoginHandler( username, password, hostname, port );
+		loginHandler.execute();
 
+		if ( loginHandler.hasError() ) {
+			this.errorDialog( loginHandler.getErrorMessage() );
+		} else {
+			TrackerClient.showMain();
+		}
 	};
 
 	/**
-	 * Helper method to show an error dialog
+	 * Helper method to show an error dialog.
 	 *
 	 * @param String message
 	 */
 	private void errorDialog( String message ) {
 		JOptionPane.showMessageDialog( null, message, "Error", JOptionPane.ERROR_MESSAGE );
+	}
+
+	/**
+	 * Event listener for button actions.
+	 *
+	 * @param ActionEvent e
+	 */
+	@Override
+	public void actionPerformed( ActionEvent e ) {
+		// Login action
+		if ( e.getSource() == buttonLogin || e.getActionCommand().equals( "RETURN" ) ) {
+			this.loginActionPerformed();
+		}
+		if ( e.getSource() == buttonRegister ) {
+			this.registerActionPerformed();
+		}
+	}
+
+	private void registerActionPerformed() {
+		TrackerClient.showRegister();		
 	}
 
 }

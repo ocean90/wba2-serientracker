@@ -15,7 +15,7 @@ import org.jivesoftware.smackx.pubsub.PayloadItem;
 import org.jivesoftware.smackx.pubsub.SimplePayload;
 import org.jivesoftware.smackx.pubsub.listener.ItemEventListener;
 
-import de.fhkoeln.gm.serientracker.client.gui2.NotificationFrame;
+import de.fhkoeln.gm.serientracker.client.gui.NotificationFrame;
 import de.fhkoeln.gm.serientracker.jaxb.Message;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;

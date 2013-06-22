@@ -2,9 +2,9 @@ package de.fhkoeln.gm.serientracker.client;
 
 import javax.swing.SwingUtilities;
 
-import de.fhkoeln.gm.serientracker.client.gui2.LoginGUI;
-import de.fhkoeln.gm.serientracker.client.gui2.MainGUI;
-import de.fhkoeln.gm.serientracker.client.gui2.RegisterGUI;
+import de.fhkoeln.gm.serientracker.client.gui.LoginGUI;
+import de.fhkoeln.gm.serientracker.client.gui.MainGUI;
+import de.fhkoeln.gm.serientracker.client.gui.RegisterGUI;
 
 
 /**

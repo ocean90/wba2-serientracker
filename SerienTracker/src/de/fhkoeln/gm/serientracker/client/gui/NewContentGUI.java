@@ -1,4 +1,4 @@
-package de.fhkoeln.gm.serientracker.client.gui2;
+package de.fhkoeln.gm.serientracker.client.gui;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
