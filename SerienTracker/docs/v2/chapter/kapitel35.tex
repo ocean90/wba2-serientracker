@@ -98,7 +98,7 @@ Da im Voraus schon auf eine ordentliche Projektstruktur und dementsprechend wied
 Für die GUI sollte \textit{Swing} verwendet werden, welches standardmäßig bei der Komponentenpositionierung auf fixe Pixel setzt. Als Alternative stand ein GUI Builder im Raum oder ein ordnentlicher Layoutmanager.\\
 Die Wahl fiel dabei auf den Layout Manager namens MigLayout\footnote{\url{http://www.miglayout.com/}}.\\
 
-Das Ziel für den User-Client war in erster Linie die Basisfunktionen verfügbar zu machen. Dadurch ergaben sich nun bei Abgabe folgende Funktionen:
+Das Ziel für den User-Client war in erster Linie die Basisfunktionen verfügbar zu machen. In Bezug auf zuvor erstellte Konzeptskizze, zeigte sich, dass viele Funktionen angedacht wurden, die für die letztendliche Realisierung keine bedeutende Rolle spiele und aus diesem Grund ersetz wurden. Die gesamte Home Seite stellt nun eine funktionale Übersicht über vorhandene Serien dar. Eine Auswahl führt zu einer kurzen Vorschau, die in der Detailansicht dann die Informationen einer Serien mit Staffeln und Episodenvorschau hervorruft. Alle Funktionen wie Listenerstellung oder Übersicht, sowie Episodendetails konnten aus zeitlichen Gründe nicht mehr umgesetzt werden. Dadurch ergaben sich nun bei Abgabe folgende Funktionen, die anhand von GUIScreenshots einen Einblick in die Umsetzung geben sollen:
 
 \begin{itemize}
   \item Registrierung eines neuen Accounts über XMPP und REST API
@@ -111,6 +111,50 @@ Das Ziel für den User-Client war in erster Linie die Basisfunktionen verfügbar
   \item Abonnieren einer Serie über XMPP PubSub Extension
   \item Empfangen von Notifcations über XMPP PubSub Extension
 \end{itemize}
+
+
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=0.5\textwidth]{../images/screenshots/client-login.png}
+\caption{Anmeldung via XMPP und REST API}
+\label{login}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=0.5\textwidth]{../images/screenshots/client-user-settings.png}
+\caption{Auslesen der Benutzerdaten über REST API}
+\label{settings}
+\end{figure}
+
+ \begin{figure}[H]
+   \centering
+\includegraphics[width=0.7\textwidth]{../images/screenshots/client-series-overview.png}
+\caption{Auslesen von Serien über REST API}
+\label{overview}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=0.7\textwidth]{../images/screenshots/client-series-details.png}
+\caption{Auslesen von Staffeln und Episoden über REST API}
+\label{details}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{../images/screenshots/client-new-content.png}
+\caption{Anlegen einer neuen Serie über REST API}
+\label{newcontent}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{../images/screenshots/client-notification.png}
+\caption{Empfangen von Notifcations über XMPP PubSub Extension}
+\label{notification}
+\end{figure}
+
+\newpage
 
 \subsubsection{Übersicht Packages}
 
