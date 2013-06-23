@@ -168,5 +168,63 @@ Der DataHandler stellt die Methoden bereit, um auf vorhandene Daten zu operieren
 Die DataHandler wurden entsprechende der persistende Datenstruktur in die jeweiligen Typen aufgeteilt und übernehmen für zugehörige Ressourcen die Verarbeitung. Dadurch entwickelte sich der SeriesDataHandler, UsersDataHandler und ListsDataHandler. Im momentanen Entwicklungsstand des Projektes, verarbeitet der SeriesDataHandler vorerst auch nur die Informationen einer Serie.
 
 \vspace{0.2cm}
+Entsprechende Unterstützung einer Season oder Episode nach diesem Prinzip ist aus zeitlichen Gründen noch nicht implementiert, die Funktionalität der entsprechenden HTTP Operation findet noch auf eine andere Weise statt. Entsprechende GET Anweisungen könnten über die \textit{series/{serieID}/seasons/{seasonID}/episodes} - URI ermöglicht werden. POST, PUT und DELETE Methoden sind innerhalb der Services umgesetzt.\\
+Die Kommunikation zwischen Client und Server ermöglicht bisher einen Austausch zwischen den Serien und Userdaten. In Bezug auf Serien, wurde ein ListService erarbeitet, der jedoch noch nicht auf Funktionalität getestet werden konnte, da der zugehörige ListDataHandler noch Probleme aufweist. Für eine Lösung dieses Problems wäre dabei die Anpassung im Stile des UsersDataHandlers möglich. Dieser greift auf entsprechenden Fileordner auf der Database zu um die passende Userdatei zu erhalten oder legt alternativ neue Files für die einzelnen User an. Der ListsDataHandler geht diesen Schritt etwas anders an, indem er auf die lists.xml zugreift. Auch hier müsste ein Zugriff auf den gesamten Ordner realisiert werden und dann die einzelnen Dateien durchsucht werden. Momentan führt dieser Ansatz nicht zum erwünschten Zweck, da innerhalb der selbstdefinierten Database keine lists.xml existiert, die in der Zeit der Ausarbeitung als Testdatei bestand. Bei der Entwicklung der Testdaten wurde für jede Liste eine seperate Datei angelegt. Eine Zugriff auf eine XML File die mehrere Listen enthält wäre über die genre.xml oder user.xml vorstellbar. Dies wäre ein Grundansatz um dieses Problem entgegen zu gehen. Die entsprechende Pfadauslegung und anschließende Abfrage in Bezug auf die aktuelle Datenstrukturierung.
 
-Entsprechende Unterstützung einer Season oder Episode nach diesem Prinzip ist aus zeitlichen Gründen noch nicht implementiert, die Funktionalität der entsprechenden HTTP Operation findet noch auf eine andere Weise statt. Entsprechende GET Anweisungen könnten über die \textit{series/{serieID}/seasons/{seasonID}/episodes} - URI ermöglicht werden. POST, PUT und DELETE Methoden sind innerhalb der Services umgesetzt.
+Zusätzlich zu den Services sei noch erwähnt, dass neben den jeweiligen RessourceServices ein zusätzlicher ImageService entwickelt wurde. Dieser arbeitet ebenfalls unter Verwendung der GET Methode und gibt dabei gespeicherte Bilder nach Filenamen zurück. Die Anwendung dieser Klasse, spielt jedoch erst in der Cliententwicklung eine Rolle.\\
+
+Im weiteren Rahmen der Dokumentation soll hierbei nicht auf jede einzelne Klasse eingegangen werden. Für einen kurzen Einblick in die Ausarbeitung, werden deshalb im folgenden nur kurz einzelne Aspekte der verschiedenen Methoden am Beispiel des SeriesService dargestellt.\\
+
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=seriesservice,caption= GET Methode /series ]
+  @GET
+  @Produces( MediaType.APPLICATION_XML )
+  public Response getSeries() {
+    Logger.log( "GET series called" );
+
+    Series series = dh.getSeries();
+
+    if ( series == null )
+      return Response.status( 404 ).build();
+
+    return Response.ok().entity( series ).build();
+  }
+\end{lstlisting}
+
+Im Vergleich zur vorherigen GET Methode, fällt die gewonnene Überischtlichkeit und Einfachheit auf. Der DataHandler dh führt die eigentliche Operation aus und liefert in dem Fall alle Serien zurück die vorhanden sind. Sind keine Serien auffindbar, wird der NOT FOUND Statuscode 404 als Response zurückgegeben. Bei Erfolg die gefundenen Entitäten.
+
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=seriesservice,caption= POST Methode /series ]
+@POST
+  @Consumes( MediaType.APPLICATION_XML )
+  public Response addSerie( Serie newSerie ) {
+    Logger.log( newSerie.getTitle() );
+
+    String id = "ss_" + Hasher.createHash( newSerie.getTitle() );
+
+    if ( dh.SerieExistsByID( id ) )
+      return Response.status( 409 ).build();
+
+    newSerie.setSerieID( id );
+
+    if ( ! dh.addSerie( newSerie ) )
+      return Response.status( 500 ).build();
+
+    URI location = null;
+    try {
+      location = new URI( RESTServerConfig.getServerURL() + "/series/" + id );
+    } catch ( URISyntaxException e ) {
+      e.printStackTrace();
+    }
+
+    return Response.created( location ).build();
+  }
+\end{lstlisting}
+
+Die POST Methode zum Pfad /series erstellt eine neue Serie und fügt sie in die Liste ein. Zuerst wird eine neue ID der Serie erstellt. Dazu wird mit der eigenen Hilfsklasse Hasher eine eindeutige Kennung erstellt, wie sie im Abschnitt zur XML Entwicklung bereits angesprochen wurde. Es folgt die Kontrolle, ob die Serie anhand der ID bereits exisitert, wenn ja wird der 409 Conflict Statuscode ausgegeben, um dies zu vermeiden. Sofern es Probleme beim hinzufügen gab, wird dies vom Statuscode 500 informiert über serverseitige Probleme. An geplanter location im URI Pfad wird das Objekt anschließend erstellt.\\
+Auch die beiden weiteren Methoden PUT und DELETE sind nach diesem Prinzip strukturiert. PUT ändert die Daten des bestehenden Objektes zu angegebener ID. Sofern die Serie existiert und Kontrollabfragen keinen Fehlercode zurückgeben, war die Änderung erfolgreich. DELETE entfernt nach gleicher Abfrage das gewünschte Objekte aus vorhandenem Datenbestand.\\
+
+Dieser kurze Einblick in den RESTful Webservice, sollte einen Überblick über die Ausarbeitung der synchronen Kommikationsvorgänge schaffen. \\
+Zu Beginn des Projektes wurden in der Konzeptidee diverse Möglichkeiten überlegt, die vom System unterstützt werden können. Für Serieninteressierte wurde beispielsweise das Favorisieren von Serien, Anlegen von Listen oder Markieren und Bewerten von Episoden angedacht. Die Auseinandersetzung mit dem Projekt, zeigte bei diesem Meilenstein, dass dieses Ziel vom entsprechenden Umfang her zu hoch ausgelegt war. Daher wurde der Fokus auf einen Teil dieser Möglichkeiten gelegt und nur ein Teil davon vertieft umgesetzt. Der Aspekt des Favorisieren und die Listen stellten für den weiteren Verlauf den größten Nutzen dar, weil anhand dieser Elemente die entsprechende Benachrichtigung innerhalb der asynchronen Kommunikation realisiert werden kann. Die weiteren Ansätze wurden zugunsten des Projektzieles außen vor gelassen, könnten aber in einem größer angelegten Projekt dieser Art eine Ausbaumöglichkeit darstellen.
+
+
+
+
