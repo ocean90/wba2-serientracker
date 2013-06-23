@@ -62,7 +62,7 @@ Da die Daten einer Episode, inhaltlich jedoch weiterhin davon abhängen, von wel
 
 Dieses Prinzip lässt sich am Beispiel des XML Schemas einer Episode veranschaulichen. Hierbei handelt es sich um einen Codeauszug, der die gesamte Struktur einer Episode vorgibt:\\
 
-\begin{lstlisting}[label=xsd-definition-episode,caption= Definition des complexElement Episode mit Elementen und Attributen]
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=xsd-definition-episode,caption= Definition des complexElement Episode mit Elementen und Attributen]
   <xs:element name="episode">
     <xs:complexType>
       <xs:choice minOccurs="0">
@@ -89,7 +89,7 @@ Dieser Redudanzverlust wäre auch realisierbar gewesen, wäre eine Season und Ep
 
 Um die Struktur des gesamten Serien Elements zu ermöglichen und vorhandene IDs global nutzen zu können, wird jedes Schema über eine Masterdatei in die einzelnen XML Schemas inkludiert, um bereits definierte Elemente und Attribute wiederverwendbar zu machen und die Datenmenge zu reduzieren.
 
-\begin{lstlisting}[label=xsd-definition-master,caption= Auszug aus der Masterinklude Serientracker.xsd]
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=xsd-definition-master,caption= Auszug aus der Masterinklude Serientracker.xsd]
 <!-- Dieses Schema inkludiert alle zu verwendenen Schemata-->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -126,7 +126,7 @@ Für jeden Elementtyp, der als eigene Entität angelegt wird, wurde eine Contain
 Folgendes Beispiel veranschaulicht den Ansatz und wurde in dieser Form für jeden Elementtyp angelegt:\\
 
 
-\begin{lstlisting}[label=xsd-definition-series,caption= Auszug aus der Series.xsd Definition]
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=xsd-definition-series,caption= Auszug aus der Series.xsd Definition]
 <!-- Element das alle Serien aufnimmt -->
   <xs:element name="series">
     <xs:complexType>
@@ -162,7 +162,7 @@ Einzelne Elemente wie User und List, weisen hierbei noch eine Besonderheit auf. 
 Zur angesprochenen Referenzierung und Identifizierung einzelner Entitäten, zeichnen sie sich durch eine eindeutige ID als Attribut aus. Generell wurden die Informationen wie ID oder Rechte, die ein Objekt nicht inhaltlich sondern eher aus verwaltender Sicht genauer beschreiben, als Attribute definiert. Inhaltliche Informationen die Bestandeteil des Objektes sind, werden hingegen als Elemente angelegt.\\
 
 Für den Datentyp einer solchen ID, wurde ein eigenes Element folgendermaßen definiert:
-\begin{lstlisting}[label=xsd-definition-idtype,caption= Definition der globalen IDs]
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=xsd-definition-idtype,caption= Definition der globalen IDs]
   <xs:simpleType name="idType">
     <xs:restriction base="xs:string">
       <xs:pattern value="|(ss|sn|ep|us|ls|me)_[0-9a-z]{8}"/>
@@ -392,7 +392,7 @@ Innerhalb des Serientrackers hat man es grundlegend mit 2 Typen von Daten zu tun
 Diese Zeichnen sich durch die einfach Angabe des Pfades aus wie beispielsweise \textbf{@Path( "{serieID}" )} für die GET Operation auf die URI \textit{/series/\{serieID\}}.\\
 Der zweite Typ sind die jeweiligen Listen, die sich durch die Elemente und Attribute der Serien entsprechend kategorisieren lassen. Eine Konzeptidee war das Abonnieren bestimmter Genres. Da Listen aber generell Serien unterschiedlichen Genres aufnehmen können, prinzipiell aber auf dem selben XML Schema \textit{list} beruhen, wurde nach einer Möglichkeit entsprechende Objekte bei einem Request herauszufiltern.\\ Die Lösung dieses Problem wurde dann über eine Erweiterung der XSD, sowie der Abfrage per Query-Parameter innerhalb des ListsService erzielt.
 
-\begin{lstlisting}[label=listsservice,caption=Auszug aus ListsService mit QueryParam]
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=listsservice,caption=Auszug aus ListsService mit QueryParam]
 @Path( "/lists" )
 public class ListsService {
 
@@ -444,7 +444,7 @@ Wie diese Codes innerhalb der einzelnen Response-Methoden Verwendung finden, wir
 
 Aufbauend auf die zuvor identifizierten URI, ging es nun darum die entsprechenden HTTP Methoden auf die einzelnen Ressourcen umzusetzen. Aus struktureller Sicht wurde dabei für jede Ressource eine eigene Service-Klasse angelegt, welche die jeweiligen Operationen bereitstellt. Innerhalb einer solchen, werden angedachte URI Pfade der Tiefe nach implementiert. Das Prinzip verdeutlicht folgende Übersicht zum Klassenaufbau des SeriesService und SeasonService:
 
-\begin{lstlisting}[label=seriesseasonsservices,caption= Klassenaufbau von BeispielServices]
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=seriesseasonsservices,caption= Klassenaufbau von BeispielServices]
 /**
  * Service for:
  * GET     /series
@@ -484,7 +484,7 @@ Daher wurden geplante POST, PUT und DELETE Methoden, jeweils nur auf den Hauptty
 Zu Beginn wurden einzelne Methoden ausgearbeitet und auf Funktionalität in Verbindung mit dem Grizzly RESTServer getestet. Erste Versuche wurden mit Hilfe eines erstellten TestClients durchgeführt und lieferten schnell das gewünschte Ergebnis.\\
 Innerhalb dieser Phase fand  die gesamte Realisierung in der jeweiligen Methode definiert. So wurde beispielsweise das Marshalling und Unmarshalling jedes Mal erneut eingebunden.
 
-\begin{lstlisting}[label=seriesservice,caption= GET Testmethode der SeriesID]
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=seriesservice,caption= GET Testmethode der SeriesID]
    @Path( "/{id}" )
    @GET @Produces( "application/xml" )
    public Serie getSingle(@PathParam("id") int id) throws JAXBException {
@@ -507,7 +507,7 @@ Innerhalb dieser Phase fand  die gesamte Realisierung in der jeweiligen Methode 
 
 Eine Abfrage der List lieferte im Idealfall das gesuchte Objekte.So ermöglichte folgende Anfrage die Rückgabe der Serie mit angegebener ID.
 
-\begin{lstlisting}[label=testclient,caption= Anfrage des Testclients nach Serie mit angegebener ID]
+\begin{lstlisting}[basicstyle=\ttfamily,numbers=left,numberstyle=\footnotesize\ttfamily,backgroundcolor=\color{source},label=testclient,caption= Anfrage des Testclients nach Serie mit angegebener ID]
 public static void testGetSerie() {
     String url = host + "/series/ss_0001wade";
     System.out.println( "GET: " + url );
