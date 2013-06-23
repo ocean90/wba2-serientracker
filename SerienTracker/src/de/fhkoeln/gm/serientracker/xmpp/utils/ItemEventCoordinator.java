@@ -40,22 +40,22 @@ public class ItemEventCoordinator implements ItemEventListener<Item> {
 
 			// Get a JAXB object of the XML data.
 			Message payload = null;
-	    	try {
+			try {
 				JAXBContext jaxbContext = JAXBContext.newInstance( Message.class );
-		    	Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-		    	StringReader xmlString = new StringReader( xml );
-		    	payload = (Message) unmarshaller.unmarshal( xmlString );
+				Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+				StringReader xmlString = new StringReader( xml );
+				payload = (Message) unmarshaller.unmarshal( xmlString );
 			} catch ( JAXBException e ) {
-		    	Logger.err( "Payload Error" );
-		    	e.printStackTrace();
+				Logger.err( "Payload Error" );
+				e.printStackTrace();
 			}
 
-	    	if ( payload == null ) {
-		    	Logger.err( "Payload Error" );
-		    	break;
-	    	}
+			if ( payload == null ) {
+				Logger.err( "Payload Error" );
+				break;
+			}
 
-	    	Logger.log( "Message Content: " + payload.getContent() );
+			Logger.log( "Message Content: " + payload.getContent() );
 		}
 	}
 
