@@ -95,7 +95,7 @@
 \usepackage{verbatim,moreverb}
 
 %Grauton für Quelltext-Umgebung definieren 80% Grau
-\definecolor{source}{gray}{.90}
+\definecolor{source}{gray}{0.95}
 
 %Paket für Quelltext-Umgebung
 \usepackage{listings}
@@ -115,7 +115,30 @@
             pdfauthor={Dennis Meyer, Dominik Schilling}
             ]{hyperref}
 
+
 % ###################
+% Eigene Änderungen
 
 \usepackage{subfig}
 \usepackage{wrapfig}
+
+% Codestyling
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\lstset{
+    breaklines		= true,
+    numbers			= left,
+    stepnumber		= 1,
+    basicstyle		= \ttfamily,
+    numberstyle		= \footnotesize\ttfamily,
+    backgroundcolor	= \color{source},
+    language		= java,
+    commentstyle    = \color{darkgreen}\ttfamily,
+    keywordstyle    = \color{blue}\ttfamily,
+    stringstyle		= \color{red},
+    showspaces      = false,
+    showstringspaces= false,
+    captionpos		= b,
+    frame			= single,
+    aboveskip		= 1cm,
+    belowskip		= 1cm,
+}
