@@ -1,7 +1,7 @@
 %!TEX root = ../Dokumentation.tex
 
 
-\section{Entwicklung eines User-Clienten}
+\section{Entwicklung eines User-Client}
 
 \subsection{Vorbereitung und Layoutentwicklung}
 Im finalen Meilenstein des Projektes, steht die Entwicklung eines grafischen Userinterface im Mittelpunkt, der die Funktionalität des Systems repräsentiert. Die Applikation soll die entsprechende Verbindung zum Server aufbauen und den Datenaustausch ermöglichen. \\
@@ -93,13 +93,62 @@ Bei der Planung der GUI, wurden die einzelnen Seiten nach entsprechenden Ideen k
 \newpage
 \subsection{Umsetzung}
 
+\subsubsection{Übersicht Packages}
+
+Zum Schluss eine Übersicht der nun vorhanden Packages und deren Funktionen im Zusammenhang mit dem User-Client.
+
+
+\textbf{de.fhkoeln.gm.serientracker.client}\\
+In diesem Paket befindet sich die Main-Klasse für den User-Client.
+
+\textbf{de.fhkoeln.gm.serientracker.client.gui}\\
+In diesem Paket befinden sich die Klassen für die Realisierung der GUI für den User-Client.
+
+\textbf{de.fhkoeln.gm.serientracker.client.utils}\\
+In diesem Paket befinden sich die mehrer modulare Klassen, die Aufgaben, wie Login, Subscription oder Session-Verwaltung übernehmen.
+
+\textbf{de.fhkoeln.gm.serientracker.jaxb}\\
+In diesem Paket befinden sich vom JAXB Generator generierten Objekte.
+
+\textbf{de.fhkoeln.gm.serientracker.utils}\\
+In diesem Paket befinden sich zwei Helfer-Klassen, zum einem der Hasher, zum Generieren eines MD5 Hashs sowie der Logger.
+
+\textbf{de.fhkoeln.gm.serientracker.webservice}\\
+In diesem Paket befindet sich die Main-Klasse für den REST Server, sowie die Klasse für die Servereinstellungen.
+
+\textbf{de.fhkoeln.gm.serientracker.webservice.data}\\
+In diesem Paket befinden sich die Data-Handler für die Ressourcen. Aufgrund des modularen Aufbaus wurden diese aus den Service-Klassen extrahiert. Sie sind das Bindeglied zwischen dem Service und dem File-Handler, siehe utils Paket.
+
+\textbf{de.fhkoeln.gm.serientracker.webservice.resources}\\
+In diesem Paket befinden sich die Services für die Ressourcen auf welche über die Clienten zugegriffen wird.
+
+\textbf{de.fhkoeln.gm.serientracker.webservice.utils}\\
+In diesem Paket befindt sich eine Helfer-Klasse, dem File-Handler, welche die Verbindung zwischen Dateisystem und JAXB Objekt implementiert.
+
+\textbf{de.fhkoeln.gm.serientracker.xmpp}\\
+In diesem Paket befindet sich die Main-Klasse für den XMPP-Debug-Client, sowie die Klasse für die Servereinstellungen.
+
+\textbf{de.fhkoeln.gm.serientracker.xmpp.gui}\\
+In diesem Paket befinden sich die Klassen für die Realisierung der GUI für den XMPP-Debug-Client.
+
+\textbf{de.fhkoeln.gm.serientracker.xmpp.utils}\\
+In diesem Paket befinden sich die mehrer modulare Klassen, die Aufgaben, wie Verbindungsaufbau oder Subscription-Verwaltung übernehmen.
+
+\textbf{de.fhkoeln.gm.serientracker.bot}\\
+In diesem Paket befindet sich die Main-Klasse für den Bot-Client. Siehe hierfür Abschnitt "Zusatz: Bot-Client".
+
+\textbf{de.fhkoeln.gm.serientracker.bot.jobs}\\
+In diesem Paket befinden sich die Klassen, die die Jobs übernehmen, wenn der Cronjob das Event ausführt.
+
+\textbf{de.fhkoeln.gm.serientracker.bot.utils}\\
+In diesem Paket befindt sich eine Wrapper-Klasse, welche die Verbindung zwischen der Quartz Scheduler API und dem Clienten implementiert.
 
 \newpage
 
-\subsection{Zusatz: Bot Client}
+\subsection{Zusatz: Bot-Client}
 
 Für das Veröffentlichen von Items, also den Notifications mit der Info über die bevorstehende Episodenaustrahlung, wurde ein Bot Client angelegt.\\
-Der Bot Client übernimmt dabei die Aufgabe pro Serie die Nodes anzulegen. Dazu scannt er die Datenbestand und wird zur jeder Serie drei Nodes anlegen, da ein User selbst entscheiden kann, ob er 5, 10 oder 15 Minute vorher informiert werden möchte. Die Node ID ist dabei im Format \textsf{series:\{Serien ID\}:\{[5|10|15]\}} definiert.\\
+Der Bot-Client übernimmt dabei die Aufgabe pro Serie die Nodes anzulegen. Dazu scannt er die Datenbestand und wird zur jeder Serie drei Nodes anlegen, da ein User selbst entscheiden kann, ob er 5, 10 oder 15 Minute vorher informiert werden möchte. Die Node ID ist dabei im Format \textsf{series:\{Serien ID\}:\{[5|10|15]\}} definiert.\\
 Gleichzeitig scannt er den Datenbestand nach den Episoden ab und prüft ob das Austrahlungsdatum in der Zukunft liegt.\\
 Liegt es in der Zukunft wird ein Event angelegt. Dazu wurde die Quartz Scheduler Bibliothek\footnote{\url{http://quartz-scheduler.org}} eingesetzt. Mit ihr ist es möglich sogenannte Cronjobs anzulegen. Die beiden entwickleten Jobs \textit{ProfilerJob} und \textit{NotificationJob} übernehmen dabei die Verarbeitung.\\
 
