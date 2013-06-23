@@ -23,6 +23,7 @@ bin/
 *.ist
 *.lof
 *.log
+*.lol
 *.lot
 *.maf
 *.mp
