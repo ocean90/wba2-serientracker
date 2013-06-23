@@ -93,6 +93,25 @@ Bei der Planung der GUI, wurden die einzelnen Seiten nach entsprechenden Ideen k
 \newpage
 \subsection{Umsetzung}
 
+Da im Voraus schon auf eine ordentliche Projektstruktur und dementsprechend wiederverwertbare Klassen gesetzt vorhanden waren, konnten diese für den User-Client wieder genutzt werden.\\
+
+Für die GUI sollte \textit{Swing} verwendet werden, welches standardmäßig bei der Komponentenpositionierung auf fixe Pixel setzt. Als Alternative stand ein GUI Builder im Raum oder ein ordnentlicher Layoutmanager.\\
+Die Wahl fiel dabei auf den Layout Manager namens MigLayout\footnote{\url{http://www.miglayout.com/}}.\\
+
+Das Ziel für den User-Client war in erster Linie die Basisfunktionen verfügbar zu machen. Dadurch ergaben sich nun bei Abgabe folgende Funktionen:
+
+\begin{itemize}
+  \item Registrierung eines neuen Accounts über XMPP und REST API
+  \item Anmeldung via XMPP und REST API
+  \item Auslesen der Benutzerdaten über REST API
+  \item Auslesen von Serien über REST API
+  \item Auslesen von Staffeln über REST API
+  \item Auslesen von Episoden über REST API
+  \item Anlegen einer neuen Serie über REST API
+  \item Abonnieren einer Serie über XMPP PubSub Extension
+  \item Empfangen von Notifcations über XMPP PubSub Extension
+\end{itemize}
+
 \subsubsection{Übersicht Packages}
 
 Zum Schluss eine Übersicht der nun vorhanden Packages und deren Funktionen im Zusammenhang mit dem User-Client.
