@@ -5,10 +5,17 @@ import javax.swing.SwingUtilities;
 import de.fhkoeln.gm.serientracker.xmpp.gui.LoginGUI;
 import de.fhkoeln.gm.serientracker.xmpp.gui.MainGUI;
 
-
+/**
+ * A simple client for debbuging XMPP stuff.
+ *
+ * @author Dominik Schilling
+ */
 public class XMPPClient {
 
+	// Holds the login GUI
 	static LoginGUI loginGUI;
+
+	// Holds the main GUI
 	static MainGUI mainGUI;
 
 	/**

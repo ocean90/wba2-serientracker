@@ -10,7 +10,7 @@ import de.fhkoeln.gm.serientracker.client.gui.RegisterGUI;
 /**
  * The main client for Serientracker.
  *
- * @author Dominik Schilling
+ * @author Dominik Schilling and Dennis Meyer
  *
  */
 public class TrackerClient {

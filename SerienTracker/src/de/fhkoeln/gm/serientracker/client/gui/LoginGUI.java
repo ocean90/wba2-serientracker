@@ -20,7 +20,7 @@ import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 /**
  * Provides the login GUI.
  *
- * @author Dominik Schilling
+ * @author Dominik Schilling and Dennis Meyer
  */
 public class LoginGUI extends JFrame implements ActionListener {
 
@@ -182,32 +182,35 @@ public class LoginGUI extends JFrame implements ActionListener {
 	};
 
 	/**
-	 * Helper method to show an error dialog.
-	 *
-	 * @param String message
-	 */
-	private void errorDialog( String message ) {
-		JOptionPane.showMessageDialog( null, message, "Error", JOptionPane.ERROR_MESSAGE );
-	}
-
-	/**
 	 * Event listener for button actions.
 	 *
 	 * @param ActionEvent e
 	 */
 	@Override
 	public void actionPerformed( ActionEvent e ) {
-		// Login action
 		if ( e.getSource() == buttonLogin || e.getActionCommand().equals( "RETURN" ) ) {
+			// Login action
 			this.loginActionPerformed();
-		}
-		if ( e.getSource() == buttonRegister ) {
+		} else if ( e.getSource() == buttonRegister ) {
+			// Register action
 			this.registerActionPerformed();
 		}
 	}
 
+	/**
+	 * Hides login GUI and shows register GUI.
+	 */
 	private void registerActionPerformed() {
 		TrackerClient.showRegister();
+	}
+
+	/**
+	 * Helper method to show an error dialog.
+	 *
+	 * @param String message
+	 */
+	private void errorDialog( String message ) {
+		JOptionPane.showMessageDialog( null, message, "Error", JOptionPane.ERROR_MESSAGE );
 	}
 
 }

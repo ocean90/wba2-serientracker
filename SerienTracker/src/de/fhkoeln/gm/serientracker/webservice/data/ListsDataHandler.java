@@ -6,6 +6,11 @@ import de.fhkoeln.gm.serientracker.jaxb.Lists;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.webservice.utils.FileHandler;
 
+/**
+ * Provides the data handler for the list resource.
+ *
+ * @author Dennis Meyer
+ */
 public class ListsDataHandler {
 	private static final String XMLFILE = "Database/lists.xml";
 
@@ -73,8 +78,8 @@ public class ListsDataHandler {
 
 		return null;
 	}
-	
-	
+
+
 	/**
 	 * Checks if a list of a type exists.
 	 *
@@ -102,8 +107,8 @@ public class ListsDataHandler {
 
 		return null;
 	}
-	
-	
+
+
 	/**
 	 * Checks if a list with the name of a genre.
 	 *
@@ -131,8 +136,8 @@ public class ListsDataHandler {
 
 		return null;
 	}
-	
-	
+
+
 
 	/**
 	 * Adds a new list.

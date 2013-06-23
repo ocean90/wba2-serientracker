@@ -17,7 +17,7 @@ import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
 /**
- * The bot client which handles the cronjobs and notifcation schedules.
+ * The bot client handles the cronjobs and notifcation schedules.
  *
  * @author Dominik Schilling
  */
@@ -58,7 +58,7 @@ public class BotClient {
 		}
 
 		// Set up the scheduler
-		this.initShedulder();
+		this.initSchedulder();
 
 		// Set process to idle mode
 		this.idle();
@@ -92,6 +92,7 @@ public class BotClient {
 	private void idle() {
 		Logger.log( "Bot runs" );
 		Logger.log( "Press any key to stop the bot..." );
+
 		try {
 			// Wait for user input
 			System.in.read();
@@ -103,7 +104,10 @@ public class BotClient {
 		}
 	}
 
-	private void initShedulder() {
+	/**
+	 * Inits the scheduler and ads two jobs - profiler and notification.
+	 */
+	private void initSchedulder() {
 		this.scheduler = BotScheduler.getInstance();
 		this.scheduler.start();
 
@@ -137,7 +141,6 @@ public class BotClient {
 				.build();
 
 		this.scheduler.addJob( notfierJob, notifierTrigger );
-
 	}
 
 }

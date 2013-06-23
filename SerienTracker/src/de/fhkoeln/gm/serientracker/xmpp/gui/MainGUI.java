@@ -31,21 +31,32 @@ import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
+/**
+ * Provides the main GUI.
+ *
+ * @author Dominik Schilling
+ */
 public class MainGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
+	// Holds the connection instance
 	private ConnectionHandler ch;
 
+	// GUI components
 	private JPanel sidebar;
 	private JPanel main;
-
 	private JComboBox coboxExistingNodes;
 	private JTextArea txtarNodeInfo;
 	private JTextArea testNodePayload;
 	private JScrollPane scrollPaneNodeInfo;
 
+	/**
+	 * Constructor.
+	 * Sets UI look and connection instance.
+	 */
 	public MainGUI() {
+		// Get the connection instance
 		this.ch = ConnectionHandler.getInstance();
 
 		try {
@@ -108,28 +119,31 @@ public class MainGUI extends JFrame implements ActionListener {
 		btnNodeInfo.addActionListener( this );
 		sidebar.add( btnNodeInfo, "cell 0 1, grow" );
 
+		// Button: Subscribe
 		JButton btnNodeSubscribe = new JButton( "Subscribe" );
 		btnNodeSubscribe.setActionCommand( "NODESUBSCRIBE" );
 		btnNodeSubscribe.addActionListener( this );
 		sidebar.add( btnNodeSubscribe, "cell 1 1, grow" );
 
+		// Button: Unubscribe
 		JButton btnNodeUnsubscribe = new JButton( "Unsubscribe" );
 		btnNodeUnsubscribe.setActionCommand( "NODEUNSUBSCRIBE" );
 		btnNodeUnsubscribe.addActionListener( this );
 		sidebar.add( btnNodeUnsubscribe, "cell 2 1, grow" );
 
-
+		// Button: Delete all nodes
 		JButton btnDeleteAllNodes = new JButton( "Delete all nodes" );
 		btnDeleteAllNodes.setActionCommand( "DELETENODES" );
 		btnDeleteAllNodes.addActionListener( this );
 		sidebar.add( btnDeleteAllNodes, "cell 0 2, gaptop 20" );
 
+		// Button: refresh nodes list
 		JButton btnRefreshNodes = new JButton( "Refresh nodes" );
 		btnRefreshNodes.setActionCommand( "REFRESHNODES" );
 		btnRefreshNodes.addActionListener( this );
 		sidebar.add( btnRefreshNodes, "cell 1 2, gaptop 20" );
 
-
+		// Panel for sending test item to node
 		JPanel testNodeItemPanel = new JPanel( new MigLayout( "fill" ) );
 		testNodeItemPanel.setBorder( BorderFactory.createTitledBorder( null,
 				"Send Notification", TitledBorder.LEFT, TitledBorder.TOP,
@@ -145,6 +159,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		JScrollPane testNodePayloadScroll = new JScrollPane( testNodePayload );
 		testNodeItemPanel.add( testNodePayloadScroll, "grow, wrap" );
 
+		// Button: Send test item
 		JButton btnSendPayload = new JButton( "Send" );
 		btnSendPayload.setActionCommand( "SENDPAYLOAD" );
 		btnSendPayload.addActionListener( this );
@@ -175,19 +190,31 @@ public class MainGUI extends JFrame implements ActionListener {
 		this.updateNodes();
 	}
 
+	/**
+	 * Updates the nodes list.
+	 */
 	private void updateNodes() {
+		// Remove all items from list
 		coboxExistingNodes.removeAllItems();
+
+		// Get nodes and add to list
 		PubSubHandler psh = this.ch.getPubSubHandler();
 		for ( String node : psh.getAllNodes() )
 			coboxExistingNodes.addItem( node );
 
 	}
 
+	/**
+	 * Action handler for button actions.
+	 *
+	 * @param ActionEvent e
+	 */
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 		String selectedNode = (String) coboxExistingNodes.getSelectedItem();
 
 		if ( e.getActionCommand().equals( "NODEINFO" ) ) {
+			// Show node info
 			this.showNodeInfo( selectedNode );
 		} else if ( e.getActionCommand().equals( "NODESUBSCRIBE" ) ) {
 			// TODO: Functionality
@@ -196,17 +223,25 @@ public class MainGUI extends JFrame implements ActionListener {
 			// TODO: Functionality
 			txtarNodeInfo.setText( "Unsubscribed from " + selectedNode );
 		} else if ( e.getActionCommand().equals( "DELETENODES" ) ) {
+			// Delete node
 			this.deleteNodes();
 			txtarNodeInfo.setText( "Nodes deleted" );
 		} else if ( e.getActionCommand().equals( "REFRESHNODES" ) ) {
+			// Fetch the nodes again
 			this.updateNodes();
 			txtarNodeInfo.setText( "Nodes refreshed" );
 		} else if ( e.getActionCommand().equals( "SENDPAYLOAD" ) ) {
+			// Send a test item to node
 			this.sendPayload();
 			txtarNodeInfo.setText( "Payload send" );
 		}
 	}
 
+	/**
+	 * Fetches node info and displays it.
+	 *
+	 * @param String nodeName
+	 */
 	private void showNodeInfo( String nodeName ) {
 		PubSubHandler psh = this.ch.getPubSubHandler();
 
@@ -215,6 +250,9 @@ public class MainGUI extends JFrame implements ActionListener {
 		txtarNodeInfo.setCaretPosition( 0 ); // Scroll back to top
 	}
 
+	/**
+	 * Deletes all nodes and updates the node list.
+	 */
 	private void deleteNodes() {
 		PubSubHandler psh = this.ch.getPubSubHandler();
 
@@ -222,7 +260,11 @@ public class MainGUI extends JFrame implements ActionListener {
 		this.updateNodes();
 	}
 
+	/**
+	 * Sends a test item to the selected node.
+	 */
 	private void sendPayload() {
+		// Create a new message object
     	ObjectFactory factory = new ObjectFactory();
     	Message message = factory.createMessage();
     	message.setContent( testNodePayload.getText() );
@@ -234,10 +276,14 @@ public class MainGUI extends JFrame implements ActionListener {
             marshaller.setProperty( Marshaller.JAXB_FRAGMENT, true ); // Marshall without namespace
             marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
             marshaller.marshal( message, notification );
-		} catch ( JAXBException e ) {}
+		} catch ( JAXBException e ) {
+			return;
+		}
 
+    	// Get selected node
 		String selectedNode = (String) coboxExistingNodes.getSelectedItem();
 
+		// Publish item to node
 		PubSubHandler psh = this.ch.getPubSubHandler();
     	LeafNode node = psh.getNode( selectedNode );
 		Logger.log( "Sending notification" );

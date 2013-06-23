@@ -17,20 +17,20 @@ import de.fhkoeln.gm.serientracker.utils.Logger;
 
 /**
  * Service for:
- * GET     /images/{id}/{filename}
+ * GET     /images/{id}/{filename}.jpg
  */
 
 @Path( "/images" )
 public class ImagesService {
 
-	@Path( "{id}/{file}" )
+	@Path( "{id}/{file}.jpg" )
 	@GET
 	@Produces( "image/jpeg" )
 	public Response getImage( @PathParam( "id" ) String id, @PathParam( "file" ) String filename ) {
-		Logger.log( id + "/" + filename );
+		Logger.log( id + "/" + filename + ".jpg" );
 
 		String root = "Database/images";
-		File file = new File( root + "/" + id + "/" + filename );
+		File file = new File( root + "/" + id + "/" + filename + ".jpg" );
 
 		if ( ! file.exists() )
 			return Response.status( 404 ).build();

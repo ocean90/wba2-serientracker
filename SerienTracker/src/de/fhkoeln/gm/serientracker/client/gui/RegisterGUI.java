@@ -3,12 +3,13 @@ package de.fhkoeln.gm.serientracker.client.gui;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.net.URI;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,24 +21,17 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import net.miginfocom.swing.MigLayout;
 import de.fhkoeln.gm.serientracker.client.TrackerClient;
 import de.fhkoeln.gm.serientracker.client.utils.HTTPClient;
-import de.fhkoeln.gm.serientracker.client.utils.LoginHandler;
 import de.fhkoeln.gm.serientracker.client.utils.HTTPClient.HTTPMethod;
-import de.fhkoeln.gm.serientracker.jaxb.Country;
 import de.fhkoeln.gm.serientracker.jaxb.Gender;
 import de.fhkoeln.gm.serientracker.jaxb.Genre;
-import de.fhkoeln.gm.serientracker.jaxb.Network;
 import de.fhkoeln.gm.serientracker.jaxb.ObjectFactory;
-import de.fhkoeln.gm.serientracker.jaxb.Runtime;
-import de.fhkoeln.gm.serientracker.jaxb.Serie;
 import de.fhkoeln.gm.serientracker.jaxb.User;
-import de.fhkoeln.gm.serientracker.jaxb.Weekday;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
-
-import net.miginfocom.swing.MigLayout;
 
 /**
  * Provides the register GUI to add a new user.
@@ -48,14 +42,14 @@ public class RegisterGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
+	// Holds the cardlayout
 	private CardLayout registerCardLayout;
 
+	// GUI components
 	private JPanel RegisterPanels;
 	private JPanel UserinformationPanel;
 	private JPanel PrioritiesPanel;
 	private JPanel genreBox;
-
-
 	private JTextField inputUsername;
 	private JPasswordField inputPassword;
 	private JTextField inputFirstname;
@@ -63,21 +57,12 @@ public class RegisterGUI extends JFrame implements ActionListener {
 	private JTextField inputAge;
 	private JTextField inputLocation;
 	private JTextArea inputAbout;
-
-
 	private JButton btnNextPage;
 	private JButton btnCancel1;
 	private JButton btnCancel2;
-
 	private JButton btnSave;
-
-	private ButtonGroup inputGender;
-
 	private JRadioButton male;
-
 	private JRadioButton female;
-
-
 
 	/**
 	 * Constructor.
@@ -105,9 +90,17 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		setResizable( false );
 
 		// Set frame size
-		setBounds( 0, 0, 600, 400 );
+		setBounds( 0, 0, 600, 450 );
 		// Center frame on screen
 		setLocationRelativeTo( null );
+
+		// Show login GUI when closing this frame
+		this.addWindowListener( new WindowAdapter() {
+			public void windowClosing( WindowEvent e ) {
+				TrackerClient.showLogin();
+			}
+		} );
+
 
 		/********
 		 * PANELS
@@ -123,7 +116,6 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		RegisterPanels.add( this.getPrioritiesPanel(), "PRIORITIES" );
 
 		registerCardLayout.show( RegisterPanels, "USER" );
-
 	}
 
 	/**
@@ -136,10 +128,10 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		UserinformationPanel = new JPanel( new MigLayout( "", "[150][grow]" ) );
 
 		// Print the labels
-		UserinformationPanel.add( new JLabel( "Insert your information to set up a new account" ), "span" );
+		UserinformationPanel.add( new JLabel( "Insert your information to set up a new account" ), "span, gapbottom 10" );
 
-		UserinformationPanel.add( new JLabel( "Username:" ), "cell 0 1" );
-		UserinformationPanel.add( new JLabel( "Password:" ), "cell 0 2" );
+		UserinformationPanel.add( new JLabel( "Username: *" ), "cell 0 1" );
+		UserinformationPanel.add( new JLabel( "Password: *" ), "cell 0 2" );
 		UserinformationPanel.add( new JLabel( "Firstname:" ), "cell 0 3" );
 		UserinformationPanel.add( new JLabel( "Lastname:" ), "cell 0 4" );
 		UserinformationPanel.add( new JLabel( "Gender:" ), "cell 0 5" );
@@ -147,9 +139,9 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		UserinformationPanel.add( new JLabel( "Location:" ), "cell 0 7" );
 		UserinformationPanel.add( new JLabel( "About:" ), "cell 0 8" );
 
+		UserinformationPanel.add( new JLabel( "Fields marked with * are required!" ), "cell 0 9 2 1" );
 
-		// Input field for title
-
+		// Input field for username
 		inputUsername = new JTextField();
 		UserinformationPanel.add( inputUsername, "cell 1 1, grow" );
 
@@ -169,13 +161,11 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		male = new JRadioButton( "Male" );
 		male.setSelected( true );
 		female = new JRadioButton( "Female" );
-
 		ButtonGroup inputGender = new ButtonGroup();
 		inputGender.add( male );
 		inputGender.add( female );
 		UserinformationPanel.add( male, "cell 1 5" );
 		UserinformationPanel.add( female, "cell 1 5" );
-
 
 		// Input field for age
 		inputAge = new JTextField();
@@ -191,18 +181,22 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		inputAbout.setLineWrap( true );
 		JScrollPane inputAboutScoll = new JScrollPane( inputAbout );
 		inputAboutScoll.setBorder( new JTextField().getBorder() ); // Workaround for same styling
-		UserinformationPanel.add( inputAboutScoll, "cell 1 8, growx, gaptop 15" );
+		UserinformationPanel.add( inputAboutScoll, "cell 1 8, growx" );
 
+
+		/********
+		 * ACTIONS
+		 */
 
 		// Button for cancel
 		btnCancel1 = new JButton( "Cancel" );
 		btnCancel1.addActionListener( this );
-		UserinformationPanel.add( btnCancel1, "cell 1 10" );
+		UserinformationPanel.add( btnCancel1, "cell 0 10, left, gaptop 15" );
 
 		// Button for cancel
 		btnNextPage = new JButton( "Next" );
 		btnNextPage.addActionListener( this );
-		UserinformationPanel.add( btnNextPage, "cell 1 10, right" );
+		UserinformationPanel.add( btnNextPage, "cell 1 10, right, gaptop 15" );
 
 		return UserinformationPanel;
 	}
@@ -234,16 +228,19 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		PrioritiesPanel.add( genreBox, "cell 0 2, gaptop 10" );
 
 
+		/********
+		 * ACTIONS
+		 */
+
 		// Button for cancel
 		btnCancel2 = new JButton( "Cancel" );
 		btnCancel2.addActionListener( this );
-		PrioritiesPanel.add( btnCancel2, "cell 0 4, gaptop 15" );
-
+		PrioritiesPanel.add( btnCancel2, "cell 0 4, left, gaptop 15" );
 
 		// Button for save and add new season
 		btnSave = new JButton( "Create Account" );
 		btnSave.addActionListener( this );
-		PrioritiesPanel.add( btnSave, "cell 1 4, left, gaptop 15" );
+		PrioritiesPanel.add( btnSave, "cell 1 4, right, gaptop 15" );
 
 		return PrioritiesPanel;
 	}
@@ -372,9 +369,16 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		TrackerClient.showLogin();
 	}
 
+	/**
+	 * Handles the request to the REST API.
+	 *
+	 * @return boolean
+	 */
 	private boolean saveUserData() {
+		// Get user object
 		User user = new ObjectFactory().createUser();
 
+		// Fill user object
 		user.setFirstname( inputFirstname.getText() );
 		user.setLastname( inputLastname.getText() );
 		user.setUsername( inputUsername.getText().trim() );
@@ -384,12 +388,14 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		Gender gender = male.isSelected() ? Gender.MALE : Gender.FEMALE;
 		user.setGender( gender );
 
+		// Set the HTTP request
 		HTTPClient httpClient = new HTTPClient();
 		httpClient.setMethod( HTTPMethod.POST );
 		httpClient.setEntity( user );
 		httpClient.setEndpoint( "/users/" );
 		httpClient.execute();
 
+		// Check for error
 		if ( httpClient.hasError() ) {
 			Logger.err( "HTTPClient has returned an error" );
 			return false;

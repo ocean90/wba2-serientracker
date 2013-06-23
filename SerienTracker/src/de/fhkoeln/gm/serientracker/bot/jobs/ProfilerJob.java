@@ -31,17 +31,21 @@ public class ProfilerJob implements Job {
 	// Where is the series database
 	final String SERIES_DATABASE = "Database/series.xml";
 
+	// Holds the series data
 	private Series data;
 
+	// Holds the scheduler instance
 	private Scheduler scheduler;
 
 	/**
 	 * Called when the job is in fired.
 	 */
 	public void execute( JobExecutionContext context ) throws JobExecutionException {
+    	// Get connection and PubSub instance
 		ConnectionHandler ch = ConnectionHandler.getInstance();
 		PubSubHandler pubSubHandler = ch.getPubSubHandler();
 
+    	// Check connection
 		if( ! ch.isConnected() ) {
 			Logger.err( "Connection not established!" );
 			return;
@@ -57,6 +61,7 @@ public class ProfilerJob implements Job {
 		 * Alte löschen?
 		 */
 
+		// Get the scheduler
 		try {
 			this.scheduler = StdSchedulerFactory.getDefaultScheduler();
 		} catch ( SchedulerException e ) {
@@ -64,13 +69,14 @@ public class ProfilerJob implements Job {
 			return;
 		}
 
+		// Get the data
 		this.data = this.getData();
 
+		// Sanity check
 		if ( this.data == null ) {
 			Logger.err( "Data failure" );
 			return;
 		}
-
 
 		// Create the nodes
 		List<Serie> series = this.getSeries();
@@ -98,9 +104,11 @@ public class ProfilerJob implements Job {
 			for ( Episode episode : futureEpisodes ) {
 				String seriesID = episode.getSerieID();
 
+				// Check if the node exists
 				String nodeID = "series:" + seriesID;
 				if ( ! pubSubHandler.nodeExists( nodeID ) ) {
 					Logger.err( "Node doesn't exists: " + nodeID );
+					continue;
 				}
 			}
 		}
@@ -116,6 +124,11 @@ public class ProfilerJob implements Job {
 		return (Series) filehandler.readXML( SERIES_DATABASE );
 	}
 
+	/**
+	 * Returns the series as a list from the fetched data.
+	 *
+	 * @return List
+	 */
 	private List<Serie> getSeries() {
 		if ( this.data.getSerie() == null )
 			return null;
@@ -170,7 +183,6 @@ public class ProfilerJob implements Job {
 		}
 
 		return futureEpisodes;
-
 	}
 
 }

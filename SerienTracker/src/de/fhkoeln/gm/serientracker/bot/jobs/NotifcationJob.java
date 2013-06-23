@@ -20,16 +20,28 @@ import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 import de.fhkoeln.gm.serientracker.xmpp.utils.PubSubHandler;
 
+/**
+ * The job for sending notifications to the XMPP nodes.
+ *
+ * @author Dominik Schilling
+ */
 public class NotifcationJob implements Job {
+
+	// Holds the PubSub instance
 	private PubSubHandler psh;
+
+	// Holds the connection instance
+	private ConnectionHandler ch;
 
     public void execute( JobExecutionContext context ) throws JobExecutionException {
     	JobKey key = context.getJobDetail().getKey();
     	Logger.log( "Notification Job" );
 
+    	// Get connection and PubSub instance
+    	this.ch = ConnectionHandler.getInstance();
+    	this.psh = this.ch.getPubSubHandler();
 
-    	ConnectionHandler ch = ConnectionHandler.getInstance();
-
+    	// Check connection
     	if( ! ch.isConnected() ) {
     		Logger.err( "Connection not established!" );
     		return;

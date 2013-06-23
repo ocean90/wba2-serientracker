@@ -15,8 +15,18 @@ import org.jivesoftware.smackx.pubsub.listener.ItemEventListener;
 import de.fhkoeln.gm.serientracker.jaxb.Message;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
+/**
+ * Item event listener for published items.
+ *
+ * Just prints the message content to the console log.
+ *
+ * @author Dominik Schilling
+ */
 public class ItemEventCoordinator implements ItemEventListener<Item> {
 
+	/**
+	 * The handler for published items.
+	 */
 	@Override
 	public void handlePublishedItems( ItemPublishEvent<Item> items ) {
 		Logger.log( "Items received: " + items.getItems().size() );
@@ -28,6 +38,7 @@ public class ItemEventCoordinator implements ItemEventListener<Item> {
 			// Remove the the namespace
 			String xml = rawXML.replaceFirst( " xmlns=\"http://jabber.org/protocol/pubsub\"", "" );
 
+			// Get a JAXB object of the XML data.
 			Message payload = null;
 	    	try {
 				JAXBContext jaxbContext = JAXBContext.newInstance( Message.class );
@@ -45,7 +56,6 @@ public class ItemEventCoordinator implements ItemEventListener<Item> {
 	    	}
 
 	    	Logger.log( "Message Content: " + payload.getContent() );
-
 		}
 	}
 

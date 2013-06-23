@@ -12,6 +12,11 @@ import com.sun.jersey.api.client.*;
 import de.fhkoeln.gm.serientracker.jaxb.Serie;
 import de.fhkoeln.gm.serientracker.jaxb.Series;
 
+/**
+ * Simple test client.
+ *
+ * @author Dominik Schilling and Dennis Meyer
+ */
 public class TestClient {
 	private static String host = "http://localhost:1337";
 

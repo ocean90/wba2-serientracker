@@ -21,7 +21,7 @@ import de.fhkoeln.gm.serientracker.utils.Logger;
 /**
  * Provides the main GUI.
  *
- * @author Dominik Schilling
+ * @author Dominik Schilling and Dennis Meyer
  */
 public class MainGUI extends JFrame implements ActionListener {
 

@@ -23,12 +23,19 @@ import de.fhkoeln.gm.serientracker.jaxb.Gender;
 import de.fhkoeln.gm.serientracker.jaxb.Weekday;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
+/**
+ * The frame for user settings.
+ *
+ * @author Dominik Schilling
+ */
 public class SettingsGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
+	// Holds the session instance
 	private SessionStore session;
 
+	// GUI components
 	private JTabbedPane settingTabs;
 	private JPanel profileTab;
 	private JPanel notificationsTab;
@@ -41,18 +48,18 @@ public class SettingsGUI extends JFrame implements ActionListener {
 	private JTextArea inputAbout;
 	private JButton btnSave;
 	private JButton btnCancel;
-
 	private JComboBox notificationTimes;
-
 	private JRadioButton notificationTypMinutes;
-
 	private ButtonGroup notificationTyp;
-
 	private JRadioButton notificationTypDay;
-
 	private JComboBox notificationDays;
 
+	/**
+	 * Constructor.
+	 * Sets UI look and session instance.
+	 */
 	public SettingsGUI() {
+		// Get session instance
 		this.session = SessionStore.getInstance();
 
 		try {
@@ -63,6 +70,9 @@ public class SettingsGUI extends JFrame implements ActionListener {
 		initComponents();
 	}
 
+	/**
+	 * Inits the GUI components
+	 */
 	public void initComponents() {
 		// Set frame title
 		setTitle( "SERIENTRACKER | SETTINGS" );
@@ -105,9 +115,16 @@ public class SettingsGUI extends JFrame implements ActionListener {
 		add( btnSave, "cell 0 1, right" );
 	}
 
+	/**
+	 * Returns the tab for profile settings.
+	 *
+	 * @return JPanel
+	 */
 	private JPanel getProfilTab() {
+		// Set the panel
 		profileTab = new JPanel( new MigLayout( "gap 0 0", "[30%][grow]" ) );
 
+		// Print the labels
 		profileTab.add( new JLabel( "Username:" ), "cell 0 0" );
 		profileTab.add( new JLabel( "Firstname:" ), "cell 0 1" );
 		profileTab.add( new JLabel( "Lastname:" ), "cell 0 2" );
@@ -174,7 +191,13 @@ public class SettingsGUI extends JFrame implements ActionListener {
 		return profileTab;
 	}
 
+	/**
+	 * Returns the panel for notification settings.
+	 *
+	 * @return JPanel
+	 */
 	private JPanel getNotificationsTab() {
+		// Set the panel
 		notificationsTab = new JPanel( new MigLayout( "gap 0 0", "[10][][]" ) );
 
 		notificationsTab.add( new JLabel( "When should we send you the notifications?" ), "span, grow, gapbottom 20" );
@@ -234,11 +257,16 @@ public class SettingsGUI extends JFrame implements ActionListener {
 		return notificationsTab;
 	}
 
+	/**
+	 * Action handler for button actions.
+	 */
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 		if ( e.getSource() == btnSave ) {
+			// Save action
 			Logger.log( "SAVE" );
 		} else if ( e.getSource() == btnCancel ) {
+			// Cancel action
 			this.dispose();
 		}
 	}

@@ -124,6 +124,7 @@ public class NewContentGUI extends JFrame implements ActionListener {
 		newContentPanels.add( this.getNewSeasonPanel(), "SEASON" );
 		newContentPanels.add( this.getNewEpisodePanel(), "EPISODE" );
 
+		// Show the panel based on context
 		this.updatePanelDisplay();
 	}
 

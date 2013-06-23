@@ -9,6 +9,12 @@ import org.jivesoftware.smack.XMPPException;
 
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
+/**
+ * API class for the XMPP communication.
+ * Singleton class.
+ *
+ * @author Dominik Schilling
+ */
 public class ConnectionHandler {
 
 	// Save the connection
@@ -83,6 +89,9 @@ public class ConnectionHandler {
 		return true;
 	}
 
+	/**
+	 * Kills the current connection.
+	 */
 	public void disconnect() {
 		if ( cn != null && ! cn.isConnected() )
 			return;
@@ -174,7 +183,7 @@ public class ConnectionHandler {
 	}
 
 	/**
-	 * Register account to XMPP Server.
+	 * Registers a new account at XMPP server.
 	 *
 	 * @param String username
 	 * @param String password

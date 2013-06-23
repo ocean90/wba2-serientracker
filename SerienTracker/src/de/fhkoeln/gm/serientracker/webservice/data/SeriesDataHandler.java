@@ -7,12 +7,22 @@ import de.fhkoeln.gm.serientracker.jaxb.Series;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.webservice.utils.FileHandler;
 
+/**
+ * Provides the data handler for the series resource.
+ *
+ * @author Dominik Schilling
+ */
 public class SeriesDataHandler {
+	// Path to the series database
 	private static final String XMLFILE = "Database/series.xml";
 
+	// Holds the file handler instance
 	private FileHandler<Series> filehandler;
 
+	// Holds the raw data provided by the XML file
 	private Series data;
+
+	// Holds the list of series
 	private List<Serie> series;
 
 	/**
@@ -21,9 +31,13 @@ public class SeriesDataHandler {
 	public SeriesDataHandler() {
 		Logger.log( "SeriesDataHandler called" );
 
+		// Set the filehandler
 		this.filehandler = new FileHandler<Series>( Series.class );
 
+		// Get the data of the XML file
 		this.data = (Series) filehandler.readXML( XMLFILE );
+
+		// Get the series from the data object
 		this.series = this.data.getSerie();
 	}
 
@@ -39,7 +53,7 @@ public class SeriesDataHandler {
 	}
 
 	/**
-	 * Returns series.
+	 * Returns the series JAXB object.
 	 *
 	 * @return Series
 	 */
@@ -113,14 +127,14 @@ public class SeriesDataHandler {
 	}
 
 	/**
-	 * Removes and existing serie.
+	 * Removes an existing series.
 	 *
 	 * @param String id
 	 * @return boolean
 	 */
 	public boolean removeSerie( String id ) {
+		// Get the series by id
 		Serie serie = getSerieByID( id );
-
 		if ( serie == null )
 			return false;
 

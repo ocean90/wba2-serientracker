@@ -25,7 +25,7 @@ import de.fhkoeln.gm.serientracker.utils.Logger;
 /**
  * Controller class for saving new content.
  *
- * @author Dominik Schilling
+ * @author Dominik Schilling and Dennis Meyer
  */
 public class NewContentController {
 
@@ -56,7 +56,7 @@ public class NewContentController {
 	 * Saves a new series.
 	 */
 	public void saveSeries() {
-		Serie serie = this.preparedSerie();
+		Serie serie = this.getPreparedSerie();
 
 		HTTPClient httpClient = new HTTPClient();
 		httpClient.setMethod( HTTPMethod.POST );
@@ -79,7 +79,7 @@ public class NewContentController {
 	 *
 	 * @return Serie
 	 */
-	private Serie preparedSerie() {
+	private Serie getPreparedSerie() {
 		Serie serie = this.objectFactory.createSerie();
 
 		// Title
@@ -137,14 +137,14 @@ public class NewContentController {
 	 * Saves a new season.
 	 */
 	public void saveSeason() {
-
+		// TODO
 	}
 
 	/**
 	 * Saves a new episode.
 	 */
 	public void saveEpisode() {
-
+		// TODO
 	}
 
 	/**

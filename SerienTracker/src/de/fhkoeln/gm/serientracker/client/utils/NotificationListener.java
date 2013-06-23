@@ -84,7 +84,6 @@ public class NotificationListener implements ItemEventListener<Item> {
 				Logger.log( "Item deleted: " + notification.getId() );
 			} catch ( XMPPException e ) {
 				Logger.err( "Couldn't delete item: " + notification.getId() );
-				e.printStackTrace();
 			}
 
 	    	Logger.log( "Message Content: " + payload.getContent() );

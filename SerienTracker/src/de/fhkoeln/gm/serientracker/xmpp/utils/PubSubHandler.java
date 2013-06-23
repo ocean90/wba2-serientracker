@@ -24,6 +24,11 @@ import org.jivesoftware.smackx.pubsub.listener.ItemEventListener;
 
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
+/**
+ * API class for the communication with the PubSub component of the XMPP server.
+ *
+ * @author Dominik Schilling
+ */
 public class PubSubHandler {
 
 	// Save the connection
@@ -34,9 +39,7 @@ public class PubSubHandler {
 
 	/**
 	 * Constructor.
-	 * Creates PubSubManager instance.
-	 *
-	 * @param Connection cn
+	 * Creates the ConnectionHandler and PubSubManager instance.
 	 */
 	public PubSubHandler() {
 		// Get the connection instance
@@ -139,7 +142,6 @@ public class PubSubHandler {
 			}
 		}
 	}
-
 
 	/**
 	 * Get all nodes known to the XMPP server.
@@ -330,4 +332,5 @@ public class PubSubHandler {
 
 		return nodeInfo;
 	}
+
 }

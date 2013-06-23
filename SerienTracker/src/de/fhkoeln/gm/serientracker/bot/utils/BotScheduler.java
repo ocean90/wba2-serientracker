@@ -8,6 +8,11 @@ import org.quartz.impl.StdSchedulerFactory;
 
 import de.fhkoeln.gm.serientracker.utils.Logger;
 
+/**
+ * Wrapper class for the Quartz Scheduler.
+ *
+ * @author Dominik Schilling
+ */
 public class BotScheduler {
 
 	// The scheduler instance
@@ -75,7 +80,7 @@ public class BotScheduler {
 		try {
 			this.scheduler.scheduleJob( job, trigger );
 			return true;
-		} catch (SchedulerException e) {
+		} catch ( SchedulerException e ) {
 			e.printStackTrace();
 			return false;
 		}

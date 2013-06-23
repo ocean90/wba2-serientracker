@@ -17,18 +17,30 @@ import de.fhkoeln.gm.serientracker.xmpp.XMPPClient;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
 import de.fhkoeln.gm.serientracker.xmpp.utils.ConnectionHandler;
 
+/**
+ * Provides the login GUI.
+ *
+ * @author Dominik Schilling
+ */
 public class LoginGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
+	// Holds the connection instance
 	private ConnectionHandler ch;
 
+	// GUI components
 	private JTextField inputUsername;
 	private JPasswordField inputPassword;
 	private JTextField inputHostname;
 	private JTextField inputPort;
 
+	/**
+	 * Constructor.
+	 * Sets UI look and connection instance.
+	 */
 	public LoginGUI() {
+		// Get the connection instance
 		this.ch = ConnectionHandler.getInstance();
 
 		try {
