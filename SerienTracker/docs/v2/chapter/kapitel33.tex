@@ -104,7 +104,7 @@ Daher wurden geplante POST, PUT und DELETE Methoden, jeweils nur auf den Hauptty
 Zu Beginn wurden einzelne Methoden ausgearbeitet und auf Funktionalität in Verbindung mit dem Grizzly RESTServer getestet. Erste Versuche wurden mit Hilfe eines erstellten TestClients durchgeführt und lieferten schnell das gewünschte Ergebnis.\\
 Innerhalb dieser Phase fand  die gesamte Realisierung in der jeweiligen Methode definiert. So wurde beispielsweise das Marshalling und Unmarshalling jedes Mal erneut eingebunden.
 
-\begin{lstlisting}[label=seriesservice,caption= GET Testmethode der SeriesID]
+\begin{lstlisting}[label=getsingleseriesservice,caption= GET Testmethode der SeriesID]
    @Path( "/{id}" )
    @GET @Produces( "application/xml" )
    public Serie getSingle(@PathParam("id") int id) throws JAXBException {
@@ -163,7 +163,7 @@ Die Kommunikation zwischen Client und Server ermöglicht bisher einen Austausch 
 Zusätzlich zu den Services sei noch erwähnt, dass neben den jeweiligen RessourceServices ein zusätzlicher ImageService entwickelt wurde. Dieser arbeitet ebenfalls unter Verwendung der GET Methode und gibt dabei gespeicherte Bilder nach Filenamen zurück. Die Anwendung dieser Klasse, spielt jedoch erst in der Cliententwicklung eine Rolle.\\
 \newpage
 Im weiteren Rahmen der Dokumentation soll hierbei nicht auf jede einzelne Klasse eingegangen werden. Für einen kurzen Einblick in die Ausarbeitung, werden deshalb im folgenden nur kurz einzelne Aspekte der verschiedenen Methoden am Beispiel des SeriesService dargestellt.
-\begin{lstlisting}[label=seriesservice,caption= GET Methode /series ]
+\begin{lstlisting}[label=getseriesservice,caption= GET Methode /series ]
   @GET
   @Produces( MediaType.APPLICATION_XML )
   public Response getSeries() {
@@ -177,12 +177,12 @@ Im weiteren Rahmen der Dokumentation soll hierbei nicht auf jede einzelne Klasse
   }
 \end{lstlisting}
 Im Vergleich zur vorherigen GET Methode, fällt die gewonnene Überischtlichkeit und Einfachheit auf. Der DataHandler dh führt die eigentliche Operation aus und liefert in dem Fall alle Serien zurück die vorhanden sind. Sind keine Serien auffindbar, wird der NOT FOUND Statuscode 404 als Response zurückgegeben. Bei Erfolg die gefundenen Entitäten.
-\begin{lstlisting}[label=seriesservice,caption= POST Methode /series ]
+\begin{lstlisting}[label=addseriesservice,caption= POST Methode /series ]
 @POST
   @Consumes( MediaType.APPLICATION_XML )
   public Response addSerie( Serie newSerie ) {
     Logger.log( newSerie.getTitle() );
-   
+
     String id = "ss_" + Hasher.createHash( newSerie.getTitle() );
 
     if ( dh.SerieExistsByID( id ) )
@@ -208,7 +208,3 @@ Auch die beiden weiteren Methoden PUT und DELETE sind nach diesem Prinzip strukt
 
 Dieser kurze Einblick in den RESTful Webservice, sollte einen Überblick über die Ausarbeitung der synchronen Kommikationsvorgänge schaffen. \\
 Zu Beginn des Projektes wurden in der Konzeptidee diverse Möglichkeiten überlegt, die vom System unterstützt werden können. Für Serieninteressierte wurde beispielsweise das Favorisieren von Serien, Anlegen von Listen oder Markieren und Bewerten von Episoden angedacht. Die Auseinandersetzung mit dem Projekt, zeigte bei diesem Meilenstein, dass dieses Ziel vom entsprechenden Umfang her zu hoch ausgelegt war. Daher wurde der Fokus auf einen Teil dieser Möglichkeiten gelegt und nur ein Teil davon vertieft umgesetzt. Der Aspekt des Favorisieren und die Listen stellten für den weiteren Verlauf den größten Nutzen dar, weil anhand dieser Elemente die entsprechende Benachrichtigung innerhalb der asynchronen Kommunikation realisiert werden kann. Die weiteren Ansätze wurden zugunsten des Projektzieles außen vor gelassen, könnten aber in einem größer angelegten Projekt dieser Art eine Ausbaumöglichkeit darstellen.
-
-
-
-
