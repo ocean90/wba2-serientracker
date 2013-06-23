@@ -265,39 +265,39 @@ public class MainGUI extends JFrame implements ActionListener {
 	 */
 	private void sendPayload() {
 		// Create a new message object
-    	ObjectFactory factory = new ObjectFactory();
-    	Message message = factory.createMessage();
-    	message.setContent( testNodePayload.getText() );
+		ObjectFactory factory = new ObjectFactory();
+		Message message = factory.createMessage();
+		message.setContent( testNodePayload.getText() );
 
-    	StringWriter notification = new StringWriter();
-    	try {
+		StringWriter notification = new StringWriter();
+		try {
 			JAXBContext jaxb_context = JAXBContext.newInstance( Message.class );
-	    	Marshaller marshaller = jaxb_context.createMarshaller();
-            marshaller.setProperty( Marshaller.JAXB_FRAGMENT, true ); // Marshall without namespace
-            marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
-            marshaller.marshal( message, notification );
+			Marshaller marshaller = jaxb_context.createMarshaller();
+			marshaller.setProperty( Marshaller.JAXB_FRAGMENT, true ); // Marshall without namespace
+			marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+			marshaller.marshal( message, notification );
 		} catch ( JAXBException e ) {
 			return;
 		}
 
-    	// Get selected node
+		// Get selected node
 		String selectedNode = (String) coboxExistingNodes.getSelectedItem();
 
 		// Publish item to node
 		PubSubHandler psh = this.ch.getPubSubHandler();
-    	LeafNode node = psh.getNode( selectedNode );
+		LeafNode node = psh.getNode( selectedNode );
 		Logger.log( "Sending notification" );
 
-        node.publish(
-    		new PayloadItem<SimplePayload>(
+		node.publish(
+			new PayloadItem<SimplePayload>(
 				null,
 				new SimplePayload(
 					"message",              // Element name
 					"",                     // Namespace
 					notification.toString() // Payload
 				)
-    		)
-        );
+			)
+		);
 
 		testNodePayload.setText( null );
 	}
