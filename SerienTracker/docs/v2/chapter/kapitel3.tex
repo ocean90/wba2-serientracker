@@ -2,66 +2,67 @@
 
 \chapter{Entwicklung des Projektes}
 
-\section{Entwicklung des Projektes}
+\section{Projektbezogenes XML Schemata}
 
-\subsection{Projektbezogenes XML Schema / Schemata}
-\subsubsection{Vorüberlegungen}
-Der erste Meilenstein befasst sich mit der Repräsentation von Daten in XML.
+\subsection{Vertiefung}
+Der erste Meilenstein befasst sich mit der Repräsentation von Daten in XML.\\
 
-Damit bei der Verwendung der XML Dateien bei der späteren Verarbeitung mit JAXB keine Probleme auftreten,
-ist es notwendig eine Validierung der Dateien durch Definition zugehöriger XML Schemas durchzuführen.
-Vorteil bei der Verwendung eines Schemas ist, neben der Kontrolle auf Wohlgeformtheit und der Verwendung
-definierter Datentypen und Strukturen, auch das festlegen von Restriktionen.
+Damit bei der Verwendung der XML Dateien bei der späteren Verarbeitung mit JAXB keine Probleme auftreten, ist es notwendig eine Validierung der Dateien durch Definition zugehöriger XML Schemas durchzuführen. Vorteil bei der Verwendung eines Schemas ist, neben der Kontrolle auf Wohlgeformtheit und der Verwendung definierter Datentypen und Strukturen, auch das festlegen von Restriktionen.\\
 
-Hinsichtlich des zugrunde liegenden Konzeptes und den benötigten Informationen, gibt es viele Elemente
-innerhalb der Dateien, die nur mit Strings realisiert werden können. Das Problem bei freier Definition
-besteht darin, dass die Datensätze sehr fehleranfällig sind, wenn es um die Benutzung durch Menschen geht.
-Rechtschreibfehler beim Namen des Landes, des Fernsehsenders oder des Genres, würden für den Benutzer der
-Anwendung noch kein Problem darstellen, da er vermutlich deuten könnte was gemeint ist.
-Für die Umsetzung ist es aber von Vorteil, die Datensätze möglichst konsistent zu halten.
+Hinsichtlich des zugrunde liegenden Konzeptes und den benötigten Informationen, gibt es viele Elemente innerhalb der Dateien, die nur mit Strings realisiert werden können. Das Problem bei freier Definition
+besteht darin, dass die Datensätze sehr fehleranfällig sind, wenn es um die Benutzung durch Menschen geht. Rechtschreibfehler beim Namen des Landes, des Fernsehsenders oder des Genres, würden für den Benutzer der Anwendung noch kein Problem darstellen, da er vermutlich deuten könnte was gemeint ist. Für die Umsetzung ist es aber von Vorteil, die Datensätze möglichst konsistent zu halten.\\
 
-Das System des Serientrackers beruht darauf, die Verwaltung von Serien anhand von Listen zu ermöglichen. Wie bereits in der Besprechung der Umsetzung erwähnt, wird anhand dieser Informationen auch die asynchrone Datenübertragung realisiert.
-Das Abonnieren von Informationen zu laufenden Serien des Genre Action, greift bei Benachrichtigung auf
-Datensätze zu, die diesem Elementwert unter dieser eindeutigen Zeichenfolge zugeordnet sind. Formulierungsfehler
-wie Aktion, die von einer einheitlichen Schreibweise abweichen, führen dementsprechend zu Komplikationen, weil sie die Konsistenz der Informationssätze beschädigen. \\\\
+Das System des Serientrackers beruht darauf, die Verwaltung von Serien anhand von Listen zu ermöglichen. Wie bereits in der Besprechung der Umsetzung erwähnt, wird anhand dieser Informationen auch die asynchrone Datenübertragung realisiert.\\
+Das Abonnieren von Informationen zu laufenden Serien des Genre Action, greift bei Benachrichtigung auf Datensätze zu, die diesem Elementwert unter dieser eindeutigen Zeichenfolge zugeordnet sind. Formulierungsfehler wie Aktion, die von einer einheitlichen Schreibweise abweichen, führen dementsprechend zu Komplikationen, weil sie die Konsistenz der Informationssätze beschädigen.\\
 
-Hinsichtlich des Themas Serien, führten die Vorüberlegungen zu dem Entschluss, dass folgende Objekttypen innerhalb des Serientrackers von interesse sind und wiederkehrende Elemente darstellen:
+\vspace{0.2cm}
 
-\textbf{Serie} \\
-Eines der wichtigsten Elemente, dass alle Informationen beinhaltet, die für den Benutzer von bedeutung sind, ist die Serie.
-Eine Serie besitzt allgemeine Informationen wie Name, eine Beschreibung, der Sender indem sie ausgestrahlt wird oder das Produktionsland.
-Im realen Kontext wird eine Serie zudem in Seasons (Staffeln) ausgestrahlt, die jeweils eine bestimmte Anzahl von Episoden enthalten.
+Hinsichtlich des Themas Serien, führten die Vorüberlegungen zu dem Entschluss, dass folgende Objekttypen innerhalb des Serientrackers von interesse sind und wiederkehrende Elemente darstellen:\\
 
-\textbf{Season} \\
+\vspace{0.2cm}
+
+\textbf{Serie}\\
+Eines der wichtigsten Elemente, dass alle Informationen beinhaltet, die für den Benutzer von bedeutung sind, ist die Serie. Eine Serie besitzt allgemeine Informationen wie Name, eine Beschreibung, der Sender indem sie ausgestrahlt wird oder das Produktionsland. Im realen Kontext wird eine Serie zudem in Seasons (Staffeln) ausgestrahlt, die jeweils eine bestimmte Anzahl von Episoden enthalten.
+
+\vspace{0.2cm}
+
+\textbf{Season}\\
 Bestandteil einer Serie, von der es im Laufe der Jahre immer neue Objekte gibt und die nach einer gewissen Anzahl an Episoden als abgeschlossen gelten.
 
-\textbf{Episode} \\
-Ein Kernelement des Systems, dass ein wichtigen Typ für die asynchrone Kommunikation darstellt. Durch das Abonnieren von Genres oder Serien, wird die Benachrichtigung in Bezug auf eine einzelne Episode ausgelöst, die sich durch ihr jeweiliges Austrahlungsdatum und -zeitpunkt kennzeichnet.
-Zudem kann der Inhalt der Episode von Interesse sein.
+\vspace{0.2cm}
 
-\textbf{User} \\
+\textbf{Episode} \\
+Ein Kernelement des Systems, dass ein wichtigen Typ für die asynchrone Kommunikation darstellt. Durch das Abonnieren von Genres oder Serien, wird die Benachrichtigung in Bezug auf eine einzelne Episode ausgelöst, die sich durch ihr jeweiliges Austrahlungsdatum und -zeitpunkt kennzeichnet. Zudem kann der Inhalt der Episode von Interesse sein.
+
+\vspace{0.2cm}
+
+\textbf{User}\\
 Neben den Serieninformation, gibt es die Benutzer des Serientrackers, die sich anmelden und durch Listen die Dienste des Serientrackers abonnieren.
 Allgemein werden hierbei personenbezogene Daten wie Username und echter Name erwartet, so wie Zusatzinformationen, die für andere Benutzer von Interesse sein könnten und die Person hinter dem Profil genauer beschreiben. Beispiele wären das Alter, ein Profilbild, Wohnort oder eine kurze Beschreibung.
 
-\textbf{Liste} \\
+\vspace{0.2cm}
+
+\textbf{Liste}\\
 Die Liste kann als Sammlung mehrerer Serien zu einem bestimmten Thema aufgefasst werden. Hierbei gibt zum einen Listentypen die definitiv vorhanden sein müssen, wie beispielsweise Genrelisten oder die Favoritenliste eines Benutzers. Diese erfasst die Serien, zu denen der Eigentümer Benachrichtigungen erhalten will. Zum anderen besteht aber auch die Möglichkeit, dass der Benutzer sich Listen anlegt, die seinen individuellen Wünschen entsprechen.
 
-\textbf{Message} \\
-Als zusätzlicher Typ, der jedoch erst in der asynchronen Kommunikation verwendung finden wird, wurde die Message identifiziert. Hierbei handelt es sich um eine bestimmte Nachricht, die den entsprechenden Usern bei eintreten eines Eventes zugeschickt wird und ein eintretendes Ereignis meldet.
+\vspace{0.2cm}
 
+\textbf{Message}\\
+Als zusätzlicher Typ, der jedoch erst in der asynchronen Kommunikation verwendung finden wird, wurde die Message identifiziert. Hierbei handelt es sich um eine bestimmte Nachricht, die den entsprechenden Usern bei eintreten eines Eventes zugeschickt wird und ein eintretendes Ereignis meldet.
 
 
 \newpage
 
-\subsubsection{Umsetzung}
+\subsection{Realisierung der Schemata}
 
-Nach der theoretischen Planung fand die Realisierung der XML Schematas statt.
-Dabei wurde für jeden der zuvor identifizierten Obertypen ein eigenes Schema definiert und die einzelnen Elemente/Attribute mit Datentypen und Restriktionen belegt. Die Aufteilung der einzelnen Typen auf ein seperates Schema, fand mit den Gedanken statt, die Struktur der Daten möglichst einfach und lesbar zu halten. Eine Serie die mehrere Staffeln enthält, die wiederrum jeweils eine Menge von Episoden auffassen, würde ein sehr komplexes Element definieren, dass während der Entwicklung schnell zu unübersichtlich werden kann.
+Nach der theoretischen Planung fand die Realisierung der XML Schemata statt.
+Dabei wurde für jeden der zuvor identifizierten Obertypen ein eigenes Schema definiert und die einzelnen Elemente/Attribute mit Datentypen und Restriktionen belegt. Die Aufteilung der einzelnen Typen auf ein seperates Schema, fand mit den Gedanken statt, die Struktur der Daten möglichst einfach und lesbar zu halten. Eine Serie die mehrere Staffeln enthält, die wiederrum jeweils eine Menge von Episoden auffassen, würde ein sehr komplexes Element definieren, dass während der Entwicklung schnell zu unübersichtlich werden kann.\\
 
-Da die Daten einer Episode, inhaltlich jedoch weiterhin davon abhängen, von welcher Serie diese ist und in welcher Staffel sie vorkam, wird eine Referenzierung mit Hilfe von global eindeutigen IDs eingeführt. Jede Serie, User, Season, Episode, Message und Liste wird mit einer einzigartigen Folge von Zeichen beschrieben, über diese es möglich ist auf gewünschte Informationen zuzugreifen und entsprechende Elemente auszulesen.
+Da die Daten einer Episode, inhaltlich jedoch weiterhin davon abhängen, von welcher Serie diese ist und in welcher Staffel sie vorkam, wird eine Referenzierung mit Hilfe von global eindeutigen IDs eingeführt. Jede Serie, User, Season, Episode, Message und Liste wird mit einer einzigartigen Folge von Zeichen beschrieben, über diese es möglich ist auf gewünschte Informationen zuzugreifen und entsprechende Elemente auszulesen.\\
 
-Dieses Prinzip lässt sich am Beispiel des XML Schemas einer Episode veranschaulichen. Hierbei handelt es sich um einen Codeauszug, der die gesamte Struktur einer Episode vorgibt:
-\begin{lstlisting}[label=xsd-definition,caption= Definition des complexElement Episode mit Elementen und Attributen]
+Dieses Prinzip lässt sich am Beispiel des XML Schemas einer Episode veranschaulichen. Hierbei handelt es sich um einen Codeauszug, der die gesamte Struktur einer Episode vorgibt:\\
+
+\begin{lstlisting}[label=xsd-definition-episode,caption= Definition des complexElement Episode mit Elementen und Attributen]
   <xs:element name="episode">
     <xs:complexType>
       <xs:choice minOccurs="0">
@@ -81,15 +82,14 @@ Dieses Prinzip lässt sich am Beispiel des XML Schemas einer Episode veranschaul
   </xs:element>
 \end{lstlisting}
 
-Eine Episode bekommt damit eine eindeutige \textbf{episodeID} zugeordnet und ist damit gesehen unter allen Episoden eindeutig identifiziert. Zudem erhält jede Episode auch die Referenz der serienID und seasonID als Attribute, um Verweise und Zuordnungen zu realisieren. Da sich jedes Objekt demnach durch eine Kennung repräsentiert, reicht bei anlegen von Listen und Containern ein einfacher Verweis auf entsprechendes Element, wodurch Datenredundanz bei mehreren Schematas verhindert wird, die inhaltlich voneinander abhängen. Innerhalb der XML Datei einer Serie, reicht somit der Verweis auf die einzelnen Seasons über ihre ID, ohne dass deren Inhalte mehrfach abgespeichert werden müssen.
-Dieser Redudanzverlust wäre auch realisierbar gewesen, wäre eine Season und Episode direkt innerhalb des Serieschemas gespeichert worden. Damit hätte eine Referenz auf die Serie genügt und auf eine Episode könnte mit einer Abfrage der Seasonnummer und Episodennummer getätigt werden. Der Entschluss zur Aufteilung der Schematas führte jedoch zwangsläufig zu dieser Entscheidung, wobei die Folge daraus auch komfortable Vorzüge in der Flexibilität der einzelnen Elemente mit sich bringt.
+Eine Episode bekommt damit eine eindeutige \textbf{episodeID} zugeordnet und ist damit gesehen unter allen Episoden eindeutig identifiziert. Zudem erhält jede Episode auch die Referenz der serienID und seasonID als Attribute, um Verweise und Zuordnungen zu realisieren. Da sich jedes Objekt demnach durch eine Kennung repräsentiert, reicht bei anlegen von Listen und Containern ein einfacher Verweis auf entsprechendes Element, wodurch Datenredundanz bei mehreren Schemata verhindert wird, die inhaltlich voneinander abhängen. Innerhalb der XML Datei einer Serie, reicht somit der Verweis auf die einzelnen Seasons über ihre ID, ohne dass deren Inhalte mehrfach abgespeichert werden müssen.\\
+Dieser Redudanzverlust wäre auch realisierbar gewesen, wäre eine Season und Episode direkt innerhalb des Serieschemas gespeichert worden. Damit hätte eine Referenz auf die Serie genügt und auf eine Episode könnte mit einer Abfrage der Seasonnummer und Episodennummer getätigt werden. Der Entschluss zur Aufteilung der Schemata führte jedoch zwangsläufig zu dieser Entscheidung, wobei die Folge daraus auch komfortable Vorzüge in der Flexibilität der einzelnen Elemente mit sich bringt.
 
+\vspace{0.2cm}
 
-\parskip 12pt
-\parindent 0pt
 Um die Struktur des gesamten Serien Elements zu ermöglichen und vorhandene IDs global nutzen zu können, wird jedes Schema über eine Masterdatei in die einzelnen XML Schemas inkludiert, um bereits definierte Elemente und Attribute wiederverwendbar zu machen und die Datenmenge zu reduzieren.
 
-\begin{lstlisting}[label=xsd-definition,caption= Auszug aus der Masterinklude Serientracker.xsd]
+\begin{lstlisting}[label=xsd-definition-master,caption= Auszug aus der Masterinklude Serientracker.xsd]
 <!-- Dieses Schema inkludiert alle zu verwendenen Schemata-->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -111,21 +111,22 @@ Um die Struktur des gesamten Serien Elements zu ermöglichen und vorhandene IDs 
   <!-- Globale Elemente -->
 \end{lstlisting}
 
-Neben dem Include der eunzelnen Schematas, werden auch vereinzelte Elemente darin definiert, die innerhalb der einzelnen Schematas wiederholt Verwendung finden. Hierbei vor allem die einzelnen ID Attribute. \\
+Neben dem Include der einzelnen Schemata, werden auch vereinzelte Elemente darin definiert, die innerhalb der einzelnen Schemata wiederholt Verwendung finden. Hierbei vor allem die einzelnen ID Attribute.\\
 
-Während der Entwicklung dieser Variante, gab es anfängliche Schwierigkeiten innerhalb der Umsetzung. Der Verweis innerhalb eines XML Schemas auf ein Anderes und die entsprechende Verwendung der Elemente und Attribute, führte zu Komplikationen innerhalb der Deklarationen. Auch eine Definition eines einheitlichen Namespaces führte zu keiner Lösung. Im zweiten Ansatz folgte dann die direkte Auseinandersetzung zwischen den Optionen Include und Import, wobei die letztendliche Wahl auf die Inkludierung fiel. Ein Import erlaubt den Verweis auf unterschiedliche Namespaces, wobei ein Include auf einen einheitlichen Namespace verweist und bei nichtbestehen, den des Oberschemas übernimmt.
+Während der Entwicklung dieser Variante, gab es anfängliche Schwierigkeiten innerhalb der Umsetzung. Der Verweis innerhalb eines XML Schemas auf ein Anderes und die entsprechende Verwendung der Elemente und Attribute, führte zu Komplikationen innerhalb der Deklarationen. Auch eine Definition eines einheitlichen Namespaces führte zu keiner Lösung. Im zweiten Ansatz folgte dann die direkte Auseinandersetzung zwischen den Optionen Include und Import, wobei die letztendliche Wahl auf die Inkludierung fiel. Ein Import erlaubt den Verweis auf unterschiedliche Namespaces, wobei ein Include auf einen einheitlichen Namespace verweist und bei nichtbestehen, den des Oberschemas übernimmt.\\
 Da Namespaces in der Regel dazu dienen, Elementen und Attributen einen gewissen Namensraum zu gewährleisten, der bei gängigen Bezeichnungen wie \textit{Name} zu Konflikten führen kann, ist die Definition bei größeren Projekten durchaus zu empfehlen. Ob dabei ein Einzelner oder Mehrere angelegt werden sollten, ist eventuell auch abhängig von der gesamten Struktur des Schemas. Da im Rahmen dieses Projektes jedoch mit relativ geringem Datenumfang gearbeitet wird und mit keiner Komplikation der Bezeichnungen zu rechnen ist, wurde auf eine genaue targetNamespace Definition verzichtet. Auch wenn bestimmte Elementbezeichnungen innerhalb eines \textit{http://Serientracker.de} Namensraum denkbar gewesen wäre. Letztendlich spielt dieser Aspekt für die Umsetzung innerhalb des Projektes jedoch keine tragenden Rolle. Daher wurde auf die Definition verzichtet und die entsprechende Include Variante verwendet.
 
+\vspace{0.2cm}
 
 Ein weiterer Punkt der in der Entwicklungsphase von Bedeutung war, war die Frage danach, wie die Daten innerhalb des lokalen Speichers abgelegt werden.
-Durch die Definition einzelner Schematas erhält jedes Objekt dieses Typs auch eine eigene XML Datei. Im späteren Verlauf könnten sich daraus aber Probleme beim gezielten Zugriff entwicklen, denen frühzeitig Abhilfe geschaffen werden sollte.
-Aus diesem Grund wurde eine weitere Gruppe von Elementen innerhalb XML angelegt, die Containerklassen.
-Für jeden Elementtyp, der als eigene Entität angelegt wird, wurde eine Containerklasse definiert, innerhalb derer beliebig viele Objekte eines bestimmten Typs aufgenommen werden können. Dieses Objekt dient in der letztendlichen Verwaltung als Sammlung aller Elemente.
+Durch die Definition einzelner Schemas erhält jedes Objekt dieses Typs auch eine eigene XML Datei. Im späteren Verlauf könnten sich daraus aber Probleme beim gezielten Zugriff entwicklen, denen frühzeitig Abhilfe geschaffen werden sollte.\\
+Aus diesem Grund wurde eine weitere Gruppe von Elementen innerhalb XML angelegt, die Containerklassen.\\
+Für jeden Elementtyp, der als eigene Entität angelegt wird, wurde eine Containerklasse definiert, innerhalb derer beliebig viele Objekte eines bestimmten Typs aufgenommen werden können. Dieses Objekt dient in der letztendlichen Verwaltung als Sammlung aller Elemente.\\
 
-Folgendes Beispiel veranschaulicht den Ansatz und wurde in dieser Form für jeden Elementtyp angelegt:
+Folgendes Beispiel veranschaulicht den Ansatz und wurde in dieser Form für jeden Elementtyp angelegt:\\
 
 
-\begin{lstlisting}[label=xsd-definition,caption= Auszug aus der Series.xsd Definition]
+\begin{lstlisting}[label=xsd-definition-series,caption= Auszug aus der Series.xsd Definition]
 <!-- Element das alle Serien aufnimmt -->
   <xs:element name="series">
     <xs:complexType>
@@ -137,28 +138,31 @@ Folgendes Beispiel veranschaulicht den Ansatz und wurde in dieser Form für jede
 \end{lstlisting}
 
 
-Um die vorhandenen Daten semantisch sinnvoll und reichhaltig anzulegen, wurde bei der Entwicklung der XML Schematas darauf geachtet, diesen Anspruch
+Um die vorhandenen Daten semantisch sinnvoll und reichhaltig anzulegen, wurde bei der Entwicklung der XML Schemata darauf geachtet, diesen Anspruch
 durch die verschiedenen Datentypen, Restriktionen und Benutzungstypen zu gewährleisten.
 
-\newpage
+\subsection{Datentypen}
 
-\subsubsection{Datentypen}
 Grundsätzlich werden innerhalb des Serientrackers Daten unterschiedlichen Typs benutzt, die entsprechend des realen Kontextes am sinnvollsten erscheinen.
 Aufgrund der Komplexität, soll hierbei nicht auf jedes einzelne Element eingegangen werden, sondern nur ein Überblick darüber vermittelt werden, mit welchen Grundideen vorgegangen wurde.
+
+\vspace{0.2cm}
 
 Neben den einfachen Standartdatentypen wie String, Boolean, Integer, Time (...), bietet XML die Möglichkeit weitere spezifische Typen wie anyURI oder ID zu definieren.\\
 Da innerhalb des Serientrackers viele Information lediglich in Textform sinnvoll sind, wurde für diese der Typ \textbf{String} verwendet. Beispielhaft seien hier die Titel und Beschreibungen, sowie Benutzernamen und Länder erwähnt.\\
 Jahreszahlen, Episodenlänge und Season- und Episodennummern werden mit Zahlen als \textbf{Integer} ausgedrückt. Bestimmte Zeitangaben wie Ausstrahlungszeit, bei denen es nur um den Zeitpunkt geht, in der einfach Form \textbf{Time} und genauere Angaben, wie bei Ausstrahlungstag in Hinsicht auf die Benachrichtigung, über den \textbf{dateTime} Typ.
 Linkverweise auf Bildquellen wie bei Avatar erhielten den Typ \textbf{anyURI}.\\
 
+\vspace{0.2cm}
+
 Einzelne Elemente wie User und List, weisen hierbei noch eine Besonderheit auf. Wie bereits bei den Kommunikationsabläufen innerhalb des Konzepes eangesprochen, wird die Anwendung von Benutzern verwendet, die verschiedenen Rechtetypen angehören. Aus diesem Grund wird jeder User mit dem Attribute Admin gekennzeichnet, der innerhalb einer einfachen \textbf{Boolvariablen} die entsprechenden Rechte festgelegt. Ähnliches Prinzip wird bei den Listen verwenden zur Unterscheidung, ob die Sichtbarkeit für jeden Benutzer gestattet ist oder nur für den Besitzer der Liste.
 
-\parskip 12pt
-\parindent 0pt
-Zur angesprochenen Referenzierung und Identifizierung einzelner Entitäten, zeichnen sie sich durch eine eindeutige ID als Attribut aus. Generell wurden die Informationen wie ID oder Rechte, die ein Objekt nicht inhaltlich sondern eher aus verwaltender Sicht genauer beschreiben, als Attribute definiert. Inhaltliche Informationen die Bestandeteil des Objektes sind, werden hingegen als Elemente angelegt.
+\vspace{0.2cm}
+
+Zur angesprochenen Referenzierung und Identifizierung einzelner Entitäten, zeichnen sie sich durch eine eindeutige ID als Attribut aus. Generell wurden die Informationen wie ID oder Rechte, die ein Objekt nicht inhaltlich sondern eher aus verwaltender Sicht genauer beschreiben, als Attribute definiert. Inhaltliche Informationen die Bestandeteil des Objektes sind, werden hingegen als Elemente angelegt.\\
 
 Für den Datentyp einer solchen ID, wurde ein eigenes Element folgendermaßen definiert:
-\begin{lstlisting}[label=xsd-definition,caption= Definition der globalen ID's]
+\begin{lstlisting}[label=xsd-definition-idtype,caption= Definition der globalen IDs]
   <xs:simpleType name="idType">
     <xs:restriction base="xs:string">
       <xs:pattern value="|(ss|sn|ep|us|ls|me)_[0-9a-z]{8}"/>
@@ -169,22 +173,20 @@ Für den Datentyp einer solchen ID, wurde ein eigenes Element folgendermaßen de
 Am Anfang der Zeichenketten steht ein Kürzel, dass den jeweiligen Typ angibt. SN steht dabei für Season, EP für Episode und ähnliches. Danach folgt ein optisches Trennzeichen, gefolgt von einer beliebigen Characterfolge aus 8 gemischten Zeichen mit Zahlen und Buchstaben. Eine Serie erhält damit eine Zuordnung der Form \textit{ss\_0a1b2c3d}.
 
 
-
-\subsubsection{Restriktionen}
-Damit die Informationen innerhalb der XML Datein inhaltlich sinnvoll sind und während der Verarbeitung keine weiteren Probleme entstehen (zum Beispiel durch unterschiedliche Schreibweisen), wurden für einige Elemente Restriktionen definiert.
+\subsection{Restriktionen}
+Damit die Informationen innerhalb der XML Datein inhaltlich sinnvoll sind und während der Verarbeitung keine weiteren Probleme entstehen (zum Beispiel durch unterschiedliche Schreibweisen), wurden für einige Elemente Restriktionen definiert.\\
 Dabei ist das Ziel, die Fehleranfälligkeit zu reduzieren und im Kontext logische Informationen zu gewährleisten. Vorhandene Restriktionen, also Einschränkungen/Bedingungen, die für einzelne Elemente getroffen wurden sind im folgenden mit einer kurzen Begründung aufgeführt. Häufig treten diese in Form von Längenbegrenzungen bei Texten auf oder als Grenzbereichen bei Zahlen auf.\\
 Weitere Elemente kennzeichnen sich entsprechend dadurch, dass der Inhalt auf eine bestimmte Auswahl an Möglichkeiten eingeschränkt wurde. Beim Konzipieren dieser Grenzen und Auswahlmöglichkeiten, ist es nicht möglich die perfekte Variante zu erzielen, sondern eine Auswahl von Optionen zu treffen, die im Kontext als zuverlässig und praktikabel erscheinen. Manche Begrenzugnen wie Anzahl an Episoden einer Staffel oder Episodenlaufzeit, wurden in Bezug auf die Realität getroffen und angelehnt an gängige Formen. Prinzipiell wären hierbei  alternative Auswahlmöglichkeiten und Varianten denkbar, wie beispielsweise die freie Definition des Genres oder des TV Senders als einfacher String. Hierbei hat der verwaltende Admin dann die Option den Inhalt frei zu bestimmen. Letztendlich wurde jedoch der eigentliche Nutzen abgewägt, sodass für den Serientracker folgende Restriktionen definiert wurden:
 
 \begin{table}[H]
 \caption{Allgemeine Restriktionen}
 
-
 \begin{tabular}{l l l}
 \\ [-0.5ex]
 
 \hline\hline
 \\ [-0.5ex]
-Element/Attirbut & Restriktion & Begründung
+Element/Attribut & Restriktion & Begründung
 \\ [1.5ex]
 \hline
 \\ [-0.5ex]
@@ -200,7 +202,7 @@ Seasonnumber (seasons) & Anzahl < 41 & sinnvolle Begrenzung, \\[1ex]
 
 \hline
 \end{tabular}
-\label{tab:restriktionenderxsd}
+\label{tab:restriktionenderxsdgeneral}
 \end{table}
 
 
@@ -247,7 +249,7 @@ Admin & Boolean ob True or False & Rechtevergabe nach Status,\\[1ex]
 
 \hline
 \end{tabular}
-\label{tab:restriktionenderxsd}
+\label{tab:restriktionenderxsduser}
 \end{table}
 
 
@@ -279,47 +281,48 @@ Genre & Auswahl definierter Genres & einheitliche Schreibweise,\\[1ex]
 
 \hline
 \end{tabular}
-\label{tab:restriktionenderxsd}
+\label{tab:restriktionenderxsdserie}
 \end{table}
 
 
 
-\subsubsection{Beispieldaten}
+\subsection{Beispieldaten}
 
-Bereits während der Entwicklung der XML Schemas, wurden parallel XML Dateien mit entsprechenden Beispieldaten definiert. Durch den entsprechenden Validierungstest bietet sich zum einen die Möglichkeit entsprechenden Definitionen auf Korrektheit zu prüfen und zum anderen XML Typen zu entwickeln, die möglichst praxistaugliche Elemente und Attribute aufweisen. Zu jedem XML Schema wurde daher mindestens eine Beispieldatei erzeugt und die entsprechende Referenzierung untereinander getest. Speziell im Containerelemente Series wurde deutlich, wie flexibel die Datensicherung mit globalen IDs sein kann. Zum einen reicht das Einbinden eines Objekts in der simplen Form <serie serieID="ss\_6127hdja"/>, zum anderen kann auch die gesamte Struktur einer Serie inklusive Informationen über Season und die einzelnen Episoden eingebunden werden. \\
+Bereits während der Entwicklung der XML Schemas, wurden parallel XML Dateien mit entsprechenden Beispieldaten definiert. Durch den entsprechenden Validierungstest bietet sich zum einen die Möglichkeit entsprechenden Definitionen auf Korrektheit zu prüfen und zum anderen XML Typen zu entwickeln, die möglichst praxistaugliche Elemente und Attribute aufweisen. Zu jedem XML Schema wurde daher mindestens eine Beispieldatei erzeugt und die entsprechende Referenzierung untereinander getest. Speziell im Containerelemente Series wurde deutlich, wie flexibel die Datensicherung mit globalen IDs sein kann. Zum einen reicht das Einbinden eines Objekts in der simplen Form <serie serieID="ss\_6127hdja"/>, zum anderen kann auch die gesamte Struktur einer Serie inklusive Informationen über Season und die einzelnen Episoden eingebunden werden.\\
+
+\vspace{0.2cm}
 
 Für die entsprechende Nutzung in der weiteren Entwicklung, wurden zudem korrekte Beispieldatensätze von Serien angelegt. Diese Repräsentieren von der obersten Ebene der allgemeinen Serieninformationen bis hin zur niedrigsten Ebene der einzelnen Episodeninformation vollständige Datensätze, wie sie in einem komplexen System dieser Form angelegt werden müssten. Aufgrund von Testzwecken, wurde sich jedoch auf wenige Beispielserien beschränkt. Zudem wurden entsprechende Daten innerhalb der Series.xml definiert und nicht in die entsprechenden Typen aufgeteilt. Diese Variante hatte zum Vorteil, dass die Informationen einer Serie (für Menschen) übersichtlich strukturiert und lesbarer waren, als wenn jede Beispielepisode per Hand in einzelne XML Files getrennt worden wäre.
 Aufgrund der Vielzahl von Informationen zeigte, sich aber bereits bei wenigen Daten der Nachteil, dass die Datei sehr komplex wurde. Darüber hinaus weist diese Variante auch die Schwäche beim möglichen Datenverlust auf. Sollte in diesem Fall das sammelnde Element verloren gehen, so wäre der Datenverlust größer gegenüber den seperaten Absicherungen in einzelne Files.
 
+\vspace{0.2cm}
 
-\parskip 12pt
-\parindent 0pt
-In der Konzeptvorstellung wurde bereits von der möglichen Einbindung einer Freundefunktion gesprochen. Die Umsetzung dieses Thema würde noch eine Änderung der XML Schematas der User mit sich ziehen. Ähnlich wie für die Abonnements von Serien, könnte man innerhalb des User Schemas ein komplexes Element \textit{Friends} einbauen, dass beliebig viele User aufnimmt. Dabei könnten normale Objekte des bereits vorhandenen Userschemas eingebunden werden und eine Liste aller Freunde bilden.\\ Um die entsprechende Kommunikation zwischen den einzelnen Freunden zu gewährleisten und Meldungen wie Empfehlungen oder Benachrichtigungen zu verschicken, muss weiterhin das Message Schema erweitert oder alternativ ein neues Schema der \textit{Friendmessage} eingeführt werden. Eine seperate Trennung beider Nachrichtenarten wäre in sofern sinnvoll, als das diese in der Funktionalität und Definition unterschiedliche Anwendungen haben. Die bisherigen Nachrichten werden von der Serverseite aus an User geschickt und beinhalten statische Nachrichten. Auch Empfehlungen könnte man mit festen Standartnachrichten wie \textit{X empfiehlt dir Serie Y} umsetzen, jedoch wäre hierbei innerhalb eines realen Kontext wahrscheinlich eine persönlichere Komponente wie Userkommentare mit enthalten.
+In der Konzeptvorstellung wurde bereits von der möglichen Einbindung einer Freundefunktion gesprochen. Die Umsetzung dieses Thema würde noch eine Änderung der XML Schemata der User mit sich ziehen. Ähnlich wie für die Abonnements von Serien, könnte man innerhalb des User Schemas ein komplexes Element \textit{Friends} einbauen, dass beliebig viele User aufnimmt. Dabei könnten normale Objekte des bereits vorhandenen Userschemas eingebunden werden und eine Liste aller Freunde bilden.\\ Um die entsprechende Kommunikation zwischen den einzelnen Freunden zu gewährleisten und Meldungen wie Empfehlungen oder Benachrichtigungen zu verschicken, muss weiterhin das Message Schema erweitert oder alternativ ein neues Schema der \textit{Friendmessage} eingeführt werden. Eine seperate Trennung beider Nachrichtenarten wäre in sofern sinnvoll, als das diese in der Funktionalität und Definition unterschiedliche Anwendungen haben. Die bisherigen Nachrichten werden von der Serverseite aus an User geschickt und beinhalten statische Nachrichten. Auch Empfehlungen könnte man mit festen Standartnachrichten wie \textit{X empfiehlt dir Serie Y} umsetzen, jedoch wäre hierbei innerhalb eines realen Kontext wahrscheinlich eine persönlichere Komponente wie Userkommentare mit enthalten.
 
+\vspace{0.2cm}
 
-\parskip 12pt
-\parindent 0pt
 Sofern dieser Aspekt umgesetzt wird, müsste man hierbei die entsprechenden Varianten abwägen und dabei mögliche Szenarien konzeptionell durchspielen, um eine passende Einbindung hinsichtlich der Funktionalität zu finden.\\
 Nach der Auseinandersetzung mit den vorhandenen Daten und entsprechender Definition der XML Schemas, folgt im nächsten Schritt die Entwicklung der synchronen Kommunikationskomponenten.
 
 
 \newpage
 
-\subsection{Ressourcen und die Semantik der HTTP-Operationen}
-\subsubsection{Ressourcen}
+\section{Ressourcen und die Semantik der HTTP-Operationen}
+\subsection{Vertiefung}
 
 Als Vorbereitung für die Umsetzung der synchronen Kommunikationsvorgänge, steht die theoretische Auseinandersetzung mit REST im Mittelpunkt.
-Der erste Schwerpunkt dabei ist die Identifizierung vorhanderer Ressourcen des Serientrackers. Bereits beim Konzipieren der XML Schemas mit beispielhaften XML Datensätzen, musste überlegt werden, für welche Elemente es möglich ist Entitäten der realen Welt zu ermitteln.
+Der erste Schwerpunkt dabei ist die Identifizierung vorhanderer Ressourcen des Serientrackers. Bereits beim Konzipieren der XML Schemas mit beispielhaften XML Datensätzen, musste überlegt werden, für welche Elemente es möglich ist Entitäten der realen Welt zu ermitteln.\\
 
-Bei einer Ressource geht es, ähnlich wie bei XML Dateien, nicht darum wie die darin enthalten Informationen im letztendlichen Kontext repräsentiert werden, sondern welche Informationen diese enthalten. Entsprechende Objekte der Außenwelt werden beschrieben und wie die Wurzelelemente bei XML, stellen sie einen bestimmten Objekttyp dar. Eine identifizierte Ressource, ist eine Schnittstelle zur Außenwelt und sollte daher dem Kontext entsprechend gut durchdacht werden.
-Die Auseinandersetzung mit den XML Schemas lieferte dabei einen Überblick über vorhandene Primärressourcen. Dabei handelt es sich um die Oberklassen der vorhandenen Objekttypen \textit{Serie} und \textit{User}.
+Bei einer Ressource geht es, ähnlich wie bei XML Dateien, nicht darum wie die darin enthalten Informationen im letztendlichen Kontext repräsentiert werden, sondern welche Informationen diese enthalten. Entsprechende Objekte der Außenwelt werden beschrieben und wie die Wurzelelemente bei XML, stellen sie einen bestimmten Objekttyp dar. Eine identifizierte Ressource, ist eine Schnittstelle zur Außenwelt und sollte daher dem Kontext entsprechend gut durchdacht werden.\\
+Die Auseinandersetzung mit den XML Schemas lieferte dabei einen Überblick über vorhandene Primärressourcen. Dabei handelt es sich um die Oberklassen der vorhandenen Objekttypen \textit{Serie} und \textit{User}.\\
 
 Desweiteren ist es möglich vorhandene Subressourcen zu identifizieren, die sich dadurch auszeichnen, dass sie selbst Bestandteil einer Ressource sind.
 Aufgrund der komplexen Struktur einer Serie, die neben den allgemeinen Informationen noch die Informationen zu mehreren Staffeln und entsprechenden Episoden enthalten, wurde früh die systematische Aufteilung festgelegt.
 Da es auch innerhalb der Anwendung von Interesse sein kann, eine einfache Repräsentation der Staffelübersicht oder der Episodenübericht einer Staffel zu ermöglichen, bietet es sich gerade bei diesen Typen an, diese Objekte als eigene Ressource zu designen. Dazu kommt, dass eine Episode zum Beispiel im Kontext einer Serie am meisten Sinn macht, durchaus aber auch für sich existieren kann.Zur Ordnung der einzelnen Elemente, gibt es entsprechende Listenressourcen wie Series, Seasons, Users und Episodes, welche alle Elemente des zugehörigen Typs aufnehmen und sammeln.\\
 
-Ein Kernelement der Anwendung wird das Benachrichtigen der Benutzer über bestimmte Ereignisse sein. Diese Abonnements lassen sich in Listen verwalten. Gerade bei einer möglichen Kategorisierung wie beispielsweise \textit{Serie mit dem Genre Drama}, wäre es durchaus interessant gewesen Listenressourcen mit entsprechenden Filtern zu definieren. Aufgrund der Vielzahl von Kategorisierungsmöglichkeit, wird dieser Schritt aber nicht über einzelne Ressourcen stattfinden, sondern innerhalb Anwendung durch die Abfrage bestimmter Elemente errzielt.
-\newpage
+Ein Kernelement der Anwendung wird das Benachrichtigen der Benutzer über bestimmte Ereignisse sein. Diese Abonnements lassen sich in Listen verwalten. Gerade bei einer möglichen Kategorisierung wie beispielsweise \textit{Serie mit dem Genre Drama}, wäre es durchaus interessant gewesen Listenressourcen mit entsprechenden Filtern zu definieren. Aufgrund der Vielzahl von Kategorisierungsmöglichkeit, wird dieser Schritt aber nicht über einzelne Ressourcen stattfinden, sondern innerhalb Anwendung durch die Abfrage bestimmter Elemente errzielt.\\
+
+\vspace{0.2cm}
 
 Die theoretische Auseinandersetzung führte zu folgenden Ressourcen, wobei die angegeben URI nur den charakteristischen Abschnitt wiederspiegelt.
 Da für die Umsetzung an sich, die URI eher als eine ID in Form von Zeichen steht und für die letzendliche Auswertung nicht unbedingt notwendig ist, wird auf eine Darstellung in Form mit Schema und Pfadangabe in der Übersicht verzichtet.
@@ -357,34 +360,39 @@ Jedes Element, dass für die synchrone Kommunikation von Interesse ist, besitzt 
 Vorstellbar aufgrund der allgemeinen Struktur wäre auch ein Pfad der \\
 Form /series/\{id\}/seasons/\{id\}/episodes/\{id\}.  Dieser setzt entsprechend vorraus, dass nicht nur die einfache Episoden ID, sondern auch die zugehörige Serien ID und Season ID bekannt ist.
 
-\subsubsection{Semantik der HTTP-Operationen}
+\subsection{Semantik der HTTP-Operationen}
 
 Nachdem die Ressourcen identifiziert sind, muss nun bestimmt werden, welche Operationen (HTTP-Methoden) unterstützt werden und welche Semantik sich dahinter verbirgt.\\
 Dafür stehen die vier Methoden GET (Informationen auslesen), POST (Informationen anlegen), PUT (Informationen ändern) und DELETE (Informationen löschen) zur Verfügung. Nicht jede Ressource muss alle Methoden bereitstellen. Für das Projekt wurden die Ressourcen erneut betrachtet und die benötigten Methoden samt Semantik herausgearbeitet. Dabei entwickelte sich folgende Ergebnis:
 
 \begin{figure}[H]
-\includegraphics[width=1\textwidth]{../images/bedeutunghttpmethoden.png}
+\includegraphics[width=.9\textwidth]{../images/bedeutunghttpmethoden.png}
 \caption{Bedeutung der http Methoden}
 \label{bedeutunghttpmethoden}
 \end{figure}
 
 \newpage
 
-\subsection{RESTful Webservice}
+\section{RESTful Webservice}
+
+\subsection{Vertiefung}
 
 Nach der konzeptionellen Planung der Ressourcen und HTTP - Operationen, geht es um die codebasierte Umsetzung. Definierte XML Schemas werden nach erfolgreicher Validierung in JAXB Objekte überführt, um eine Verwendung des Datenbestandes im Javaprojekt zu ermöglichen und aus den Schemadateien Java-Klassen zu erzeugen.\\
-Zur Realisierung der synchronen Kommunikation wird Grizzly als Webserver der HTTP - Operationen verwendet. Zusätzlich wird zur Entwicklung des RESTful Webservices das Jersey framework implementiert, dass für JAX-RS APIs und Server als Referenzimplementierung dient.
+Zur Realisierung der synchronen Kommunikation wird Grizzly als Webserver der HTTP - Operationen verwendet. Zusätzlich wird zur Entwicklung des RESTful Webservices das Jersey framework implementiert, dass für JAX-RS APIs und Server als Referenzimplementierung dient.\\
 
-\subsubsection{Vorüberlegungen}
-Bereits im Rahmen der Ressourcenfindung, wurde sich Gedanken darüber gemacht, wie URI zur jeweiligen Ressource gestaltet werden können, damit ein logischer Request auf gewünschte Daten stattfinden kann.
+\vspace{0.2cm}
+
+
+Bereits im Rahmen der Ressourcenfindung, wurde sich Gedanken darüber gemacht, wie URI zur jeweiligen Ressource gestaltet werden können, damit ein logischer Request auf gewünschte Daten stattfinden kann.\\
 
 Die Repräsentation einer spezifischen Ressource wurde im vorherigen Abschnitt mittels \textbf{Path-Parameter} realisiert, das heißt, der Parameter ID war Teil der eigentlichen URI.\\
-Als Alternative können allerdings auch sogenannte \textbf{Query-Parameter} zum Einsatz kommen. Diese eignen sich meistens um Ressourcen noch weiter zu verfeinern und sind in der Regel optional.
+Als Alternative können allerdings auch sogenannte \textbf{Query-Parameter} zum Einsatz kommen. Diese eignen sich meistens um Ressourcen noch weiter zu verfeinern und sind in der Regel optional.\\
 
 Innerhalb des Serientrackers hat man es grundlegend mit 2 Typen von Daten zu tun, die bereits in vorherigen Überlegungen angesprochen wurden.Zum einen haben wir feste Objekte wie Serien, Season oder Episoden, die eine eindeutige ID erhalten und sich über diese auffinden lassen. Für diese Typen eignet sich besonders die Path-Parameter Anfrage.
 Diese Zeichnen sich durch die einfach Angabe des Pfades aus wie beispielsweise \textbf{@Path( "{serieID}" )} für die GET Operation auf die URI \textit{/series/\{serieID\}}.\\
 Der zweite Typ sind die jeweiligen Listen, die sich durch die Elemente und Attribute der Serien entsprechend kategorisieren lassen. Eine Konzeptidee war das Abonnieren bestimmter Genres. Da Listen aber generell Serien unterschiedlichen Genres aufnehmen können, prinzipiell aber auf dem selben XML Schema \textit{list} beruhen, wurde nach einer Möglichkeit entsprechende Objekte bei einem Request herauszufiltern.\\ Die Lösung dieses Problem wurde dann über eine Erweiterung der XSD, sowie der Abfrage per Query-Parameter innerhalb des ListsService erzielt.
-\begin{lstlisting}[label=listsservice,caption= Auszug aus ListsService mit QueryParam]
+
+\begin{lstlisting}[label=listsservice,caption=Auszug aus ListsService mit QueryParam]
 @Path( "/lists" )
 public class ListsService {
 
@@ -403,8 +411,8 @@ Weiterhin könnte exemplarisch  ein Query-Parameter in diesem Projekt bei der Re
 \\
 Als Alternative zu den beiden Varianten bietet sich noch der \textbf{HTTP-Header} des Clienten an. Da diese Art von Parameterübertragung eher untypisch ist, wird an dieser Stelle nicht weiter drauf eingegangen.
 
-\parskip 12pt
-\parindent 0pt
+\vspace{0.2cm}
+
 Da jeder Request auch immer einen Response erfordert, ist es bei der Umsetzung notwendig, Statuscodes der HTTP - Operationen zu benutzen. Dabei viel die Wahl auf folgende Statuscodes bei zugehörigen Ereignissen.
 
 \begin{table}[H]
@@ -432,12 +440,11 @@ Statuscode & Bedeutung
 
 Wie diese Codes innerhalb der einzelnen Response-Methoden Verwendung finden, wird im folgenden an Beispielen dargestellt. Nach einigen Vorüberlegungen folgt nun die Umsetzung in Java und das finale Ergebnis.
 
-\newpage
-\subsubsection{Umsetzung}
+\subsection{Umsetzung}
 
 Aufbauend auf die zuvor identifizierten URI, ging es nun darum die entsprechenden HTTP Methoden auf die einzelnen Ressourcen umzusetzen. Aus struktureller Sicht wurde dabei für jede Ressource eine eigene Service-Klasse angelegt, welche die jeweiligen Operationen bereitstellt. Innerhalb einer solchen, werden angedachte URI Pfade der Tiefe nach implementiert. Das Prinzip verdeutlicht folgende Übersicht zum Klassenaufbau des SeriesService und SeasonService:
 
-\begin{lstlisting}[label=listsservice,caption= Klassenaufbau von BeispielServices]
+\begin{lstlisting}[label=seriesseasonsservices,caption= Klassenaufbau von BeispielServices]
 /**
  * Service for:
  * GET     /series
@@ -469,14 +476,15 @@ public class SeasonsService {}
 
 \end{lstlisting}
 
-Wie bereits angesprochen, bestand die Möglichkeit zum Season und Episoden Zugriff auf unterschiedliche Wege. Da für jeden dieser Services eine mehrfache Definition aller Methoden nicht notwendig oder sinnvoll ist, wurde sich für eine Art Mittelweg entschieden. Die aufeinander aufbauende Variante im oberen Beispiel des SeriesService, erschien in sofern reizvoll, die die eindeutige Abfrage einer Episode über den jeweiligen Pfad realisiert werden könnte. Die zweite Variante stellt dabei eine höhere Komfortabilität dar, da zum Abrufen einer Season keine Serie ID bekannt sein müsste (die durch die XSD Definition jedoch vorhanden ist).
+Wie bereits angesprochen, bestand die Möglichkeit zum Season und Episoden Zugriff auf unterschiedliche Wege. Da für jeden dieser Services eine mehrfache Definition aller Methoden nicht notwendig oder sinnvoll ist, wurde sich für eine Art Mittelweg entschieden. Die aufeinander aufbauende Variante im oberen Beispiel des SeriesService, erschien in sofern reizvoll, die die eindeutige Abfrage einer Episode über den jeweiligen Pfad realisiert werden könnte. Die zweite Variante stellt dabei eine höhere Komfortabilität dar, da zum Abrufen einer Season keine Serie ID bekannt sein müsste (die durch die XSD Definition jedoch vorhanden ist).\\
 Daher wurden geplante POST, PUT und DELETE Methoden, jeweils nur auf den Haupttyp definierte und der Pfadzugriff in die Tiefe ermöglicht lediglich ein Holen der Daten, keine Manipulation. Diese sind in der jeweiligen Serviceklasse realisiert.
 
-\newpage
-Zu Beginn wurden einzelne Methoden ausgearbeitet und auf Funktionalität in Verbindung mit dem Grizzly RESTServer getestet. Erste Versuche wurden mit Hilfe eines erstellten TestClients durchgeführt und lieferten schnell das gewünschte Ergebnis.
+\vspace{0.2cm}
+
+Zu Beginn wurden einzelne Methoden ausgearbeitet und auf Funktionalität in Verbindung mit dem Grizzly RESTServer getestet. Erste Versuche wurden mit Hilfe eines erstellten TestClients durchgeführt und lieferten schnell das gewünschte Ergebnis.\\
 Innerhalb dieser Phase fand  die gesamte Realisierung in der jeweiligen Methode definiert. So wurde beispielsweise das Marshalling und Unmarshalling jedes Mal erneut eingebunden.
 
-\begin{lstlisting}[label=listsservice,caption= GET Testmethode der SeriesID]
+\begin{lstlisting}[label=seriesservice,caption= GET Testmethode der SeriesID]
    @Path( "/{id}" )
    @GET @Produces( "application/xml" )
    public Serie getSingle(@PathParam("id") int id) throws JAXBException {
@@ -520,28 +528,30 @@ public static void testGetSerie() {
   }
 \end{lstlisting}
 
-\newpage
-
 Da diese Herangehensweise aus programmiertechnischer Sicht jedoch nicht besonderns effektiv und angebracht ist, fand im weiteren ein Refactoring des Webservices statt und der Klassenaufbau wurde angepasst. Ganz nach dem DRY Prinzip (don't repeat yourself) wurden wiederkehrende Informationen, wie das zuvor angesprochene Marshalling und Unmarshalling, auf eine eigene Klasse ausgelagert um Coderedundanz zu vermeiden und definierte Funktionen an mehreren Stellen zugänglich zu machen. Während der Entwicklung ergab sich daraus folgender Aufbau, bei dem einzelne Komponenten funktional miteinander Interagieren und im Zusammenspiel die synchrone Kommunikation des SerienTrackers ermöglichen.
+
 \begin{figure}[h!]
 \includegraphics[width=1\textwidth]{../images/aufbaurest.png}
 \caption{Funktionaler Aufbau der Komponenten zur synchrone Kommunikation }
 \label{RESTaufbau}
 \end{figure}
 
-Über den RESTServer wird ein Request an die Serviceklasse einer Ressource geschickt. Die angesprochene Methode beginnt die Anfrageverabeitung und wird zuerst durch einen Logger erfasst \textit{  Logger.log( ... );}. Diese Hilfsklasse wurde erstellt, um während der Entwicklung einzelne Schritte zu dokumentieren und erfolgreiche und nicht erfolgreiche Arbeitsschritte genauer bestimmen zu können. Die Serviceklasse greift dann gegebenfalls auf Methoden des FileHandlers und DataHandlers zu. Klassen in denen jeweilige Funktionen ausgelagert wurden. Der FileHandler kümmert sich um das Lesen und Schreiben der Daten in die XML Files durch Marshalling und Unmarshalling Operationen. Zudem überprüft sie, ob für entsprechende Objekte bereits XML Files zu Grunde liegen, ansonsten werden diese neu erstellt. \\
-Der DataHandler stellt die Methoden bereit, um auf vorhandene Daten zu operieren und den jeweiligen Request funktional umzusetzen. So wird biespielsweise ein Serienobjekt in der SeriesServiceklasse erstellt und durch eine Methode des Handlers \\\textit{      Serie serie = dh.getSerieByID( id ); } durchsucht der zugehörige SeriesDataHandler  vorhandene Elemente nach dem passenden Attribut und liefert die gesuchte Instanz zurück. Der Rückgabewert wird dann wieder vom Service geprüft und per Response zurückgeliefert. Gegebensfalls folgt die Rückgabe eines Statuscodes beim Eintreten eines des darin beschriebenen Ereignisses.\\
+Über den RESTServer wird ein Request an die Serviceklasse einer Ressource geschickt. Die angesprochene Methode beginnt die Anfrageverabeitung und wird zuerst durch einen Logger erfasst \textit{  Logger.log( ... );}. Diese Hilfsklasse wurde erstellt, um während der Entwicklung einzelne Schritte zu dokumentieren und erfolgreiche und nicht erfolgreiche Arbeitsschritte genauer bestimmen zu können. Die Serviceklasse greift dann gegebenfalls auf Methoden des FileHandlers und DataHandlers zu. Klassen in denen jeweilige Funktionen ausgelagert wurden. Der FileHandler kümmert sich um das Lesen und Schreiben der Daten in die XML Files durch Marshalling und Unmarshalling Operationen. Zudem überprüft sie, ob für entsprechende Objekte bereits XML Files zu Grunde liegen, ansonsten werden diese neu erstellt.\\
+Der DataHandler stellt die Methoden bereit, um auf vorhandene Daten zu operieren und den jeweiligen Request funktional umzusetzen. So wird biespielsweise ein Serienobjekt in der SeriesServiceklasse erstellt und durch eine Methode des Handlers \\\textit{Serie serie = dh.getSerieByID( id );} durchsucht der zugehörige SeriesDataHandler  vorhandene Elemente nach dem passenden Attribut und liefert die gesuchte Instanz zurück. Der Rückgabewert wird dann wieder vom Service geprüft und per Response zurückgeliefert. Gegebensfalls folgt die Rückgabe eines Statuscodes beim Eintreten eines des darin beschriebenen Ereignisses.\\
 Die DataHandler wurden entsprechende der persistende Datenstruktur in die jeweiligen Typen aufgeteilt und übernehmen für zugehörige Ressourcen die Verarbeitung. Dadurch entwickelte sich der SeriesDataHandler, UsersDataHandler und ListsDataHandler. Im momentanen Entwicklungsstand des Projektes, verarbeitet der SeriesDataHandler vorerst auch nur die Informationen einer Serie.
 
-\newpage
+\vspace{0.2cm}
+
 Entsprechende Unterstützung einer Season oder Episode nach diesem Prinzip ist aus zeitlichen Gründen noch nicht implementiert, die Funktionalität der entsprechenden HTTP Operation findet noch auf eine andere Weise statt. Entsprechende GET Anweisungen könnten über die \textit{series/{serieID}/seasons/{seasonID}/episodes} - URI ermöglicht werden. POST, PUT und DELETE Methoden sind innerhalb der Services umgesetzt.
 
 
-
-
 \newpage
 
-\subsection{Konzeption + XMPP Server einrichten}
+\section{Interaktion mittels XMPP Server}
+
+\subsection{Vertiefung}
+
+
 Leafs (Topics) sollen für das Projekte definiert werden
 
 Wer ist dabei Publisher und wer Subscriber?
@@ -611,10 +621,9 @@ And by opposing end them?
 
 
 
-
 \newpage
 
-\subsection{XMPP - Client}
+\subsection{Realisierung eines Clienten}
 
 Es soll ein XMPP Client entwickelt werden, dafür soll folgendes berücksichtigt werden:
 
@@ -628,11 +637,11 @@ disco\#items: IQ-get an server gesendet, Replie liste der verbundenen EntitiesSi
 
 
 
-
 \newpage
 
-\subsection{Client - Entwicklung}
-\subsubsection{Vorbereitung und Layoutentwicklung}
+\section{Entwicklung eines User-Clienten}
+
+\subsection{Vorbereitung und Layoutentwicklung}
 Im finalen Meilenstein des Projektes, steht die Entwicklung eines grafischen Userinterface im Mittelpunkt, der die Funktionalität des Systems repräsentiert. Die Applikation soll die entsprechende Verbindung zum Server aufbauen und den Datenaustausch ermöglichen. \\
 
 Vor der praktischen Umsetzung mit Java Swing, wurde ein mögliches Konzeptlayout erstellt und entsprechende Alternativen ausprobiert.Hierbei handelt es sich um erste Ideen wie die Anwendung aufgebaut sein kann und welche Elemente benötigt werden.
@@ -705,9 +714,6 @@ Auf dieser Seite (Abb. 7a) kann die Serie einer bestimmten Liste hinzugefügt we
 \caption{Gui Layout Skizzen: Serienübersicht }
 \label{Gui}
 \end{figure}
-
-
-
 
 
 \newpage
