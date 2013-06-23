@@ -93,6 +93,14 @@ Bei der Planung der GUI, wurden die einzelnen Seiten nach entsprechenden Ideen k
 \newpage
 \subsection{Umsetzung}
 
+
 \newpage
 
 \subsection{Zusatz: Bot Client}
+
+Für das Veröffentlichen von Items, also den Notifications mit der Info über die bevorstehende Episodenaustrahlung, wurde ein Bot Client angelegt.\\
+Der Bot Client übernimmt dabei die Aufgabe pro Serie die Nodes anzulegen. Dazu scannt er die Datenbestand und wird zur jeder Serie drei Nodes anlegen, da ein User selbst entscheiden kann, ob er 5, 10 oder 15 Minute vorher informiert werden möchte. Die Node ID ist dabei im Format \textsf{series:\{Serien ID\}:\{[5|10|15]\}} definiert.\\
+Gleichzeitig scannt er den Datenbestand nach den Episoden ab und prüft ob das Austrahlungsdatum in der Zukunft liegt.\\
+Liegt es in der Zukunft wird ein Event angelegt. Dazu wurde die Quartz Scheduler Bibliothek\footnote{\url{http://quartz-scheduler.org}} eingesetzt. Mit ihr ist es möglich sogenannte Cronjobs anzulegen. Die beiden entwickleten Jobs \textit{ProfilerJob} und \textit{NotificationJob} übernehmen dabei die Verarbeitung.\\
+
+Aus zeitlichen Gründen konnte  das Senden der automatisieren Notifcations nicht mehr implementiert werden. Zum Testen der Notifcation kann deshalb der XMPP Debug Client genutzt werden.
