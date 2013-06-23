@@ -65,7 +65,7 @@ Wie diese Codes innerhalb der einzelnen Response-Methoden Verwendung finden, wir
 
 \subsection{Umsetzung}
 
-Aufbauend auf die zuvor identifizierten URI, ging es nun darum die entsprechenden HTTP Methoden auf die einzelnen Ressourcen umzusetzen. Aus struktureller Sicht wurde dabei für jede Ressource eine eigene Service-Klasse angelegt, welche die jeweiligen Operationen bereitstellt. Innerhalb einer solchen, werden angedachte URI Pfade der Tiefe nach implementiert. Das Prinzip verdeutlicht folgende Übersicht zum Klassenaufbau des SeriesService und SeasonService:
+Aufbauend auf die zuvor identifizierten URI, ging es nun darum die HTTP Methoden auf die einzelnen Ressourcen umzusetzen. Aus struktureller Sicht wurde dabei für jede Ressource eine eigene Service-Klasse angelegt, welche die jeweiligen Operationen bereitstellt. Innerhalb einer solchen, werden angedachte URI Pfade der Tiefe nach implementiert. Das Prinzip verdeutlicht folgende Übersicht zum Klassenaufbau des SeriesService und SeasonService:
 
 \begin{lstlisting}[label=seriesseasonsservices,caption= Klassenaufbau von BeispielServices]
 /**
