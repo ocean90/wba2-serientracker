@@ -139,7 +139,7 @@ Nachdem die Verbindung steht kann eine Instanz des PubSubManagers angelegt werde
 
 Für das Anlegen eines Nodes gibt es verschiedene Dinge zu beachten. Während der Entwicklung traten an dieser Stelle die meisten Probleme auf.\\
 
-Jeder Node kann mit einer standardmäßigen Konfiguration ausgestattet werden. Er lässt sich allerdings auch durch die in Smack mitgelieferte  \textit{ConfigureForm} konfigurieren.
+Jeder Node kann mit einer standardmäßigen Konfiguration ausgestattet werden. Er lässt sich allerdings auch durch die in Smack mitgelieferte \textit{ConfigureForm} konfigurieren.
 
 \begin{lstlisting}[label=xmppnodecreate,caption=Auszug aus PubSubHandler.createNode() für das Anlegen eines Nodes]
 public LeafNode createNode( String nodeID, String nodeTitle ) {
@@ -165,9 +165,87 @@ public LeafNode createNode( String nodeID, String nodeTitle ) {
     node = (LeafNode) this.psm.createNode( nodeID, form );
 \end{lstlisting}
 
-\vspace{0.2cm}
+Der Code 3.13 war schlussendlich die für uns funktionierende Variante, womit die Verwendung des Nodes im Clienten funktionierte. Zusammengefasst:\\
+
+Jeder kann den Node abonnieren, jeder könnte etwas auf den Node veröffentlichen, Nachrichten müssen einen Payload besitzen und es handelt sich um einen transienten Node.
 
 \vspace{0.2cm}
 
+Der nächste Punkt ist nun das Senden eines Items an einen Node. Hierfür bietet die Smack API zwei Wege: \textsf{node.send( new Item() )} oder \textsf{node.publish( new Item() )}, zweiters arbeitet asynchron.\\
+Bei der Implementierung hat die Variante über \textit{send()} nicht funktioniert und warf den Fehler \textit{bad-request(400)} raus. Aus diesem Grund wurde in der weiteren Entwicklung auf die \textit{publish()} Variante gesetzt, siehe Code 3.14.
+
+\begin{lstlisting}[label=xmppnodepayload,caption=Auszug aus XMPP Client für das Senden eines Items mit einem JAXB Objekt als Payload]
+/**
+   * Sends a test item to the selected node.
+   */
+  private void sendPayload() {
+    // Create a new message object
+    ObjectFactory factory = new ObjectFactory();
+    Message message = factory.createMessage();
+    message.setContent( testNodePayload.getText() );
+
+    StringWriter notification = new StringWriter();
+    try {
+      JAXBContext jaxb_context = JAXBContext.newInstance( Message.class );
+      Marshaller marshaller = jaxb_context.createMarshaller();
+      marshaller.setProperty( Marshaller.JAXB_FRAGMENT, true ); // Marshall without namespace
+      marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+      marshaller.marshal( message, notification );
+    } catch ( JAXBException e ) {
+      return;
+    }
+
+    // Get selected node
+    String selectedNode = (String) coboxExistingNodes.getSelectedItem();
+
+    // Publish item to node
+    PubSubHandler psh = this.ch.getPubSubHandler();
+    LeafNode node = psh.getNode( selectedNode );
+
+    node.publish(
+      new PayloadItem<SimplePayload>(
+        null,
+        new SimplePayload(
+          "message",              // Element name
+          "",                     // Namespace
+          notification.toString() // Payload
+        )
+      )
+    );
+  }
+\end{lstlisting}
+
+Beim Senden von JAXB Objekten muss darauf geachtet werden, dass der Wert \textsf{Marshaller.JAXB\_FRAGMENT} auf \textsf{true} gesetzt wird, damit kein Namespace mitausgegeben wird.\\
+Da durch das Veröffentlichen ein weiterer Namespace zum XML Objekt hinzugefügt wird, siehe Code 3.15, muss dieses vor der Verarbeitung durch den Marschaller entfernt werden.
+
+\begin{lstlisting}[label=xmppnodegetpayload,caption=Auszug aus XMPP Client für das Verarbeiten eines veröffentlichten Items mit einem JAXB Objekt als Payload]
+public void handlePublishedItems( ItemPublishEvent<Item> items ) {
+    for ( Item item : items.getItems() ) {
+      String rawXML = ((PayloadItem<SimplePayload>) item).getPayload().toXML();
+
+      // Remove the the namespace
+      String xml = rawXML.replaceFirst( " xmlns=\"http://jabber.org/protocol/pubsub\"", "" );
+
+      // Get a JAXB object of the XML data.
+      Message payload = null;
+      try {
+        JAXBContext jaxbContext = JAXBContext.newInstance( Message.class );
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        StringReader xmlString = new StringReader( xml );
+        payload = (Message) unmarshaller.unmarshal( xmlString );
+      } catch ( JAXBException e ) {
+        e.printStackTrace();
+      }
+      Logger.log( "Message Content: " + payload.getContent() );
+    }
+  }
+}
+\end{lstlisting}
+
+
+Damit die Items einen Empfänger haben, kommen die Subscriber zum Einsatz. Die Smack Bibliothek bietet dafür die Methoden \textsf{node.subscribe()} bzw \textsf{node.unsubscribe()}. Außerdem muss über \textsf{node.addItemEventListener} ein Listener hinzugefügt werden, welcher die Verarbeitung der veröffentlichten Items übernimmt.\\
+Hierbei muss beachtet werden, dass dieser Listener bei einer Kündigung auch wieder gelöscht werden müssen, da es sonst später zu mehrfachen Verarbeitung kommt.
+
+\vspace{0.2cm}
 
 Dieser Client wurde in der laufenden Entwicklung weiter als XMPP Debug Client ausgebaut um so die Richtigkeit des späteren User Clienten zu prüfen.
