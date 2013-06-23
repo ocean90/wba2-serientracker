@@ -28,6 +28,7 @@ bin/
 *.mp
 *.mtc
 *.mtc1
+*.nlo
 *.out
 #*.pdf
 *.synctex.gz
