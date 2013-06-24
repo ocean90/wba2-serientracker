@@ -6,8 +6,8 @@
 
 # Szenario: Serientracker
 
-##Konzept
-===
+##Konzeption
+
 Die **Idee** ist, dass Serien-Interessierte über ihre zuvor favorisierten Serien und abonnierten Interessen benachrichtigt werden, sobald eine Episode dieser Serie im TV ausgestrahlt wird.
 
 Der **Serien-Interessierte** soll Zugriff auf einen Pool von Serien bekommen, die auf einem Server gespeichert und verwaltet werden.  
@@ -21,62 +21,28 @@ Ein **Content-Admin** soll erweiterte Rechte bekommen, um die Content-Verwaltung
 ####Zusatz - Freunde:  
 **Serien-Interessierte** sollen sich gegenseitig hinzufügen/abonnieren können um sich gegenseitig zu benachrichtigen, zum Beispiel in Form von „Freund X schaut gerade Y”, „Freund Z hat Serie/Episode mit 8,0 bewertet” oder „Freund Y empfiehlt Dir Serie W”.
 
-<br>    
 
-###Umsetzung  
-Die Anwendung ermöglicht den Austausch von Informationen zwischen Server und Anwender entsprechend den jeweiligen Funktionen. 
-
-####Synchrone Datenübertragung
-
-Zum einen hat der Anwender direkt die Möglichkeit auf Informationen in Form von Daten zuzugreifen und diese zu Manipulieren.
-
-* **Serien-Interessierte**
-   * Markieren von Episoden
-     * Gesehen/Nicht gesehen
-     * Bewertung einer Episode
-         * Kommentar
-         * Bewertung in Zahlen/„Boolean”
-     * Fehlermeldung
-         * geänderte Sendezeit, fehlerhaftes Datum, …   
-   * Listen
-     * Ausgabe (Un)Watched
-     * Ausgabe vorhandene Serien
-     * Ausgabe Follower/Following (?)
-   * Favorisierung
-     * Anlegen
-     * Löschen
-     * Bearbeiten
-         * Zeitpunkt der Benachrichtigung
-          
-         
-* **Content-Admin**
-   * Verwaltung der Episoden
-      * Anlegen
-      * Löschen
-      * Bearbeiten
-
-####Asynchrone Datenübertragung
-Ein weiterer Aspekt ist das Anfordern von Informationen, wobei die entsprechenden Informationen von Seiten des Servers von Bedingungen abhängig gesendet werden, was auch mehrfach geschehen kann.
-
-* **Serien-Interessierte**
-   * Benachrichtung bei TV-Austrahlung
-   * Freunde mit gleicher Favorisierung bei Serienstart mit Check-in benachrichtigen (?)
-        * “Freund X schaut auch W”
-   * Empfehlung einer Serie von Freund(e) anzeigen (?)
-* **Content-Admin**
-   * Benachrichtung bei Fehlermeldung durch User
-   
-<br>    
-
-## Meilensteine
-===
-Die Umsetzung des Projektes erfolgt anhand festgelegter Meilensteine zu festgelegten Zeitpunkten.
-
-* 06.05.2013 Meilenstein 1 + 2 (Projektbezogenes XML Schema + Ressourcen und die Semantik der HTTP-Operationen)  		
-* 13.05.2013 Meilenstein 3 (RESTful Webservice)			
-* 03.06.2013 Meilenstein 4 + 5 (Konzeption asynchrone Kommunikation + XMPP - Client)			
-* 17.06.2013 Meilenstein 6 (Client - Entwicklung)  
+## Nutzung des User-Client
 
 
-   
+### Vorrausetzungen
+
+* **Openfire** Installation
+  * Standard-Server-Einstellungen, ansonsten `de.fhkoeln.gm.serientracker.xmpp.XMPPConfig.java` anpassen
+* **Benutzeraccounts**
+  * In Opefire existiert ein Account mit dem Usernamen `bot` und dem Passwort `bot`.
+     * Alternativ `de.fhkoeln.gm.serientracker.bot.BotClient.java` anpassen
+  * Die Usernamen `admin` und `test` (empfohlendes Passwort: `test`) sind reserviert und sollten ebenfalls vorher in Openfire angelegt worden sein
+* **REST Server** läuft auf `localhost:1337`, sollten die Werte bereits belegt sein, muss `de.fhkoeln.gm.serientracker.webservice.RESTServerConfig.java` angepasst werden
+
+### Start
+
+1. Der BotClient muss gestartet werden, welcher die Nodes anlegt.
+   * `de.fhkoeln.gm.serientracker.xmpp.XMPPConfig.java`
+2. Der Rest Server muss gestartet werden.
+   * `de.fhkoeln.gm.serientracker.webservice.RESTServer.java`
+3. Der User-Client kann gestartet werden.
+   * `de.fhkoeln.gm.serientracker.client.TrackerClient.java`
+4. Optional: XMPP Client für Notifcation-Debugging starten.
+   * `de.fhkoeln.gm.serientracker.xmpp.XMPPClient.java`
 
