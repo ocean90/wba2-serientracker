@@ -386,7 +386,8 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		user.setLastname( inputLastname.getText() );
 		user.setUsername( inputUsername.getText().trim() );
 		user.setAbout( inputAbout.getText() );
-		user.setAge( Integer.valueOf( inputAge.getText() ) );
+		if ( ! inputAge.getText().equals( "" ) )
+			user.setAge( Integer.valueOf( inputAge.getText() ) );
 		user.setLocation( inputLocation.getText() );
 		Gender gender = male.isSelected() ? Gender.MALE : Gender.FEMALE;
 		user.setGender( gender );
