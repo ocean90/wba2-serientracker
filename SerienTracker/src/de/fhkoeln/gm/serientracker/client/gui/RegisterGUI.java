@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.net.URI;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -28,6 +29,8 @@ import de.fhkoeln.gm.serientracker.client.utils.HTTPClient.HTTPMethod;
 import de.fhkoeln.gm.serientracker.jaxb.Gender;
 import de.fhkoeln.gm.serientracker.jaxb.Genre;
 import de.fhkoeln.gm.serientracker.jaxb.ObjectFactory;
+import de.fhkoeln.gm.serientracker.jaxb.Setting;
+import de.fhkoeln.gm.serientracker.jaxb.Settings;
 import de.fhkoeln.gm.serientracker.jaxb.User;
 import de.fhkoeln.gm.serientracker.utils.Logger;
 import de.fhkoeln.gm.serientracker.xmpp.XMPPConfig;
@@ -387,6 +390,19 @@ public class RegisterGUI extends JFrame implements ActionListener {
 		user.setLocation( inputLocation.getText() );
 		Gender gender = male.isSelected() ? Gender.MALE : Gender.FEMALE;
 		user.setGender( gender );
+
+		// Default settings
+		Settings settings = new ObjectFactory().createSettings();
+		List<Setting> settingList = settings.getSetting();
+		Setting notificationTyp = new Setting();
+		notificationTyp.setKey( "notificationTyp" );
+		notificationTyp.setValue( "minutes" );
+		settingList.add( notificationTyp );
+		Setting notificationMinutes = new Setting();
+		notificationMinutes.setKey( "notificationMinutes" );
+		notificationMinutes.setValue( "10" );
+		settingList.add( notificationMinutes );
+		user.setSettings( settings );
 
 		// Set the HTTP request
 		HTTPClient httpClient = new HTTPClient();
